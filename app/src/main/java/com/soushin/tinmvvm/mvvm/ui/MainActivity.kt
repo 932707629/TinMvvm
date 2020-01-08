@@ -7,7 +7,7 @@ import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.base.BaseActivity
 import com.soushin.tinmvvm.databinding.ActivityMainBinding
-import com.soushin.tinmvvm.mvvm.vm.MainViewModel
+import com.soushin.tinmvvm.mvvm.viewmodel.MainViewModel
 
 /**
  * 主页
@@ -27,10 +27,10 @@ class MainActivity : BaseActivity<ActivityMainBinding,MainViewModel>() {
 
 //        dataBinding?.mainViewModel=viewModel
         dataBinding?.onClick= View.OnClickListener {
-            ALog.e("点击切换数据了");
+            ALog.e("点击切换数据了")
             when(it.id){
                 R.id.btn_change->{
-                    viewModel?.tvContent?.value="111111111111"
+                    viewModel?.getDatas()
                 }
                 R.id.btn_return->{
                     viewModel?.tvContent?.value="Hello World"
@@ -39,6 +39,7 @@ class MainActivity : BaseActivity<ActivityMainBinding,MainViewModel>() {
         }
     }
 
+    //BR.xxxxViewModel是kotlin-kapt插件默认生成的 对应xml文件里的xxxxViewModel
     override fun initVariableId(): Int {
         return BR.mainViewModel
     }

@@ -1,9 +1,8 @@
-package com.soushin.tinmvvm.mvvm.vm
+package com.soushin.tinmvvm.mvvm.viewmodel
 
-import androidx.annotation.IntegerRes
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.soushin.tinmvvm.base.BaseViewModel
+import com.soushin.tinmvvm.mvvm.model.MainModel
 
 /**
  * 视图模型
@@ -13,8 +12,21 @@ import com.soushin.tinmvvm.base.BaseViewModel
  * @author created by Soushin
  * @time 2020/1/7 13 46
  */
-class MainViewModel : BaseViewModel() {
+class MainViewModel : BaseViewModel<MainModel> {
 
     var tvContent=MutableLiveData<String>("Hello World")
+
+    constructor():super(MainModel())
+
+
+
+    fun getDatas(){
+        tvContent.value= model?.getDatas()
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+
+    }
 
 }

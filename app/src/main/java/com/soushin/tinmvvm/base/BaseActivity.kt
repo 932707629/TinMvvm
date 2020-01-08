@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProviders
-import com.hjq.toast.ToastUtils
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -15,7 +14,7 @@ import java.lang.reflect.ParameterizedType
  * @author created by Soushin
  * @time 2020/1/7 13 29
  */
-abstract class BaseActivity<V : ViewDataBinding, VM: BaseViewModel> :AppCompatActivity(){
+    abstract class BaseActivity<V : ViewDataBinding, VM: BaseViewModel<*>> :AppCompatActivity(){
 
     protected var dataBinding:V?=null
     protected var viewModel:VM?=null
@@ -40,6 +39,11 @@ abstract class BaseActivity<V : ViewDataBinding, VM: BaseViewModel> :AppCompatAc
         initData(savedInstanceState)
     }
 
+    override fun onDestroy() {
+        viewModel?.cancel()
+        super.onDestroy()
+    }
+
 //    inline fun <reified T : ViewModel> viewModel() =
 //        lazy { ViewModelProviders.of(this).get(T::class.java) }
 
@@ -52,8 +56,5 @@ abstract class BaseActivity<V : ViewDataBinding, VM: BaseViewModel> :AppCompatAc
 
     abstract fun initVariableId():Int
 
-    fun showToasty(msg:Any?){
-        ToastUtils.show(msg)
-    }
 
 }

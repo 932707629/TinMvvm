@@ -21,8 +21,8 @@ class App :Application(){
         registerActivityLifecycleCallbacks(ActivityLifecycleCallbacksImpl())
     }
 
-    fun initALog(app: Application?) {
-        ALog.init(app!!)
+    fun initALog(app: Application) {
+        ALog.init(app)
             .setLogSwitch(BuildConfig.DEBUG) // 设置log总开关，包括输出到控制台和文件，默认开
             .setConsoleSwitch(BuildConfig.DEBUG) // 设置是否输出到控制台开关，默认开
             .setGlobalTag(null) // 设置log全局标签，默认为空

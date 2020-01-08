@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Application
 import android.os.Bundle
 import com.blankj.ALog
+import com.soushin.tinmvvm.utils.AppManager
 
 /**
  * 对每个activity实现监听
@@ -15,6 +16,7 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
         ALog.i("onActivityCreated",activity.localClassName)
+        AppManager.get().addActivity(activity)
     }
 
     override fun onActivityResumed(activity: Activity) {
@@ -39,6 +41,7 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
 
     override fun onActivityDestroyed(activity: Activity) {
         ALog.i("onActivityDestroyed",activity.localClassName)
+        AppManager.get().removeActivity(activity)
     }
 
 }

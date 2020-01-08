@@ -6,7 +6,7 @@
     <data>
         <variable
             name="mainViewModel"
-            type="com.soushin.tinmvvm.mvvm.vm.MainViewModel" />
+            type="com.soushin.tinmvvm.mvvm.viewmodel.MainViewModel" />
 
         <variable
             name="onClick"

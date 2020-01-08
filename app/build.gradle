@@ -37,10 +37,24 @@ dependencies {
     implementation deps.alog
     implementation deps.ToastUtils
     implementation deps.extensions
-    implementation deps.gson
+    implementation deps.retrofit2
+    implementation deps.retrofit2_gson
+    implementation deps.glide
+    implementation deps.rxandroid
+    implementation deps.rxjava
+    implementation deps.liveeventbus
 
+//    implementation deps.rxlifecycle
+//    implementation deps.rxlifecycle_components
+//    implementation deps.rxlifecycle_android
+//    implementation deps.rxlifecycle_android_lifecycle
+//    implementation deps.rxlifecycle_kotlin
+//    implementation deps.rxlifecycle_android_lifecycle_kotlin
+
+
+    kapt deps.glide_compiler
     kapt deps.lifecycleompiler
-    kapt 'com.android.databinding:compiler:3.1.4'
+    kapt deps.databindingcompiler
 
     testImplementation deps.junit
     androidTestImplementation deps.espresso
