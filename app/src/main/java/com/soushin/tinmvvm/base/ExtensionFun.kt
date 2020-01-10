@@ -1,9 +1,12 @@
 package com.soushin.tinmvvm.base
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.text.method.ArrowKeyMovementMethod
 import androidx.appcompat.app.AppCompatActivity
 import com.hjq.toast.ToastUtils
+import io.reactivex.disposables.Disposable
 
 /**
  * 扩展方法
@@ -22,6 +25,9 @@ fun AppCompatActivity.go(clazz:Class<*>){
 fun AppCompatActivity.getThis(): Context {
     return this
 }
+
+
+
 
 
 

@@ -1,5 +1,6 @@
 package com.soushin.tinmvvm.base
 
+import android.app.Dialog
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil

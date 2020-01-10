@@ -1,11 +1,14 @@
 package com.soushin.tinmvvm.base
 
+import android.app.Activity
 import android.app.Application
 import com.blankj.ALog
 import com.hjq.toast.ToastUtils
 import com.soushin.tinmvvm.ActivityLifecycleCallbacksImpl
 import com.soushin.tinmvvm.BuildConfig
+import com.soushin.tinmvvm.utils.AppManager
 import com.soushin.tinmvvm.widget.ToastStyle
+import java.util.*
 
 /**
  *
@@ -13,12 +16,17 @@ import com.soushin.tinmvvm.widget.ToastStyle
  * @time 2020/1/7 13 12
  */
 class App :Application(){
+
     override fun onCreate() {
         super.onCreate()
-
+        instance=this
         initALog(this)
         ToastUtils.init(this,ToastStyle())
         registerActivityLifecycleCallbacks(ActivityLifecycleCallbacksImpl())
+    }
+
+    companion object {
+        var instance :App ?=null
     }
 
     fun initALog(app: Application) {
