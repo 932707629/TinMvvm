@@ -1,5 +1,6 @@
 package com.soushin.tinmvvm.mvvm.viewmodel
 
+import android.app.Application
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
@@ -17,7 +18,7 @@ import com.soushin.tinmvvm.worker.BackGroundWorker
  */
 class WorkerViewModel :BaseViewModel<WorkerModel> {
 
-    constructor():super(WorkerModel())
+    constructor(application: Application):super(application,WorkerModel())
 
     var btnStatus= MutableLiveData<String>("开始任务")
 
