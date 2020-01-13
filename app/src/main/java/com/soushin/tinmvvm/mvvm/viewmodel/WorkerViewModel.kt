@@ -11,6 +11,7 @@ import com.soushin.tinmvvm.base.BaseViewModel
 import com.soushin.tinmvvm.mvvm.model.MainModel
 import com.soushin.tinmvvm.mvvm.model.WorkerModel
 import com.soushin.tinmvvm.worker.BackGroundWorker
+import java.util.concurrent.TimeUnit
 
 /**
  * @author created by Soushin
@@ -21,8 +22,8 @@ class WorkerViewModel :BaseViewModel<WorkerModel> {
     constructor(application: Application):super(application,WorkerModel())
 
     var btnStatus= MutableLiveData<String>("开始任务")
-
-    val request=OneTimeWorkRequest.Builder(BackGroundWorker::class.java)
+    //PeriodicWorkRequest OneTimeWorkRequest
+    val request=PeriodicWorkRequest.Builder(BackGroundWorker::class.java,15,TimeUnit.MINUTES)
         .setInputData(Data.Builder().putString("key","value").build())
 //        .setConstraints(Constraints.Builder()
 //            .setRequiredNetworkType(NetworkType.CONNECTED)//在网络连接的时候执行

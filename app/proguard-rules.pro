@@ -39,3 +39,7 @@
 -keep class androidx.lifecycle.** { *; }
 -keep class androidx.arch.core.** { *; }
 ##############liveeventbus
+
+##############okhttp-RxHttp
+-keep class rxhttp.**{*;}
+##############okhttp-RxHttp

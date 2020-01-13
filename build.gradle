@@ -5,6 +5,7 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven { url 'https://jitpack.io' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.3'
@@ -19,7 +20,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-
+        mavenCentral()
     }
 }
 
@@ -59,6 +60,7 @@ ext {
             //Jetpack
             extensions                          : "androidx.lifecycle:lifecycle-extensions:2.1.0",
             databindingcompiler                 : "com.android.databinding:compiler:3.1.4",
+            work_runtime                        : "android.arch.work:work-runtime:1.0.1",
 
             //rx
             rxlifecycle                         : "com.trello.rxlifecycle3:rxlifecycle:3.1.0",

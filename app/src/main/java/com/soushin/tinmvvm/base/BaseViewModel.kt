@@ -25,7 +25,8 @@ open class BaseViewModel<M:BaseModel> : AndroidViewModel {
         mCompositeDisposable.add(dis)
     }
 
-    fun cancel(){
+    override fun onCleared() {
+        super.onCleared()//会跟随页面生命周期销毁
         mCompositeDisposable.clear()
     }
 

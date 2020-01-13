@@ -21,6 +21,9 @@ class AppManager private constructor(){
         }
     }
 
+    fun getActivityCount():Int{
+        return stack!!.size
+    }
 
     fun addActivity(activity: Activity){
         if(stack==null){
