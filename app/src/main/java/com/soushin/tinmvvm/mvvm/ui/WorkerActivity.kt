@@ -44,7 +44,7 @@ class WorkerActivity : BaseActivity<ActivityWorkerBinding, WorkerViewModel>() {
 //                .setInputData(Data.Builder().putString("key","value").build())
 //                .build()
 //            val state= WorkManager.getInstance().enqueue(request)
-//
+
 //            WorkManager.getInstance().getWorkInfoByIdLiveData(request.id).observe(this,
 //                Observer {
 //                    ALog.e("接收任务返回结果",it.outputData.getString("result"))

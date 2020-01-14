@@ -8,8 +8,8 @@ import com.soushin.tinmvvm.BuildConfig
 import com.soushin.tinmvvm.network.Api
 import com.soushin.tinmvvm.widget.ToastStyle
 import okhttp3.OkHttpClient
+import rxhttp.wrapper.converter.FastJsonConverter
 import rxhttp.wrapper.cookie.CookieStore
-import rxhttp.wrapper.param.Param
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.ssl.SSLSocketFactoryImpl
 import rxhttp.wrapper.ssl.X509TrustManagerImpl
@@ -30,14 +30,13 @@ class App :Application(){
         super.onCreate()
         instance=this
         initALog(this)
-        initRxHttp(this);
+        initRxHttp()
         ToastUtils.init(this,ToastStyle())
         registerActivityLifecycleCallbacks(ActivityLifecycleCallbacksImpl())
-
     }
 
-    private fun initRxHttp(app: App) {
-        val file = File(app.getExternalCacheDir(), "RxHttpCookie")
+    private fun initRxHttp() {
+        val file = File(externalCacheDir, "RxHttpCookie")
         val trustAllCert: X509TrustManager = X509TrustManagerImpl()
         val sslSocketFactory: SSLSocketFactory =
             SSLSocketFactoryImpl(trustAllCert)
@@ -64,12 +63,11 @@ class App :Application(){
 //设置数据解密/解码器，非必须
 //        RxHttp.setResultDecoder(s -> s);
 //设置全局的转换器，非必须
-//        RxHttp.setConverter(FastJsonConverter.create());
+        RxHttp.setConverter(FastJsonConverter.create())
+
 //设置公共参数，非必须
-        RxHttp.setOnParamAssembly { p: Param<*>? ->
-            /*根据不同请求添加不同参数，子线程执行，每次发送请求前都会被回调
-                        如果希望部分请求不回调这里，发请求前调用Param.setAssemblyEnabled(false)即可
-                         */
+        /*RxHttp.setOnParamAssembly { p: Param<*>? ->
+            //根据不同请求添加不同参数，子线程执行，每次发送请求前都会被回调 如果希望部分请求不回调这里，发请求前调用Param.setAssemblyEnabled(false)即可
             val method = p!!.method
             if (method!!.isGet) { //Get请求
 
@@ -79,7 +77,7 @@ class App :Application(){
             p.add("versionName", "1.0.0") //添加公共参数
                 .add("time", System.currentTimeMillis())
                 .addHeader("deviceType", "android") //添加公共请求头
-        }
+        }*/
 
     }
 

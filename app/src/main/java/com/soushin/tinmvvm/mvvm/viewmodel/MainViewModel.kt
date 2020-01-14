@@ -25,9 +25,4 @@ class MainViewModel : BaseViewModel<MainModel> {
         tvContent.value= model?.getDatas()
     }
 
-    override fun onCleared() {
-        super.onCleared()
-
-    }
-
 }

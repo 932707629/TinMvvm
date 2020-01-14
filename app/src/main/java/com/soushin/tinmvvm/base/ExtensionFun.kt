@@ -5,6 +5,9 @@ import android.content.Context
 import android.content.Intent
 import android.text.method.ArrowKeyMovementMethod
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.LifecycleOwner
 import com.hjq.toast.ToastUtils
 import io.reactivex.disposables.Disposable
 
@@ -26,6 +29,17 @@ fun AppCompatActivity.getThis(): Context {
     return this
 }
 
+fun BaseFragment<*,*>.showToasty(msg:Any?){
+    ToastUtils.show(msg)
+}
+
+fun BaseFragment<*,*>.go(clazz:Class<*>){
+    startActivity(Intent(mContext,clazz))
+}
+
+fun FragmentActivity.useFragment():Boolean{
+    return false
+}
 
 
 

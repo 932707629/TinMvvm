@@ -1,13 +1,8 @@
 package com.soushin.tinmvvm.mvvm.model
 
-import android.util.AndroidException
 import com.soushin.tinmvvm.base.BaseModel
-import com.soushin.tinmvvm.network.Api
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import rxhttp.RxHttpPlugins
+import com.soushin.tinmvvm.mvvm.model.entity.CategoryEntity
 import rxhttp.wrapper.param.RxHttp
-import java.io.File
 
 /**
  *
@@ -24,8 +19,8 @@ class MainModel :BaseModel(){
 
     fun requestDatas():Any{
 
-        return RxHttp.get("wxarticle/chapters/json")
-            .asObject(MainModel::class.java)
+        return RxHttp.get("/wxarticle/chapters/json")
+            .asObject(CategoryEntity::class.java)
             .subscribe()
     }
 
