@@ -1,14 +1,14 @@
 package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
-import androidx.databinding.ObservableField
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import androidx.work.*
+import androidx.work.Data
+import androidx.work.PeriodicWorkRequest
+import androidx.work.WorkManager
 import com.blankj.ALog
 import com.soushin.tinmvvm.base.BaseViewModel
-import com.soushin.tinmvvm.mvvm.model.MainModel
 import com.soushin.tinmvvm.mvvm.model.WorkerModel
 import com.soushin.tinmvvm.worker.BackGroundWorker
 import java.util.concurrent.TimeUnit

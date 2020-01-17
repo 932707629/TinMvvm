@@ -2,20 +2,15 @@ package com.soushin.tinmvvm.mvvm.ui
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.Observer
-import androidx.work.Data
-import androidx.work.PeriodicWorkRequest
-import androidx.work.WorkManager
-import androidx.work.Worker
 import com.blankj.ALog
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.base.BaseActivity
 import com.soushin.tinmvvm.base.go
 import com.soushin.tinmvvm.databinding.ActivityMainBinding
+import com.soushin.tinmvvm.mvvm.ui.fragment.CategoryFragment
 import com.soushin.tinmvvm.mvvm.viewmodel.MainViewModel
-import com.soushin.tinmvvm.worker.BackGroundWorker
-import java.util.concurrent.TimeUnit
+import com.soushin.tinmvvm.utils.FragmentUtils
 
 
 /**
@@ -48,16 +43,22 @@ class MainActivity : BaseActivity<ActivityMainBinding,MainViewModel>() {
                 R.id.btn_worker->{
                     go(WorkerActivity::class.java)
                 }
+                R.id.btn_create_fragment->{
+                    FragmentUtils.addFragment(supportFragmentManager,CategoryFragment(),R.id.fl_container)
+                }
             }
         }
 
-
-
     }
+
 
     //BR.xxxxViewModel是kotlin-kapt插件默认生成的 对应xml文件里的xxxxViewModel
     override fun initVariableId(): Int {
         return BR.mainViewModel
+    }
+
+    override fun useFragment(): Boolean {
+        return true
     }
 
 

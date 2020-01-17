@@ -3,10 +3,8 @@ package com.soushin.tinmvvm
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
-import androidx.fragment.app.FragmentActivity
 import com.blankj.ALog
 import com.soushin.tinmvvm.base.BaseActivity
-import com.soushin.tinmvvm.base.useFragment
 import com.soushin.tinmvvm.utils.AppManager
 
 /**
@@ -22,7 +20,7 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
         ALog.i("onActivityCreated",activity.localClassName)
         AppManager.get().addActivity(activity)
-        if (activity is FragmentActivity&&activity.useFragment()){//注册fragment回调监听
+        if (activity is BaseActivity<*,*>&&activity.useFragment()){//注册fragment回调监听
             val fragmentLifecycleCallbacksImpl=FragmentLifecycleCallbacksImpl()
             fragmentLifecycleMap.put(activity.localClassName,fragmentLifecycleCallbacksImpl)
             activity.supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentLifecycleCallbacksImpl,true)
@@ -52,7 +50,7 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
     override fun onActivityDestroyed(activity: Activity) {
         ALog.i("onActivityDestroyed",activity.localClassName)
         AppManager.get().removeActivity(activity)
-        if (activity is FragmentActivity&&activity.useFragment()){//注册fragment回调监听
+        if (activity is BaseActivity<*,*>&&activity.useFragment()){//注册fragment回调监听
             fragmentLifecycleMap.get(activity.localClassName)?.let {
                 activity.supportFragmentManager.unregisterFragmentLifecycleCallbacks(it)
             }

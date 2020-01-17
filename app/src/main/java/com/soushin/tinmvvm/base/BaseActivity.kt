@@ -1,12 +1,12 @@
 package com.soushin.tinmvvm.base
 
-import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
 import com.blankj.ALog
 import java.lang.reflect.ParameterizedType
@@ -26,6 +26,11 @@ import java.lang.reflect.ParameterizedType
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val layoutId= initView(savedInstanceState)
+        dataViewBinding(layoutId)
+        initData(savedInstanceState)
+    }
+
+    private fun dataViewBinding(layoutId:Int) {
         if (layoutId!=0){
             dataBinding= DataBindingUtil.setContentView(this,layoutId)
             dataBinding?.lifecycleOwner=this
@@ -38,9 +43,9 @@ import java.lang.reflect.ParameterizedType
                 }
             }
             viewModel=ViewModelProviders.of(this).get(modelClass)
+            viewModel?.injectLifecycleOwner(this)
             dataBinding?.setVariable(initVariableId(),viewModel)
         }
-        initData(savedInstanceState)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -54,8 +59,8 @@ import java.lang.reflect.ParameterizedType
 
     override fun getResources(): Resources {
         val res = super.getResources()
-        ALog.i("用户字体大小有改变getResources", res.configuration.fontScale)
         if (res.configuration.fontScale != 1f) { //非默认值
+            ALog.i("用户字体大小有改变getResources", res.configuration.fontScale)
             val newConfig = Configuration()
             newConfig.setToDefaults() //设置默认
             res.updateConfiguration(newConfig, res.displayMetrics)//方法废弃
@@ -75,6 +80,10 @@ import java.lang.reflect.ParameterizedType
 
     abstract fun initVariableId():Int
 
+
+    open fun useFragment():Boolean{
+        return false
+    }
 
 
 

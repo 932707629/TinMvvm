@@ -1,5 +1,9 @@
 package com.soushin.tinmvvm.base
 
+import androidx.annotation.NonNull
+import androidx.lifecycle.LifecycleOwner
+import java.lang.ref.WeakReference
+
 
 /**
  * @author created by Soushin
@@ -7,5 +11,13 @@ package com.soushin.tinmvvm.base
  */
 open class BaseModel {
 
+    var weakReference: WeakReference<LifecycleOwner>?=null
+
+    /**
+     * 生命周期注入
+     */
+    fun injectLifecycleOwner(@NonNull lifecycleOwner: LifecycleOwner){
+        this.weakReference= WeakReference(lifecycleOwner)
+    }
 
 }

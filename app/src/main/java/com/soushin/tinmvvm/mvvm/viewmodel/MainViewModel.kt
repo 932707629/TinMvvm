@@ -1,11 +1,11 @@
 package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
-import com.blankj.ALog
-import com.soushin.tinmvvm.base.App
 import com.soushin.tinmvvm.base.BaseViewModel
 import com.soushin.tinmvvm.mvvm.model.MainModel
+import java.lang.ref.WeakReference
 
 /**
  * 视图模型
@@ -19,7 +19,10 @@ class MainViewModel : BaseViewModel<MainModel> {
 
     var tvContent=MutableLiveData<String>("Hello World")
 
-    constructor(application: Application):super(application,MainModel())
+
+    constructor(application: Application):super(application,MainModel()){
+
+    }
 
     fun getDatas(){
         tvContent.value= model?.getDatas()

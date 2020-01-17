@@ -1,7 +1,6 @@
 package com.soushin.tinmvvm.worker
 
 import android.content.Context
-import android.provider.ContactsContract
 import androidx.work.Data
 import androidx.work.Worker
 import androidx.work.WorkerParameters

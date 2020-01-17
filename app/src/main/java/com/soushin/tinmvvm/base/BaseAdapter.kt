@@ -1,8 +1,6 @@
 package com.soushin.tinmvvm.base
 
-import androidx.databinding.DataBindingUtil
 import com.chad.library.adapter.base.BaseProviderMultiAdapter
-import com.chad.library.adapter.base.viewholder.BaseViewHolder
 
 /**
  * 基于brvah封装的适配多布局的adapter

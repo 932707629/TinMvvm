@@ -1,8 +1,6 @@
 package com.soushin.tinmvvm.mvvm.model
 
 import com.soushin.tinmvvm.base.BaseModel
-import com.soushin.tinmvvm.mvvm.model.entity.CategoryEntity
-import rxhttp.wrapper.param.RxHttp
 
 /**
  *
@@ -17,11 +15,5 @@ class MainModel :BaseModel(){
         return "1231231312"
     }
 
-    fun requestDatas():Any{
-
-        return RxHttp.get("/wxarticle/chapters/json")
-            .asObject(CategoryEntity::class.java)
-            .subscribe()
-    }
 
 }

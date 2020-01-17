@@ -43,6 +43,11 @@ import java.lang.reflect.ParameterizedType
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view=initView(inflater,container,savedInstanceState)
+        dataViewBinding(view)
+        return view
+    }
+
+    private fun dataViewBinding(view: View) {
         dataBinding= DataBindingUtil.bind(view)
         dataBinding?.lifecycleOwner=this
         val type=javaClass.genericSuperclass
@@ -54,8 +59,8 @@ import java.lang.reflect.ParameterizedType
             }
         }
         viewModel= ViewModelProviders.of(this).get(modelClass)
+        viewModel?.injectLifecycleOwner(this)
         dataBinding?.setVariable(initVariableId(),viewModel)
-        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

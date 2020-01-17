@@ -23,10 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{mainViewModel.tvContent}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_change"
+            app:layout_constraintLeft_toLeftOf="@+id/btn_change"/>
 
         <Button
             android:id="@+id/btn_change"
@@ -40,8 +38,8 @@
         <Button
             android:id="@+id/btn_return"
             android:text="还原"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btn_change"
+            app:layout_constraintLeft_toRightOf="@+id/btn_change"
             android:onClick="@{onClick}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -49,11 +47,26 @@
         <Button
             android:id="@+id/btn_worker"
             android:text="后台任务"
-            app:layout_constraintTop_toBottomOf="@+id/btn_change"
-            app:layout_constraintLeft_toLeftOf="@+id/btn_change"
+            app:layout_constraintLeft_toRightOf="@+id/btn_return"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btn_return"
             android:onClick="@{onClick}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_create_fragment"
+            android:text="创建fragment"
+            android:onClick="@{onClick}"
+            app:layout_constraintLeft_toRightOf="@+id/btn_worker"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btn_worker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <FrameLayout
+            android:id="@+id/fl_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_100"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
