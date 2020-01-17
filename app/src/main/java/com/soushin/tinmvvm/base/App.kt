@@ -8,7 +8,6 @@ import com.soushin.tinmvvm.BuildConfig
 import com.soushin.tinmvvm.network.Api
 import com.soushin.tinmvvm.widget.ToastStyle
 import okhttp3.OkHttpClient
-import rxhttp.wrapper.converter.FastJsonConverter
 import rxhttp.wrapper.cookie.CookieStore
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.ssl.SSLSocketFactoryImpl
@@ -63,7 +62,7 @@ class App :Application(){
 //设置数据解密/解码器，非必须
 //        RxHttp.setResultDecoder(s -> s);
 //设置全局的转换器，非必须
-        RxHttp.setConverter(FastJsonConverter.create())
+//        RxHttp.setConverter(FastJsonConverter.create())
 
 //设置公共参数，非必须
         /*RxHttp.setOnParamAssembly { p: Param<*>? ->

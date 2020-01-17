@@ -7,7 +7,6 @@ import rxhttp.wrapper.entity.ParameterizedTypeImpl
 import rxhttp.wrapper.exception.ParseException
 import rxhttp.wrapper.parse.AbstractParser
 import java.lang.reflect.Type
-import java.util.*
 
 
 /**
@@ -16,17 +15,17 @@ import java.util.*
  * @author created by Soushin
  * @time 2020/1/17 15 24
  */
-//@Parser(name = "BaseListResponse")
-class ResponseListParser<T> : AbstractParser<List<T>> {
+@Parser(name = "BaseListResponse")
+class ResponseListParser<T> : AbstractParser<MutableList<T>> {
 
     constructor():super()
 
     constructor(type: Type):super(type)
 
-    override fun onParse(response: Response): List<T> {
-        val type=ParameterizedTypeImpl.get(BaseResponse::class.java,List::class.java,mType)
+    override fun onParse(response: Response): MutableList<T> {
+        val type=ParameterizedTypeImpl.get(BaseResponse::class.java, MutableList::class.java,mType)
 
-        val data=convert<BaseResponse<List<T>>>(response,type)
+        val data=convert<BaseResponse<MutableList<T>>>(response,type)
 
         if (!data.isOk()||data.data==null){
             throw ParseException(data.errorCode.toString(),data.errorMsg,response)

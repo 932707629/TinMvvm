@@ -12,12 +12,12 @@ import rxhttp.wrapper.param.RxHttp
  */
 class CategoryModel : BaseModel() {
 
-   /* fun requestDatas():ObservableLife<List<CategoryEntity>>{
+    fun requestDatas():ObservableLife<List<CategoryEntity>>{
 
         return RxHttp.get("/wxarticle/chapters/json")
             .asBaseListResponse(CategoryEntity::class.java)
             .`as`(RxLife.asOnMain(weakReference?.get()))
-    }*/
+    }
 
 
 }
