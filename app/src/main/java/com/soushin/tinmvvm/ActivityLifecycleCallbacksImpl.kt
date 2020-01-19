@@ -15,7 +15,7 @@ import com.soushin.tinmvvm.utils.AppManager
  */
 class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
 
-    var fragmentLifecycleMap= hashMapOf<String,FragmentLifecycleCallbacksImpl>()
+    private var fragmentLifecycleMap= hashMapOf<String,FragmentLifecycleCallbacksImpl>()
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
         ALog.i("onActivityCreated",activity.localClassName)
@@ -53,6 +53,7 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
         if (activity is BaseActivity<*,*>&&activity.useFragment()){//注册fragment回调监听
             fragmentLifecycleMap.get(activity.localClassName)?.let {
                 activity.supportFragmentManager.unregisterFragmentLifecycleCallbacks(it)
+                fragmentLifecycleMap.remove(activity.localClassName)
             }
         }
     }

@@ -80,7 +80,10 @@ import java.lang.reflect.ParameterizedType
 
     abstract fun initVariableId():Int
 
-
+    /**
+     * 开启对fragment的生命周期监听
+     * 可以在这里做一些baseFragment的操作
+     */
     open fun useFragment():Boolean{
         return false
     }

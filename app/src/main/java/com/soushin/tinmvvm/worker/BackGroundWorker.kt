@@ -15,7 +15,6 @@ class BackGroundWorker :Worker {
 
     constructor(context: Context,parameters:WorkerParameters):super(context,parameters)
 
-
     override fun doWork(): Result {
         ALog.e("传入数据打印",inputData.getString("key"))
 
