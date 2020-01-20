@@ -46,6 +46,9 @@ class MainActivity : BaseActivity<ActivityMainBinding,MainViewModel>() {
                 R.id.btn_create_fragment->{
                     FragmentUtils.addFragment(supportFragmentManager,CategoryFragment(),R.id.fl_container)
                 }
+                R.id.btn_recycler->{
+                    go(RecyclerActivity::class.java)
+                }
             }
         }
     }

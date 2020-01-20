@@ -6,19 +6,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import ${packageName}.base.BaseFragment;
-import ${packageName}.databinding.Activity${pageName}Binding;
+import ${packageName}.databinding.Fragment${pageName}Binding;
 import ${packageName}.mvvm.viewmodel.${pageName}ViewModel;
 
-import org.jetbrains.annotations.NotNull;
+import androidx.annotation.NonNull;
 import org.jetbrains.annotations.Nullable;
 
 import ${packageName}.R;
-import ${packageName}.BR
+import ${packageName}.BR;
 
 <#import "root://activities/TinMvvmTemplate/globals.xml.ftl" as gb>
 <@gb.fileHeader />
 
-public class ${pageName}Fragment extends BaseFragment<Activity${pageName}Binding,${pageName}ViewModel>{
+public class ${pageName}Fragment extends BaseFragment<Fragment${pageName}Binding,${pageName}ViewModel>{
 
     public static ${pageName}Fragment newInstance() {
         ${pageName}Fragment fragment = new ${pageName}Fragment();
@@ -37,7 +37,7 @@ public class ${pageName}Fragment extends BaseFragment<Activity${pageName}Binding
 
     @Override
     public int initVariableId() {
-        return  BR.${pageName}ViewModel;
+        return  BR.${pageName}ViewModel;//这里是为了绑定ViewModel用的 如果不需要请返回0
     }
 
 }

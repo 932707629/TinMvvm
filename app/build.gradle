@@ -50,6 +50,9 @@ dependencies {
     implementation deps.work_runtime
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.0-beta11'
+    //recyclerview的databinding套装
+    implementation deps.bindingcollectionadapter
+    implementation deps.bindingcollectionadapter_recyclerview
 
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
     implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0'

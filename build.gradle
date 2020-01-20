@@ -50,6 +50,9 @@ ext {
             ToastUtils                          : "com.hjq:toast:5.8",
             gson                                : "com.google.code.gson:gson:2.8.6",
             liveeventbus                        : "com.jeremyliao:live-event-bus-x:1.5.7",
+            //recyclerview的databinding套装
+            bindingcollectionadapter             : "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:2.2.0",
+            bindingcollectionadapter_recyclerview: "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:2.2.0",
 
             //network
             retrofit2                           : "com.squareup.retrofit2:retrofit:2.6.2",

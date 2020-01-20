@@ -1,7 +1,6 @@
 package ${ativityPackageName};
 
 import android.os.Bundle;
-import android.os.Bundle;
 
 import ${packageName}.base.BaseActivity;
 import ${packageName}.databinding.Activity${pageName}Binding;
@@ -28,7 +27,7 @@ public class ${pageName}Activity extends BaseActivity<Activity${pageName}Binding
 
   @Override
     public int initVariableId() {
-        return  BR.${pageName}ViewModel;
+        return  BR.${pageName}ViewModel;//这里是为了绑定ViewModel用的 如果不需要请返回0
     }
 
 }

@@ -9,14 +9,14 @@ import android.view.ViewGroup
 import ${packageName}.R
 import ${packageName}.BR
 import ${packageName}.base.BaseFragment
-import ${packageName}.databinding.Activity${pageName}Binding
+import ${packageName}.databinding.Fragment${pageName}Binding
 import ${packageName}.mvvm.viewmodel.${pageName}ViewModel
 
 
 <#import "root://activities/TinMvvmTemplate/globals.xml.ftl" as gb>
 <@gb.fileHeader />
 
-class ${pageName}Fragment : BaseFragment<Activity${pageName}Binding,${pageName}ViewModel>() {
+class ${pageName}Fragment : BaseFragment<Fragment${pageName}Binding,${pageName}ViewModel>() {
     companion object {
     fun newInstance():${pageName}Fragment {
         val fragment = ${pageName}Fragment()
@@ -33,7 +33,7 @@ class ${pageName}Fragment : BaseFragment<Activity${pageName}Binding,${pageName}V
     }
 
     override fun initVariableId(): Int {
-        return BR.${pageName}ViewModel
+        return  BR.${pageName}ViewModel;//这里是为了绑定ViewModel用的 如果不需要请返回0
     }
 
 }

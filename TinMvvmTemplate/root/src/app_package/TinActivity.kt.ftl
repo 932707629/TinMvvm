@@ -23,7 +23,7 @@ class ${pageName}Activity : BaseActivity<Activity${pageName}Binding,${pageName}V
     }
 
     override fun initVariableId(): Int {
-        return BR.${pageName}ViewModel
+        return  BR.${pageName}ViewModel;//这里是为了绑定ViewModel用的 如果不需要请返回0
     }
 
 

@@ -4,7 +4,6 @@ import android.app.Application;
 import ${packageName}.base.BaseViewModel;
 import ${packageName}.mvvm.model.${pageName}Model;
 import org.jetbrains.annotations.NotNull;
-import androidx.annotation.NonNull;
 
 <#import "root://activities/TinMvvmTemplate/globals.xml.ftl" as gb>
 <@gb.fileHeader />
