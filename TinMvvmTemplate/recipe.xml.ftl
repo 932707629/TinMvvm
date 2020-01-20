@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <#import "root://activities/common/kotlin_macros.ftl" as kt>
-<#import "root://activities/MVPArmsTemplate/dagger2_macros.ftl" as dagger2>
+<#import "root://activities/TinMvvmTemplate/dagger2_macros.ftl" as dagger2>
 <recipe>
 <@kt.addAllKotlinDependencies />
 <@dagger2.addAllKaptDependencies />
@@ -19,41 +19,29 @@
                  to="${escapeXmlAttribute(resOut)}/layout/${fragmentLayoutName}.xml" />
 </#if>
 
-
 <#if needActivity>
-    <instantiate from="root/src/app_package/ArmsActivity.${ktOrJavaExt}.ftl"
+    <instantiate from="root/src/app_package/TinActivity.${ktOrJavaExt}.ftl"
                    to="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.${ktOrJavaExt}" />
     <open file="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.${ktOrJavaExt}" />
 </#if>
 
 <#if needFragment>
-    <instantiate from="root/src/app_package/ArmsFragment.${ktOrJavaExt}.ftl"
+    <instantiate from="root/src/app_package/TinFragment.${ktOrJavaExt}.ftl"
                    to="${projectOut}/src/main/java/${slashedPackageName(fragmentPackageName)}/${pageName}Fragment.${ktOrJavaExt}" />
     <open file="${projectOut}/src/main/java/${slashedPackageName(fragmentPackageName)}/${pageName}Fragment.${ktOrJavaExt}" />
 </#if>
 
-<#if needContract>
-    <instantiate from="root/src/app_package/ArmsContract.${ktOrJavaExt}.ftl"
-                   to="${projectOut}/src/main/java/${slashedPackageName(contractPackageName)}/${pageName}Contract.${ktOrJavaExt}" />
-</#if>
 
-<#if needPresenter>
-    <instantiate from="root/src/app_package/ArmsPresenter.${ktOrJavaExt}.ftl"
-                   to="${projectOut}/src/main/java/${slashedPackageName(presenterPackageName)}/${pageName}Presenter.${ktOrJavaExt}" />
-    <open file="${projectOut}/src/main/java/${slashedPackageName(presenterPackageName)}/${pageName}Presenter.${ktOrJavaExt}" />
+<#if needViewModel>
+    <instantiate from="root/src/app_package/TinViewModel.${ktOrJavaExt}.ftl"
+                   to="${projectOut}/src/main/java/${slashedPackageName(viewModelPackageName)}/${pageName}ViewModel.${ktOrJavaExt}" />
+    <open file="${projectOut}/src/main/java/${slashedPackageName(viewModelPackageName)}/${pageName}ViewModel.${ktOrJavaExt}" />
 </#if>
 
 <#if needModel>
-    <instantiate from="root/src/app_package/ArmsModel.${ktOrJavaExt}.ftl"
+    <instantiate from="root/src/app_package/TinModel.${ktOrJavaExt}.ftl"
                    to="${projectOut}/src/main/java/${slashedPackageName(modelPackageName)}/${pageName}Model.${ktOrJavaExt}" />
 </#if>
 
-<#if needDagger>
-    <instantiate from="root/src/app_package/ArmsComponent.${ktOrJavaExt}.ftl"
-                   to="${projectOut}/src/main/java/${slashedPackageName(componentPackageName)}/${pageName}Component.${ktOrJavaExt}" />
-    <instantiate from="root/src/app_package/ArmsModule.${ktOrJavaExt}.ftl"
-                   to="${projectOut}/src/main/java/${slashedPackageName(moudlePackageName)}/${pageName}Module.${ktOrJavaExt}" />
-
-</#if>
 
 </recipe>

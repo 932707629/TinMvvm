@@ -2,10 +2,10 @@
 <template
     format="5"
     revision="1"
-    name="MVPArms 全家桶"
+    name="TinMvvm 全家桶"
     minApi="9"
     minBuildApi="15"
-    description="一键创建 MVPArms 单个页面所需要的全部组件, JessYan 将这个高度可配置的模板献给强大的 MVPArms, 使用详情请见 README">
+    description="一键创建 TinMvvm 单个页面所需要的全部组件, 使用详情请见 README">
 
     <category value="Activity" />
     <formfactor value="Mobile" />
@@ -16,7 +16,7 @@
         type="string"
         constraints="unique|nonempty"
         default="Main"
-        help="请填写页面名,如填写 Main,会自动生成 MainActivity, MainPresenter 等文件" />
+        help="请填写页面名,如填写 Main,会自动生成 MainActivity, MainViewModel 等文件" />
 
     <parameter
             id="packageName"
@@ -24,7 +24,7 @@
             type="string"
             constraints="package"
             default="com.mycompany.myapp"
-            help="请填写你的项目包名,请认真核实此包名是否是正确的项目包名,不能包含子包,正确的格式如:me.jessyan.arms"
+            help="请填写你的项目包名,请认真核实此包名是否是正确的项目包名,不能包含子包,正确的格式如:me.soushin.mvvm"
             />
         
 
@@ -34,8 +34,6 @@
         type="boolean"
         default="true"
         help="是否需要生成 Activity ? 不勾选则不生成" />
-
-
 
 
 <parameter
@@ -62,7 +60,7 @@
         name="Ativity Package Name"
         type="string"
         constraints="package"
-        suggest="${packageName}.mvp.ui.activity"
+        suggest="${packageName}.mvvm.ui"
         visibility="needActivity"
         help="Activity 将被输出到此包下,请认真核实此包名是否是你需要输出的目标包名"
         />
@@ -106,46 +104,44 @@
         name="Fragment Package Name"
         type="string"
         constraints="package"
-        suggest="${packageName}.mvp.ui.fragment"
+        suggest="${packageName}.mvvm.ui.fragment"
         visibility="needFragment"
         help="Fragment 将被输出到此包下,请认真核实此包名是否是你需要输出的目标包名"
         />  
 
 
+<!--<parameter-->
+<!--        id="needViewModel"-->
+<!--        name="Generate ViewModel"-->
+<!--        type="boolean"-->
+<!--        default="true"-->
+<!--        help="是否需要生成 ViewModel ? 不勾选则不生成" />  -->
+
+<!-- <parameter-->
+<!--        id="viewModelPackageName"-->
+<!--        name="ViewModel Package Name"-->
+<!--        type="string"-->
+<!--        constraints="package"-->
+<!--        suggest="${packageName}.mvp.contract" -->
+<!--        visibility="needContract"-->
+<!--        help="Contract 将被输出到此包下,请认真核实此包名是否是你需要输出的目标包名"-->
+<!--        />  -->
 
 <parameter
-        id="needContract"
-        name="Generate Contract"
+        id="needViewModel"
+        name="Generate ViewModel"
         type="boolean"
         default="true"
-        help="是否需要生成 Contract ? 不勾选则不生成" />  
+        help="是否需要生成 ViewModel ? 不勾选则不生成" />
 
  <parameter
-        id="contractPackageName"
-        name="Contract Package Name"
+        id="viewModelPackageName"
+        name="ViewModel Package Name"
         type="string"
         constraints="package"
-        suggest="${packageName}.mvp.contract" 
-        visibility="needContract"
-        help="Contract 将被输出到此包下,请认真核实此包名是否是你需要输出的目标包名"
-        />  
-
-<parameter
-        id="needPresenter"
-        name="Generate Presenter"
-        type="boolean"
-        default="true"
-        help="是否需要生成 Presenter ? 不勾选则不生成" />  
-
- <parameter
-        id="presenterPackageName"
-        name="Presenter Package Name"
-        type="string"
-        constraints="package"
-        suggest="${packageName}.mvp.presenter"
-        visibility="needPresenter"
-        help="Presenter 将被输出到此包下,请认真核实此包名是否是你需要输出的目标包名"
-        />  
+        suggest="${packageName}.mvvm.viewmodel"
+        visibility="needViewModel"
+        help="ViewModel 将被输出到此包下,请认真核实此包名是否是你需要输出的目标包名" />
 
 <parameter
         id="needModel"
@@ -154,48 +150,45 @@
         default="true"
         help="是否需要生成 Model ? 不勾选则不生成" /> 
 
-
 <parameter
         id="modelPackageName"
         name="Model Package Name"
         type="string"
         constraints="package"
-        suggest="${packageName}.mvp.model"
+        suggest="${packageName}.mvvm.model"
         visibility="needModel"
         help="Model 将被输出到此包下,请认真核实此包名是否是你需要输出的目标包名"
         />  
 
 
 
-<parameter
-        id="needDagger"
-        name="Generate Dagger (Moudle And Component)"
-        type="boolean"
-        default="true"
-        help="是否需要生成 Dagger 组件? 不勾选则不生成" />  
+<!--<parameter-->
+<!--        id="needDagger"-->
+<!--        name="Generate Dagger (Moudle And Component)"-->
+<!--        type="boolean"-->
+<!--        default="true"-->
+<!--        help="是否需要生成 Dagger 组件? 不勾选则不生成" />  -->
 
-<parameter
-        id="componentPackageName"
-        name="Component Package Name"
-        type="string"
-        constraints="package"
-        suggest="${packageName}.di.component"
-        visibility="needDagger"
-        help="Component 将被输出到此包下,请认真核实此包名是否是你需要输出的目标包名"
-        />  
-
-
-   <parameter
-        id="moudlePackageName"
-        name="Moudle Package Name"
-        type="string"
-        constraints="package"
-        suggest="${packageName}.di.module"
-        visibility="needDagger"
-        help="Moudle 将被输出到此包下,请认真核实此包名是否是你需要输出的目标包名"
-        />  
+<!--<parameter-->
+<!--        id="componentPackageName"-->
+<!--        name="Component Package Name"-->
+<!--        type="string"-->
+<!--        constraints="package"-->
+<!--        suggest="${packageName}.di.component"-->
+<!--        visibility="needDagger"-->
+<!--        help="Component 将被输出到此包下,请认真核实此包名是否是你需要输出的目标包名"-->
+<!--        />  -->
 
 
+<!--   <parameter-->
+<!--        id="moudlePackageName"-->
+<!--        name="Moudle Package Name"-->
+<!--        type="string"-->
+<!--        constraints="package"-->
+<!--        suggest="${packageName}.di.module"-->
+<!--        visibility="needDagger"-->
+<!--        help="Moudle 将被输出到此包下,请认真核实此包名是否是你需要输出的目标包名"-->
+<!--        />  -->
 
 
     <!-- 128x128 thumbnails relative to template.xml -->
