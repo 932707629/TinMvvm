@@ -1,18 +1,17 @@
 package com.soushin.tinmvvm.mvvm.ui
 
 import android.os.Bundle
-import android.widget.LinearLayout
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.base.BaseActivity
-import com.soushin.tinmvvm.base.getThis
 import com.soushin.tinmvvm.databinding.ActivityRecyclerBinding
-import com.soushin.tinmvvm.mvvm.adapter.RecyclerAdapter
+import com.soushin.tinmvvm.mvvm.adapter.MultiTypeAdapter
+import com.soushin.tinmvvm.mvvm.model.entity.CategoryBean
 import com.soushin.tinmvvm.mvvm.viewmodel.RecyclerViewModel
-import com.soushin.tinmvvm.utils.DataUtils
-import kotlinx.android.synthetic.main.activity_recycler.*
+import com.soushin.tinmvvm.widget.ParentRecyclerView
+import java.util.ArrayList
 
 /**
  * ================================================
@@ -24,22 +23,28 @@ import kotlinx.android.synthetic.main.activity_recycler.*
 
 class RecyclerActivity : BaseActivity<ActivityRecyclerBinding, RecyclerViewModel>() {
 
-    var recyclerAdapter:RecyclerAdapter?=null
+    private val mDataList = ArrayList<Any>()
+
+    private val strArray = arrayOf("关注", "推荐", "视频", "直播", "图片", "段子", "精华", "热门")
 
     override fun initView(savedInstanceState: Bundle?): Int {
         return R.layout.activity_recycler //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
     }
 
     override fun initData(savedInstanceState: Bundle?) {
-        rvRecycler.layoutManager=LinearLayoutManager(getThis())
-        recyclerAdapter=RecyclerAdapter()
-        rvRecycler.adapter=recyclerAdapter
-        recyclerAdapter?.setNewData(DataUtils.getRecyclerDatas())
-
+        val rvRecycler=findViewById<ParentRecyclerView>(R.id.rvRecycler)
+        rvRecycler.initLayoutManager()
+        val multiTypeAdapter = MultiTypeAdapter(mDataList)
+        for (i in 0..8) {
+            mDataList.add("parent item text $i")
+        }
+        val categoryBean = CategoryBean()
+        categoryBean.tabTitleList.clear()
+        categoryBean.tabTitleList.addAll(strArray.asList())
+        mDataList.add(categoryBean)
+        rvRecycler.adapter = multiTypeAdapter
+        multiTypeAdapter.notifyDataSetChanged()
     }
-
-
-
 
     override fun initVariableId(): Int {
         return BR.RecyclerViewModel

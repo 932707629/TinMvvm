@@ -1,5 +1,6 @@
 package com.soushin.tinmvvm.utils
 
+import com.soushin.tinmvvm.base.BaseAdapter
 import com.soushin.tinmvvm.mvvm.model.entity.AuthorEntity
 
 /**
@@ -11,9 +12,15 @@ object DataUtils {
 
     fun getRecyclerDatas():MutableList<AuthorEntity>{
         val datas= mutableListOf<AuthorEntity>()
-        for (i in 1..20){
-            datas.add(AuthorEntity())
-        }
+        datas.add(AuthorEntity(BaseAdapter.ITEM_ONE,3))
+        datas.add(AuthorEntity(BaseAdapter.ITEM_ONE,1))
+        datas.add(AuthorEntity(BaseAdapter.ITEM_ONE,1))
+        datas.add(AuthorEntity(BaseAdapter.ITEM_ONE,1))
+        datas.add(AuthorEntity(BaseAdapter.ITEM_ONE,2))
+        datas.add(AuthorEntity(BaseAdapter.ITEM_ONE,1))
+//        for (i in 1..10){
+            datas.add(AuthorEntity(BaseAdapter.ITEM_ONE,3))
+//        }
         return datas
     }
 

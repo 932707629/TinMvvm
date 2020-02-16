@@ -14,4 +14,6 @@ class RecyclerAdapter : BaseAdapter<AuthorEntity>() {
         addItemProvider(RecyclerItemProvider())
     }
 
+
+
 }

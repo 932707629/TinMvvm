@@ -37,6 +37,7 @@ dependencies {
     implementation deps.kotlinstdlibjdk7
     implementation deps.appcompat
     implementation deps.core_ktx
+    implementation 'com.google.android.material:material:1.1.0'
     implementation deps.constraintlayout
     implementation deps.alog
     implementation deps.ToastUtils
@@ -50,9 +51,10 @@ dependencies {
     implementation deps.work_runtime
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.0-beta11'
-    //recyclerview的databinding套装
+    //recyclerview的databinding套装 androidx
     implementation deps.bindingcollectionadapter
     implementation deps.bindingcollectionadapter_recyclerview
+    implementation deps.bindingcollectionadapter_ktx
 
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
     implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0'
@@ -73,13 +75,11 @@ dependencies {
 //    implementation deps.rxlifecycle_kotlin
 //    implementation deps.rxlifecycle_android_lifecycle_kotlin
 
-
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     kapt deps.glide_compiler
     kapt deps.lifecycleompiler
     kapt deps.databindingcompiler
 
     testImplementation deps.junit
     androidTestImplementation deps.espresso
+
 }

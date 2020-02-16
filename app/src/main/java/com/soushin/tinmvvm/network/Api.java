@@ -5,6 +5,7 @@ import rxhttp.wrapper.annotation.DefaultDomain;
 /**
  * @author created by Soushin
  * @time 2020/1/14 18 24
+ * 这里要用class  不能用kotlin  DefaultDomain这个注解不支持kotlin
  */
 public class Api {
 
