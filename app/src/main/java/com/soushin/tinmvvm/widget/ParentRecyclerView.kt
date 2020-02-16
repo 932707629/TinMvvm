@@ -7,6 +7,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.soushin.tinmvvm.mvvm.adapter.MultiTypeAdapter
+import com.soushin.tinmvvm.mvvm.adapter.RecyclerAdapter
 import com.soushin.tinmvvm.utils.FlingHelper
 import com.soushin.tinmvvm.utils.UIUtils
 
@@ -170,6 +171,9 @@ class ParentRecyclerView @JvmOverloads constructor(context: Context, attrs: Attr
 
     private fun findNestedScrollingChildRecyclerView():ChildRecyclerView? {
         (adapter as? MultiTypeAdapter)?.apply {
+            return getCurrentChildRecyclerView()
+        }
+        (adapter as? RecyclerAdapter)?.apply {
             return getCurrentChildRecyclerView()
         }
         return null

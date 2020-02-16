@@ -8,7 +8,9 @@ import com.soushin.tinmvvm.base.BaseProviderMultiEntity
  */
 data class AuthorEntity(
     var itemType: Int?,
-    var spanSize:Int?
+    var spanSize:Int?,
+    var tabTitleList : ArrayList<String>?,
+    var title:String
 ) : BaseProviderMultiEntity() {
 
     override fun getItemType(): Int {

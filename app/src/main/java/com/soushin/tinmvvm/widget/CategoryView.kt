@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.soushin.tinmvvm.mvvm.adapter.MultiTypeAdapter
 
-class CategoryView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : ChildRecyclerView(context, attrs, defStyleAttr) {
+class CategoryView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
+    ChildRecyclerView(context, attrs, defStyleAttr) {
 
     private val mDataList = ArrayList<Any>()
 
@@ -53,7 +54,7 @@ class CategoryView @JvmOverloads constructor(context: Context, attrs: AttributeS
     }
 
     private fun initData() {
-        for (i in 0..10) {
+        for (i in 0..15) {
             mDataList.add("default child item $i")
         }
         adapter?.notifyDataSetChanged()
