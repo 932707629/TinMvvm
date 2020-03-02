@@ -1,13 +1,19 @@
 package com.soushin.tinmvvm.base
 
-import com.chad.library.adapter.base.BaseProviderMultiAdapter
+import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
+import com.chad.library.adapter.base.BaseViewHolder
+import com.chad.library.adapter.base.entity.MultiItemEntity
 
 /**
  * 基于brvah封装的适配多布局的adapter
  * @author created by Soushin
  * @time 2020/1/14 11 10
  */
-open class BaseAdapter<T : BaseProviderMultiEntity> :BaseProviderMultiAdapter<T> {
+open class BaseAdapter<T : MultiItemEntity,K: BaseViewHolder> :BaseMultiItemQuickAdapter<T,K> {
+
+    override fun convert(helper: K, item: T) {
+
+    }
 
     companion object{
         //这里的item可以无限添加
@@ -16,12 +22,13 @@ open class BaseAdapter<T : BaseProviderMultiEntity> :BaseProviderMultiAdapter<T>
         val ITEM_THREE=3
         val ITEM_FOUR=4
         val ITEM_FIVE=5
+        val ITEM_SIX=6
+        val ITEM_SEVEN=7
+        val ITEM_EIGHT=8
+        val ITEM_NINE=9
+
     }
 
     constructor():super(null)
-
-    override fun getItemType(data: List<T>, position: Int): Int {
-        return  data[position].getItemType()
-    }
 
 }

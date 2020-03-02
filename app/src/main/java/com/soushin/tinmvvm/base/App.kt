@@ -28,7 +28,7 @@ class App :Application(){
     override fun onCreate() {
         super.onCreate()
         instance=this
-//        initALog(this)
+        initALog(this)
         initRxHttp()
         ToastUtils.init(this,ToastStyle())
         registerActivityLifecycleCallbacks(ActivityLifecycleCallbacksImpl())

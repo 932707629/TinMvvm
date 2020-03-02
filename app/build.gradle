@@ -50,11 +50,9 @@ dependencies {
     implementation deps.liveeventbus
     implementation deps.work_runtime
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.0-beta11'
-    //recyclerview的databinding套装 androidx
-    implementation deps.bindingcollectionadapter
-    implementation deps.bindingcollectionadapter_recyclerview
-    implementation deps.bindingcollectionadapter_ktx
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
+    //配套brvh实现databinding
+    implementation 'com.github.CaesarShao:CSBrvahBindingX:1.0.8'
 
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
     implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0'

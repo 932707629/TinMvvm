@@ -1,7 +1,7 @@
 package com.soushin.tinmvvm.mvvm.model.entity
 
+import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.soushin.tinmvvm.base.BaseAdapter
-import com.soushin.tinmvvm.base.BaseProviderMultiEntity
 
 /**
  * @author created by Soushin
@@ -16,7 +16,7 @@ data class CategoryEntity (
     var parentChapterId: Int?, // 407
     var userControlSetTop: Boolean?, // false
     var visible: Int? // 1
-) : BaseProviderMultiEntity() {
+) : MultiItemEntity {
     override fun getItemType(): Int {
         return BaseAdapter.ITEM_ONE
     }

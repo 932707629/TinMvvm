@@ -1,6 +1,6 @@
 package com.soushin.tinmvvm.mvvm.model.entity
 
-import com.soushin.tinmvvm.base.BaseProviderMultiEntity
+import com.chad.library.adapter.base.entity.MultiItemEntity
 
 /**
  * @author created by Soushin
@@ -11,7 +11,7 @@ data class AuthorEntity(
     var spanSize:Int?,
     var tabTitleList : ArrayList<String>?,
     var title:String
-) : BaseProviderMultiEntity() {
+) : MultiItemEntity {
 
     override fun getItemType(): Int {
         return this.itemType!!

@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
-            name="RecyclerViewModel"
-            type="com.soushin.tinmvvm.mvvm.viewmodel.RecyclerViewModel" />
+            name="MultiplexViewModel"
+            type="com.soushin.tinmvvm.mvvm.viewmodel.MultiplexViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.soushin.tinmvvm.widget.ParentRecyclerView
+            android:id="@+id/rvRecycler"
+            android:overScrollMode="never"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            android:layout_height="match_parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

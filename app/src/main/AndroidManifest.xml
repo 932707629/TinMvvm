@@ -17,6 +17,10 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".mvvm.ui.MultiplexActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvvm.ui.WorkerActivity"
             android:launchMode="standard" />
         <activity

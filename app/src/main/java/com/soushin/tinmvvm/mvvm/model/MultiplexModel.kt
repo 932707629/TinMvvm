@@ -6,11 +6,11 @@ import com.soushin.tinmvvm.base.BaseModel
  * ================================================
  * Description:
  * <p>
- * Created by TinMvvmTemplate on 03/02/2020 16:36
+ * Created by TinMvvmTemplate on 01/20/2020 15:26
  * ================================================
  */
 
-class RecyclerModel : BaseModel() {
+class MultiplexModel : BaseModel() {
 
 
 }
