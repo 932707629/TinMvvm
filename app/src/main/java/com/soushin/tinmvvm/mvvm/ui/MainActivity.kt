@@ -30,7 +30,6 @@ class MainActivity : BaseActivity<ActivityMainBinding,MainViewModel>() {
     //为了保证每次界面销毁重启后，都可以保存之前的值，我们需要在onCreate()中，给控件赋值为 textViewContent
     override fun initData(savedInstanceState: Bundle?) {
 
-//        dataBinding?.mainViewModel=viewModel
         dataBinding?.onClick= View.OnClickListener {
             ALog.e("点击切换数据了")
             when(it.id){
@@ -46,8 +45,11 @@ class MainActivity : BaseActivity<ActivityMainBinding,MainViewModel>() {
                 R.id.btn_create_fragment->{
                     FragmentUtils.addFragment(supportFragmentManager,CategoryFragment(),R.id.fl_container)
                 }
-                R.id.btn_recycler->{
+                R.id.btn_multiplex->{
                     go(MultiplexActivity::class.java)
+                }
+                R.id.btn_recycler->{
+                    go(RecyclerActivity::class.java)
                 }
             }
         }

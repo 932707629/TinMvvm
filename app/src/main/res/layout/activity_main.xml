@@ -64,14 +64,25 @@
             app:layout_constraintLeft_toLeftOf="@+id/btn_change"/>
 
         <Button
-            android:id="@+id/btn_recycler"
+            android:id="@+id/btn_multiplex"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="创建Recycler"
+            android:text="创建复杂布局"
             android:onClick="@{onClick}"
             android:textAllCaps="false"
             app:layout_constraintBaseline_toBaselineOf="@+id/tvContent"
             app:layout_constraintLeft_toRightOf="@+id/tvContent"/>
+
+        <Button
+            android:id="@+id/btn_recycler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="brvh的使用"
+            android:onClick="@{onClick}"
+            android:textAllCaps="false"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btn_multiplex"
+            app:layout_constraintLeft_toRightOf="@+id/btn_multiplex"/>
+
 
         <FrameLayout
             android:id="@+id/fl_container"

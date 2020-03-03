@@ -7,6 +7,7 @@ import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.base.BaseActivity
 import com.soushin.tinmvvm.databinding.ActivityRecyclerBinding
 import com.soushin.tinmvvm.mvvm.viewmodel.RecyclerViewModel
+import kotlinx.android.synthetic.main.activity_recycler.*
 
 /**
  * ================================================
@@ -24,7 +25,7 @@ class RecyclerActivity : BaseActivity<ActivityRecyclerBinding, RecyclerViewModel
     }
 
     override fun initData(savedInstanceState: Bundle?) {
-
+        viewModel?.load()
     }
 
     override fun initVariableId(): Int {

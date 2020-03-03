@@ -37,7 +37,8 @@ dependencies {
     implementation deps.kotlinstdlibjdk7
     implementation deps.appcompat
     implementation deps.core_ktx
-    implementation 'com.google.android.material:material:1.1.0'
+    implementation deps.swipeRefresh
+    implementation deps.material
     implementation deps.constraintlayout
     implementation deps.alog
     implementation deps.ToastUtils
@@ -49,14 +50,14 @@ dependencies {
     implementation deps.rxjava
     implementation deps.liveeventbus
     implementation deps.work_runtime
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
+    implementation deps.recyclerview
+    implementation deps.brvh
     //配套brvh实现databinding
-    implementation 'com.github.CaesarShao:CSBrvahBindingX:1.0.8'
+    implementation deps.brvhbinding
 
-    implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
-    implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0'
-    implementation 'com.gyf.immersionbar:immersionbar-ktx:3.0.0'
+    implementation deps.immersionbar
+    implementation deps.immersionbar_components
+    implementation deps.immersionbar_ktx
 
     implementation 'com.rxjava.rxhttp:rxhttp:1.4.1'
     kapt 'com.rxjava.rxhttp:rxhttp-compiler:1.4.1' //注解处理器，生成RxHttp类
@@ -79,5 +80,6 @@ dependencies {
 
     testImplementation deps.junit
     androidTestImplementation deps.espresso
+
 
 }
