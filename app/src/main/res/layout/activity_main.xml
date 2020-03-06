@@ -83,6 +83,15 @@
             app:layout_constraintBaseline_toBaselineOf="@+id/btn_multiplex"
             app:layout_constraintLeft_toRightOf="@+id/btn_multiplex"/>
 
+        <Button
+            android:id="@+id/btn_coroutine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="协程"
+            android:onClick="@{onClick}"
+            android:textAllCaps="false"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btn_multiplex"
+            app:layout_constraintLeft_toRightOf="@+id/btn_recycler"/>
 
         <FrameLayout
             android:id="@+id/fl_container"

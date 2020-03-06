@@ -58,7 +58,8 @@ dependencies {
     implementation deps.immersionbar
     implementation deps.immersionbar_components
     implementation deps.immersionbar_ktx
-
+    implementation deps.kotlinx_coroutines
+    implementation deps.kotlinx_coroutines_android
     implementation 'com.rxjava.rxhttp:rxhttp:1.4.1'
     kapt 'com.rxjava.rxhttp:rxhttp-compiler:1.4.1' //注解处理器，生成RxHttp类
 

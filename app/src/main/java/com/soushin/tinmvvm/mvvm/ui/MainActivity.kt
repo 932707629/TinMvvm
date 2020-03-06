@@ -51,6 +51,9 @@ class MainActivity : BaseActivity<ActivityMainBinding,MainViewModel>() {
                 R.id.btn_recycler->{
                     go(RecyclerActivity::class.java)
                 }
+                R.id.btn_coroutine->{
+                    go(CoroutineActivity::class.java)
+                }
             }
         }
     }
