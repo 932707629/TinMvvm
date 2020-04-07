@@ -1,6 +1,8 @@
 package com.soushin.tinmvvm.mvvm.ui
 
 import android.os.Bundle
+import androidx.lifecycle.Observer
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.BR
@@ -26,6 +28,13 @@ class RecyclerActivity : BaseActivity<ActivityRecyclerBinding, RecyclerViewModel
 
     override fun initData(savedInstanceState: Bundle?) {
         viewModel?.load()
+        srl_refresh.setOnRefreshListener {
+            viewModel?.load()
+        }
+
+        viewModel?.refresh?.observe(this, Observer {
+            srl_refresh.isRefreshing=it//改变刷新状态
+        })
     }
 
     override fun initVariableId(): Int {

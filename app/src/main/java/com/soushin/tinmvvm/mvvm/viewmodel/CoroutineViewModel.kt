@@ -17,6 +17,7 @@ import kotlinx.coroutines.*
 
 class CoroutineViewModel : BaseViewModel<CoroutineModel> {
 
+
     constructor(application: Application) : super(application, CoroutineModel()) {
 
     }

@@ -7,9 +7,11 @@ import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.base.BaseAdapter
 import com.soushin.tinmvvm.base.BaseBindingViewModel
+import com.soushin.tinmvvm.base.SingleLiveEvent
 import com.soushin.tinmvvm.mvvm.model.RecyclerModel
 import com.soushin.tinmvvm.mvvm.model.entity.MultiOneEntity
 import com.soushin.tinmvvm.mvvm.model.entity.MultiTwoEntity
+import io.reactivex.Single
 
 /**
  * ================================================
@@ -20,6 +22,8 @@ import com.soushin.tinmvvm.mvvm.model.entity.MultiTwoEntity
  */
 
 class RecyclerViewModel : BaseBindingViewModel<MultiItemEntity,RecyclerModel> {
+
+    val refresh=SingleLiveEvent<Boolean>()
 
     constructor(application: Application) : super(application, RecyclerModel())
 
@@ -32,10 +36,14 @@ class RecyclerViewModel : BaseBindingViewModel<MultiItemEntity,RecyclerModel> {
         }
     }
 
+
     override fun load() {
         model?.getDatas()?.let {
             load(it)
+            refresh.value=true
         }
     }
+
+
 
 }
