@@ -28,14 +28,13 @@ class CategoryViewModel: BaseViewModel<CategoryModel> {
 
     fun requestData() {
         model?.requestDatas()
-            ?.subscribe(object : HttpHandleCallBack<List<CategoryEntity>>{
+            ?.subscribe(object : HttpHandleCallBack<List<CategoryEntity>>(){
                 override fun onNext(result: List<CategoryEntity>) {
                     super.onNext(result)
                     ALog.e("服务器返回结果",GsonUtil.toJson(result))
                     btnContent.value=GsonUtil.toJson(result)
                 }
             })
-
     }
 
 

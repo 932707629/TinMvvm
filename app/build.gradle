@@ -40,6 +40,8 @@ dependencies {
     implementation deps.swipeRefresh
     implementation deps.material
     implementation deps.constraintlayout
+    implementation deps.rxpermissions
+
     implementation deps.alog
     implementation deps.ToastUtils
     implementation deps.extensions

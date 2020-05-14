@@ -7,7 +7,7 @@ import io.reactivex.disposables.Disposable
  * @author created by Soushin
  * @time 2020/1/17 14 32
  */
-interface HttpHandleCallBack<T> :Observer<T> {
+open class HttpHandleCallBack<T> :Observer<T> {
 
     override fun onSubscribe(d: Disposable) {
 

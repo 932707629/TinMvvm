@@ -1,5 +1,6 @@
 package com.soushin.tinmvvm.mvvm.ui
 
+import android.Manifest
 import android.os.Bundle
 import android.view.View
 import com.blankj.ALog
@@ -11,6 +12,8 @@ import com.soushin.tinmvvm.databinding.ActivityMainBinding
 import com.soushin.tinmvvm.mvvm.ui.fragment.CategoryFragment
 import com.soushin.tinmvvm.mvvm.viewmodel.MainViewModel
 import com.soushin.tinmvvm.utils.FragmentUtils
+import com.soushin.tinmvvm.utils.PermissionUtil
+import com.tbruyelle.rxpermissions2.RxPermissions
 
 
 /**
@@ -53,6 +56,24 @@ class MainActivity : BaseActivity<ActivityMainBinding,MainViewModel>() {
                 }
                 R.id.btn_coroutine->{
                     go(CoroutineActivity::class.java)
+                }
+                R.id.btn_permission->{
+                    val rxPermissions=RxPermissions(this)
+                    val pms= arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
+                    PermissionUtil.requestPermission(object :PermissionUtil.RequestPermission{
+                        override fun onRequestPermissionSuccess() {
+                            ALog.d("onRequestPermissionSuccess");
+                        }
+
+                        override fun onRequestPermissionFailure(permissions: List<String>?) {
+                            ALog.d("onRequestPermissionFailure$permissions");
+                        }
+
+                        override fun onRequestPermissionFailureWithAskNeverAgain(permissions: List<String>?) {
+                            ALog.d("onRequestPermissionFailureWithAskNeverAgain$permissions");
+                        }
+                    }, rxPermissions,this, pms)
                 }
             }
         }
