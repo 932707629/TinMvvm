@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="ThreadPoolViewModel"
+            type="com.soushin.tinmvvm.mvvm.viewmodel.ThreadPoolViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btn_cache_thread"
+            android:text="CachedThreadPool"
+            android:onClick="@{ThreadPoolViewModel.onClicker()}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_fixed_thread"
+            android:text="FixedThreadPool"
+            android:onClick="@{ThreadPoolViewModel.onClicker()}"
+            app:layout_constraintTop_toBottomOf="@+id/btn_cache_thread"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_scheduled_thread"
+            android:text="FixedThreadPool"
+            android:onClick="@{ThreadPoolViewModel.onClicker()}"
+            app:layout_constraintTop_toBottomOf="@+id/btn_fixed_thread"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_single_thread"
+            android:text="FixedThreadPool"
+            android:onClick="@{ThreadPoolViewModel.onClicker()}"
+            app:layout_constraintTop_toBottomOf="@+id/btn_scheduled_thread"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_work_stealing"
+            android:text="FixedThreadPool"
+            android:onClick="@{ThreadPoolViewModel.onClicker()}"
+            app:layout_constraintTop_toBottomOf="@+id/btn_single_thread"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

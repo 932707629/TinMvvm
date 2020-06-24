@@ -75,6 +75,9 @@ class MainActivity : BaseActivity<ActivityMainBinding,MainViewModel>() {
                         }
                     }, rxPermissions,this, pms)
                 }
+                R.id.btn_thread_pool->{
+                    go(ThreadPoolActivity::class.java)
+                }
             }
         }
     }
