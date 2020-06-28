@@ -1,11 +1,9 @@
 package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
-import com.soushin.tinmvvm.base.BaseViewModel
 import com.soushin.tinmvvm.mvvm.model.MainModel
-import java.lang.ref.WeakReference
+import me.soushin.base_lib.base.BaseViewModel
 
 /**
  * 视图模型

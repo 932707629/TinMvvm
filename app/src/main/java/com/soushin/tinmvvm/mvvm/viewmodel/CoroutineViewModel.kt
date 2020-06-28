@@ -2,10 +2,8 @@ package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
 import android.view.View
-import com.blankj.ALog
-import com.soushin.tinmvvm.base.BaseViewModel
 import com.soushin.tinmvvm.mvvm.model.CoroutineModel
-import kotlinx.coroutines.*
+import me.soushin.base_lib.base.BaseViewModel
 
 /**
  * ================================================

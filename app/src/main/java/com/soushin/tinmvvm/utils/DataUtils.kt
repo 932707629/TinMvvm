@@ -1,7 +1,9 @@
 package com.soushin.tinmvvm.utils
 
-import com.soushin.tinmvvm.base.BaseAdapter
+import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.mvvm.model.entity.AuthorEntity
+import com.soushin.tinmvvm.mvvm.model.entity.ImageEntity
+import me.soushin.base_lib.base.BaseAdapter
 
 /**
  * @author created by Soushin
@@ -10,18 +12,15 @@ import com.soushin.tinmvvm.mvvm.model.entity.AuthorEntity
 object DataUtils {
 
 
-    fun getRecyclerDatas():MutableList<AuthorEntity>{
-        val datas= mutableListOf<AuthorEntity>()
-        datas.add(AuthorEntity(BaseAdapter.ITEM_ONE,3, arrayListOf(),""))
-        datas.add(AuthorEntity(BaseAdapter.ITEM_ONE,1, arrayListOf(),""))
-        datas.add(AuthorEntity(BaseAdapter.ITEM_ONE,1, arrayListOf(),""))
-        datas.add(AuthorEntity(BaseAdapter.ITEM_ONE,1, arrayListOf(),""))
-        datas.add(AuthorEntity(BaseAdapter.ITEM_ONE,2, arrayListOf(),""))
-        datas.add(AuthorEntity(BaseAdapter.ITEM_ONE,1, arrayListOf(),""))
-//        for (i in 1..10){
-            datas.add(AuthorEntity(BaseAdapter.ITEM_ONE,3, arrayListOf(),""))
-//        }
-        return datas
+    fun getRecyclerData():MutableList<Any>{
+        val data= mutableListOf<Any>()
+        for (i in 1..10){
+            data.add(ImageEntity(R.mipmap.ic_launcher))
+        }
+        for (i in 1..10){
+            data.add("这里是一个简单的字符串$i")
+        }
+        return data
     }
 
 

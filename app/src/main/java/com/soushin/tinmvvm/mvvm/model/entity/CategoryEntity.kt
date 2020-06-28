@@ -1,7 +1,7 @@
 package com.soushin.tinmvvm.mvvm.model.entity
 
 import com.chad.library.adapter.base.entity.MultiItemEntity
-import com.soushin.tinmvvm.base.BaseAdapter
+import me.soushin.base_lib.base.BaseAdapter
 
 /**
  * @author created by Soushin
@@ -17,7 +17,8 @@ data class CategoryEntity (
     var userControlSetTop: Boolean?, // false
     var visible: Int? // 1
 ) : MultiItemEntity {
-    override fun getItemType(): Int {
-        return BaseAdapter.ITEM_ONE
-    }
+
+    override val itemType: Int
+        get() = BaseAdapter.ITEM_ONE
+
 }

@@ -1,4 +1,4 @@
-package com.soushin.tinmvvm.base
+package me.soushin.base_lib.base
 
 import androidx.annotation.NonNull
 import androidx.lifecycle.LifecycleOwner

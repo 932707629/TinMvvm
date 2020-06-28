@@ -1,12 +1,13 @@
-package com.soushin.tinmvvm.base
+package com.soushin.tinmvvm.config
 
 import android.app.Application
 import com.blankj.ALog
 import com.hjq.toast.ToastUtils
-import com.soushin.tinmvvm.ActivityLifecycleCallbacksImpl
+import me.soushin.base_lib.config.ActivityLifecycleCallbacksImpl
 import com.soushin.tinmvvm.BuildConfig
 import com.soushin.tinmvvm.network.Api
 import com.soushin.tinmvvm.widget.ToastStyle
+import leakcanary.LeakCanary
 import okhttp3.OkHttpClient
 import rxhttp.wrapper.cookie.CookieStore
 import rxhttp.wrapper.param.RxHttp
@@ -77,7 +78,6 @@ class App :Application(){
                 .add("time", System.currentTimeMillis())
                 .addHeader("deviceType", "android") //添加公共请求头
         }*/
-
     }
 
     companion object {

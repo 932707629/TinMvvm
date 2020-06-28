@@ -1,15 +1,17 @@
 package com.soushin.tinmvvm.mvvm.ui
 
 import android.os.Bundle
-import androidx.lifecycle.Observer
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-
+import com.chad.library.adapter.base.BaseBinderAdapter
+import com.soushin.tinmvvm.mvvm.viewmodel.RecyclerViewModel
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.BR
-import com.soushin.tinmvvm.base.BaseActivity
 import com.soushin.tinmvvm.databinding.ActivityRecyclerBinding
-import com.soushin.tinmvvm.mvvm.viewmodel.RecyclerViewModel
+import com.soushin.tinmvvm.mvvm.adapter.itembinder.ImageItemBinder
+import com.soushin.tinmvvm.mvvm.adapter.itembinder.TextItemBinder
+import com.soushin.tinmvvm.mvvm.model.entity.ImageEntity
+import com.soushin.tinmvvm.utils.DataUtils
 import kotlinx.android.synthetic.main.activity_recycler.*
+import me.soushin.base_lib.base.BaseActivity
 
 /**
  * ================================================
@@ -21,20 +23,29 @@ import kotlinx.android.synthetic.main.activity_recycler.*
 
 class RecyclerActivity : BaseActivity<ActivityRecyclerBinding, RecyclerViewModel>() {
 
+    val adapter:BaseBinderAdapter= BaseBinderAdapter()
 
     override fun initView(savedInstanceState: Bundle?): Int {
         return R.layout.activity_recycler //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
     }
 
     override fun initData(savedInstanceState: Bundle?) {
-        viewModel?.load()
-        srl_refresh.setOnRefreshListener {
-            viewModel?.load()
-        }
+        listener()
+        adapter.addItemBinder(ImageEntity::class.java,ImageItemBinder())
+            .addItemBinder(String::class.java,TextItemBinder())
 
-        viewModel?.refresh?.observe(this, Observer {
-            srl_refresh.isRefreshing=it//改变刷新状态
-        })
+        //LinearLayoutManager已经在布局文件里设置了 所以这里只要设置adapter就可以了
+        rv_recycler.adapter=adapter
+
+        adapter.setList(DataUtils.getRecyclerData())
+
+    }
+
+    private fun listener() {
+        srl_refresh.setOnRefreshListener {
+            adapter.setList(DataUtils.getRecyclerData())
+            srl_refresh.isRefreshing=false
+        }
     }
 
     override fun initVariableId(): Int {

@@ -1,12 +1,12 @@
 package com.soushin.tinmvvm.mvvm.model
 
-import com.soushin.tinmvvm.base.BaseModel
+import me.soushin.base_lib.base.BaseModel
 
 /**
  * @author created by Soushin
  * @time 2020/1/10 15 29
  */
-class WorkerModel :BaseModel() {
+class WorkerModel : BaseModel() {
 
 
 

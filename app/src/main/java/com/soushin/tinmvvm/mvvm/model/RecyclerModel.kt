@@ -1,12 +1,12 @@
 package com.soushin.tinmvvm.mvvm.model
 
 import com.chad.library.adapter.base.entity.MultiItemEntity
-import com.soushin.tinmvvm.base.BaseModel
 import com.soushin.tinmvvm.mvvm.model.entity.MultiOneEntity
 import com.soushin.tinmvvm.mvvm.model.entity.MultiThreeEntity
 import com.soushin.tinmvvm.mvvm.model.entity.MultiTwoEntity
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
+import me.soushin.base_lib.base.BaseModel
 import java.util.ArrayList
 
 /**
@@ -18,7 +18,6 @@ import java.util.ArrayList
  */
 
 class RecyclerModel : BaseModel() {
-
 
     fun getDatas(): Flowable<List<MultiItemEntity>>{
         return Flowable.create({ emitter ->

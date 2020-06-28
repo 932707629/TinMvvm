@@ -2,19 +2,19 @@ package com.soushin.tinmvvm.mvvm.adapter
 
 import androidx.viewpager.widget.ViewPager
 import com.blankj.ALog
-import com.chad.library.adapter.base.BaseViewHolder
+import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.google.android.material.tabs.TabLayout
 import com.soushin.tinmvvm.R
-import com.soushin.tinmvvm.base.BaseAdapter
 import com.soushin.tinmvvm.mvvm.model.entity.AuthorEntity
 import com.soushin.tinmvvm.widget.CategoryView
 import com.soushin.tinmvvm.widget.ChildRecyclerView
+import me.soushin.base_lib.base.BaseAdapter
 
 /**
  * @author created by Soushin
  * @time 2020/1/20 15 43
  */
-class MultiplexAdapter : BaseAdapter<AuthorEntity,BaseViewHolder>() {
+class MultiplexAdapter : BaseAdapter<AuthorEntity, BaseViewHolder>() {
 
     private var childRecyclerView:ChildRecyclerView?=null
     val viewList = ArrayList<ChildRecyclerView>()
@@ -27,7 +27,7 @@ class MultiplexAdapter : BaseAdapter<AuthorEntity,BaseViewHolder>() {
         super.convert(helper, item)
         when (helper.itemViewType){
             ITEM_ONE ->{
-                helper.setText(R.id.textView,item?.getItemType().toString()+"0")
+                helper.setText(R.id.textView,item.itemType.toString()+"0")
             }
             ITEM_TWO ->{
                 val mTabLayout=helper.getView<TabLayout>(R.id.tabs)
@@ -47,7 +47,7 @@ class MultiplexAdapter : BaseAdapter<AuthorEntity,BaseViewHolder>() {
 
                     }
                 })
-                item?.apply {
+                item.apply {
                     viewList.clear()
                     tabTitleList?.forEach{ _ ->
                         val categoryView = CategoryView(helper.itemView.context)

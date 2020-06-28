@@ -1,4 +1,4 @@
-package com.soushin.tinmvvm.base
+package me.soushin.base_lib.base
 
 import android.content.res.Configuration
 import android.content.res.Resources
@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
 import com.blankj.ALog
 import java.lang.reflect.ParameterizedType

@@ -1,19 +1,18 @@
 package com.soushin.tinmvvm.mvvm.ui
 
 import android.os.Bundle
-import com.blankj.ALog
+import android.os.SystemClock
 
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.BR
-import com.soushin.tinmvvm.base.BaseActivity
 import com.soushin.tinmvvm.databinding.ActivityCoroutineBinding
 import com.soushin.tinmvvm.mvvm.viewmodel.CoroutineViewModel
-import kotlinx.coroutines.*
+import me.soushin.base_lib.base.BaseActivity
 
 /**
  * 协程本身可以理解为一个对线程的封装库，跟我们用的线程池异曲同工
  * 启动10w个协程跟启动10w个线程是不能相提并论的  但如果是在线程池里两相比较差别不大
- * 所以说协程和线程池相比没有比较明显的优势
+ * 所以说协程和线程池相比性能上没有比较明显的优势
  * @auther SouShin
  * @time 2020/6/24 10:29
  */

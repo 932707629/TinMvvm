@@ -4,10 +4,10 @@ import android.app.Application
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.blankj.ALog
-import com.soushin.tinmvvm.base.BaseViewModel
 import com.soushin.tinmvvm.mvvm.model.CategoryModel
 import com.soushin.tinmvvm.mvvm.model.entity.CategoryEntity
-import com.soushin.tinmvvm.widget.HttpHandleCallBack
+import me.soushin.base_lib.config.HttpHandleCallBack
+import me.soushin.base_lib.base.BaseViewModel
 import rxhttp.wrapper.utils.GsonUtil
 
 /**

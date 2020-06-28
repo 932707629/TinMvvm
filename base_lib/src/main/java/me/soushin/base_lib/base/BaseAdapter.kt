@@ -1,8 +1,8 @@
-package com.soushin.tinmvvm.base
+package me.soushin.base_lib.base
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.entity.MultiItemEntity
+import com.chad.library.adapter.base.viewholder.BaseViewHolder
 
 /**
  * 基于brvah封装的适配多布局的adapter

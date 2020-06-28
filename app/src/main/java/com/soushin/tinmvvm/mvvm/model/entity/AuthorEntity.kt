@@ -7,15 +7,11 @@ import com.chad.library.adapter.base.entity.MultiItemEntity
  * @time 2020/1/20 15 46
  */
 data class AuthorEntity(
-    var itemType: Int?,
+    override val itemType: Int,
     var spanSize:Int?,
     var tabTitleList : ArrayList<String>?,
     var title:String
 ) : MultiItemEntity {
-
-    override fun getItemType(): Int {
-        return this.itemType!!
-    }
 
 
 }

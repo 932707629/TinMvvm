@@ -1,4 +1,4 @@
-package com.soushin.tinmvvm.utils
+package me.soushin.base_lib.utils
 
 import android.app.Activity
 import java.util.*
@@ -14,9 +14,10 @@ class AppManager private constructor(){
 
         internal var stack: Stack<Activity>? = null
 
-        fun get() : AppManager{
+        fun get() : AppManager {
             val instance: AppManager by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
-                AppManager() }
+                AppManager()
+            }
             return  instance
         }
     }
@@ -26,7 +27,7 @@ class AppManager private constructor(){
     }
 
     fun addActivity(activity: Activity){
-        if(stack==null){
+        if(stack ==null){
             stack = Stack()
         }
         stack?.apply {

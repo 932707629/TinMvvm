@@ -11,6 +11,7 @@ import java.lang.reflect.Type
 
 /**
  * 这里用的Rxhttp的自定义Parser 确实强大
+ * 学习一下他的想法
  * (https://github.com/liujingxing/okhttp-RxHttp/wiki/%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD#%E8%87%AA%E5%AE%9A%E4%B9%89Parser)
  * @author created by Soushin
  * @time 2020/1/17 15 24

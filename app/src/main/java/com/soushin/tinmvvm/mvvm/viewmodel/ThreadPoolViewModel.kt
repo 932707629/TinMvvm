@@ -5,10 +5,9 @@ import android.os.Build
 import android.view.View
 import com.blankj.ALog
 import com.soushin.tinmvvm.R
-import com.soushin.tinmvvm.base.BaseViewModel
 import com.soushin.tinmvvm.mvvm.model.ThreadPoolModel
+import me.soushin.base_lib.base.BaseViewModel
 import java.lang.Exception
-import java.sql.Time
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService

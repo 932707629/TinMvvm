@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.soushin.tinmvvm.mvvm.adapter.MultiTypeAdapter
 import com.soushin.tinmvvm.mvvm.adapter.MultiplexAdapter
 import com.soushin.tinmvvm.utils.FlingHelper
-import com.soushin.tinmvvm.utils.UIUtils
+import me.jessyan.autosize.AutoSizeConfig
 
 class ParentRecyclerView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
     RecyclerView(context, attrs, defStyleAttr)  {
@@ -33,7 +33,7 @@ class ParentRecyclerView @JvmOverloads constructor(context: Context, attrs: Attr
     private var velocityY: Int = 0
 
     init {
-        mMaxDistance = mFlingHelper.getVelocityByDistance((UIUtils.getScreenHeight() * 4).toDouble())
+        mMaxDistance = mFlingHelper.getVelocityByDistance((AutoSizeConfig.getInstance().screenHeight * 4).toDouble())
 
         addOnScrollListener(object :OnScrollListener(){
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {

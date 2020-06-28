@@ -1,16 +1,15 @@
 package com.soushin.tinmvvm.mvvm.ui
 
 import android.os.Bundle
-
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.BR
-import com.soushin.tinmvvm.base.BaseActivity
-import com.soushin.tinmvvm.base.BaseAdapter
 import com.soushin.tinmvvm.databinding.ActivityMultiplexBinding
 import com.soushin.tinmvvm.mvvm.adapter.MultiplexAdapter
 import com.soushin.tinmvvm.mvvm.model.entity.AuthorEntity
 import com.soushin.tinmvvm.mvvm.viewmodel.MultiplexViewModel
 import com.soushin.tinmvvm.widget.ParentRecyclerView
+import me.soushin.base_lib.base.BaseActivity
+import me.soushin.base_lib.base.BaseAdapter
 import java.util.ArrayList
 
 /**

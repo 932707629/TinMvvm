@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
-import com.soushin.tinmvvm.base.BaseFragment
 import com.soushin.tinmvvm.databinding.FragmentCategoryBinding
 import com.soushin.tinmvvm.mvvm.viewmodel.CategoryViewModel
+import me.soushin.base_lib.base.BaseFragment
 
 /**
  * @author created by Soushin

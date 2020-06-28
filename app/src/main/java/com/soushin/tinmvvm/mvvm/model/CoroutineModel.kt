@@ -1,9 +1,8 @@
 package com.soushin.tinmvvm.mvvm.model
 
 import com.blankj.ALog
-import com.soushin.tinmvvm.base.BaseModel
 import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
+import me.soushin.base_lib.base.BaseModel
 
 /**
  * ================================================

@@ -12,12 +12,19 @@ android {
         targetSdkVersion rootProject.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
@@ -27,61 +34,35 @@ android {
     dataBinding {
         enabled = true
     }
+    viewBinding{
+        enabled=true
+    }
     lintOptions {
         abortOnError false
     }
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            // 自定义文件名{示例：AppName-Flavor-debug-v1.0.0_201807301409}
+            outputFileName = "TinMvvm${variant.flavorName}_${variant.buildType.name}_${variant.versionName}_${buildTime()}.apk"
+        }
+    }
+}
+
+def buildTime() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMddHHmm')
+    return formattedDate
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation deps.kotlinstdlibjdk7
-    implementation deps.appcompat
-    implementation deps.core_ktx
-    implementation deps.swipeRefresh
-    implementation deps.material
-    implementation deps.constraintlayout
-    implementation deps.rxpermissions
+    implementation project(':base_lib')
 
-    implementation deps.alog
-    implementation deps.ToastUtils
-    implementation deps.extensions
-//    implementation deps.retrofit2
-//    implementation deps.retrofit2_gson
-    implementation deps.glide
-    implementation deps.rxandroid
-    implementation deps.rxjava
-    implementation deps.liveeventbus
-    implementation deps.work_runtime
-    implementation deps.recyclerview
-    implementation deps.brvh
-    //配套brvh实现databinding
-    implementation deps.brvhbinding
-
-    implementation deps.immersionbar
-    implementation deps.immersionbar_components
-    implementation deps.immersionbar_ktx
-    implementation deps.kotlinx_coroutines
-    implementation deps.kotlinx_coroutines_android
-    implementation 'com.rxjava.rxhttp:rxhttp:1.4.1'
-    kapt 'com.rxjava.rxhttp:rxhttp-compiler:1.4.1' //注解处理器，生成RxHttp类
-
-    implementation 'com.rxjava.rxlife:rxlife:1.1.0'  //页面销毁，关闭请求，非必须
-//    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'  //切换主线程，非必须
-    //Converter 根据自己需求选择  非必须  RxHttp默认内置了GsonConverter
-//    implementation 'com.rxjava.rxhttp:converter-fastjson:1.4.1'
-
-//    implementation deps.rxlifecycle
-//    implementation deps.rxlifecycle_components
-//    implementation deps.rxlifecycle_android
-//    implementation deps.rxlifecycle_android_lifecycle
-//    implementation deps.rxlifecycle_kotlin
-//    implementation deps.rxlifecycle_android_lifecycle_kotlin
-
-    kapt deps.glide_compiler
-    kapt deps.lifecycleompiler
-    kapt deps.databindingcompiler
-
-    testImplementation deps.junit
-    androidTestImplementation deps.espresso
+    implementation(deps.work_runtime)
+    implementation(deps.autosize)
+    kapt(deps.glide_compiler)//配套glide使用
+//    kapt deps.lifecycleompiler//配套android.arch.lifecycle使用
+    kapt(deps.databindingcompiler)//databinding使用
+    kapt(deps.rxhttp_compiler) //注解处理器，生成RxHttp类
 
 }

@@ -2,8 +2,8 @@ package com.soushin.tinmvvm.mvvm.model
 
 import com.rxjava.rxlife.ObservableLife
 import com.rxjava.rxlife.RxLife
-import com.soushin.tinmvvm.base.BaseModel
 import com.soushin.tinmvvm.mvvm.model.entity.CategoryEntity
+import me.soushin.base_lib.base.BaseModel
 import rxhttp.wrapper.param.RxHttp
 
 /**
@@ -18,6 +18,5 @@ class CategoryModel : BaseModel() {
             .asBaseListResponse(CategoryEntity::class.java)
             .`as`(RxLife.asOnMain(weakReference?.get()))
     }
-
 
 }

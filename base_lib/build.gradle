@@ -1,0 +1,72 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding {
+        enabled = true
+    }
+
+    viewBinding{
+        enabled=true
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //kt+jetpack+androidx
+    api(deps.kotlinstdlibjdk7)
+    api(deps.appcompat)
+    api(deps.core_ktx)
+    api(deps.swipeRefresh)
+    api(deps.material)
+    api(deps.constraintlayout)
+    api(deps.extensions)
+    api(deps.recyclerview)
+    api(deps.kotlinx_coroutines)
+    api(deps.kotlinx_coroutines_android)
+    //第三方工具库
+    api(deps.rxandroid)
+    api(deps.rxjava)
+    api(deps.liveeventbus)
+    api(deps.glide)
+    api(deps.brvh)
+    api(deps.rxpermissions)
+    api(deps.alog)
+    api(deps.ToastUtils)
+    api(deps.rxhttp)
+    api(deps.rxlife)//页面销毁，关闭请求，非必须
+    api(deps.immersionbar)
+    api(deps.immersionbar_components)
+    api(deps.immersionbar_ktx)
+    debugApi(deps.leakcanary)
+    //test
+    testApi(deps.junit)
+    androidTestApi(deps.test_junit)
+    androidTestApi(deps.espresso)
+}

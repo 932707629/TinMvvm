@@ -8,16 +8,16 @@ import androidx.work.Data
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import com.blankj.ALog
-import com.soushin.tinmvvm.base.BaseViewModel
 import com.soushin.tinmvvm.mvvm.model.WorkerModel
 import com.soushin.tinmvvm.worker.BackGroundWorker
+import me.soushin.base_lib.base.BaseViewModel
 import java.util.concurrent.TimeUnit
 
 /**
  * @author created by Soushin
  * @time 2020/1/10 15 28
  */
-class WorkerViewModel :BaseViewModel<WorkerModel> {
+class WorkerViewModel : BaseViewModel<WorkerModel> {
 
     constructor(application: Application):super(application,WorkerModel())
 

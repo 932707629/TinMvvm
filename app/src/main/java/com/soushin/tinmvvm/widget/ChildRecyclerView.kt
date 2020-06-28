@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import androidx.recyclerview.widget.RecyclerView
 import com.soushin.tinmvvm.utils.FlingHelper
-import com.soushin.tinmvvm.utils.UIUtils
+import me.jessyan.autosize.AutoSizeConfig
 
 open class ChildRecyclerView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
     RecyclerView(context, attrs, defStyleAttr)  {
@@ -22,7 +22,7 @@ open class ChildRecyclerView @JvmOverloads constructor(context: Context, attrs: 
     var mParentRecyclerView: ParentRecyclerView? = null
 
     init {
-        mMaxDistance = mFlingHelper.getVelocityByDistance((UIUtils.getScreenHeight() * 4).toDouble())
+        mMaxDistance = mFlingHelper.getVelocityByDistance((AutoSizeConfig.getInstance().screenHeight * 4).toDouble())
         overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         initScrollListener()
     }
@@ -45,7 +45,6 @@ open class ChildRecyclerView @JvmOverloads constructor(context: Context, attrs: 
                 super.onScrollStateChanged(recyclerView, newState)
             }
         })
-
     }
 
     private fun dispatchParentFling() {

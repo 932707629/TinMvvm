@@ -1,4 +1,4 @@
-package com.soushin.tinmvvm.widget
+package me.soushin.base_lib.config
 
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable

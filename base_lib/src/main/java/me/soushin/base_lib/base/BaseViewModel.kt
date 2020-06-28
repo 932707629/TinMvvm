@@ -1,4 +1,4 @@
-package com.soushin.tinmvvm.base
+package me.soushin.base_lib.base
 
 import android.app.Application
 import androidx.annotation.NonNull

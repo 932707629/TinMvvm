@@ -1,10 +1,10 @@
-package com.soushin.tinmvvm.base
+package com.soushin.tinmvvm.config
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
 import com.hjq.toast.ToastUtils
+import me.soushin.base_lib.base.BaseFragment
 
 /**
  * 扩展方法
@@ -24,7 +24,7 @@ fun AppCompatActivity.getThis(): Context {
     return this
 }
 
-fun BaseFragment<*,*>.showToasty(msg:Any?){
+fun BaseFragment<*, *>.showToasty(msg:Any?){
     ToastUtils.show(msg)
 }
 

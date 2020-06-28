@@ -6,14 +6,14 @@ import android.view.View
 import com.blankj.ALog
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
-import com.soushin.tinmvvm.base.BaseActivity
-import com.soushin.tinmvvm.base.go
+import com.soushin.tinmvvm.config.go
 import com.soushin.tinmvvm.databinding.ActivityMainBinding
 import com.soushin.tinmvvm.mvvm.ui.fragment.CategoryFragment
 import com.soushin.tinmvvm.mvvm.viewmodel.MainViewModel
-import com.soushin.tinmvvm.utils.FragmentUtils
-import com.soushin.tinmvvm.utils.PermissionUtil
+import me.soushin.base_lib.utils.FragmentUtils
+import me.soushin.base_lib.utils.PermissionUtil
 import com.tbruyelle.rxpermissions2.RxPermissions
+import me.soushin.base_lib.base.BaseActivity
 
 
 /**
@@ -22,7 +22,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions
  * @author Soushin
  * @time 2020/1/7 13:39
  */
-class MainActivity : BaseActivity<ActivityMainBinding,MainViewModel>() {
+class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
 //    lateinit var mainViewModel:MainViewModel
 
@@ -61,7 +61,8 @@ class MainActivity : BaseActivity<ActivityMainBinding,MainViewModel>() {
                     val rxPermissions=RxPermissions(this)
                     val pms= arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
-                    PermissionUtil.requestPermission(object :PermissionUtil.RequestPermission{
+                    PermissionUtil.requestPermission(object :
+                        PermissionUtil.RequestPermission{
                         override fun onRequestPermissionSuccess() {
                             ALog.d("onRequestPermissionSuccess");
                         }

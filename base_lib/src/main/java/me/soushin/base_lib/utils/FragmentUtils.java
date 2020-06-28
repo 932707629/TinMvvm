@@ -1,4 +1,4 @@
-package com.soushin.tinmvvm.utils;
+package me.soushin.base_lib.utils;
 
 import android.graphics.drawable.Drawable;
 import android.os.Build;

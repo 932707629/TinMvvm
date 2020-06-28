@@ -1,11 +1,11 @@
-package com.soushin.tinmvvm
+package me.soushin.base_lib.config
 
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
 import com.blankj.ALog
-import com.soushin.tinmvvm.base.BaseActivity
-import com.soushin.tinmvvm.utils.AppManager
+import me.soushin.base_lib.utils.AppManager
+import me.soushin.base_lib.base.BaseActivity
 
 /**
  * 对每个activity实现监听
@@ -20,7 +20,7 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
         ALog.i("onActivityCreated",activity.localClassName)
         AppManager.get().addActivity(activity)
-        if (activity is BaseActivity<*,*>&&activity.useFragment()){//注册fragment回调监听
+        if (activity is BaseActivity<*, *> &&activity.useFragment()){//注册fragment回调监听
             val fragmentLifecycleCallbacksImpl=FragmentLifecycleCallbacksImpl()
             fragmentLifecycleMap.put(activity.localClassName,fragmentLifecycleCallbacksImpl)
             activity.supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentLifecycleCallbacksImpl,true)
