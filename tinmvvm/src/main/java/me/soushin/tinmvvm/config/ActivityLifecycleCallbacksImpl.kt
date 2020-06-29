@@ -1,11 +1,11 @@
-package me.soushin.base_lib.config
+package me.soushin.tinmvvm.config
 
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
 import com.blankj.ALog
-import me.soushin.base_lib.utils.AppManager
-import me.soushin.base_lib.base.BaseActivity
+import me.soushin.tinmvvm.utils.AppManager
+import me.soushin.tinmvvm.base.BaseActivity
 
 /**
  * 对每个activity实现监听
@@ -15,13 +15,14 @@ import me.soushin.base_lib.base.BaseActivity
  */
 class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
 
-    private var fragmentLifecycleMap= hashMapOf<String,FragmentLifecycleCallbacksImpl>()
+    private var fragmentLifecycleMap= hashMapOf<String, FragmentLifecycleCallbacksImpl>()
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
         ALog.i("onActivityCreated",activity.localClassName)
         AppManager.get().addActivity(activity)
         if (activity is BaseActivity<*, *> &&activity.useFragment()){//注册fragment回调监听
-            val fragmentLifecycleCallbacksImpl=FragmentLifecycleCallbacksImpl()
+            val fragmentLifecycleCallbacksImpl=
+                FragmentLifecycleCallbacksImpl()
             fragmentLifecycleMap.put(activity.localClassName,fragmentLifecycleCallbacksImpl)
             activity.supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentLifecycleCallbacksImpl,true)
         }
@@ -50,7 +51,7 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
     override fun onActivityDestroyed(activity: Activity) {
         ALog.i("onActivityDestroyed",activity.localClassName)
         AppManager.get().removeActivity(activity)
-        if (activity is BaseActivity<*,*>&&activity.useFragment()){//注册fragment回调监听
+        if (activity is BaseActivity<*, *> &&activity.useFragment()){//注册fragment回调监听
             fragmentLifecycleMap.get(activity.localClassName)?.let {
                 activity.supportFragmentManager.unregisterFragmentLifecycleCallbacks(it)
                 fragmentLifecycleMap.remove(activity.localClassName)

@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="me.soushin.tinmvvm" >
+
+    <application
+        android:supportsRtl="true"
+        android:allowBackup="true">
+
+        <provider android:name="me.soushin.tinmvvm.config.InitProvider"
+            android:authorities="${applicationId}.tinmvvm-init-provider"
+            android:exported="false"
+            android:multiprocess="true"/>
+    </application>
+</manifest>

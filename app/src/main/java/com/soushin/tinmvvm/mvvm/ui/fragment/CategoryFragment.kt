@@ -8,7 +8,7 @@ import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.databinding.FragmentCategoryBinding
 import com.soushin.tinmvvm.mvvm.viewmodel.CategoryViewModel
-import me.soushin.base_lib.base.BaseFragment
+import me.soushin.tinmvvm.base.BaseFragment
 
 /**
  * @author created by Soushin

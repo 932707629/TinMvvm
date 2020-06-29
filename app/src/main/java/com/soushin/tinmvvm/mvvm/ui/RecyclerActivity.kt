@@ -11,7 +11,7 @@ import com.soushin.tinmvvm.mvvm.adapter.itembinder.TextItemBinder
 import com.soushin.tinmvvm.mvvm.model.entity.ImageEntity
 import com.soushin.tinmvvm.utils.DataUtils
 import kotlinx.android.synthetic.main.activity_recycler.*
-import me.soushin.base_lib.base.BaseActivity
+import me.soushin.tinmvvm.base.BaseActivity
 
 /**
  * ================================================

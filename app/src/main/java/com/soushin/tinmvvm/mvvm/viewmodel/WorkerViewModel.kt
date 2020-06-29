@@ -10,7 +10,7 @@ import androidx.work.WorkManager
 import com.blankj.ALog
 import com.soushin.tinmvvm.mvvm.model.WorkerModel
 import com.soushin.tinmvvm.worker.BackGroundWorker
-import me.soushin.base_lib.base.BaseViewModel
+import me.soushin.tinmvvm.base.BaseViewModel
 import java.util.concurrent.TimeUnit
 
 /**

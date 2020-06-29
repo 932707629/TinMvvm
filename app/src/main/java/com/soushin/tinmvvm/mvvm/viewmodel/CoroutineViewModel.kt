@@ -3,7 +3,7 @@ package com.soushin.tinmvvm.mvvm.viewmodel
 import android.app.Application
 import android.view.View
 import com.soushin.tinmvvm.mvvm.model.CoroutineModel
-import me.soushin.base_lib.base.BaseViewModel
+import me.soushin.tinmvvm.base.BaseViewModel
 
 /**
  * ================================================
@@ -13,7 +13,8 @@ import me.soushin.base_lib.base.BaseViewModel
  * ================================================
  */
 
-class CoroutineViewModel : BaseViewModel<CoroutineModel> {
+class CoroutineViewModel :
+    BaseViewModel<CoroutineModel> {
 
 
     constructor(application: Application) : super(application, CoroutineModel()) {

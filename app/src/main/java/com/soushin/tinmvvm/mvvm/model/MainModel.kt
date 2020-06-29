@@ -1,6 +1,6 @@
 package com.soushin.tinmvvm.mvvm.model
 
-import me.soushin.base_lib.base.BaseModel
+import me.soushin.tinmvvm.base.BaseModel
 
 /**
  *

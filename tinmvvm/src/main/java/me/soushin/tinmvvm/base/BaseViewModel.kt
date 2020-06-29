@@ -1,4 +1,4 @@
-package me.soushin.base_lib.base
+package me.soushin.tinmvvm.base
 
 import android.app.Application
 import androidx.annotation.NonNull
@@ -12,7 +12,7 @@ import java.lang.ref.WeakReference
  * @author created by Soushin
  * @time 2020/1/7 16 38
  */
-open class BaseViewModel<M:BaseModel> : AndroidViewModel {
+open class BaseViewModel<M: BaseModel> : AndroidViewModel {
 
     private val mCompositeDisposable: CompositeDisposable = CompositeDisposable()
     var model:M?=null

@@ -7,7 +7,7 @@ import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.databinding.ActivityCoroutineBinding
 import com.soushin.tinmvvm.mvvm.viewmodel.CoroutineViewModel
-import me.soushin.base_lib.base.BaseActivity
+import me.soushin.tinmvvm.base.BaseActivity
 
 /**
  * 协程本身可以理解为一个对线程的封装库，跟我们用的线程池异曲同工

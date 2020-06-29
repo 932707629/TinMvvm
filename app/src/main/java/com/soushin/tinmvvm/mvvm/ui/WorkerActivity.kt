@@ -6,7 +6,7 @@ import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.databinding.ActivityWorkerBinding
 import com.soushin.tinmvvm.mvvm.viewmodel.WorkerViewModel
-import me.soushin.base_lib.base.BaseActivity
+import me.soushin.tinmvvm.base.BaseActivity
 
 /**
  *

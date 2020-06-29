@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import com.blankj.ALog
 import com.soushin.tinmvvm.mvvm.model.CategoryModel
 import com.soushin.tinmvvm.mvvm.model.entity.CategoryEntity
-import me.soushin.base_lib.config.HttpHandleCallBack
-import me.soushin.base_lib.base.BaseViewModel
+import me.soushin.tinmvvm.config.HttpHandleCallBack
+import me.soushin.tinmvvm.base.BaseViewModel
 import rxhttp.wrapper.utils.GsonUtil
 
 /**

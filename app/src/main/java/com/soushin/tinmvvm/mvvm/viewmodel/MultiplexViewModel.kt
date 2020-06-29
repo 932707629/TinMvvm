@@ -2,7 +2,7 @@ package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
 import com.soushin.tinmvvm.mvvm.model.MultiplexModel
-import me.soushin.base_lib.base.BaseViewModel
+import me.soushin.tinmvvm.base.BaseViewModel
 
 /**
  * ================================================
@@ -12,7 +12,8 @@ import me.soushin.base_lib.base.BaseViewModel
  * ================================================
  */
 
-class MultiplexViewModel : BaseViewModel<MultiplexModel> {
+class MultiplexViewModel :
+    BaseViewModel<MultiplexModel> {
 
     constructor(application: Application) : super(application, MultiplexModel()) {
 

@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.hjq.toast.ToastUtils
-import me.soushin.base_lib.base.BaseFragment
+import me.soushin.tinmvvm.base.BaseFragment
 
 /**
  * 扩展方法
@@ -28,7 +28,7 @@ fun BaseFragment<*, *>.showToasty(msg:Any?){
     ToastUtils.show(msg)
 }
 
-fun BaseFragment<*,*>.go(clazz:Class<*>){
+fun BaseFragment<*, *>.go(clazz:Class<*>){
     startActivity(Intent(mContext,clazz))
 }
 

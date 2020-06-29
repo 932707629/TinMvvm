@@ -40,6 +40,11 @@ android {
     lintOptions {
         abortOnError false
     }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
     android.applicationVariants.all { variant ->
         variant.outputs.all {
             // 自定义文件名{示例：AppName-Flavor-debug-v1.0.0_201807301409}
@@ -55,8 +60,9 @@ def buildTime() {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':base_lib')
+    implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
+//    implementation(name: 'base_lib', ext: 'aar')
+    implementation project(':tinmvvm')
 
     implementation(deps.work_runtime)
     implementation(deps.autosize)

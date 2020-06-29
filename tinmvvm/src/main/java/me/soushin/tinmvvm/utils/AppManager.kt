@@ -1,4 +1,4 @@
-package me.soushin.base_lib.utils
+package me.soushin.tinmvvm.utils
 
 import android.app.Activity
 import java.util.*

@@ -8,8 +8,8 @@ import com.soushin.tinmvvm.mvvm.adapter.MultiplexAdapter
 import com.soushin.tinmvvm.mvvm.model.entity.AuthorEntity
 import com.soushin.tinmvvm.mvvm.viewmodel.MultiplexViewModel
 import com.soushin.tinmvvm.widget.ParentRecyclerView
-import me.soushin.base_lib.base.BaseActivity
-import me.soushin.base_lib.base.BaseAdapter
+import me.soushin.tinmvvm.base.BaseActivity
+import me.soushin.tinmvvm.base.BaseAdapter
 import java.util.ArrayList
 
 /**
@@ -43,7 +43,7 @@ class MultiplexActivity : BaseActivity<ActivityMultiplexBinding, MultiplexViewMo
         }
         mDataList.add(AuthorEntity(BaseAdapter.ITEM_TWO,2, childDatas,""))
         rvRecycler.adapter = multiTypeAdapter
-        multiTypeAdapter.setNewData(mDataList)
+        multiTypeAdapter.setNewInstance(mDataList)
     }
 
     override fun initVariableId(): Int {

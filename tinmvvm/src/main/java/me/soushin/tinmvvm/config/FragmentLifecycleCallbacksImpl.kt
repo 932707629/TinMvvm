@@ -1,4 +1,4 @@
-package me.soushin.base_lib.config
+package me.soushin.tinmvvm.config
 
 import android.content.Context
 import android.os.Bundle

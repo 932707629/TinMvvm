@@ -8,7 +8,7 @@ import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.mvvm.model.entity.AuthorEntity
 import com.soushin.tinmvvm.widget.CategoryView
 import com.soushin.tinmvvm.widget.ChildRecyclerView
-import me.soushin.base_lib.base.BaseAdapter
+import me.soushin.tinmvvm.base.BaseAdapter
 
 /**
  * @author created by Soushin

@@ -1,4 +1,4 @@
-package me.soushin.base_lib.utils
+package me.soushin.tinmvvm.utils
 
 import android.Manifest
 import androidx.lifecycle.LifecycleOwner
@@ -6,7 +6,7 @@ import com.blankj.ALog
 import com.rxjava.rxlife.life
 import com.tbruyelle.rxpermissions2.Permission
 import com.tbruyelle.rxpermissions2.RxPermissions
-import me.soushin.base_lib.config.HttpHandleCallBack
+import me.soushin.tinmvvm.config.HttpHandleCallBack
 import java.util.*
 
 /**

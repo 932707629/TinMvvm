@@ -2,7 +2,7 @@ package com.soushin.tinmvvm.mvvm.model
 
 import com.blankj.ALog
 import kotlinx.coroutines.*
-import me.soushin.base_lib.base.BaseModel
+import me.soushin.tinmvvm.base.BaseModel
 
 /**
  * ================================================

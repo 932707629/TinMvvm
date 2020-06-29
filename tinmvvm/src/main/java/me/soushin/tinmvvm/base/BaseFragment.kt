@@ -1,4 +1,4 @@
-package me.soushin.base_lib.base
+package me.soushin.tinmvvm.base
 
 import android.content.Context
 import android.content.res.Configuration
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProviders
 import com.gyf.immersionbar.components.ImmersionOwner
 import com.gyf.immersionbar.components.ImmersionProxy
@@ -30,6 +31,7 @@ import java.lang.reflect.ParameterizedType
         super.onAttach(context)
         this.mContext=context
     }
+
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
