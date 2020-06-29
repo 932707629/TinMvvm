@@ -42,6 +42,9 @@ ext {
     versionCode = 1_000_001
     versionName = '1.0.1'
 
+    tinmvvmVersionCode=1
+    tinmvvmVersionName='1.0.1'
+
     appcompatVersion = '1.1.0'
     immersionbarVersion = "3.0.0"
     deps = [

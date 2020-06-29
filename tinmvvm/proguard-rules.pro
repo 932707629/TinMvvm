@@ -38,8 +38,10 @@
 
 -optimizations !code/simplification/artithmetic,!field/*,!class/merging/*
 ################base_lib###############
--keep class me.soushin.base_lib.** {*;}
--dontwarn me.soushin.base_lib.**
+-keep class me.soushin.tinmvvm.** {*;}
+-dontwarn me.soushin.tinmvvm.**
+-keep class java.lang.invoke.** {*;}
+-dontwarn java.lang.invoke.**
 ################banner###############
 -keep class com.youth.banner.** {*;}
 
@@ -150,3 +152,11 @@
 -keepclassmembers  class **$** extends com.chad.library.adapter.base.BaseViewHolder {
      <init>(...);
 }
+
+################RxHttp###############
+-keep class rxhttp.**{*;}
+# OkHttp
+-keep class okhttp3.**{*;}
+-keep class okio.**{*;}
+
+

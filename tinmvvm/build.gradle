@@ -4,29 +4,29 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 apply from: "../bintrayUpload.gradle"
-
+//版本更新的命令
+//gradlew clean build bintrayUpload -PbintrayUser=soushin -PbintrayKey=41191f3e38ba571be46a639901db861ee8053346 -PdryRun=false
 android {
     compileSdkVersion rootProject.compileSdkVersion
-
     defaultConfig {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
-        versionCode 1
-        versionName "0.0.1"
+        versionCode = rootProject.tinmvvmVersionCode
+        versionName = rootProject.tinmvvmVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
 //            shrinkResources true
-//            zipAlignEnabled true
+            zipAlignEnabled true
             //子module使用consumerProguardFiles进行混淆配置
             consumerProguardFiles('proguard-rules.pro')
 //            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        /*debug {
+        debug {
 //            minifyEnabled false
             minifyEnabled true
 //            shrinkResources true
@@ -34,7 +34,7 @@ android {
             //子module使用consumerProguardFiles进行混淆配置
             consumerProguardFiles('proguard-rules.pro')
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }*/
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -49,6 +49,12 @@ android {
     }
     lintOptions {
         abortOnError false
+    }
+}
+//禁用javadoc任务
+allprojects {
+    tasks.withType(Javadoc).all {
+        enabled=false
     }
 }
 
@@ -74,7 +80,6 @@ dependencies {
     api(deps.rxpermissions)
     api(deps.alog)
     api(deps.ToastUtils)
-    api(deps.rxhttp)
     api(deps.rxlife)//页面销毁，关闭请求，非必须
     api(deps.immersionbar)
     api(deps.immersionbar_components)

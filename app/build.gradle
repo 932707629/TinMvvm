@@ -61,9 +61,8 @@ def buildTime() {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
-//    implementation(name: 'base_lib', ext: 'aar')
     implementation project(':tinmvvm')
-
+    implementation(deps.rxhttp)
     implementation(deps.work_runtime)
     implementation(deps.autosize)
     kapt(deps.glide_compiler)//配套glide使用
