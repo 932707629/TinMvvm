@@ -1,12 +1,14 @@
 package com.soushin.tinmvvm.config
 
 import android.app.Application
+import android.content.Context
+import androidx.multidex.MultiDex
 import com.blankj.ALog
 import com.hjq.toast.ToastUtils
-import me.soushin.tinmvvm.config.ActivityLifecycleCallbacksImpl
 import com.soushin.tinmvvm.BuildConfig
 import com.soushin.tinmvvm.network.Api
 import com.soushin.tinmvvm.widget.ToastStyle
+import me.soushin.tinmvvm.listener.AppLifecycle
 import okhttp3.OkHttpClient
 import rxhttp.wrapper.cookie.CookieStore
 import rxhttp.wrapper.param.RxHttp
@@ -19,23 +21,28 @@ import javax.net.ssl.SSLSocketFactory
 import javax.net.ssl.X509TrustManager
 
 /**
- *
- * @author created by Soushin
- * @time 2020/1/7 13 12
+ * 功能相当于application
+ * @auther SouShin
+ * @time 2020/7/15 15:40
  */
-class App :Application(){
+class AppLifecycleImpl :AppLifecycle {
 
-    override fun onCreate() {
-        super.onCreate()
-        instance=this
-        initALog(this)
-        initRxHttp()
-        ToastUtils.init(this,ToastStyle())
-        registerActivityLifecycleCallbacks(ActivityLifecycleCallbacksImpl())
+    override fun attachBaseContext(base: Context) {
+        MultiDex.install(base)
     }
 
-    private fun initRxHttp() {
-        val file = File(externalCacheDir, "RxHttpCookie")
+    override fun onCreate(application: Application) {
+        initALog(application)
+        ToastUtils.init(application, ToastStyle())
+        initRxHttp(application)
+    }
+
+    override fun onTerminate(application: Application) {
+
+    }
+
+    private fun initRxHttp(app:Application) {
+        val file = File(app.externalCacheDir, "RxHttpCookie")
         val trustAllCert: X509TrustManager = X509TrustManagerImpl()
         val sslSocketFactory: SSLSocketFactory =
             SSLSocketFactoryImpl(trustAllCert)
@@ -79,9 +86,6 @@ class App :Application(){
         }*/
     }
 
-    companion object {
-        var instance :App ?=null
-    }
 
     fun initALog(app: Application) {
         ALog.init(app)
@@ -98,8 +102,6 @@ class App :Application(){
             .setConsoleFilter(ALog.V) // log的控制台过滤器，和logcat过滤器同理，默认Verbose
             .setFileFilter(ALog.V).stackDeep = 1 // log栈深度，默认为1
     }
-
-
 
 
 }

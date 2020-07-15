@@ -42,8 +42,8 @@ ext {
     versionCode = 1_000_001
     versionName = '1.0.1'
 
-    tinmvvmVersionCode=1
-    tinmvvmVersionName='1.0.1'
+    tinmvvmVersionCode = 1
+    tinmvvmVersionName = '1.0.1'
 
     appcompatVersion = '1.1.0'
     immersionbarVersion = "3.0.0"
@@ -68,6 +68,7 @@ ext {
             gson                                : "com.google.code.gson:gson:2.8.6",
             liveeventbus                        : "com.jeremyliao:live-event-bus-x:1.5.7",
             autosize                            : "me.jessyan:autosize:1.2.1",
+            basepopup                           : "com.github.razerdp:BasePopup:2.2.3",
 
             //network
             retrofit2                           : "com.squareup.retrofit2:retrofit:2.6.2",

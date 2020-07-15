@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import ${packageName}.base.BaseFragment;
+import me.soushin.tinmvvm.base.BaseFragment;
 import ${packageName}.databinding.Fragment${pageName}Binding;
 import ${packageName}.mvvm.viewmodel.${pageName}ViewModel;
 

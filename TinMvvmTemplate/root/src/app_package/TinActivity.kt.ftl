@@ -4,7 +4,7 @@ import android.os.Bundle
 
 import ${packageName}.R
 import ${packageName}.BR
-import ${packageName}.base.BaseActivity
+import me.soushin.tinmvvm.base.BaseActivity
 import ${packageName}.databinding.Activity${pageName}Binding
 import ${packageName}.mvvm.viewmodel.${pageName}ViewModel
 

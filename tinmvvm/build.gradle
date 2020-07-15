@@ -84,6 +84,7 @@ dependencies {
     api(deps.immersionbar)
     api(deps.immersionbar_components)
     api(deps.immersionbar_ktx)
+    api(deps.basepopup)
     //test
     debugApi(deps.leakcanary)
     testImplementation(deps.junit)

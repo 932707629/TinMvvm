@@ -158,5 +158,8 @@
 # OkHttp
 -keep class okhttp3.**{*;}
 -keep class okio.**{*;}
+################basepopup###############
+-dontwarn razerdp.basepopup.**
+-keep class razerdp.basepopup.**{*;}
 
 

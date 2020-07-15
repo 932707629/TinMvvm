@@ -1,7 +1,7 @@
 package ${viewModelPackageName};
 
 import android.app.Application;
-import ${packageName}.base.BaseViewModel;
+import me.soushin.tinmvvm.base.BaseViewModel;
 import ${packageName}.mvvm.model.${pageName}Model;
 import org.jetbrains.annotations.NotNull;
 
