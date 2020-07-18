@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.gyf.immersionbar.components.ImmersionOwner
 import com.gyf.immersionbar.components.ImmersionProxy
@@ -52,15 +53,7 @@ import java.lang.reflect.ParameterizedType
     private fun dataViewBinding(view: View) {
         dataBinding= DataBindingUtil.bind(view)
         dataBinding?.lifecycleOwner=this
-        val type=javaClass.genericSuperclass
-        val modelClass= run {
-            if (type is ParameterizedType){
-                type.actualTypeArguments[1] as Class<VM>
-            }else {
-                BaseViewModel::class.java as Class<VM>
-            }
-        }
-        viewModel= ViewModelProviders.of(this).get(modelClass)
+        viewModel= ViewModelProviders.of(this).get(viewModel())
         viewModel?.injectLifecycleOwner(this)
         dataBinding?.setVariable(initVariableId(),viewModel)
     }
@@ -132,6 +125,22 @@ import java.lang.reflect.ParameterizedType
         //状态栏设置
     }
 
-
+    @SuppressWarnings("unchecked")
+    private fun viewModel() :Class<VM>{
+        val type=javaClass.genericSuperclass
+        return run {
+            if (type is ParameterizedType){
+                var i=1
+                type.actualTypeArguments.forEachIndexed { index, type ->
+                    if (type is ViewModel){ i=index }
+                }
+                @Suppress("UNCHECKED_CAST")
+                type.actualTypeArguments[i] as Class<VM>
+            }else {
+                @Suppress("UNCHECKED_CAST")
+                BaseViewModel::class.java as Class<VM>
+            }
+        }
+    }
 
 }

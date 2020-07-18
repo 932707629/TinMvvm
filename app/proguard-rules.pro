@@ -37,7 +37,6 @@
 #-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
 ##############Glide
 
-
 ##############liveeventbus
 -dontwarn com.jeremyliao.liveeventbus.**
 -keep class com.jeremyliao.liveeventbus.** { *; }
@@ -45,6 +44,3 @@
 -keep class androidx.arch.core.** { *; }
 ##############liveeventbus
 
-##############okhttp-RxHttp
--keep class rxhttp.**{*;}
-##############okhttp-RxHttp

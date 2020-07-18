@@ -15,10 +15,10 @@ import java.lang.ref.WeakReference
 open class BaseViewModel<M: BaseModel> : AndroidViewModel {
 
     private val mCompositeDisposable: CompositeDisposable = CompositeDisposable()
-    var model:M?=null
+    val model:M
     var weakReference: WeakReference<LifecycleOwner>?=null
 
-    constructor(application:Application, @NonNull model:M):super(application){
+    constructor(application:Application, model:M):super(application){
         this.model=model
     }
 
@@ -31,13 +31,13 @@ open class BaseViewModel<M: BaseModel> : AndroidViewModel {
      */
     fun injectLifecycleOwner(@NonNull lifecycleOwner: LifecycleOwner){
         this.weakReference= WeakReference(lifecycleOwner)
-        model?.injectLifecycleOwner(lifecycleOwner)
+        model.injectLifecycleOwner(lifecycleOwner)
     }
 
     override fun onCleared() {
         super.onCleared()//会跟随页面生命周期销毁
         mCompositeDisposable.clear()
-        model?.job?.cancel()
+        model.job.cancel()
     }
 
 }

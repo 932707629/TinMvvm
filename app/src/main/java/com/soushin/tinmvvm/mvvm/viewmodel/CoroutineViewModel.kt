@@ -23,7 +23,7 @@ class CoroutineViewModel :
 
     fun onClick(): View.OnClickListener {
         return View.OnClickListener {
-            model?.start()
+            model.start()
         }
 
     }

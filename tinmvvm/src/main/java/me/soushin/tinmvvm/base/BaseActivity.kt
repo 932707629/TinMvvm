@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.blankj.ALog
 import java.lang.reflect.ParameterizedType
@@ -17,7 +18,7 @@ import java.lang.reflect.ParameterizedType
  * @author created by Soushin
  * @time 2020/1/7 13 29
  */
-    abstract class BaseActivity<V : ViewDataBinding, VM: BaseViewModel<*>> :AppCompatActivity(){
+    abstract class BaseActivity<V : ViewDataBinding,VM: BaseViewModel<*>> :AppCompatActivity(){
 
     protected var dataBinding:V?=null
     protected var viewModel:VM?=null
@@ -30,20 +31,17 @@ import java.lang.reflect.ParameterizedType
     }
 
     private fun dataViewBinding(layoutId:Int) {
-        if (layoutId!=0){
-            dataBinding= DataBindingUtil.setContentView(this,layoutId)
-            dataBinding?.lifecycleOwner=this
-            val type=javaClass.genericSuperclass
-            val modelClass= run {
-                if (type is ParameterizedType){
-                    type.actualTypeArguments[1] as Class<VM>
-                }else {
-                    BaseViewModel::class.java as Class<VM>
-                }
+        try {
+            if (layoutId!=0){
+                dataBinding= DataBindingUtil.setContentView(this,layoutId)
+                dataBinding?.lifecycleOwner=this
+                viewModel=ViewModelProviders.of(this).get(viewModel())
+                viewModel?.injectLifecycleOwner(this)
+                dataBinding?.setVariable(initVariableId(),viewModel)
             }
-            viewModel=ViewModelProviders.of(this).get(modelClass)
-            viewModel?.injectLifecycleOwner(this)
-            dataBinding?.setVariable(initVariableId(),viewModel)
+        }catch (e:Exception){
+            ALog.i("viewmodel初始化异常${e.message}");
+            e.printStackTrace()
         }
     }
 
@@ -67,8 +65,22 @@ import java.lang.reflect.ParameterizedType
         return res
     }
 
-//    inline fun <reified T : ViewModel> viewModel() =
-//        lazy { ViewModelProviders.of(this).get(T::class.java) }
+    private fun viewModel() :Class<VM>{
+        val type=javaClass.genericSuperclass
+        return run {
+            if (type is ParameterizedType){
+                var i=1
+                type.actualTypeArguments.forEachIndexed { index, type ->
+                    if (type is ViewModel){ i=index }
+                }
+                @Suppress("UNCHECKED_CAST")
+                type.actualTypeArguments[i] as Class<VM>
+            }else {
+                @Suppress("UNCHECKED_CAST")
+                BaseViewModel::class.java as Class<VM>
+            }
+        }
+    }
 
     /**
      * 返回值可以为0 即不设置setContentView

@@ -55,7 +55,7 @@ class ManifestParser {
         if (module !is ConfigModule) {
             throw RuntimeException("Expected instanceof ConfigModule, but found: $module")
         }
-        return module as ConfigModule
+        return module
     }
 
 

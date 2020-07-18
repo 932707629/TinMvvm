@@ -23,7 +23,7 @@ class MainViewModel : BaseViewModel<MainModel> {
     }
 
     fun getDatas(){
-        tvContent.value= model?.getDatas()
+        tvContent.value= model.getDatas()
     }
 
 }
