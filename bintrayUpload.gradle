@@ -1,6 +1,7 @@
 
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
+apply plugin: 'org.jetbrains.dokka-android'
 
 // load properties
 Properties properties = new Properties()
@@ -17,7 +18,7 @@ if(projectPropertiesFile.exists()){
 def projectName = properties.getProperty("project.name")
 def projectGroupId = properties.getProperty("project.groupId")
 def projectArtifactId = properties.getProperty("project.artifactId")
-def projectVersionName = android.defaultConfig.versionName
+def projectVersionName = rootProject.tinmvvmVersionName//getProject().versionName//android.defaultConfig.versionName
 def projectPackaging = properties.getProperty("project.packaging")
 def projectSiteUrl = properties.getProperty("project.siteUrl")
 def projectGitUrl = properties.getProperty("project.gitUrl")
@@ -67,8 +68,8 @@ install {
     }
 }
 
-// This generates sources.jar
-task sourcesJar(type: Jar) {
+task generateSourcesJar(type: Jar) {
+    group = 'jar'
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
 }
@@ -78,15 +79,20 @@ task javadoc(type: Javadoc) {
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 }
 
-// This generates javadoc.jar
-task javadocJar(type: Jar, dependsOn: javadoc) {
+task dokkaJavadoc(type: dokka.getClass()) {
+    outputFormat = "javadoc"
+    outputDirectory = javadoc.destinationDir
+}
+
+task generateJavadoc(type: Jar, dependsOn: dokkaJavadoc) {
+    group = 'jar'
     classifier = 'javadoc'
     from javadoc.destinationDir
 }
 
 artifacts {
-    archives javadocJar
-    archives sourcesJar
+    archives generateJavadoc
+    archives generateSourcesJar
 }
 
 // javadoc configuration

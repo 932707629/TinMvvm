@@ -1,10 +1,8 @@
 package com.soushin.tinmvvm.mvvm.ui
 
 import android.os.Bundle
-import android.os.SystemClock
-
-import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.BR
+import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.databinding.ActivityCoroutineBinding
 import com.soushin.tinmvvm.mvvm.viewmodel.CoroutineViewModel
 import me.soushin.tinmvvm.base.BaseActivity

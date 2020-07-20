@@ -13,6 +13,17 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
         multiDexEnabled true
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        //必须，告知RxHttp你依赖的okhttp版本，目前已适配 v3.12.0 - v4.7.2版本  (v4.3.0除外)
+                        rxhttp_okhttp: '4.7.2',
+                        //使用asXxx方法时必须，告知RxHttp你依赖的rxjava版本，可传入rxjava2、rxjava3
+                        rxhttp_rxjava: 'rxjava2',
+//                        rxhttp_package: 'rxhttp'   //非必须，指定RxHttp相关类的生成路径，即包名
+                ]
+            }
+        }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -63,6 +74,17 @@ dependencies {
     implementation(deps.work_runtime)
     implementation(deps.autosize)
     implementation(deps.fastjson)
+    implementation(deps.brvh)
+    implementation(deps.rxpermissions)
+    implementation(deps.alog)
+    implementation(deps.ToastUtils)
+    implementation(deps.glide)
+    implementation(deps.rxhttp)
+    implementation(deps.okhttp)
+    implementation(deps.rxlife_rxjava)//rxjava页面销毁，关闭请求，非必须
+    implementation(deps.rxlife_coroutine)//协程页面销毁，关闭请求，非必须
+    //rxhttp插件
+    kapt(deps.rxhttp_compiler) //注解处理器，生成RxHttp类
     kapt(deps.glide_compiler)//配套glide使用
 //   kapt deps.lifecycleompiler//配套android.arch.lifecycle使用
     kapt(deps.databindingcompiler)//databinding使用

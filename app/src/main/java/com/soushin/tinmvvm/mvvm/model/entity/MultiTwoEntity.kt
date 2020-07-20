@@ -1,7 +1,7 @@
 package com.soushin.tinmvvm.mvvm.model.entity
 
 import com.chad.library.adapter.base.entity.MultiItemEntity
-import me.soushin.tinmvvm.base.BaseAdapter
+import com.soushin.tinmvvm.mvvm.adapter.BaseAdapter
 
 /**
  *

@@ -1,4 +1,4 @@
-package me.soushin.tinmvvm.network
+package com.soushin.tinmvvm.network
 
 /**
  * 返回data是Any

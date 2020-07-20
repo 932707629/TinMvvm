@@ -10,10 +10,10 @@ import com.soushin.tinmvvm.config.go
 import com.soushin.tinmvvm.databinding.ActivityMainBinding
 import com.soushin.tinmvvm.mvvm.ui.fragment.CategoryFragment
 import com.soushin.tinmvvm.mvvm.viewmodel.MainViewModel
-import me.soushin.tinmvvm.utils.FragmentUtils
-import me.soushin.tinmvvm.utils.PermissionUtil
+import com.soushin.tinmvvm.utils.PermissionUtil
 import com.tbruyelle.rxpermissions2.RxPermissions
 import me.soushin.tinmvvm.base.BaseActivity
+import me.soushin.tinmvvm.utils.FragmentUtils
 
 
 /**

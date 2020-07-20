@@ -13,8 +13,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.blankj.ALog;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -524,7 +522,7 @@ public final class FragmentUtils {
         if (srcFragment == destFragment)
             return null;
         if (srcFragment != null && srcFragment.isRemoving()) {
-            ALog.e(srcFragment.getClass().getSimpleName() + " is isRemoving");
+            LogUtils.INSTANCE.e(srcFragment.getClass().getSimpleName(), " is isRemoving");
             return null;
         }
         String name = destFragment.getClass().getSimpleName();

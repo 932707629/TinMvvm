@@ -1,4 +1,4 @@
-package me.soushin.tinmvvm.base
+package com.soushin.tinmvvm.mvvm.adapter
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.entity.MultiItemEntity

@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
-//apply from: "../bintrayUpload.gradle"
+apply from: "../bintrayUpload.gradle"
 //版本更新的命令
 //gradlew clean build bintrayUpload -PbintrayUser=soushin -PbintrayKey=41191f3e38ba571be46a639901db861ee8053346 -PdryRun=false
 android {
@@ -15,17 +15,6 @@ android {
         versionName = rootProject.tinmvvmVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [
-                        //必须，告知RxHttp你依赖的okhttp版本，目前已适配 v3.12.0 - v4.7.2版本  (v4.3.0除外)
-                        rxhttp_okhttp: '4.7.2',
-                        //使用asXxx方法时必须，告知RxHttp你依赖的rxjava版本，可传入rxjava2、rxjava3
-                        rxhttp_rxjava: 'rxjava2',
-//                        rxhttp_package: 'rxhttp'   //非必须，指定RxHttp相关类的生成路径，即包名
-                ]
-            }
-        }
     }
 
     buildTypes {
@@ -61,13 +50,6 @@ android {
 }
 
 
-//禁用javadoc任务
-//allprojects {
-//    tasks.withType(Javadoc).all {
-//        enabled=false
-//    }
-//}
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //kt+jetpack+androidx
@@ -85,28 +67,16 @@ dependencies {
     api(deps.rxandroid)
     api(deps.rxjava2)
     api(deps.liveeventbus)
-    api(deps.glide)
-    api(deps.brvh)
-    api(deps.rxpermissions)
-    api(deps.alog)
-    api(deps.ToastUtils)
-    api(deps.rxhttp)
-    api(deps.okhttp)
-    api(deps.rxlife_rxjava)//rxjava页面销毁，关闭请求，非必须
-    api(deps.rxlife_coroutine)//协程页面销毁，关闭请求，非必须
     api(deps.immersionbar)
     api(deps.immersionbar_components)
     api(deps.immersionbar_ktx)
     api(deps.basepopup)
-    //rxhttp插件
-    kapt(deps.rxhttp_compiler) //注解处理器，生成RxHttp类
     //test
     debugApi(deps.leakcanary)
     testImplementation(deps.junit)
     androidTestImplementation(deps.test_junit)
     androidTestImplementation(deps.espresso)
 }
-
 
 
 

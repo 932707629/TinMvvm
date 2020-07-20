@@ -1,6 +1,8 @@
 package me.soushin.tinmvvm.config
 
-import okhttp3.OkHttpClient
+//import okhttp3.OkHttpClient
+//import rxhttp.wrapper.callback.Function
+//import rxhttp.wrapper.param.Param
 
 /**
  * 框架参数配置 基于建造者模式
@@ -8,36 +10,34 @@ import okhttp3.OkHttpClient
  * @time 2020/7/15 15:56
  */
 class GlobalConfigModule {
-    var okhttpBuilder:OkHttpClient.Builder?
-    var globalParamsMap:MutableMap<String,Any>?=null
-    var globalHeaderMap:MutableMap<String,Any>?=null
+//    var okhttpBuilder:OkHttpClient.Builder?
+//    var globalParamsFunction:Function<Param<*>,Param<*>>?=null
+//    var resultDecoderFunction:Function<String,String>?=null
 
     constructor(builder:Builder){
-        this.okhttpBuilder=builder.okhttpBuilder
-        this.globalHeaderMap=builder.globalHeaderMap
-        this.globalParamsMap=builder.globalParamsMap
+//        this.okhttpBuilder=builder.okhttpBuilder
     }
 
     class Builder(){
 
-        var okhttpBuilder:OkHttpClient.Builder?=null
-        var globalParamsMap:MutableMap<String,Any>?=null
-        var globalHeaderMap:MutableMap<String,Any>?=null
+//        var okhttpBuilder:OkHttpClient.Builder?=null
+//        var globalParamsFunction:Function<Param<*>,Param<*>>?=null
+//        var resultDecoderFunction:Function<String,String>?=null
 
-        fun okHttpConfig(builder:OkHttpClient.Builder):Builder{
+        /*fun okHttpConfig(builder:OkHttpClient.Builder):Builder{
             this.okhttpBuilder=builder
             return this
         }
 
-        fun globalParamsMap(paramsMap:MutableMap<String,Any>?):Builder{
-            this.globalParamsMap=paramsMap
+        fun globalParamsFunction(globalParamsFunction:Function<Param<*>,Param<*>>?):Builder{
+            this.globalParamsFunction=globalParamsFunction
             return this
         }
 
-        fun globalHeaderMap(headerMap:MutableMap<String,Any>?):Builder{
-            this.globalHeaderMap=headerMap
+        fun resultDecoderFunction(resultDecoderFunction:Function<String,String>?):Builder{
+            this.resultDecoderFunction=resultDecoderFunction
             return this
-        }
+        }*/
 
         fun build(): GlobalConfigModule{
             return GlobalConfigModule(this)

@@ -7,7 +7,7 @@ import com.soushin.tinmvvm.mvvm.model.entity.MultiTwoEntity
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import me.soushin.tinmvvm.base.BaseModel
-import java.util.ArrayList
+import java.util.*
 
 /**
  * ================================================

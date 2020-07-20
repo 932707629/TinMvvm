@@ -1,4 +1,4 @@
-package me.soushin.tinmvvm.utils
+package com.soushin.tinmvvm.utils
 
 import android.Manifest
 import androidx.lifecycle.LifecycleOwner
