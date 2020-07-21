@@ -60,7 +60,8 @@ abstract class BaseActivity<V : ViewDataBinding,VM: BaseViewModel<*>> :AppCompat
             LogUtils.i("用户字体大小有改变getResources", res.configuration.fontScale)
             val newConfig = Configuration()
             newConfig.setToDefaults() //设置默认
-            res.updateConfiguration(newConfig, res.displayMetrics)//方法废弃
+            createConfigurationContext(newConfig)
+//            res.updateConfiguration(newConfig, res.displayMetrics)//方法废弃
         }
         return res
     }

@@ -5,6 +5,11 @@ import android.content.ContentValues
 import android.database.Cursor
 import android.net.Uri
 import android.util.Log
+import kotlinx.coroutines.Job
+import me.soushin.tinmvvm.base.*
+import me.soushin.tinmvvm.listener.AppLifecycle
+import me.soushin.tinmvvm.listener.ConfigModule
+import me.soushin.tinmvvm.utils.*
 
 /**
  * 第三方库初始化操作
@@ -14,7 +19,25 @@ import android.util.Log
 class InitProvider :ContentProvider() {
 
     override fun onCreate(): Boolean {
-        Log.i("InitProvider.class","初始化开始")
+        LogUtils.i("InitProvider.class","初始化开始")
+        LogUtils.i("InitProvider", BaseActivity::class.java.simpleName)
+        LogUtils.i("InitProvider", BaseApp::class.java.simpleName)
+        LogUtils.i("InitProvider", BaseFragment::class.java.simpleName)
+        LogUtils.i("InitProvider", BaseModel::class.java.simpleName)
+        LogUtils.i("InitProvider", BasePopup::class.java.simpleName)
+        LogUtils.i("InitProvider", BaseViewModel::class.java.simpleName)
+        LogUtils.i("InitProvider", AppComponent::class.java.simpleName)
+        LogUtils.i("InitProvider", AppDelegate::class.java.simpleName)
+        LogUtils.i("InitProvider", GlobalConfigModule::class.java.simpleName)
+        LogUtils.i("InitProvider", HttpHandleCallBack::class.java.simpleName)
+        LogUtils.i("InitProvider", LiveDataTag::class.java.simpleName)
+        LogUtils.i("InitProvider", AppLifecycle::class.java.simpleName)
+        LogUtils.i("InitProvider", ConfigModule::class.java.simpleName)
+        LogUtils.i("InitProvider", AppManager::class.java.simpleName)
+        LogUtils.i("InitProvider", FragmentUtils::class.java.simpleName)
+        LogUtils.i("InitProvider", KeyboardUtils::class.java.simpleName)
+        LogUtils.i("InitProvider", ManifestParser::class.java.simpleName)
+        LogUtils.i("InitProvider", FragmentUtils::class.java.simpleName)
         return true
     }
 

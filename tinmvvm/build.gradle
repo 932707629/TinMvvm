@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
-apply from: "../bintrayUpload.gradle"
+
 //版本更新的命令
 //gradlew clean build bintrayUpload -PbintrayUser=soushin -PbintrayKey=41191f3e38ba571be46a639901db861ee8053346 -PdryRun=false
 android {
@@ -19,18 +19,18 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
 //            shrinkResources true
-            zipAlignEnabled true
+//            zipAlignEnabled true
             //子module使用consumerProguardFiles进行混淆配置
             consumerProguardFiles('proguard-rules.pro')
 //            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
-//            minifyEnabled false
-            minifyEnabled true
+            minifyEnabled false
+//            minifyEnabled true
 //            shrinkResources true
-            zipAlignEnabled true
+//            zipAlignEnabled true
             //子module使用consumerProguardFiles进行混淆配置
             consumerProguardFiles('proguard-rules.pro')
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -40,9 +40,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    buildFeatures{
-        dataBinding=true
-        viewBinding=true
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
     }
     lintOptions {
         abortOnError false
@@ -54,29 +54,48 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //kt+jetpack+androidx
     api(deps.kotlinstdlibjdk7)
-    api(deps.appcompat)
+    api(deps.appcompat) {
+        exclude group: "androidx.lifecycle", module: 'lifecycle-runtime'
+        exclude group: "androidx.core", module: 'core'
+        exclude group: "androidx.lifecycle", module: 'lifecycle-livedata'
+        exclude group: "androidx.lifecycle", module: 'lifecycle-viewmodel'
+    }
     api(deps.core_ktx)
-    api(deps.swipeRefresh)
-    api(deps.material)
+    api(deps.swipeRefresh) {
+        exclude group: "androidx.annotation", module: 'annotation'
+        exclude group: "androidx.core", module: 'core'
+    }
+    api(deps.material) {
+        exclude group: "androidx.annotation", module: 'annotation'
+        exclude group: "androidx.appcompat", module: 'appcompat'
+        exclude group: "androidx.fragment", module: 'fragment'
+        exclude group: "androidx.core", module: 'core'
+        exclude group: "androidx.recyclerview", module: 'recyclerview'
+        exclude group: "androidx.lifecycle", module: 'lifecycle-runtime'
+    }
     api(deps.constraintlayout)
     api(deps.extensions)
     api(deps.recyclerview)
     api(deps.kotlinx_coroutines)
     api(deps.kotlinx_coroutines_android)
     //第三方工具库
-    api(deps.rxandroid)
+    api(deps.rxandroid) {
+        exclude group: "io.reactivex.rxjava2", module: 'rxjava'
+    }
     api(deps.rxjava2)
-    api(deps.liveeventbus)
+    api(deps.liveeventbus) {
+        exclude group: "androidx.lifecycle", module: 'lifecycle-livedata'
+        exclude group: "androidx.lifecycle", module: 'lifecycle-extensions'
+    }
     api(deps.immersionbar)
     api(deps.immersionbar_components)
-    api(deps.immersionbar_ktx)
+    api(deps.immersionbar_ktx) {
+        exclude group: "org.jetbrains.kotlin", module: 'kotlin-android-extensions-runtime'
+    }
     api(deps.basepopup)
-    //test
-    debugApi(deps.leakcanary)
-    testImplementation(deps.junit)
-    androidTestImplementation(deps.test_junit)
-    androidTestImplementation(deps.espresso)
 }
+
+apply from: "../bintrayUpload.gradle"
 
 
 

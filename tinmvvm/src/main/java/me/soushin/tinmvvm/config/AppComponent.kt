@@ -1,7 +1,5 @@
 package me.soushin.tinmvvm.config
 
-import me.soushin.tinmvvm.base.BaseApp
-
 /**
  * 拥有此类即可调用对应的方法拿到对应实例
  * @auther SouShin

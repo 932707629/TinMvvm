@@ -1,16 +1,16 @@
-
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'org.jetbrains.dokka-android'
 
+
 // load properties
 Properties properties = new Properties()
 File localPropertiesFile = project.file("local.properties");
-if(localPropertiesFile.exists()){
+if (localPropertiesFile.exists()) {
     properties.load(localPropertiesFile.newDataInputStream())
 }
 File projectPropertiesFile = project.file("project.properties");
-if(projectPropertiesFile.exists()){
+if (projectPropertiesFile.exists()) {
     properties.load(projectPropertiesFile.newDataInputStream())
 }
 
@@ -39,6 +39,7 @@ install {
     repositories.mavenInstaller {
         pom {
             project {
+                packaging 'jar'
                 name projectName
                 groupId projectGroupId
                 artifactId projectArtifactId
@@ -75,6 +76,7 @@ task generateSourcesJar(type: Jar) {
 }
 
 task javadoc(type: Javadoc) {
+    failOnError false
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 }
@@ -85,7 +87,6 @@ task dokkaJavadoc(type: dokka.getClass()) {
 }
 
 task generateJavadoc(type: Jar, dependsOn: dokkaJavadoc) {
-    group = 'jar'
     classifier = 'javadoc'
     from javadoc.destinationDir
 }
@@ -97,7 +98,7 @@ artifacts {
 
 // javadoc configuration
 javadoc {
-    options{
+    options {
         encoding "UTF-8"
         charSet 'UTF-8'
         author true

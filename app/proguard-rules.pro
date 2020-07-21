@@ -29,6 +29,7 @@
   **[] $VALUES;
   public *;
 }
+#noinspection ShrinkerUnresolvedReference
 -keep class com.bumptech.glide.load.data.ParcelFileDescriptorRewinder$InternalRewinder {
   *** rewind();
 }
@@ -51,8 +52,8 @@
 ################okhttp###############
 -keepattributes Signature
 -keepattributes *Annotation*
--keep class com.squareup.okhttp.** { *; }
--keep interface com.squareup.okhttp.** { *; }
+-keep class com.squareup.okhttp.* { *; }
+-keep interface com.squareup.okhttp.* { *; }
 -keep class okhttp3.** { *; }
 -keep interface okhttp3.** { *; }
 -dontwarn com.squareup.okhttp.**
@@ -60,7 +61,7 @@
 ################glide###############
 -keep public class * implements com.bumptech.glide.module.AppGlideModule
 -keep public class * implements com.bumptech.glide.module.LibraryGlideModule
--keep class com.bumptech.glide.** { *; }
+-keep class com.bumptech.glide.* { *; }
 -keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
     **[] $VALUES;
     public *;
@@ -69,6 +70,7 @@
 -keep class com.youth.banner.** {*;}
 
  -keep class * implements android.os.Parcelable {
+   #noinspection ShrinkerUnresolvedReference
    public static final android.os.Parcelable$Creator *;
  }
  -keepnames class * implements java.io.Serializable

@@ -70,7 +70,8 @@ def buildTime() {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    implementation project(':tinmvvm')
+//    implementation project(':tinmvvm')
+    implementation("com.github.932707629:tinmvvm:1.0.5")
     implementation(deps.work_runtime)
     implementation(deps.autosize)
     implementation(deps.fastjson)
@@ -88,6 +89,10 @@ dependencies {
     kapt(deps.glide_compiler)//配套glide使用
 //   kapt deps.lifecycleompiler//配套android.arch.lifecycle使用
     kapt(deps.databindingcompiler)//databinding使用
-
+    //test
+    debugApi(deps.leakcanary)
+    compileOnly(deps.junit)
+    androidTestImplementation(deps.test_junit)
+    androidTestImplementation(deps.espresso)
 
 }

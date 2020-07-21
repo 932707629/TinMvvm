@@ -2,12 +2,10 @@ package me.soushin.tinmvvm.config
 
 import android.app.Application
 import android.content.Context
-import androidx.lifecycle.LiveData
 import com.jeremyliao.liveeventbus.LiveEventBus
 import me.soushin.tinmvvm.listener.AppLifecycle
 import me.soushin.tinmvvm.listener.ConfigModule
 import me.soushin.tinmvvm.utils.ManifestParser
-import java.util.stream.DoubleStream.builder
 
 /**
  * AppDelegate 可以代理 Application 的生命周期,在对应的生命周期,执行对应的逻辑,因为 Java 只能单继承

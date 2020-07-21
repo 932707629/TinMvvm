@@ -2,6 +2,8 @@ package me.soushin.tinmvvm.base
 
 import android.content.Context
 import android.view.View
+import me.soushin.tinmvvm.utils.AppManager
+import me.soushin.tinmvvm.utils.LogUtils
 import razerdp.basepopup.BasePopupWindow
 
 /**
