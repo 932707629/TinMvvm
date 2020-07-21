@@ -2,9 +2,15 @@ package com.soushin.tinmvvm.config
 
 import android.app.Application
 import android.content.Context
+import com.blankj.ALog
+import com.soushin.tinmvvm.BuildConfig
 import me.soushin.tinmvvm.config.GlobalConfigModule
+import me.soushin.tinmvvm.listener.ALoger
 import me.soushin.tinmvvm.listener.AppLifecycle
 import me.soushin.tinmvvm.listener.ConfigModule
+import me.soushin.tinmvvm.listener.ExceptionCallBack
+import xcrash.ILogger
+import xcrash.XCrash
 
 /**
  * 全局配置
@@ -15,11 +21,21 @@ class GlobalConfiguration :ConfigModule {
 
     override fun applyOptions(context: Context, builder: GlobalConfigModule.Builder) {
         builder
-//            .globalParamsFunction(Function<Param<*>, Param<*>> { p -> p })//公共请求头 公共请求参数
-//            .resultDecoderFunction(Function{ return@Function it })//将密文解密成明文，解密逻辑开发者实现
+            .exceptionCallback(object :ExceptionCallBack{
+                override fun exceptionCallback(type: Int, logPath: String, emergency: String) {
+                    //这里的type java错误 1  anr 错误 2  native 错误 3
+                    ALog.e("滴滴滴崩溃了",type,logPath,emergency);
+                }
+            })
+//            .logOutputCallback(object :ALoger{
+//                override fun log(type: Int, tag: String?, vararg content: Any?) {
+//                    //自定义crash异常打印的工具类 可以把crash日志存储到自定义文件里
+//                }
+//            })
+//            .logDir("")//crash日志输出文件夹
+            .logEnable(BuildConfig.DEBUG)
             .build()
     }
-
 
     override fun injectAppLifecycle(context: Context, lifecycles: MutableList<AppLifecycle>) {
         lifecycles.add(AppLifecycleImpl())

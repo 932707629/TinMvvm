@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
-import me.soushin.tinmvvm.utils.LogUtils
+import com.blankj.ALog
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -40,14 +40,14 @@ abstract class BaseActivity<V : ViewDataBinding,VM: BaseViewModel<*>> :AppCompat
                 dataBinding?.setVariable(initVariableId(),viewModel)
             }
         }catch (e:Exception){
-            LogUtils.i("viewmodel初始化异常${e.message}");
+            ALog.i("viewmodel初始化异常${e.message}");
             e.printStackTrace()
         }
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         //设置字体为默认大小，不随系统字体大小改而改变
-        LogUtils.i("用户字体大小有改变onConfigurationChanged", newConfig.fontScale)
+        ALog.i("用户字体大小有改变onConfigurationChanged", newConfig.fontScale)
         if (newConfig.fontScale != 1f) {
             resources
         }
@@ -57,7 +57,7 @@ abstract class BaseActivity<V : ViewDataBinding,VM: BaseViewModel<*>> :AppCompat
     override fun getResources(): Resources {
         val res = super.getResources()
         if (res.configuration.fontScale != 1f) { //非默认值
-            LogUtils.i("用户字体大小有改变getResources", res.configuration.fontScale)
+            ALog.i("用户字体大小有改变getResources", res.configuration.fontScale)
             val newConfig = Configuration()
             newConfig.setToDefaults() //设置默认
             createConfigurationContext(newConfig)

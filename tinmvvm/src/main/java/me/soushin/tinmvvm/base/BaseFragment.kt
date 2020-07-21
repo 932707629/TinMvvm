@@ -38,8 +38,6 @@ import java.lang.reflect.ParameterizedType
         mImmersionProxy.isUserVisibleHint = isVisibleToUser
     }
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mImmersionProxy.onCreate(savedInstanceState)

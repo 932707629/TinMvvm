@@ -70,14 +70,13 @@ def buildTime() {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-//    implementation project(':tinmvvm')
-    implementation("com.github.932707629:tinmvvm:1.0.5")
+    implementation project(':tinmvvm')
+//    implementation("com.github.932707629:tinmvvm:1.0.5")
     implementation(deps.work_runtime)
     implementation(deps.autosize)
     implementation(deps.fastjson)
     implementation(deps.brvh)
     implementation(deps.rxpermissions)
-    implementation(deps.alog)
     implementation(deps.ToastUtils)
     implementation(deps.glide)
     implementation(deps.rxhttp)

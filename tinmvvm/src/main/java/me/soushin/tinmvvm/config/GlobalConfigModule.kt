@@ -1,5 +1,9 @@
 package me.soushin.tinmvvm.config
 
+import me.soushin.tinmvvm.listener.ALoger
+import me.soushin.tinmvvm.listener.ExceptionCallBack
+import xcrash.XCrash
+
 //import okhttp3.OkHttpClient
 //import rxhttp.wrapper.callback.Function
 //import rxhttp.wrapper.param.Param
@@ -10,19 +14,44 @@ package me.soushin.tinmvvm.config
  * @time 2020/7/15 15:56
  */
 class GlobalConfigModule {
-//    var okhttpBuilder:OkHttpClient.Builder?
-//    var globalParamsFunction:Function<Param<*>,Param<*>>?=null
-//    var resultDecoderFunction:Function<String,String>?=null
+    var logDir:String?=null//log日志输出路径 这个值如果不为空默认开启日志缓存到文件功能 默认关闭
+    var logEnable:Boolean=true//是否开启log日志输出到控制台 默认开启
+    var logOutputCallback:ALoger?=null//log日志输出回调
+    var exceptionCallBack:ExceptionCallBack?=null//监听系统异常回调
 
-    constructor(builder:Builder){
-//        this.okhttpBuilder=builder.okhttpBuilder
+    constructor(builder: Builder) {
+        this.logDir=builder.logDir
+        this.logEnable=builder.logEnable
+        this.logOutputCallback=builder.logOutputCallback
+        this.exceptionCallBack=builder.exceptionCallBack
     }
 
-    class Builder(){
+    class Builder() {
 
-//        var okhttpBuilder:OkHttpClient.Builder?=null
-//        var globalParamsFunction:Function<Param<*>,Param<*>>?=null
-//        var resultDecoderFunction:Function<String,String>?=null
+        var logDir:String?=null//log日志输出路径 这个值如果不为空默认开启日志缓存到文件功能 默认关闭
+        var logEnable:Boolean=true//是否开启log日志输出到控制台 默认开启
+        var logOutputCallback:ALoger?=null//log日志输出回调
+        var exceptionCallBack:ExceptionCallBack?=null//监听系统异常回调
+
+        fun logDir(logDir:String):Builder{
+            this.logDir=logDir
+            return this
+        }
+
+        fun logEnable(logEnable:Boolean):Builder{
+            this.logEnable=logEnable
+            return this
+        }
+
+        fun logOutputCallback(logOutputCallback:ALoger):Builder{
+            this.logOutputCallback=logOutputCallback
+            return this
+        }
+
+        fun exceptionCallback(exceptionCallBack:ExceptionCallBack):Builder{
+            this.exceptionCallBack=exceptionCallBack
+            return this
+        }
 
         /*fun okHttpConfig(builder:OkHttpClient.Builder):Builder{
             this.okhttpBuilder=builder
@@ -39,7 +68,7 @@ class GlobalConfigModule {
             return this
         }*/
 
-        fun build(): GlobalConfigModule{
+        fun build(): GlobalConfigModule {
             return GlobalConfigModule(this)
         }
     }

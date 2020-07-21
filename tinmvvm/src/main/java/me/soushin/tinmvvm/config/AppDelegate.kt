@@ -41,9 +41,10 @@ class AppDelegate : AppLifecycle {
 
         modules?.let {
             val globalConfig=getGlobalConfigModule(application,it)
-            //只要有lifecyclerower的地方就可以获取功能组件
+            AppComponent(globalConfig)//这里不发推送了  发了里面也没啥东西
+            /*//只要有lifecyclerower的地方就可以获取功能组件
             LiveEventBus.get(LiveDataTag.tag_globalConfig)
-                .post(AppComponent(globalConfig))
+                .post(AppComponent(globalConfig))*/
         }
 
         //注册框架外部, 开发者扩展的 Activity 生命周期逻辑
