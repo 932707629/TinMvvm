@@ -92,6 +92,7 @@ dependencies {
         exclude group: "androidx.lifecycle", module: 'lifecycle-livedata'
         exclude group: "androidx.lifecycle", module: 'lifecycle-extensions'
     }
+    api(deps.rxerrorhandler)
     api(deps.immersionbar)
     api(deps.immersionbar_components)
     api(deps.immersionbar_ktx) {

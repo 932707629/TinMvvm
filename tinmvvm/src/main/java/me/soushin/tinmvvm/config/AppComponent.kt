@@ -3,6 +3,7 @@ package me.soushin.tinmvvm.config
 import android.app.Application
 import android.util.Log
 import com.blankj.ALog
+import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import me.soushin.tinmvvm.BuildConfig
 import me.soushin.tinmvvm.base.BaseApp
 import me.soushin.tinmvvm.impl.CrashLogImpl
@@ -22,6 +23,7 @@ class AppComponent {
         // TODO: 2020/7/15  这里拿到全局配置信息即可实现对全局参数统一配置
         initALog(BaseApp.instance!!)
         initXcrash()
+        initRxErrorHandler()
     }
 
     private fun initXcrash() {
@@ -62,6 +64,15 @@ class AppComponent {
             .setFileFilter(ALog.V).stackDeep = 1 // log栈深度，默认为1
     }
 
+    companion object {
+        var rxErrorHandler:RxErrorHandler?=null
+    }
 
+    private fun initRxErrorHandler() {
+        rxErrorHandler=RxErrorHandler.builder()
+            .with(BaseApp.instance)
+            .responseErrorListener(globalConfig.errorResponseListener)
+            .build()
+    }
 
 }

@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.blankj.ALog
 import com.soushin.tinmvvm.BuildConfig
+import me.jessyan.rxerrorhandler.handler.listener.ResponseErrorListener
 import me.soushin.tinmvvm.config.GlobalConfigModule
 import me.soushin.tinmvvm.listener.ALoger
 import me.soushin.tinmvvm.listener.AppLifecycle
@@ -27,6 +28,7 @@ class GlobalConfiguration :ConfigModule {
                     ALog.e("滴滴滴崩溃了",type,logPath,emergency);
                 }
             })
+            .errorResponseListener(ResponseErrorListenerImpl())
 //            .logOutputCallback(object :ALoger{
 //                override fun log(type: Int, tag: String?, vararg content: Any?) {
 //                    //自定义crash异常打印的工具类 可以把crash日志存储到自定义文件里

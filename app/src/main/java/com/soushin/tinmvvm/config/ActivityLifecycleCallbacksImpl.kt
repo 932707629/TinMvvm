@@ -23,7 +23,7 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
         if (activity is BaseActivity<*, *> &&activity.useFragment()){//注册fragment回调监听
             val fragmentLifecycleCallbacksImpl=
                 FragmentLifecycleCallbacksImpl()
-            fragmentLifecycleMap.put(activity.localClassName,fragmentLifecycleCallbacksImpl)
+            fragmentLifecycleMap[activity.localClassName] = fragmentLifecycleCallbacksImpl
             activity.supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentLifecycleCallbacksImpl,true)
         }
     }
@@ -52,7 +52,7 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
         ALog.i("onActivityDestroyed",activity.localClassName)
         AppManager.get().removeActivity(activity)
         if (activity is BaseActivity<*, *> &&activity.useFragment()){//注册fragment回调监听
-            fragmentLifecycleMap.get(activity.localClassName)?.let {
+            fragmentLifecycleMap[activity.localClassName]?.let {
                 activity.supportFragmentManager.unregisterFragmentLifecycleCallbacks(it)
                 fragmentLifecycleMap.remove(activity.localClassName)
             }

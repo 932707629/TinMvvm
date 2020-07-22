@@ -108,9 +108,9 @@ ext {
             rxlifecycle_android                 : "com.trello.rxlifecycle3:rxlifecycle-android:3.1.0",
             rxlifecycle_android_lifecycle       : "com.trello.rxlifecycle3:rxlifecycle-android-lifecycle:3.1.0",
             rxlifecycle_kotlin                  : "com.trello.rxlifecycle3:rxlifecycle-kotlin:3.1.0",
+            rxerrorhandler                      : "me.jessyan:rxerrorhandler:2.1.1",
             rxlifecycle_android_lifecycle_kotlin: "com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:3.1.0",
-
-
+            
             //test
             junit                               : "junit:junit:4.12",
             test_junit                          : "androidx.test.ext:junit:1.1.1",

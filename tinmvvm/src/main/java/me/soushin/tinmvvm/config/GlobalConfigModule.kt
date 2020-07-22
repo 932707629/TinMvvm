@@ -1,5 +1,7 @@
 package me.soushin.tinmvvm.config
 
+import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber
+import me.jessyan.rxerrorhandler.handler.listener.ResponseErrorListener
 import me.soushin.tinmvvm.listener.ALoger
 import me.soushin.tinmvvm.listener.ExceptionCallBack
 import xcrash.XCrash
@@ -18,12 +20,14 @@ class GlobalConfigModule {
     var logEnable:Boolean=true//是否开启log日志输出到控制台 默认开启
     var logOutputCallback:ALoger?=null//log日志输出回调
     var exceptionCallBack:ExceptionCallBack?=null//监听系统异常回调
+    var errorResponseListener: ResponseErrorListener?=null//rxjava2异常监听回调
 
     constructor(builder: Builder) {
         this.logDir=builder.logDir
         this.logEnable=builder.logEnable
         this.logOutputCallback=builder.logOutputCallback
         this.exceptionCallBack=builder.exceptionCallBack
+        this.errorResponseListener=builder.errorResponseListener
     }
 
     class Builder() {
@@ -32,6 +36,7 @@ class GlobalConfigModule {
         var logEnable:Boolean=true//是否开启log日志输出到控制台 默认开启
         var logOutputCallback:ALoger?=null//log日志输出回调
         var exceptionCallBack:ExceptionCallBack?=null//监听系统异常回调
+        var errorResponseListener= ResponseErrorListener.EMPTY//rxjava2异常监听回调
 
         fun logDir(logDir:String):Builder{
             this.logDir=logDir
@@ -50,6 +55,11 @@ class GlobalConfigModule {
 
         fun exceptionCallback(exceptionCallBack:ExceptionCallBack):Builder{
             this.exceptionCallBack=exceptionCallBack
+            return this
+        }
+
+        fun errorResponseListener(errorResponseListener: ResponseErrorListener):Builder{
+            this.errorResponseListener=errorResponseListener
             return this
         }
 
