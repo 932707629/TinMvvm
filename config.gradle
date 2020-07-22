@@ -1,0 +1,84 @@
+
+ext {
+
+    compileSdkVersion = 29
+    minSdkVersion = 19
+    targetSdkVersion = 29
+    buildToolVersion = '29.0.3'
+
+    versionCode = 1_000_006
+    versionName = '1.0.6'
+
+    tinmvvmVersionCode = 1_000_006
+    tinmvvmVersionName = '1.0.6'
+
+    rxjavaName = 'rxjava2'
+    okhttpVersion = '4.7.2'
+    rxhttpVersion = '2.2.8'
+    rxlifeVersion = '2.0.0'
+    appcompatVersion = '1.1.0'
+    immersionbarVersion = '3.0.0'
+
+    deps = [
+            appcompat                           : "androidx.appcompat:appcompat:$appcompatVersion",
+            material                            : "com.google.android.material:material:$appcompatVersion",
+            swipeRefresh                        : "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0",
+            recyclerview                        : "androidx.recyclerview:recyclerview:1.1.0",
+            kotlinstdlibjdk7                    : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            kotlinx_coroutines                  : "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3",
+            kotlinx_coroutines_android          : "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3",
+            core_ktx                            : "androidx.core:core-ktx:1.3.0",
+            constraintlayout                    : "androidx.constraintlayout:constraintlayout:1.1.3",
+            //tools
+            brvh                                : "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4",
+            //immersionbar组件
+            immersionbar                        : "com.gyf.immersionbar:immersionbar:$immersionbarVersion",
+            immersionbar_components             : "com.gyf.immersionbar:immersionbar-components:$immersionbarVersion",
+            immersionbar_ktx                    : "com.gyf.immersionbar:immersionbar-ktx:$immersionbarVersion",
+            alog                                : "com.github.932707629:alog:1.9.4",
+            ToastUtils                          : "com.hjq:toast:5.8",
+            gson                                : "com.google.code.gson:gson:2.8.6",
+            liveeventbus                        : "com.jeremyliao:live-event-bus-x:1.5.7",
+            autosize                            : "me.jessyan:autosize:1.2.1",
+            basepopup                           : "com.github.razerdp:BasePopup:2.2.3",
+
+            //network
+            retrofit2                           : "com.squareup.retrofit2:retrofit:2.6.2",
+            retrofit2_gson                      : "com.squareup.retrofit2:converter-gson:2.6.2",
+            glide                               : "com.github.bumptech.glide:glide:4.10.0",
+            rxandroid                           : "io.reactivex.rxjava2:rxandroid:2.1.1",
+            rxjava2                             : "io.reactivex.rxjava2:rxjava:$rxhttpVersion",
+            rxpermissions                       : "com.github.tbruyelle:rxpermissions:0.10.2",
+            okhttp                              : "com.squareup.okhttp3:okhttp:$okhttpVersion",
+            rxhttp                              : "com.ljx.rxhttp:rxhttp:$rxhttpVersion",
+            rxlife_rxjava                       : "com.ljx.rxlife2:rxlife-rxjava:$rxlifeVersion",
+            rxlife_coroutine                    : "com.ljx.rxlife:rxlife-coroutine:$rxlifeVersion",
+            fastjson                            : "com.alibaba:fastjson:1.2.70",
+            xcrash_android                      : "com.iqiyi.xcrash:xcrash-android-lib:2.4.9",
+            //Jetpack
+            extensions                          : "androidx.lifecycle:lifecycle-extensions:2.1.0",
+            work_runtime                        : "android.arch.work:work-runtime:1.0.1",
+
+            //rx
+            rxlifecycle                         : "com.trello.rxlifecycle3:rxlifecycle:3.1.0",
+            rxlifecycle_components              : "com.trello.rxlifecycle3:rxlifecycle-components:3.1.0",
+            rxlifecycle_android                 : "com.trello.rxlifecycle3:rxlifecycle-android:3.1.0",
+            rxlifecycle_android_lifecycle       : "com.trello.rxlifecycle3:rxlifecycle-android-lifecycle:3.1.0",
+            rxlifecycle_kotlin                  : "com.trello.rxlifecycle3:rxlifecycle-kotlin:3.1.0",
+            rxerrorhandler                      : "me.jessyan:rxerrorhandler:2.1.1",
+            rxlifecycle_android_lifecycle_kotlin: "com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:3.1.0",
+
+            //test
+            junit                               : "junit:junit:4.12",
+            test_junit                          : "androidx.test.ext:junit:1.1.1",
+            espresso                            : "androidx.test.espresso:espresso-core:3.2.0",
+            leakcanary                          : "com.squareup.leakcanary:leakcanary-android:2.4",
+
+            //kapt
+            lifecycleompiler                    : "android.arch.lifecycle:compiler:1.1.1",
+            glide_compiler                      : "com.github.bumptech.glide:compiler:4.10.0",
+            rxhttp_compiler                     : "com.ljx.rxhttp:rxhttp-compiler:$rxhttpVersion",
+            databindingcompiler                 : "com.android.databinding:compiler:3.1.4",
+
+    ]
+}

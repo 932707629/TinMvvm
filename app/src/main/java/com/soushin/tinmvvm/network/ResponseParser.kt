@@ -16,18 +16,18 @@ import java.lang.reflect.Type
  * @author created by Soushin
  * @time 2020/1/17 15 24
  */
-@Parser(name = "BaseResponse", wrappers = [MutableList::class, com.soushin.tinmvvm.network.BaseResponse::class])
+@Parser(name = "BaseResponse", wrappers = [MutableList::class, BaseResponse::class])
 open class ResponseParser<T> : AbstractParser<T> {
-
+    //这里需要注意 自定义构造方法必须要加 protected
     protected constructor() : super()
 
     constructor(type: Type) : super(type)
 
     @Throws(IOException::class)
     override fun onParse(response: Response): T {
-        val type = ParameterizedTypeImpl[com.soushin.tinmvvm.network.BaseResponse::class.java, mType]
+        val type = ParameterizedTypeImpl[BaseResponse::class.java, mType]
 
-        val data: com.soushin.tinmvvm.network.BaseResponse<T> = convert(response,type)
+        val data: BaseResponse<T> = convert(response,type)
         if (data.getData() == null && mType === String::class.java) {
             /*
              * 考虑到有些时候服务端会返回：{"errorCode":0,"errorMsg":"关注成功"}  类似没有data的数据
