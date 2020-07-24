@@ -1,17 +1,14 @@
 package com.soushin.tinmvvm.config
 
+import android.app.Activity
 import android.app.Application
 import android.content.Context
 import com.blankj.ALog
 import com.soushin.tinmvvm.BuildConfig
-import me.jessyan.rxerrorhandler.handler.listener.ResponseErrorListener
 import me.soushin.tinmvvm.config.GlobalConfigModule
-import me.soushin.tinmvvm.listener.ALoger
 import me.soushin.tinmvvm.listener.AppLifecycle
 import me.soushin.tinmvvm.listener.ConfigModule
 import me.soushin.tinmvvm.listener.ExceptionCallBack
-import xcrash.ILogger
-import xcrash.XCrash
 
 /**
  * 全局配置
@@ -23,17 +20,15 @@ class GlobalConfiguration :ConfigModule {
     override fun applyOptions(context: Context, builder: GlobalConfigModule.Builder) {
         builder
             .exceptionCallback(object :ExceptionCallBack{
-                override fun exceptionCallback(type: Int, logPath: String, emergency: String) {
-                    //这里的type java错误 1  anr 错误 2  native 错误 3
-                    ALog.e("滴滴滴崩溃了",type,logPath,emergency);
+                override fun exceptionCallback(errorActivity: Activity, emergency: String) {
+                    //crash异常信息输出 可以把crash日志存储到自定义文件里
+                    //这里的回调是在框架里的TinErrorActivity回调的  errorActivity后续生死交给开发者处理
+                    //可以在这里显示错误弹窗或者其他业务逻辑
+                    errorActivity.finish()
+                    ALog.e("滴滴滴崩溃了",emergency);
                 }
             })
             .errorResponseListener(ResponseErrorListenerImpl())
-//            .logOutputCallback(object :ALoger{
-//                override fun log(type: Int, tag: String?, vararg content: Any?) {
-//                    //自定义crash异常打印的工具类 可以把crash日志存储到自定义文件里
-//                }
-//            })
 //            .logDir("")//crash日志输出文件夹
             .logEnable(BuildConfig.DEBUG)
             .build()

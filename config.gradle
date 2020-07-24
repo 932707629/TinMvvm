@@ -1,4 +1,3 @@
-
 ext {
 
     compileSdkVersion = 29
@@ -54,7 +53,7 @@ ext {
             rxlife_rxjava                       : "com.ljx.rxlife2:rxlife-rxjava:$rxlifeVersion",
             rxlife_coroutine                    : "com.ljx.rxlife:rxlife-coroutine:$rxlifeVersion",
             fastjson                            : "com.alibaba:fastjson:1.2.70",
-            xcrash_android                      : "com.iqiyi.xcrash:xcrash-android-lib:2.4.9",
+            customactivityoncrash               : "cat.ereza:customactivityoncrash:2.3.0",
             //Jetpack
             extensions                          : "androidx.lifecycle:lifecycle-extensions:2.1.0",
             work_runtime                        : "android.arch.work:work-runtime:1.0.1",

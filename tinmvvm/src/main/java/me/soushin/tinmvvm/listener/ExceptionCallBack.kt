@@ -1,5 +1,7 @@
 package me.soushin.tinmvvm.listener
 
+import android.app.Activity
+
 /**
  *
  * @auther SouShin
@@ -7,7 +9,6 @@ package me.soushin.tinmvvm.listener
  */
 interface ExceptionCallBack {
 
-    //java错误 1  anr 错误 2  native 错误 3
-    fun exceptionCallback(type:Int,logPath:String, emergency:String)
+    fun exceptionCallback(errorActivity: Activity, emergency:String)
 
 }

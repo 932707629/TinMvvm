@@ -1,14 +1,9 @@
 package me.soushin.tinmvvm.config
 
-import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber
 import me.jessyan.rxerrorhandler.handler.listener.ResponseErrorListener
 import me.soushin.tinmvvm.listener.ALoger
 import me.soushin.tinmvvm.listener.ExceptionCallBack
-import xcrash.XCrash
 
-//import okhttp3.OkHttpClient
-//import rxhttp.wrapper.callback.Function
-//import rxhttp.wrapper.param.Param
 
 /**
  * 框架参数配置 基于建造者模式
@@ -18,14 +13,14 @@ import xcrash.XCrash
 class GlobalConfigModule {
     var logDir:String?=null//log日志输出路径 这个值如果不为空默认开启日志缓存到文件功能 默认关闭
     var logEnable:Boolean=true//是否开启log日志输出到控制台 默认开启
-    var logOutputCallback:ALoger?=null//log日志输出回调
+//    var logOutputCallback:ALoger?=null//log日志输出回调
     var exceptionCallBack:ExceptionCallBack?=null//监听系统异常回调
     var errorResponseListener: ResponseErrorListener?=null//rxjava2异常监听回调
 
     constructor(builder: Builder) {
         this.logDir=builder.logDir
         this.logEnable=builder.logEnable
-        this.logOutputCallback=builder.logOutputCallback
+//        this.logOutputCallback=builder.logOutputCallback
         this.exceptionCallBack=builder.exceptionCallBack
         this.errorResponseListener=builder.errorResponseListener
     }
@@ -34,7 +29,7 @@ class GlobalConfigModule {
 
         var logDir:String?=null//log日志输出路径 这个值如果不为空默认开启日志缓存到文件功能 默认关闭
         var logEnable:Boolean=true//是否开启log日志输出到控制台 默认开启
-        var logOutputCallback:ALoger?=null//log日志输出回调
+//        var logOutputCallback:ALoger?=null//log日志输出回调
         var exceptionCallBack:ExceptionCallBack?=null//监听系统异常回调
         var errorResponseListener= ResponseErrorListener.EMPTY//rxjava2异常监听回调
 
@@ -48,10 +43,10 @@ class GlobalConfigModule {
             return this
         }
 
-        fun logOutputCallback(logOutputCallback:ALoger):Builder{
+        /*fun logOutputCallback(logOutputCallback:ALoger):Builder{
             this.logOutputCallback=logOutputCallback
             return this
-        }
+        }*/
 
         fun exceptionCallback(exceptionCallBack:ExceptionCallBack):Builder{
             this.exceptionCallBack=exceptionCallBack

@@ -1,13 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.soushin.tinmvvm" >
+    package="me.soushin.tinmvvm">
 
     <application
-        android:supportsRtl="true"
-        android:allowBackup="true">
+        android:allowBackup="true"
+        android:supportsRtl="true">
+        <activity
+            android:name=".mvvm.ui.TinErrorActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/OnePxTheme"/>
 
-        <provider android:name="me.soushin.tinmvvm.config.InitProvider"
+        <provider
+            android:name=".config.InitProvider"
             android:authorities="${applicationId}.tinmvvm-init-provider"
             android:exported="false"
-            android:multiprocess="true"/>
+            android:multiprocess="true" />
     </application>
+
 </manifest>

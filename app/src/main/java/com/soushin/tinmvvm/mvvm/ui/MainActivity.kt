@@ -6,14 +6,19 @@ import android.view.View
 import com.blankj.ALog
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
+import com.soushin.tinmvvm.config.getThis
 import com.soushin.tinmvvm.config.go
 import com.soushin.tinmvvm.databinding.ActivityMainBinding
 import com.soushin.tinmvvm.mvvm.ui.fragment.CategoryFragment
 import com.soushin.tinmvvm.mvvm.viewmodel.MainViewModel
 import com.soushin.tinmvvm.utils.PermissionUtil
 import com.tbruyelle.rxpermissions2.RxPermissions
+import io.reactivex.Observable
 import me.soushin.tinmvvm.base.BaseActivity
 import me.soushin.tinmvvm.utils.FragmentUtils
+import okhttp3.internal.wait
+import java.lang.RuntimeException
+import java.util.concurrent.TimeUnit
 
 
 /**
@@ -61,8 +66,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                     val rxPermissions=RxPermissions(this)
                     val pms= arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
-                    PermissionUtil.requestPermission(object :
-                        PermissionUtil.RequestPermission{
+                    PermissionUtil.requestPermission(
+                        permissions = pms,
+                        lifecycle = this,
+                        rxPermissions = rxPermissions,
+                        requestPermission = object : PermissionUtil.RequestPermission{
                         override fun onRequestPermissionSuccess() {
                             ALog.d("onRequestPermissionSuccess");
                         }
@@ -74,10 +82,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                         override fun onRequestPermissionFailureWithAskNeverAgain(permissions: List<String>?) {
                             ALog.d("onRequestPermissionFailureWithAskNeverAgain$permissions");
                         }
-                    }, rxPermissions,this, pms)
+                    })
                 }
                 R.id.btn_thread_pool->{
                     go(ThreadPoolActivity::class.java)
+                }
+                R.id.btn_crash->{
+                   throw RuntimeException("模拟java运行时异常")
                 }
             }
         }

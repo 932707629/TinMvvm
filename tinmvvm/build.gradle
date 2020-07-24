@@ -15,9 +15,6 @@ android {
         versionName = rootProject.tinmvvmVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
-        ndk {
-            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86'//, 'x86_64'
-        }
     }
 
     buildTypes {
@@ -77,7 +74,7 @@ dependencies {
         exclude group: "androidx.lifecycle", module: 'lifecycle-runtime'
     }
     api(deps.alog)
-    api(deps.xcrash_android)
+    api(deps.customactivityoncrash)
     api(deps.constraintlayout)
     api(deps.extensions)
     api(deps.recyclerview)
@@ -102,6 +99,3 @@ dependencies {
 }
 
 apply from: "../bintrayUpload.gradle"
-
-
-
