@@ -46,7 +46,7 @@ class ToastStyle :IToastStyle{
         return 3
     }
 
-    override fun getPaddingLeft(): Int {
+    override fun getPaddingStart(): Int {
         return 20
     }
 
@@ -54,8 +54,8 @@ class ToastStyle :IToastStyle{
         return 8
     }
 
-    override fun getPaddingRight(): Int {
-        return paddingLeft
+    override fun getPaddingEnd(): Int {
+        return paddingStart
     }
 
     override fun getPaddingBottom(): Int {
