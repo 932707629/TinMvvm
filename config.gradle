@@ -35,11 +35,11 @@ ext {
             immersionbar_components             : "com.gyf.immersionbar:immersionbar-components:$immersionbarVersion",
             immersionbar_ktx                    : "com.gyf.immersionbar:immersionbar-ktx:$immersionbarVersion",
             alog                                : "com.github.932707629:alog:1.9.4",
-            ToastUtils                          : "com.hjq:toast:5.8",
+            ToastUtils                          : "com.hjq:toast:8.6",
             gson                                : "com.google.code.gson:gson:2.8.6",
-            liveeventbus                        : "com.jeremyliao:live-event-bus-x:1.5.7",
+            liveeventbus                        : "com.jeremyliao:live-event-bus-x:1.7.2",
             autosize                            : "me.jessyan:autosize:1.2.1",
-            basepopup                           : "com.github.razerdp:BasePopup:2.2.3",
+            basepopup                           : "com.github.razerdp:BasePopup:2.2.4.1",
 
             //network
             retrofit2                           : "com.squareup.retrofit2:retrofit:2.6.2",
