@@ -38,10 +38,7 @@ class GlobalConfiguration :ConfigModule {
         lifecycles.add(AppLifecycleImpl())
     }
 
-    override fun injectActivityLifecycle(
-        context: Context?,
-        lifecycles: MutableList<Application.ActivityLifecycleCallbacks>
-    ) {
+    override fun injectActivityLifecycle(context: Context?, lifecycles: MutableList<Application.ActivityLifecycleCallbacks>) {
         lifecycles.add(ActivityLifecycleCallbacksImpl())
     }
 }

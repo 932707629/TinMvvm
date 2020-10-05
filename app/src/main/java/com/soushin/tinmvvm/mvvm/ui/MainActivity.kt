@@ -6,19 +6,14 @@ import android.view.View
 import com.blankj.ALog
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
-import com.soushin.tinmvvm.config.getThis
 import com.soushin.tinmvvm.config.go
 import com.soushin.tinmvvm.databinding.ActivityMainBinding
 import com.soushin.tinmvvm.mvvm.ui.fragment.CategoryFragment
 import com.soushin.tinmvvm.mvvm.viewmodel.MainViewModel
+import com.soushin.tinmvvm.utils.FragmentUtils
 import com.soushin.tinmvvm.utils.PermissionUtil
 import com.tbruyelle.rxpermissions2.RxPermissions
-import io.reactivex.Observable
 import me.soushin.tinmvvm.base.BaseActivity
-import me.soushin.tinmvvm.utils.FragmentUtils
-import okhttp3.internal.wait
-import java.lang.RuntimeException
-import java.util.concurrent.TimeUnit
 
 
 /**
@@ -37,7 +32,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     //为了保证每次界面销毁重启后，都可以保存之前的值，我们需要在onCreate()中，给控件赋值为 textViewContent
     override fun initData(savedInstanceState: Bundle?) {
-
         dataBinding?.onClick= View.OnClickListener {
             ALog.e("点击切换数据了")
             when(it.id){
@@ -74,11 +68,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                         override fun onRequestPermissionSuccess() {
                             ALog.d("onRequestPermissionSuccess");
                         }
-
                         override fun onRequestPermissionFailure(permissions: List<String>?) {
                             ALog.d("onRequestPermissionFailure$permissions");
                         }
-
                         override fun onRequestPermissionFailureWithAskNeverAgain(permissions: List<String>?) {
                             ALog.d("onRequestPermissionFailureWithAskNeverAgain$permissions");
                         }

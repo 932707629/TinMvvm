@@ -40,7 +40,7 @@ abstract class BaseActivity<V : ViewDataBinding,VM: BaseViewModel<*>> :AppCompat
                 dataBinding?.setVariable(initVariableId(),viewModel)
             }
         }catch (e:Exception){
-            ALog.i("viewmodel初始化异常${e.message}");
+            println("viewmodel初始化异常${e.message}")
             e.printStackTrace()
         }
     }

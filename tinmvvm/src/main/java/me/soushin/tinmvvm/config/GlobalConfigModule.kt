@@ -1,8 +1,10 @@
 package me.soushin.tinmvvm.config
 
 import me.jessyan.rxerrorhandler.handler.listener.ResponseErrorListener
-import me.soushin.tinmvvm.listener.ALoger
 import me.soushin.tinmvvm.listener.ExceptionCallBack
+import me.soushin.tinmvvm.mvvm.model.bean.OkHttpConfigBean
+import okhttp3.OkHttpClient
+import java.util.concurrent.TimeUnit
 
 
 /**
@@ -10,36 +12,39 @@ import me.soushin.tinmvvm.listener.ExceptionCallBack
  * @auther SouShin
  * @time 2020/7/15 15:56
  */
-class GlobalConfigModule {
-    var logDir:String?=null//log日志输出路径 这个值如果不为空默认开启日志缓存到文件功能 默认关闭
-    var logEnable:Boolean=true//是否开启log日志输出到控制台 默认开启
-//    var logOutputCallback:ALoger?=null//log日志输出回调
-    var exceptionCallBack:ExceptionCallBack?=null//监听系统异常回调
-    var errorResponseListener: ResponseErrorListener?=null//rxjava2异常监听回调
+class GlobalConfigModule(builder: Builder) {
+    var logDir: String? = null//log日志输出路径 这个值如果不为空默认开启日志缓存到文件功能 默认关闭
+    var logEnable: Boolean = true//是否开启log日志输出到控制台 默认开启
+    //    var logOutputCallback:ALoger?=null//log日志输出回调
+    var okHttpClient = OkHttpClient.Builder().build()//提供个默认的可修改的okhttpclient全局共用
+    var exceptionCallBack: ExceptionCallBack? = null//监听系统异常回调
+    var errorResponseListener: ResponseErrorListener? = null//rxjava2异常监听回调
 
-    constructor(builder: Builder) {
-        this.logDir=builder.logDir
-        this.logEnable=builder.logEnable
-//        this.logOutputCallback=builder.logOutputCallback
-        this.exceptionCallBack=builder.exceptionCallBack
-        this.errorResponseListener=builder.errorResponseListener
+    init {
+        this.logDir = builder.logDir
+        this.logEnable = builder.logEnable
+        this.okHttpClient = builder.okHttpClient
+        this.exceptionCallBack = builder.exceptionCallBack
+        this.errorResponseListener = builder.errorResponseListener
     }
 
-    class Builder() {
+    class Builder {
 
-        var logDir:String?=null//log日志输出路径 这个值如果不为空默认开启日志缓存到文件功能 默认关闭
-        var logEnable:Boolean=true//是否开启log日志输出到控制台 默认开启
-//        var logOutputCallback:ALoger?=null//log日志输出回调
-        var exceptionCallBack:ExceptionCallBack?=null//监听系统异常回调
-        var errorResponseListener= ResponseErrorListener.EMPTY//rxjava2异常监听回调
+        var logDir: String? = null//log日志输出路径 这个值如果不为空默认开启日志缓存到文件功能 默认关闭
+        var logEnable: Boolean = true//是否开启log日志输出到控制台 默认开启
+        //        var logOutputCallback:ALoger?=null//log日志输出回调
+        var defaultOkHttpConfig=OkHttpConfigBean()//默认okhttp配置类,如果setOkHttpClient了只配置将不会生效
+        var okHttpClient = getDefaultOkHttpClient()//提供默认的可修改的okhttpclient全局共用
+        var exceptionCallBack: ExceptionCallBack? = null//监听系统异常回调
+        var errorResponseListener: ResponseErrorListener = ResponseErrorListener.EMPTY//rxjava2异常监听回调
 
-        fun logDir(logDir:String):Builder{
-            this.logDir=logDir
+        fun logDir(logDir: String): Builder {
+            this.logDir = logDir
             return this
         }
 
-        fun logEnable(logEnable:Boolean):Builder{
-            this.logEnable=logEnable
+        fun logEnable(logEnable: Boolean): Builder {
+            this.logEnable = logEnable
             return this
         }
 
@@ -48,22 +53,27 @@ class GlobalConfigModule {
             return this
         }*/
 
-        fun exceptionCallback(exceptionCallBack:ExceptionCallBack):Builder{
-            this.exceptionCallBack=exceptionCallBack
+        fun exceptionCallback(exceptionCallBack: ExceptionCallBack): Builder {
+            this.exceptionCallBack = exceptionCallBack
             return this
         }
 
-        fun errorResponseListener(errorResponseListener: ResponseErrorListener):Builder{
-            this.errorResponseListener=errorResponseListener
+        fun errorResponseListener(errorResponseListener: ResponseErrorListener): Builder {
+            this.errorResponseListener = errorResponseListener
             return this
         }
 
-        /*fun okHttpConfig(builder:OkHttpClient.Builder):Builder{
-            this.okhttpBuilder=builder
+        fun setDefaultOkHttpClient(okHttpConfigBean: OkHttpConfigBean): Builder{
+            this.defaultOkHttpConfig=okHttpConfigBean
             return this
         }
 
-        fun globalParamsFunction(globalParamsFunction:Function<Param<*>,Param<*>>?):Builder{
+        fun setOkHttpClient(okHttpClient: OkHttpClient): Builder {
+            this.okHttpClient = okHttpClient
+            return this
+        }
+
+        /*fun globalParamsFunction(globalParamsFunction:Function<Param<*>,Param<*>>?):Builder{
             this.globalParamsFunction=globalParamsFunction
             return this
         }
@@ -75,6 +85,17 @@ class GlobalConfigModule {
 
         fun build(): GlobalConfigModule {
             return GlobalConfigModule(this)
+        }
+
+        private fun getDefaultOkHttpClient(): OkHttpClient {
+            println("打印下okhttp配置${defaultOkHttpConfig}")
+            return OkHttpClient.Builder()
+                .callTimeout(defaultOkHttpConfig.callTimeout, TimeUnit.SECONDS)
+                .connectTimeout(defaultOkHttpConfig.connectTimeout, TimeUnit.SECONDS)
+                .writeTimeout(defaultOkHttpConfig.writeTimeout, TimeUnit.SECONDS)
+                .readTimeout(defaultOkHttpConfig.readTimeout, TimeUnit.SECONDS)
+                .sslSocketFactory(defaultOkHttpConfig.sslSocketFactory!!, defaultOkHttpConfig.trustManager!!) //添加信任证书
+                .hostnameVerifier(defaultOkHttpConfig.hostnameVerifier!!).build()
         }
     }
 

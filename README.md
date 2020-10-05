@@ -7,14 +7,14 @@
 虽然已经在项目中添加了比较详细的代码注释，但是肯定还有很多需要注意的地方没有解释清楚，希望大家在使用的过程中如果发现了什么问题，及时提出来，大家共同解决.
 
 ### 我们的优势 ###
-TinMvvm是以谷歌DataBinding+LiveData+ViewModel框架为基础，整合rxjava、kotlinx_coroutines、okhttp-RxHttp、liveeventbus等流行模块，加上各种原生控件，
+TinMvvm是以谷歌DataBinding+LiveData+ViewModel框架为基础，整合Rxjava2、Kotlinx_coroutines、okhttp-RxHttp、Liveeventbus等流行模块，加上各种原生控件，
 让事件与数据源完美绑定的一款容易上瘾的实用性MVVM快速开发框架。从此告别findViewById()，告别set()、get()
 
 ### 功能列表 ###
 
 1. 解决屏幕适配问题，适配全面屏/刘海屏(AndroidAutoSize是代替AndroidAutoLayout的屏幕适配框架，原理是基于今日头条的适配方案)
 2. 代码解耦，提供ActivityLifecycleCallbacksImpl、FragmentLifecycleCallbacksImpl给baseActivity/baseFragment减压
-3. 使用堆栈对activity进行统一管理，AppManager封装了各种常用方法
+3. 使用堆栈对Activity进行统一管理，AppManager封装了各种常用方法
 4. Activity标题栏统一设置，支持标题栏和状态栏统一设置背景color/shape/drawable
 5. 支持fragment设置状态栏沉浸式，多fragment无缝切换
 6. 提供fragmentUtils工具类，解决fragment重叠的bug，fragment任务栈统一管理
@@ -22,12 +22,12 @@ TinMvvm是以谷歌DataBinding+LiveData+ViewModel框架为基础，整合rxjava�
 8. brvh3.0+，使用viewbinding！！！
 9. 使用RxHttp网络框架链式调用，与Rxjava2相结合，线程智能控制（用户可选retrofit替换 个人比较喜欢rxhttp独特的设计）
 10. 解决Toast禁用通知权限不能弹出的bug，不分主次线程，可自定义Toast样式
-11. 全局使用kotlin，可与java无缝转换
+11. 全局使用Kotlin，可与Java无缝转换
 12. 支持新手指引，编程中使用不规范的地方，会引导你正确使用
 13. 使用插件一键生成Activity/Fragment
 14. 依赖RxPermission，权限申请更简单
 15. 使用LiveEventBus，自动销毁，事件传递更加清晰
-
+16. 异常捕获机制，将捕获到的异常信息反馈给开发者（Rxjava2异常以及运行时异常）
 
 ### 开发准备 ###
 

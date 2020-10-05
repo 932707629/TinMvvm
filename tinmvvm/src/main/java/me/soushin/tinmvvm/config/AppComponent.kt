@@ -14,11 +14,11 @@ import me.soushin.tinmvvm.mvvm.ui.TinErrorActivity
  * @auther SouShin
  * @time 2020/7/15 16:37
  */
-class AppComponent {
+class AppComponent// TODO: 2020/7/15  这里拿到全局配置信息即可实现对全局参数统一配置
+    (globalConfig: GlobalConfigModule) {
 
-    constructor(globalConfig: GlobalConfigModule) {
+    init {
         AppComponent.globalConfig = globalConfig
-        // TODO: 2020/7/15  这里拿到全局配置信息即可实现对全局参数统一配置
         initALog(BaseApp.instance!!)
         initXcrash()
         initRxErrorHandler()

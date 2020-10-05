@@ -3,7 +3,6 @@
     package="me.soushin.tinmvvm">
 
     <application
-        android:allowBackup="true"
         android:supportsRtl="true">
         <activity
             android:name=".mvvm.ui.TinErrorActivity"
@@ -11,11 +10,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/OnePxTheme"/>
 
-        <provider
+    <!--    <provider
             android:name=".config.InitProvider"
             android:authorities="${applicationId}.tinmvvm-init-provider"
             android:exported="false"
-            android:multiprocess="true" />
+            android:multiprocess="true" />-->
     </application>
 
 </manifest>

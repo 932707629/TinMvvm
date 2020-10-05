@@ -2,7 +2,6 @@ package me.soushin.tinmvvm.config
 
 import android.app.Application
 import android.content.Context
-import com.jeremyliao.liveeventbus.LiveEventBus
 import me.soushin.tinmvvm.listener.AppLifecycle
 import me.soushin.tinmvvm.listener.ConfigModule
 import me.soushin.tinmvvm.utils.ManifestParser

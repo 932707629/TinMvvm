@@ -1,13 +1,9 @@
 package me.soushin.tinmvvm.mvvm.ui
 
-import android.graphics.Point
 import android.os.Bundle
-import android.view.Display
-import android.view.WindowManager
 import cat.ereza.customactivityoncrash.CustomActivityOnCrash
 import com.gyf.immersionbar.ImmersionBar
 import me.soushin.tinmvvm.BR
-import me.soushin.tinmvvm.R
 import me.soushin.tinmvvm.base.BaseActivity
 import me.soushin.tinmvvm.config.AppComponent
 import me.soushin.tinmvvm.databinding.ActivityTinErrorBinding
@@ -34,10 +30,9 @@ class TinErrorActivity : BaseActivity<ActivityTinErrorBinding, TinErrorViewModel
         //配置信息
 //        val config= CustomActivityOnCrash.getConfigFromIntent(intent)
         //异常信息  无法捕获ANR异常信息
-        var error= CustomActivityOnCrash.getStackTraceFromIntent(intent)
-        if (error==null){ error = ""}
+        val error= CustomActivityOnCrash.getStackTraceFromIntent(intent)
         //把这个activity回调给开发者 后续怎么处理交给开发者决定
-        AppComponent.globalConfig?.exceptionCallBack?.exceptionCallback(this,error)
+        AppComponent.globalConfig?.exceptionCallBack?.exceptionCallback(this,error?:"")
     }
 
     override fun initVariableId(): Int {

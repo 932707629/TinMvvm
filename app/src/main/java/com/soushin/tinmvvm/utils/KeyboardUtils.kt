@@ -1,4 +1,4 @@
-package me.soushin.tinmvvm.utils
+package com.soushin.tinmvvm.utils
 
 import android.app.Activity
 import android.content.Context
@@ -27,7 +27,11 @@ object KeyboardUtils {
     fun dispatchEditText(activity: Activity, event: MotionEvent?) {
         val v: View? = activity.currentFocus
         if(v!=null&&event!=null){
-            if (event.action == MotionEvent.ACTION_DOWN && isShouldHideKeyboard(v, event)){
+            if (event.action == MotionEvent.ACTION_DOWN && isShouldHideKeyboard(
+                    v,
+                    event
+                )
+            ){
                 hideSoftInput(v)
             }
         }

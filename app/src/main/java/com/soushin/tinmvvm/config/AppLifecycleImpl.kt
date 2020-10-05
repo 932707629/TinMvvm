@@ -3,7 +3,6 @@ package com.soushin.tinmvvm.config
 import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
-import com.blankj.ALog
 import com.hjq.toast.ToastUtils
 import com.soushin.tinmvvm.BuildConfig
 import com.soushin.tinmvvm.network.Api

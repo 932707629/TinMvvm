@@ -1,4 +1,4 @@
-package me.soushin.tinmvvm.base
+package com.soushin.tinmvvm.widget
 
 import android.content.Context
 import android.view.View
