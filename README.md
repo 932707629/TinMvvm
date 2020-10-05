@@ -37,15 +37,13 @@ TinMvvm是以谷歌DataBinding+LiveData+ViewModel框架为基础，整合Rxjava2
 
 使用的第三方框架:
 
-[BasePopup](https://github.com/razerdp/BasePopup "BasePopup")
-
 [RxJava](https://github.com/ReactiveX/RxJava "RxJava")
 
 [ImmersionBar](https://github.com/gyf-dev/ImmersionBar "ImmersionBar")
 
 [AndroidAutoSize](https://github.com/JessYanCoding/AndroidAutoSize)
 
-[okhttp-RxHttp](https://github.com/liujingxing/okhttp-RxHttp "okhttp-RxHttp")
+[okhttp](https://github.com/square/okhttp "okhttp")
 
 [ToastUtils](https://github.com/getActivity/ToastUtils "ToastUtils")
 
@@ -54,8 +52,6 @@ TinMvvm是以谷歌DataBinding+LiveData+ViewModel框架为基础，整合Rxjava2
 [ALog](https://github.com/Blankj/ALog "ALog")
 
 [RxPermissions](https://github.com/tbruyelle/RxPermissions "RxPermissions")
-
-[EventBus](https://github.com/greenrobot/EventBus "EventBus")
 
 [CustomActivityOnCrash](https://github.com/Ereza/CustomActivityOnCrash "CustomActivityOnCrash")
 
