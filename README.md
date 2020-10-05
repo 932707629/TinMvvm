@@ -1,6 +1,6 @@
 # TinMvvm #
 
-## Surprise！！！
+## Surprise！！！[ ![Download](https://api.bintray.com/packages/soushin/maven/TinMvvm/images/download.svg?version=1.1.0) ](https://bintray.com/soushin/maven/TinMvvm/1.1.0/link)
 `implementation 'com.github.932707629:tinmvvm:1.0.7'`
 
 ### 说在前面 ###

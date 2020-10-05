@@ -24,7 +24,7 @@ data class OkHttpConfigBean(
         val sslParams= HttpsUtils.getSslSocketFactory()
         sslSocketFactory=sslParams.sSLSocketFactory
         trustManager=sslParams.trustManager
-        hostnameVerifier=HostnameVerifier { hostname, session -> true }
+        hostnameVerifier=HostnameVerifier { _, _ -> true }
     }
 
     override fun toString(): String {

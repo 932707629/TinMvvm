@@ -12,7 +12,7 @@ buildscript {
         //viewbinding对gradle版本有要求 最低3.6 低于此版本会导致部分功能不可用
         classpath 'com.android.tools.build:gradle:4.0.1'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
         //kotlin生成javadoc
@@ -38,10 +38,8 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-//最好加上全局编码设置
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
+
+
 
 
 

@@ -49,6 +49,11 @@ android {
     }
 }
 
+// 打包源码jar
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    archiveClassifier = 'sources'
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -91,7 +96,11 @@ dependencies {
     }
     api(deps.conscrypt)
     api(deps.okhttp)
-    api(deps.glide)
+    api (deps.glide){
+        exclude group: "androidx.annotation", module: 'annotation'
+        exclude group: "androidx.fragment", module: 'fragment'
+        exclude group: "androidx.vectordrawable", module: 'vectordrawable-animated'
+    }
     kapt(deps.glide_compiler)//配套glide使用
     api(deps.rxerrorhandler)
     api(deps.immersionbar)

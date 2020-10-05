@@ -76,14 +76,17 @@ task generateSourcesJar(type: Jar) {
 }
 
 task javadoc(type: Javadoc) {
-    failOnError false
     source = android.sourceSets.main.java.srcDirs
+    options.encoding = "UTF-8"
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 }
 
 task dokkaJavadoc(type: dokka.getClass()) {
-    outputFormat = "javadoc"
-    outputDirectory = javadoc.destinationDir
+    noStdlibLink = true
+    noJdkLink = true
+    noAndroidSdkLink = true
+    outputFormat ='html'
+    outputDirectory ="$buildDir/javadoc"
 }
 
 task generateJavadoc(type: Jar, dependsOn: dokkaJavadoc) {
@@ -108,11 +111,13 @@ javadoc {
     }
 }
 
+
 // bintray configuration
 bintray {
     user = bintrayUser
     key = bintrayApikey
     configurations = ['archives']
+
     pkg {
         repo = "maven"
         name = projectName
