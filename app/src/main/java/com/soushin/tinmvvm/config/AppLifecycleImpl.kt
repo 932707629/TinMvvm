@@ -29,30 +29,11 @@ class AppLifecycleImpl :AppLifecycle {
 
     override fun onCreate(application: Application) {
         ToastUtils.init(application, ToastStyle())
-        initRxhttp(application)
     }
 
     override fun onTerminate(application: Application) {
 
     }
 
-    private fun initRxhttp(context: Context){
-        val file = File(context.externalCacheDir, "RxHttpCookie")
-        val sslParams= HttpsUtils.getSslSocketFactory()
-        val okHttpClient= OkHttpClient.Builder()
-            .callTimeout(Api.TIMEOUT, TimeUnit.SECONDS)
-            .connectTimeout(Api.TIMEOUT, TimeUnit.SECONDS)
-            .writeTimeout(Api.TIMEOUT, TimeUnit.SECONDS)
-            .readTimeout(Api.TIMEOUT, TimeUnit.SECONDS)
-            .cookieJar(CookieStore(file))
-            .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager) //添加信任证书
-            .hostnameVerifier(HostnameVerifier { hostname, session -> true }).build()
-        //忽略host验证
-//            .followRedirects(false)  //禁制OkHttp的重定向操作，我们自己处理重定向
-//            .addInterceptor(new RedirectInterceptor())
-//            .addInterceptor(new TokenInterceptor())
-
-        RxHttp.init(okHttpClient,BuildConfig.DEBUG)
-    }
 
 }

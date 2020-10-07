@@ -13,16 +13,9 @@ import kotlin.coroutines.CoroutineContext
  * @author created by Soushin
  * @time 2020/1/8 09 32
  */
-open class BaseModel : CoroutineScope {
+open class BaseModel {
 
     var weakReference: WeakReference<LifecycleOwner>? = null
-
-    //这里可以让basemodel具有协程的功能
-
-    override val coroutineContext: CoroutineContext
-        get() = Dispatchers.Main + job
-
-    var job = Job()
 
     /**
      * 生命周期注入
