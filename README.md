@@ -1,7 +1,7 @@
 # TinMvvm #
 
-## Surprise！！！[ ![Download](https://api.bintray.com/packages/soushin/maven/TinMvvm/images/download.svg?version=1.1.0) ](https://bintray.com/soushin/maven/TinMvvm/1.1.0/link)
-`implementation 'com.github.932707629:tinmvvm:1.1.0'`
+## Surprise！！！[ ![Download](https://api.bintray.com/packages/soushin/maven/TinMvvm/images/download.svg?version=1.1.1) ](https://bintray.com/soushin/maven/TinMvvm/1.1.1/link)
+`implementation 'com.github.932707629:tinmvvm:1.1.1'`
 
 ### 说在前面 ###
 虽然已经在项目中添加了比较详细的代码注释，但是肯定还有很多需要注意的地方没有解释清楚，希望大家在使用的过程中如果发现了什么问题，及时提出来，大家共同解决.
