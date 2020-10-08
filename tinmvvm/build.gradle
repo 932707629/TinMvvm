@@ -90,6 +90,7 @@ dependencies {
         exclude group: "io.reactivex.rxjava2", module: 'rxjava'
     }
     api(deps.rxjava2)
+    api(deps.rxlife_rxjava)
     api(deps.liveeventbus) {
         exclude group: "androidx.lifecycle", module: 'lifecycle-livedata'
         exclude group: "androidx.lifecycle", module: 'lifecycle-extensions'

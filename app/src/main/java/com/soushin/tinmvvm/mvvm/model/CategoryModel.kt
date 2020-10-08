@@ -2,7 +2,9 @@ package com.soushin.tinmvvm.mvvm.model
 
 import com.rxjava.rxlife.ObservableLife
 import com.rxjava.rxlife.RxLife
+import com.rxjava.rxlife.life
 import com.soushin.tinmvvm.mvvm.model.entity.CategoryEntity
+import io.reactivex.Observable
 import me.soushin.tinmvvm.base.BaseModel
 import rxhttp.wrapper.param.RxHttp
 
@@ -12,10 +14,10 @@ import rxhttp.wrapper.param.RxHttp
  */
 class CategoryModel : BaseModel() {
 
-    fun requestDatas():ObservableLife<List<CategoryEntity>>{
+    fun requestDatas():Observable<List<CategoryEntity>>{
         return RxHttp.get("/wxarticle/chapters/json")
             .asBaseResponseList(CategoryEntity::class.java)
-            .`as`(RxLife.asOnMain(weakReference?.get()))
+
     }
 
 }

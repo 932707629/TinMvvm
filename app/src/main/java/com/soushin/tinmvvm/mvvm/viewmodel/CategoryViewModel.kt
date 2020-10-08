@@ -7,6 +7,7 @@ import com.alibaba.fastjson.JSONObject
 import com.blankj.ALog
 import com.soushin.tinmvvm.mvvm.model.CategoryModel
 import com.soushin.tinmvvm.mvvm.model.entity.CategoryEntity
+import com.soushin.tinmvvm.utils.RxUtils
 import me.soushin.tinmvvm.base.BaseViewModel
 import me.soushin.tinmvvm.config.HttpHandleCallBack
 
@@ -29,7 +30,8 @@ class CategoryViewModel: BaseViewModel<CategoryModel> {
 
     fun requestData() {
         model.requestDatas()
-            .subscribe(object : HttpHandleCallBack<List<CategoryEntity>>(){
+            .compose(RxUtils.applySchedulers())
+            .subscribe(object : HttpHandleCallBack<List<CategoryEntity>>(this){
                 override fun onNext(result: List<CategoryEntity>) {
                     super.onNext(result)
                     ALog.e("服务器返回结果", JSONObject.toJSONString(result))

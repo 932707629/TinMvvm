@@ -1,5 +1,8 @@
 package me.soushin.tinmvvm.config
 
+import androidx.lifecycle.LifecycleOwner
+import com.rxjava.rxlife.RxLife
+import com.rxjava.rxlife.Scope
 import io.reactivex.disposables.Disposable
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber
 
@@ -9,8 +12,18 @@ import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber
  */
 open class HttpHandleCallBack<T> :ErrorHandleSubscriber<T> {
 
-    constructor():super(AppComponent.rxErrorHandler){
+    /**
+     * scope 会添加生命周期订阅
+     */
+    constructor(scope: Scope):super(AppComponent.rxErrorHandler){
+        RxLife.`as`<Any>(scope)
+    }
 
+    /**
+     * lifecycleOwner 会添加生命周期订阅
+     */
+    constructor(lifecycleOwner: LifecycleOwner):super(AppComponent.rxErrorHandler){
+        RxLife.`as`<Any>(lifecycleOwner)
     }
 
     override fun onSubscribe(d: Disposable) {

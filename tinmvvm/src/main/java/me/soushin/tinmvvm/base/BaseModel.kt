@@ -1,13 +1,5 @@
 package me.soushin.tinmvvm.base
 
-import androidx.annotation.NonNull
-import androidx.lifecycle.LifecycleOwner
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import java.lang.ref.WeakReference
-import kotlin.coroutines.CoroutineContext
-
 
 /**
  * @author created by Soushin
@@ -15,14 +7,11 @@ import kotlin.coroutines.CoroutineContext
  */
 open class BaseModel {
 
-    var weakReference: WeakReference<LifecycleOwner>? = null
-
     /**
-     * 生命周期注入
+     * 取消 这里可以做一些对象置空
      */
-    fun injectLifecycleOwner(@NonNull lifecycleOwner: LifecycleOwner) {
-        this.weakReference = WeakReference(lifecycleOwner)
-    }
+    open fun onCleared(){
 
+    }
 
 }

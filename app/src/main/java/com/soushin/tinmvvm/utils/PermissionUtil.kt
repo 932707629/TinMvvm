@@ -61,8 +61,7 @@ object PermissionUtil {
             rxPermissions
                 .requestEach(*needRequest.toTypedArray())
                 .buffer(permissions.size)
-                .life(lifecycle)
-                .subscribe(object : HttpHandleCallBack<List<Permission?>>() {
+                .subscribe(object : HttpHandleCallBack<List<Permission?>>(lifecycle) {
                     fun onNext(permissions: List<Permission>) {
                         val failurePermissions: MutableList<String> =
                             ArrayList()
