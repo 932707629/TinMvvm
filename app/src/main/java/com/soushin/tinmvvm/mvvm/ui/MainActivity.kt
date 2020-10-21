@@ -3,7 +3,9 @@ package com.soushin.tinmvvm.mvvm.ui
 import android.Manifest
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Observer
 import com.blankj.ALog
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.config.go
@@ -84,6 +86,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 }
             }
         }
+
+        LiveEventBus.get("pageChange",Int::class.java)
+            .observeSticky(this, Observer {
+                if (it==1){
+                    FragmentUtils.addFragment(supportFragmentManager,CategoryFragment(),R.id.fl_container)
+                }
+            })
     }
 
 

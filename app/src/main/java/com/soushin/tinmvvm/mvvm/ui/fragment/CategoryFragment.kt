@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.databinding.FragmentCategoryBinding
 import com.soushin.tinmvvm.mvvm.viewmodel.CategoryViewModel
+import com.soushin.tinmvvm.utils.FragmentUtils
 import me.soushin.tinmvvm.base.BaseFragment
 
 /**
@@ -21,7 +24,14 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryViewModel
     }
 
     override fun initData(savedInstanceState: Bundle?) {
-
+        viewModel?.pageSkip?.observe(this, Observer {
+            if (it==2){//返回上一页
+                FragmentUtils.removeFragment(this)
+            }else {
+                LiveEventBus.get("pageChange")
+                    .post(it)
+            }
+        })
     }
 
     override fun initVariableId(): Int {

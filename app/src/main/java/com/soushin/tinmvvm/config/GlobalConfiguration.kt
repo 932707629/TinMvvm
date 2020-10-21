@@ -16,8 +16,6 @@ import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.ssl.HttpsUtils
 import java.io.File
 import java.util.concurrent.TimeUnit
-import javax.net.ssl.HostnameVerifier
-
 /**
  * 全局配置
  * @auther SouShin
@@ -53,7 +51,7 @@ class GlobalConfiguration :ConfigModule {
             .readTimeout(Api.TIMEOUT, TimeUnit.SECONDS)
             .cookieJar(CookieStore(file))
             .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager) //添加信任证书
-            .hostnameVerifier(HostnameVerifier { _, _ -> true }).build()
+            .hostnameVerifier { _, _ -> true }.build()
         //忽略host验证
 //            .followRedirects(false)  //禁制OkHttp的重定向操作，我们自己处理重定向
 //            .addInterceptor(new RedirectInterceptor())

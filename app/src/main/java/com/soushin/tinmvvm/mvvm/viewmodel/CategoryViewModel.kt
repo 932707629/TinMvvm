@@ -5,9 +5,11 @@ import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.alibaba.fastjson.JSONObject
 import com.blankj.ALog
+import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.mvvm.model.CategoryModel
 import com.soushin.tinmvvm.mvvm.model.entity.CategoryEntity
 import com.soushin.tinmvvm.utils.RxUtils
+import kotlinx.android.synthetic.main.fragment_category.view.*
 import me.soushin.tinmvvm.base.BaseViewModel
 import me.soushin.tinmvvm.config.HttpHandleCallBack
 
@@ -19,13 +21,24 @@ import me.soushin.tinmvvm.config.HttpHandleCallBack
 class CategoryViewModel: BaseViewModel<CategoryModel> {
 
     var btnContent= MutableLiveData<String>()
+    var pageSkip=MutableLiveData<Int>()
 
     constructor(application: Application):super(application, CategoryModel()){
 
     }
 
     fun onClickBtnContent()=View.OnClickListener{
-        requestData()
+        when(it.id){
+            R.id.btn_content->{
+                requestData()
+            }
+            R.id.btn_next_page->{
+                pageSkip.postValue(1)
+            }
+            R.id.btn_last_page->{
+                pageSkip.postValue(2)
+            }
+        }
     }
 
     fun requestData() {

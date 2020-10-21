@@ -70,6 +70,28 @@ static def buildTime() {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    //kt+jetpack+androidx
+    implementation(deps.kotlinstdlibjdk7)
+    implementation(deps.appcompat) {
+        exclude group: "androidx.lifecycle", module: 'lifecycle-runtime'
+        exclude group: "androidx.core", module: 'core'
+        exclude group: "androidx.lifecycle", module: 'lifecycle-livedata'
+        exclude group: "androidx.lifecycle", module: 'lifecycle-viewmodel'
+    }
+    implementation(deps.swipeRefresh) {
+        exclude group: "androidx.annotation", module: 'annotation'
+        exclude group: "androidx.core", module: 'core'
+    }
+    implementation(deps.material) {
+        exclude group: "androidx.annotation", module: 'annotation'
+        exclude group: "androidx.appcompat", module: 'appcompat'
+        exclude group: "androidx.fragment", module: 'fragment'
+        exclude group: "androidx.core", module: 'core'
+        exclude group: "androidx.recyclerview", module: 'recyclerview'
+        exclude group: "androidx.lifecycle", module: 'lifecycle-runtime'
+    }
+    implementation(deps.recyclerview)
+    implementation(deps.core_ktx)
     implementation project(':tinmvvm')
 //    implementation("com.github.932707629:tinmvvm:1.1.0")
     implementation(deps.work_runtime)
