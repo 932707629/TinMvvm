@@ -7,11 +7,9 @@ import ${packageName}.mvvm.model.${pageName}Model
 <#import "root://activities/TinMvvmTemplate/globals.xml.ftl" as gb>
 <@gb.fileHeader />
 
-class ${pageName}ViewModel : BaseViewModel<${pageName}Model> {
+class ${pageName}ViewModel(application: Application) :
+       BaseViewModel<${pageName}Model>(application,${pageName}Model()) {
 
-    constructor(application: Application):super(application,${pageName}Model()){
-
-    }
 
 
 }
