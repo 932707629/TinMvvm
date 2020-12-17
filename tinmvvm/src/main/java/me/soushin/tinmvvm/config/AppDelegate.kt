@@ -15,14 +15,15 @@ import me.soushin.tinmvvm.utils.ManifestParser
  * @auther SouShin
  * @time 2020/7/15 13:35
  */
-class AppDelegate : AppLifecycle {
+class AppDelegate//用反射, 将 AndroidManifest.xml 中带有 ConfigModule 标签的 class 转成对象集合（List<ConfigModule>）
+    (ctx: Context) : AppLifecycle {
 
     private var modules:MutableList<ConfigModule>?=null
     private val mAppLifecycles= mutableListOf<AppLifecycle>()
     private val mActivityLifecycle= mutableListOf<Application.ActivityLifecycleCallbacks>()
 
-    constructor(ctx:Context){
-        //用反射, 将 AndroidManifest.xml 中带有 ConfigModule 标签的 class 转成对象集合（List<ConfigModule>）
+    init {
+
         this.modules=ManifestParser(ctx).parse()
         modules?.forEach {
             it.injectActivityLifecycle(ctx,mActivityLifecycle)
@@ -45,6 +46,8 @@ class AppDelegate : AppLifecycle {
             LiveEventBus.get(LiveDataTag.tag_globalConfig)
                 .post(AppComponent(globalConfig))*/
         }
+        //注册框架内部所需要的Activity 生命周期逻辑
+        application.registerActivityLifecycleCallbacks(TinActivityLifecycleImpl())
 
         //注册框架外部, 开发者扩展的 Activity 生命周期逻辑
         //每个 ConfigModule 的实现类可以声明多个 Activity 的生命周期回调

@@ -5,8 +5,8 @@ ext {
     targetSdkVersion = 29
     buildToolVersion = '29.0.3'
 
-    versionCode = 1_000_007
-    versionName = '1.0.7'
+    versionCode = 1_000_008
+    versionName = '1.0.8'
 
     tinmvvmVersionCode = 1_001_002
     tinmvvmVersionName = '1.1.2'

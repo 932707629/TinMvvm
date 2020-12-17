@@ -45,6 +45,7 @@ class GlobalConfiguration :ConfigModule {
         val file = File(context.externalCacheDir, "RxHttpCookie")
         val sslParams= HttpsUtils.getSslSocketFactory()
         val okHttpClient= OkHttpClient.Builder()
+            .cookieJar(CookieStore(File(context.externalCacheDir,"TinmvvmCookie")))
             .callTimeout(Api.TIMEOUT, TimeUnit.SECONDS)
             .connectTimeout(Api.TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(Api.TIMEOUT, TimeUnit.SECONDS)

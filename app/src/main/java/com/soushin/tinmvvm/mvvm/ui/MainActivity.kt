@@ -4,6 +4,7 @@ import android.Manifest
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import com.alibaba.fastjson.JSONObject
 import com.blankj.ALog
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.soushin.tinmvvm.BR
@@ -16,6 +17,10 @@ import com.soushin.tinmvvm.utils.FragmentUtils
 import com.soushin.tinmvvm.utils.PermissionUtil
 import com.tbruyelle.rxpermissions2.RxPermissions
 import me.soushin.tinmvvm.base.BaseActivity
+import okhttp3.Cookie
+import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
+import rxhttp.HttpSender
+import rxhttp.wrapper.cookie.ICookieJar
 
 
 /**
