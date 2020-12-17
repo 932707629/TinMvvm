@@ -17,7 +17,7 @@ class AppManager private constructor(){
 
     companion object {
 
-        var stack=Stack<Activity>()
+        var stack:Stack<Activity>?=Stack()
 
         @JvmStatic
         fun get() : AppManager {
@@ -29,15 +29,15 @@ class AppManager private constructor(){
     }
 
     fun getActivityCount():Int{
-        return stack.size
+        return stack?.size?:0
     }
 
     fun addActivity(activity: Activity){
-        stack.add(activity)
+        stack?.add(activity)
     }
 
     fun removeActivity(clazz: Class<*>){
-        stack.forEach {
+        stack?.forEach {
             if (it.javaClass==clazz){
                 removeActivity(it)
             }
@@ -45,7 +45,7 @@ class AppManager private constructor(){
     }
 
     fun removeActivity(target: Activity){
-        stack.remove(target)
+        stack?.remove(target)
     }
 
     fun getTopActivity():Activity?{
@@ -53,7 +53,7 @@ class AppManager private constructor(){
             ALog.w("stack == null when getTopActivity()");
             return null
         }
-        return stack.lastElement()
+        return stack?.lastElement()
     }
 
     /**
@@ -72,18 +72,18 @@ class AppManager private constructor(){
 
 
     fun go(clazz: Class<*>,finish:Boolean=false,newTask:Boolean=false){
-        val intent=Intent(currentActivity,clazz)
+        val intent=Intent(getTopActivity(),clazz)
         if (newTask){
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         }
-        currentActivity?.startActivity(intent)
+        getTopActivity()?.startActivity(intent)
         if (finish){
-            currentActivity?.finish()
+            getTopActivity()?.finish()
         }
     }
 
     fun isAlive(clazz: Class<*>):Boolean{
-        stack.forEach {
+        stack?.forEach {
             if (it.javaClass==clazz){
                 return true
             }
@@ -92,7 +92,7 @@ class AppManager private constructor(){
     }
 
     fun findActivity(clazz: Class<*>):Activity?{
-        stack.forEach {
+        stack?.forEach {
             if (it.javaClass==clazz){
                 return it
             }
@@ -103,16 +103,16 @@ class AppManager private constructor(){
     /**
      * 获取所有未被销毁的activity集合
      */
-    fun getAllActivity():Stack<Activity>{
-        return stack
+    fun getAllActivity():Stack<Activity>?{
+        return stack?: Stack()
     }
 
     fun finish(clazz:Class<*>){
         synchronized(AppManager::class.java){
-            stack.forEach {
+            stack?.forEach {
                 if (it.javaClass==clazz){
                     it.finish()
-                    stack.remove(it)
+                    stack?.remove(it)
                 }
             }
         }
@@ -124,9 +124,14 @@ class AppManager private constructor(){
 
     fun killAll(){
         synchronized(AppManager::class.java){
-            stack.forEach { it.finish() }
-            stack.clear()
+            stack?.forEach { it.finish() }
+            stack?.clear()
         }
+    }
+
+    fun release(){
+        stack=null
+        currentActivity=null
     }
 
     /**
