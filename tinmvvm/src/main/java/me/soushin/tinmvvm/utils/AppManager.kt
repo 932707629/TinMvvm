@@ -129,6 +129,9 @@ class AppManager private constructor(){
         }
     }
 
+    /**
+     * 释放系统资源
+     */
     fun release(){
         stack=null
         currentActivity=null

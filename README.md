@@ -1,7 +1,7 @@
 # TinMvvm #
 
-## Surprise！！！[ ![Download](https://api.bintray.com/packages/soushin/maven/TinMvvm/images/download.svg?version=1.1.1) ](https://bintray.com/soushin/maven/TinMvvm/1.1.1/link)
-`implementation 'com.github.932707629:tinmvvm:1.1.1'`
+## Surprise！！！[ ![Download](https://api.bintray.com/packages/soushin/maven/TinMvvm/images/download.svg?version=1.1.2) ](https://bintray.com/soushin/maven/TinMvvm/1.1.2/link)
+`implementation 'com.github.932707629:tinmvvm:1.1.2'`
 
 ### 说在前面 ###
 虽然已经在项目中添加了比较详细的代码注释，但是肯定还有很多需要注意的地方没有解释清楚，希望大家在使用的过程中如果发现了什么问题，及时提出来，大家共同解决.
@@ -66,7 +66,7 @@ TinMvvmTemplate这个文件里放着TinMvv的一键生成工具
 
 ### 注意: ###
 
-1. 设置标题栏和状态栏是在ActivityLifeCycleCallBackIml类里实现的，还进行了其他初始化与销毁业务，实现了对baseActivity的解耦，另外，设置标题栏时要在activity对应的layout里include标题栏布局
+1. 设置标题栏和状态栏是在ActivityLifeCycleCallBackIml类里实现的，还进行了其他初始化与销毁业务，实现了对BaseActivity的解耦，另外，设置标题栏时要在activity对应的layout里include标题栏布局
 
 2. 如果要在fragment里设置状态栏沉浸，可以让该fragment实现SimpleImmersionOwner接口，或者实现ImmersionOwner接口，具体实现可以参考ImmersionBar的demo使用
 
