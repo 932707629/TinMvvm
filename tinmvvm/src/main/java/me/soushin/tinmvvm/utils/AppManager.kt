@@ -17,7 +17,7 @@ class AppManager private constructor(){
 
     companion object {
 
-        var stack:Stack<Activity>?=Stack()
+        var activitys:MutableList<Activity>?= mutableListOf()
 
         @JvmStatic
         fun get() : AppManager {
@@ -29,15 +29,15 @@ class AppManager private constructor(){
     }
 
     fun getActivityCount():Int{
-        return stack?.size?:0
+        return activitys?.size?:0
     }
 
     fun addActivity(activity: Activity){
-        stack?.add(activity)
+        activitys?.add(activity)
     }
 
     fun removeActivity(clazz: Class<*>){
-        stack?.forEach {
+        activitys?.forEach {
             if (it.javaClass==clazz){
                 removeActivity(it)
             }
@@ -45,15 +45,15 @@ class AppManager private constructor(){
     }
 
     fun removeActivity(target: Activity){
-        stack?.remove(target)
+        activitys?.remove(target)
     }
 
     fun getTopActivity():Activity?{
-        if (stack.isNullOrEmpty()){
+        if (activitys.isNullOrEmpty()){
             ALog.w("stack == null when getTopActivity()");
             return null
         }
-        return stack?.lastElement()
+        return activitys?.get(activitys!!.size-1)
     }
 
     /**
@@ -83,7 +83,7 @@ class AppManager private constructor(){
     }
 
     fun isAlive(clazz: Class<*>):Boolean{
-        stack?.forEach {
+        activitys?.forEach {
             if (it.javaClass==clazz){
                 return true
             }
@@ -92,7 +92,7 @@ class AppManager private constructor(){
     }
 
     fun findActivity(clazz: Class<*>):Activity?{
-        stack?.forEach {
+        activitys?.forEach {
             if (it.javaClass==clazz){
                 return it
             }
@@ -103,16 +103,20 @@ class AppManager private constructor(){
     /**
      * 获取所有未被销毁的activity集合
      */
-    fun getAllActivity():Stack<Activity>?{
-        return stack?: Stack()
+    fun getAllActivity():MutableList<Activity>{
+        return activitys?: mutableListOf()
     }
 
     fun finish(clazz:Class<*>){
         synchronized(AppManager::class.java){
-            stack?.forEach {
-                if (it.javaClass==clazz){
-                    it.finish()
-                    stack?.remove(it)
+            val it= activitys?.iterator()
+            it?.let {
+                while (it.hasNext()){
+                    val next=it.next()
+                    if (clazz.simpleName==next.javaClass.simpleName){
+                        next.finish()
+                        it.remove()
+                    }
                 }
             }
         }
@@ -124,8 +128,8 @@ class AppManager private constructor(){
 
     fun killAll(){
         synchronized(AppManager::class.java){
-            stack?.forEach { it.finish() }
-            stack?.clear()
+            activitys?.forEach { it.finish() }
+            activitys?.clear()
         }
     }
 
@@ -133,7 +137,7 @@ class AppManager private constructor(){
      * 释放系统资源
      */
     fun release(){
-        stack=null
+        activitys=null
         currentActivity=null
     }
 
