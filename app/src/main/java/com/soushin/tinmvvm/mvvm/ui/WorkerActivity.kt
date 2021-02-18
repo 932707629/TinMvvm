@@ -22,7 +22,7 @@ class WorkerActivity : BaseActivity<ActivityWorkerBinding, WorkerViewModel>() {
 
     override fun initData(savedInstanceState: Bundle?) {
 
-        dataBinding?.onClick = View.OnClickListener {
+        viewData?.onClick = View.OnClickListener {
             when (it.id) {
                 R.id.btn_change -> {
                     //PeriodicWorkRequest 任务循环执行

@@ -1,14 +1,11 @@
 package me.soushin.tinmvvm.base
 
-import android.content.res.Configuration
-import android.content.res.Resources
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
-import com.blankj.ALog
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -18,9 +15,9 @@ import java.lang.reflect.ParameterizedType
  * @author created by Soushin
  * @time 2020/1/7 13 29
  */
-abstract class BaseActivity<V : ViewDataBinding,VM: BaseViewModel<*>> :AppCompatActivity(){
+abstract class BaseActivity<VD : ViewDataBinding,VM: BaseViewModel<*>> :AppCompatActivity(){
 
-    protected var dataBinding:V?=null
+    protected var viewData:VD?=null
     protected var viewModel:VM?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,11 +30,11 @@ abstract class BaseActivity<V : ViewDataBinding,VM: BaseViewModel<*>> :AppCompat
     private fun dataViewBinding(layoutId:Int) {
         try {
             if (layoutId!=0){
-                dataBinding= DataBindingUtil.setContentView(this,layoutId)
-                dataBinding?.lifecycleOwner=this
+                viewData= DataBindingUtil.setContentView(this,layoutId)
+                viewData?.lifecycleOwner=this
                 viewModel=ViewModelProviders.of(this).get(viewModel())
                 viewModel?.injectLifecycleOwner(this)
-                dataBinding?.setVariable(initVariableId(),viewModel)
+                viewData?.setVariable(initVariableId(),viewModel)
             }
         }catch (e:Exception){
             println("viewmodel初始化异常${e.message}")

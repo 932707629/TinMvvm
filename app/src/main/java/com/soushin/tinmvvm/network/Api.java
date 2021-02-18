@@ -1,5 +1,7 @@
 package com.soushin.tinmvvm.network;
 
+import com.soushin.tinmvvm.databinding.ActivityCoroutineBinding;
+
 import rxhttp.wrapper.annotation.DefaultDomain;
 
 /**
@@ -13,6 +15,7 @@ public class Api {
     public static final String url ="https://www.wanandroid.com";
 
     public static final Long TIMEOUT=30L;//超时时间
+
 
 //        @Domain(name = "Update")//更换域名
 //        var update = "http://update.9158.com"

@@ -4,7 +4,6 @@ import android.Manifest
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import com.alibaba.fastjson.JSONObject
 import com.blankj.ALog
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.soushin.tinmvvm.BR
@@ -17,10 +16,6 @@ import com.soushin.tinmvvm.utils.FragmentUtils
 import com.soushin.tinmvvm.utils.PermissionUtil
 import com.tbruyelle.rxpermissions2.RxPermissions
 import me.soushin.tinmvvm.base.BaseActivity
-import okhttp3.Cookie
-import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
-import rxhttp.HttpSender
-import rxhttp.wrapper.cookie.ICookieJar
 
 
 /**
@@ -31,15 +26,13 @@ import rxhttp.wrapper.cookie.ICookieJar
  */
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
-//    lateinit var mainViewModel:MainViewModel
-
     override fun initView(savedInstanceState: Bundle?) :Int{
         return R.layout.activity_main
     }
 
     //为了保证每次界面销毁重启后，都可以保存之前的值，我们需要在onCreate()中，给控件赋值为 textViewContent
     override fun initData(savedInstanceState: Bundle?) {
-        dataBinding?.onClick= View.OnClickListener {
+        viewData?.onClick= View.OnClickListener {
             ALog.e("点击切换数据了")
             when(it.id){
                 R.id.btn_change->{

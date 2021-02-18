@@ -20,10 +20,10 @@ import java.lang.reflect.ParameterizedType
  * @author created by Soushin
  * @time 2020/1/14 15 25
  */
- abstract class BaseFragment<V : ViewDataBinding, VM: BaseViewModel<*>>  : Fragment(),ImmersionOwner {
+ abstract class BaseFragment<VD : ViewDataBinding, VM: BaseViewModel<*>>  : Fragment(),ImmersionOwner {
 
     var mContext: Context? = null
-    protected var dataBinding:V?=null
+    protected var viewData:VD?=null
     protected var viewModel:VM?=null
     private val mImmersionProxy=ImmersionProxy(this)
 
@@ -50,11 +50,11 @@ import java.lang.reflect.ParameterizedType
     }
 
     private fun dataViewBinding(view: View) {
-        dataBinding= DataBindingUtil.bind(view)
-        dataBinding?.lifecycleOwner=this
+        viewData= DataBindingUtil.bind(view)
+        viewData?.lifecycleOwner=this
         viewModel= ViewModelProviders.of(this).get(viewModel())
         viewModel?.injectLifecycleOwner(this)
-        dataBinding?.setVariable(initVariableId(),viewModel)
+        viewData?.setVariable(initVariableId(),viewModel)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

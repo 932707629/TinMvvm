@@ -19,7 +19,8 @@ import me.soushin.tinmvvm.base.BaseFragment
  */
 class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryViewModel>() {
 
-    override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun initView(inflater: LayoutInflater, container: ViewGroup?,
+                          savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.fragment_category, container, false)
     }
 

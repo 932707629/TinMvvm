@@ -28,6 +28,7 @@ TinMvvm是以谷歌DataBinding+LiveData+ViewModel框架为基础，整合Rxjava2
 14. 依赖RxPermission，权限申请更简单
 15. 使用LiveEventBus，自动销毁，事件传递更加清晰
 16. 异常捕获机制，将捕获到的异常信息反馈给开发者（Rxjava2异常以及运行时异常）
+17. 可以不用kotlin-android-extensions插件，完全支持databinding和viewbinding混合使用
 
 ### 开发准备 ###
 

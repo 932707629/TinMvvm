@@ -19,21 +19,18 @@ import kotlin.coroutines.CoroutineContext
  * @author created by Soushin
  * @time 2020/1/7 16 38
  */
-open class BaseViewModel<M: BaseModel> : AndroidViewModel, CoroutineScope, Scope,
+open class BaseViewModel<M: BaseModel>(application: Application, val model: M) : AndroidViewModel(
+    application
+), CoroutineScope, Scope,
     LifecycleEventObserver {
 
     private var mCompositeDisposable: CompositeDisposable?=null
-    val model:M
     var lifecycleOwner: WeakReference<LifecycleOwner>?=null
     private val job = Job()
 
     //这里可以让basemodel具有协程的功能
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job
-
-    constructor(application:Application, model:M):super(application){
-        this.model=model
-    }
 
     fun addSubcribe(dis: Disposable){
         if (mCompositeDisposable==null){
