@@ -10,7 +10,6 @@ import com.soushin.tinmvvm.mvvm.adapter.itembinder.TextItemBinder
 import com.soushin.tinmvvm.mvvm.model.entity.ImageEntity
 import com.soushin.tinmvvm.mvvm.viewmodel.RecyclerViewModel
 import com.soushin.tinmvvm.utils.DataUtils
-import kotlinx.android.synthetic.main.activity_recycler.*
 import me.soushin.tinmvvm.base.BaseActivity
 
 /**
@@ -35,16 +34,16 @@ class RecyclerActivity : BaseActivity<ActivityRecyclerBinding, RecyclerViewModel
             .addItemBinder(String::class.java,TextItemBinder())
 
         //LinearLayoutManager已经在布局文件里设置了 所以这里只要设置adapter就可以了
-        rv_recycler.adapter=adapter
+        viewData?.rvRecycler?.adapter=adapter
 
         adapter.setList(DataUtils.getRecyclerData())
 
     }
 
     private fun listener() {
-        srl_refresh.setOnRefreshListener {
+        viewData?.srlRefresh?.setOnRefreshListener {
             adapter.setList(DataUtils.getRecyclerData())
-            srl_refresh.isRefreshing=false
+            viewData?.srlRefresh?.isRefreshing=false
         }
     }
 

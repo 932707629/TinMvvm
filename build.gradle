@@ -14,7 +14,8 @@ buildscript {
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
+        //这个插件即将废弃 不用它了
+//        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
         //kotlin生成javadoc
         classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.18"
         //第三方包参与打包工具

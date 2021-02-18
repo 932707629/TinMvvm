@@ -9,7 +9,6 @@ import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.mvvm.model.CategoryModel
 import com.soushin.tinmvvm.mvvm.model.entity.CategoryEntity
 import com.soushin.tinmvvm.utils.RxUtils
-import kotlinx.android.synthetic.main.fragment_category.view.*
 import me.soushin.tinmvvm.base.BaseViewModel
 import me.soushin.tinmvvm.config.HttpHandleCallBack
 
@@ -18,14 +17,11 @@ import me.soushin.tinmvvm.config.HttpHandleCallBack
  * @author created by Soushin
  * @time 2020/1/14 18 05
  */
-class CategoryViewModel: BaseViewModel<CategoryModel> {
+class CategoryViewModel(application: Application) :
+    BaseViewModel<CategoryModel>(application, CategoryModel()) {
 
     var btnContent= MutableLiveData<String>()
     var pageSkip=MutableLiveData<Int>()
-
-    constructor(application: Application):super(application, CategoryModel()){
-
-    }
 
     fun onClickBtnContent()=View.OnClickListener{
         when(it.id){
