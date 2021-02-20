@@ -1,7 +1,9 @@
 package me.soushin.tinmvvm.base
 
+import android.app.Activity
 import android.app.Application
 import androidx.annotation.NonNull
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
@@ -16,10 +18,6 @@ import java.lang.ref.WeakReference
 import kotlin.coroutines.CoroutineContext
 
 /**
- * 因为ViewModel拥有远比Activity和Fragment还要长的生命周期，
- * 所以ViewModel中最好不要持有Activity或者Fragment的引用，
- * 否则很容易引起内存泄漏。
- *
  * @author created by Soushin
  * @time 2020/1/7 16 38
  */
@@ -30,6 +28,11 @@ open class BaseViewModel<M: BaseModel>(application: Application, val model: M) :
 
     private var mCompositeDisposable: CompositeDisposable?=null
 
+    /**
+     * lifecycleOwner实际传入的是上下文对象的软引用
+     * 可以将其强转为上下文对象来使用
+     */
+    protected var lifecycleOwner: WeakReference<LifecycleOwner>?=null
     private val job = Job()
 
     //这里可以让basemodel具有协程的功能
@@ -41,6 +44,14 @@ open class BaseViewModel<M: BaseModel>(application: Application, val model: M) :
             this.mCompositeDisposable = CompositeDisposable()
         }
         mCompositeDisposable?.add(dis)
+    }
+
+    /**
+     * 生命周期注入
+     */
+    fun injectLifecycleOwner(@NonNull lifecycleOwner: LifecycleOwner){
+        this.lifecycleOwner= WeakReference(lifecycleOwner)
+        lifecycleOwner.lifecycle.addObserver(this)
     }
 
     override fun onCleared() {
@@ -63,6 +74,28 @@ open class BaseViewModel<M: BaseModel>(application: Application, val model: M) :
             source.lifecycle.removeObserver(this)
             dispose() //中断RxJava管道
         }
+    }
+
+    /**
+     * 生命周期对象实际上传入的是对应的Activity/Fragment
+     * 如果lifecycleOwner为空或者当前非Activity上下文可为空
+     */
+    fun getActivity() :Activity?{
+        if (lifecycleOwner?.get() is Activity){
+            return lifecycleOwner?.get() as Activity
+        }
+        return null
+    }
+
+    /**
+     * 生命周期对象实际上传入的是对应的Activity/Fragment
+     * 如果lifecycleOwner为空或者当前非Fragment上下文可为空
+     */
+    fun getFragment():Fragment?{
+        if (lifecycleOwner?.get() is Fragment){
+            return lifecycleOwner?.get() as Fragment
+        }
+        return null
     }
 
     open fun dispose() {
