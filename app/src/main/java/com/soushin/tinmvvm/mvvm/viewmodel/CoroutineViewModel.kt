@@ -18,17 +18,16 @@ import me.soushin.tinmvvm.base.BaseViewModel
  * ================================================
  */
 
-class CoroutineViewModel :
-    BaseViewModel<CoroutineModel> {
+class CoroutineViewModel(application: Application) :
+    BaseViewModel<CoroutineModel>(application, CoroutineModel()) {
 
-
-    constructor(application: Application) : super(application, CoroutineModel()) {
-
-    }
 
     fun onClick(): View.OnClickListener {
         return View.OnClickListener {
-                launch {
+
+            ALog.i("获取对应的上线文示例",getActivity(),getFragment())
+
+            launch {
                     val task1 = withContext(Dispatchers.IO) {
                         Thread.sleep(2000)
                         ALog.e("task1执行完毕", Thread.currentThread().name);

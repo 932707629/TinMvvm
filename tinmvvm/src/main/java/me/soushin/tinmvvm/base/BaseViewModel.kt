@@ -1,7 +1,11 @@
 package me.soushin.tinmvvm.base
 
+import android.app.Activity
 import android.app.Application
 import androidx.annotation.NonNull
+import androidx.annotation.RestrictTo
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
@@ -25,7 +29,12 @@ open class BaseViewModel<M: BaseModel>(application: Application, val model: M) :
     LifecycleEventObserver {
 
     private var mCompositeDisposable: CompositeDisposable?=null
-    var lifecycleOwner: WeakReference<LifecycleOwner>?=null
+
+    /**
+     * lifecycleOwner实际传入的是上下文对象的软引用
+     * 可以将其强转为上下文对象来使用
+     */
+    protected var lifecycleOwner: WeakReference<LifecycleOwner>?=null
     private val job = Job()
 
     //这里可以让basemodel具有协程的功能
@@ -67,6 +76,28 @@ open class BaseViewModel<M: BaseModel>(application: Application, val model: M) :
             source.lifecycle.removeObserver(this)
             dispose() //中断RxJava管道
         }
+    }
+
+    /**
+     * 生命周期对象实际上传入的是对应的Activity/Fragment
+     * 如果lifecycleOwner为空或者当前非Activity上下文可为空
+     */
+    fun getActivity() :Activity?{
+        if (lifecycleOwner?.get() is Activity){
+            return lifecycleOwner?.get() as Activity
+        }
+        return null
+    }
+
+    /**
+     * 生命周期对象实际上传入的是对应的Activity/Fragment
+     * 如果lifecycleOwner为空或者当前非Fragment上下文可为空
+     */
+    fun getFragment():Fragment?{
+        if (lifecycleOwner?.get() is Fragment){
+            return lifecycleOwner?.get() as Fragment
+        }
+        return null
     }
 
     open fun dispose() {
