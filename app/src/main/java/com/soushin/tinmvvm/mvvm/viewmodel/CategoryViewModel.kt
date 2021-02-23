@@ -26,7 +26,6 @@ class CategoryViewModel(application: Application) :
     fun onClickBtnContent()=View.OnClickListener{
         when(it.id){
             R.id.btn_content->{
-                ALog.i("获取对应的上线文示例",getActivity(),getFragment())
                 requestData()
             }
             R.id.btn_next_page->{

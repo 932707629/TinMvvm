@@ -35,8 +35,10 @@ import java.lang.reflect.ParameterizedType
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
+//        childFragmentManager.beginTransaction().setMaxLifecycle()
         mImmersionProxy.isUserVisibleHint = isVisibleToUser
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +55,7 @@ import java.lang.reflect.ParameterizedType
         viewData= DataBindingUtil.bind(view)
         viewData?.lifecycleOwner=this
         viewModel= ViewModelProviders.of(this).get(viewModel())
-        viewModel?.injectLifecycleOwner(this)
+        lifecycle.addObserver(viewModel!!)
         viewData?.setVariable(initVariableId(),viewModel)
     }
 
@@ -129,12 +131,8 @@ import java.lang.reflect.ParameterizedType
         val type=javaClass.genericSuperclass
         return run {
             if (type is ParameterizedType){
-                var i=1
-                type.actualTypeArguments.forEachIndexed { index, type ->
-                    if (type is ViewModel){ i=index }
-                }
                 @Suppress("UNCHECKED_CAST")
-                type.actualTypeArguments[i] as Class<VM>
+                type.actualTypeArguments[1] as Class<VM>
             }else {
                 @Suppress("UNCHECKED_CAST")
                 BaseViewModel::class.java as Class<VM>

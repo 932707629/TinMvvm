@@ -24,9 +24,6 @@ class CoroutineViewModel(application: Application) :
 
     fun onClick(): View.OnClickListener {
         return View.OnClickListener {
-
-            ALog.i("获取对应的上线文示例",getActivity(),getFragment())
-
             launch {
                     val task1 = withContext(Dispatchers.IO) {
                         Thread.sleep(2000)

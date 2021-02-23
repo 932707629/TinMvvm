@@ -28,30 +28,26 @@ abstract class BaseActivity<VD : ViewDataBinding,VM: BaseViewModel<*>> :AppCompa
     }
 
     private fun dataViewBinding(layoutId:Int) {
-        try {
-            if (layoutId!=0){
+        if (layoutId!=0){
+            try {
                 viewData= DataBindingUtil.setContentView(this,layoutId)
-                viewData?.lifecycleOwner=this
-                viewModel=ViewModelProviders.of(this).get(viewModel())
-                viewModel?.injectLifecycleOwner(this)
-                viewData?.setVariable(initVariableId(),viewModel)
+            }catch (e:ClassNotFoundException){
+                e.printStackTrace()
             }
-        }catch (e:Exception){
-            println("viewmodel初始化异常${e.message}")
-            e.printStackTrace()
+            viewData?.lifecycleOwner=this
+            viewModel=ViewModelProviders.of(this).get(viewModel())
+            lifecycle.addObserver(viewModel!!)
+            viewData?.setVariable(initVariableId(),viewModel)
         }
     }
 
+    @SuppressWarnings("unchecked")
     private fun viewModel() :Class<VM>{
         val type=javaClass.genericSuperclass
         return run {
             if (type is ParameterizedType){
-                var i=1
-                type.actualTypeArguments.forEachIndexed { index, type ->
-                    if (type is ViewModel){ i=index }
-                }
                 @Suppress("UNCHECKED_CAST")
-                type.actualTypeArguments[i] as Class<VM>
+                type.actualTypeArguments[1] as Class<VM>
             }else {
                 @Suppress("UNCHECKED_CAST")
                 BaseViewModel::class.java as Class<VM>
