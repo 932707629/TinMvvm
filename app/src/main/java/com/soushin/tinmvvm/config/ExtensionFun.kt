@@ -36,3 +36,4 @@ fun BaseFragment<*, *>.go(clazz:Class<*>){
 
 
 
+

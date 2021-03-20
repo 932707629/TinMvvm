@@ -27,27 +27,27 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
     }
 
     override fun onActivityResumed(activity: Activity) {
-        ALog.i("onActivityResumed",activity.localClassName)
+//        ALog.i("onActivityResumed",activity.localClassName)
     }
 
     override fun onActivityStarted(activity: Activity) {
-        ALog.i("onActivityStarted",activity.localClassName)
+//        ALog.i("onActivityStarted",activity.localClassName)
     }
 
     override fun onActivityPaused(activity: Activity) {
-        ALog.i("onActivityPaused",activity.localClassName)
+//        ALog.i("onActivityPaused",activity.localClassName)
     }
 
     override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
-        ALog.i("onActivitySaveInstanceState",activity.localClassName)
+//        ALog.i("onActivitySaveInstanceState",activity.localClassName)
     }
 
     override fun onActivityStopped(activity: Activity) {
-        ALog.i("onActivityStopped",activity.localClassName)
+//        ALog.i("onActivityStopped",activity.localClassName)
     }
 
     override fun onActivityDestroyed(activity: Activity) {
-        ALog.i("onActivityDestroyed",activity.localClassName)
+//        ALog.i("onActivityDestroyed",activity.localClassName)
         if (activity is BaseActivity<*, *> &&activity.useFragment()){//注册fragment回调监听
             fragmentLifecycleMap[activity.localClassName]?.let {
                 activity.supportFragmentManager.unregisterFragmentLifecycleCallbacks(it)

@@ -13,14 +13,10 @@ import me.soushin.tinmvvm.base.BaseViewModel
  * @author created by Soushin
  * @time 2020/1/7 13 46
  */
-class MainViewModel : BaseViewModel<MainModel> {
+class MainViewModel(application: Application) : BaseViewModel<MainModel>(application, MainModel()) {
 
     var tvContent=MutableLiveData<String>("Hello World")
 
-
-    constructor(application: Application):super(application,MainModel()){
-
-    }
 
     fun getDatas(){
         tvContent.value= model.getDatas()

@@ -1,21 +1,14 @@
 package me.soushin.tinmvvm.base
 
-import android.app.Activity
 import android.app.Application
-import androidx.annotation.NonNull
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
-import com.rxjava.rxlife.Scope
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import java.lang.ref.WeakReference
-import kotlin.coroutines.CoroutineContext
+import kotlinx.coroutines.*
+import me.soushin.tinmvvm.config.AppComponent
 
 /**
  * @author created by Soushin
@@ -23,48 +16,33 @@ import kotlin.coroutines.CoroutineContext
  */
 open class BaseViewModel<M: BaseModel>(application: Application, val model: M) : AndroidViewModel(
     application
-), CoroutineScope, Scope,
-    LifecycleEventObserver {
+), CoroutineScope by MainScope(), LifecycleEventObserver {
 
-    private var mCompositeDisposable: CompositeDisposable?=null
+    private val mCompositeDisposable get() = CompositeDisposable()
 
-    /**
-     * lifecycleOwner实际传入的是上下文对象的软引用
-     * 可以将其强转为上下文对象来使用
-     */
-    protected var lifecycleOwner: WeakReference<LifecycleOwner>?=null
     private val job = Job()
+    //生命周期
+    protected var lifecycle:LifecycleOwner?=null
 
-    //这里可以让basemodel具有协程的功能
-    override val coroutineContext: CoroutineContext
-        get() = Dispatchers.Main + job
-
-    fun addSubcribe(dis: Disposable){
-        if (mCompositeDisposable==null){
-            this.mCompositeDisposable = CompositeDisposable()
-        }
-        mCompositeDisposable?.add(dis)
+    //子类可以自行override实现自定义异常处理
+    open val coroutineExceptionHandler get() = CoroutineExceptionHandler { coroutineContext, exception ->
+//        println("Handle $exception in CoroutineExceptionHandler")
+        AppComponent.rxErrorHandler?.handlerFactory?.handleError(exception)
     }
 
-    /**
-     * 生命周期注入
-     */
-    fun injectLifecycleOwner(@NonNull lifecycleOwner: LifecycleOwner){
-        this.lifecycleOwner= WeakReference(lifecycleOwner)
-        lifecycleOwner.lifecycle.addObserver(this)
+    //注册生命周期 需要在网络请求的时候用到它
+    fun registerLifecycleOwner(lifecycleOwner: LifecycleOwner){
+        this.lifecycle= lifecycleOwner
+    }
+
+    fun addSubcribe(dis: Disposable){
+        mCompositeDisposable.add(dis)
     }
 
     override fun onCleared() {
         super.onCleared()//会跟随页面生命周期销毁
+        model.onCleared()
         job.cancel()
-    }
-
-    override fun onScopeEnd() {
-
-    }
-
-    override fun onScopeStart(d: Disposable) {
-        addSubcribe(d)
     }
 
     override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
@@ -72,34 +50,13 @@ open class BaseViewModel<M: BaseModel>(application: Application, val model: M) :
         if (event == Lifecycle.Event.ON_DESTROY) {  //Activity/Fragment 销毁
 //            println("管道中断....")
             source.lifecycle.removeObserver(this)
+            this.lifecycle=null
             dispose() //中断RxJava管道
         }
     }
 
-    /**
-     * 生命周期对象实际上传入的是对应的Activity/Fragment
-     * 如果lifecycleOwner为空或者当前非Activity上下文可为空
-     */
-    fun getActivity() :Activity?{
-        if (lifecycleOwner?.get() is Activity){
-            return lifecycleOwner?.get() as Activity
-        }
-        return null
-    }
-
-    /**
-     * 生命周期对象实际上传入的是对应的Activity/Fragment
-     * 如果lifecycleOwner为空或者当前非Fragment上下文可为空
-     */
-    fun getFragment():Fragment?{
-        if (lifecycleOwner?.get() is Fragment){
-            return lifecycleOwner?.get() as Fragment
-        }
-        return null
-    }
-
     open fun dispose() {
-        this.mCompositeDisposable?.dispose()
+        this.mCompositeDisposable.dispose()
     }
 
 }

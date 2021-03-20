@@ -1,7 +1,7 @@
 # TinMvvm #
 
-## Surprise！！！[ ![Download](https://api.bintray.com/packages/soushin/maven/TinMvvm/images/download.svg?version=1.1.3) ](https://bintray.com/soushin/maven/TinMvvm/1.1.3/link)
-`implementation 'com.github.932707629:tinmvvm:1.1.3'`
+## Surprise！！！[ ![Download](https://api.bintray.com/packages/soushin/maven/TinMvvm/images/download.svg?version=1.1.4) ](https://bintray.com/soushin/maven/TinMvvm/1.1.4/link)
+`implementation 'com.github.932707629:tinmvvm:1.1.4'`
 
 ### 说在前面 ###
 虽然已经在项目中添加了比较详细的代码注释，但是肯定还有很多需要注意的地方没有解释清楚，希望大家在使用的过程中如果发现了什么问题，及时提出来，大家共同解决.
@@ -28,7 +28,8 @@ TinMvvm是以谷歌DataBinding+LiveData+ViewModel框架为基础，整合Rxjava2
 14. 依赖RxPermission，权限申请更简单
 15. 使用LiveEventBus，自动销毁，事件传递更加清晰
 16. 异常捕获机制，将捕获到的异常信息反馈给开发者（Rxjava2异常以及运行时异常）
-17. 可以不用kotlin-android-extensions插件，完全支持databinding和viewbinding混合使用
+17. 已废弃kotlin-android-extensions插件，完全支持databinding和viewbinding混合使用
+18. 新增BaseService，扩展了对Service的支持，使用Rxjava以及协程会更方便一些
 
 ### 开发准备 ###
 
@@ -77,9 +78,10 @@ TinMvvmTemplate这个文件里放着TinMvv的一键生成工具
 
 5. 项目的基本用法演示都会放在Demo文件夹中供大家随时查阅.
 
+### 已发现问题待修复: ###
 
-
-
+- AppManager.get().currentActivity会为空 已修复
+- 需要对service封装,针对rxjava更友好一些 已修复
 
 
 

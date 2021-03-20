@@ -24,5 +24,12 @@ object RxUtils {
         }
     }
 
+    fun <T> applyAsync() : ObservableTransformer<T,T> {
+        return ObservableTransformer<T,T>{
+            return@ObservableTransformer it.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        }
+    }
+
 
 }

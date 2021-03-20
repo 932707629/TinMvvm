@@ -55,6 +55,7 @@ import java.lang.reflect.ParameterizedType
         viewData= DataBindingUtil.bind(view)
         viewData?.lifecycleOwner=this
         viewModel= ViewModelProviders.of(this).get(viewModel())
+        viewModel?.registerLifecycleOwner(this)
         lifecycle.addObserver(viewModel!!)
         viewData?.setVariable(initVariableId(),viewModel)
     }

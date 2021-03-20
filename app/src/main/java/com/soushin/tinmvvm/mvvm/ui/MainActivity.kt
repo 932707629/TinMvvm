@@ -1,12 +1,14 @@
 package com.soushin.tinmvvm.mvvm.ui
 
 import android.Manifest
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import com.blankj.ALog
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.soushin.tinmvvm.BR
+import com.soushin.tinmvvm.MyService
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.config.go
 import com.soushin.tinmvvm.databinding.ActivityMainBinding
@@ -30,8 +32,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         return R.layout.activity_main
     }
 
+    private var serviceIntent:Intent?=null
+
     //为了保证每次界面销毁重启后，都可以保存之前的值，我们需要在onCreate()中，给控件赋值为 textViewContent
     override fun initData(savedInstanceState: Bundle?) {
+        ALog.e("开始初始化数据了");
         viewData?.onClick= View.OnClickListener {
             ALog.e("点击切换数据了")
             when(it.id){
@@ -81,6 +86,16 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 }
                 R.id.btn_crash->{
                    throw RuntimeException("模拟java运行时异常")
+                }
+                R.id.btn_service->{
+                    //启动自定义service
+                    if (serviceIntent==null){
+                        serviceIntent=Intent(this,MyService::class.java)
+                        startService(serviceIntent)
+                    }else {
+                        stopService(serviceIntent)
+                        this.serviceIntent=null
+                    }
                 }
             }
         }

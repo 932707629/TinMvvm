@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import com.blankj.ALog
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
@@ -25,6 +26,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryViewModel
     }
 
     override fun initData(savedInstanceState: Bundle?) {
+        ALog.e("开始初始化了");
         viewModel?.pageSkip?.observe(this, Observer {
             if (it==2){//返回上一页
                 FragmentUtils.removeFragment(this)

@@ -40,7 +40,7 @@ class CategoryViewModel(application: Application) :
     fun requestData() {
         model.requestDatas()
             .compose(RxUtils.applySchedulers())
-            .subscribe(object : HttpHandleCallBack<List<CategoryEntity>>(this){
+            .subscribe(object : HttpHandleCallBack<List<CategoryEntity>>(lifecycle!!){
                 override fun onNext(result: List<CategoryEntity>) {
                     super.onNext(result)
                     ALog.e("服务器返回结果", JSONObject.toJSONString(result))

@@ -31,11 +31,10 @@ abstract class BaseActivity<VD : ViewDataBinding,VM: BaseViewModel<*>> :AppCompa
         if (layoutId!=0){
             try {
                 viewData= DataBindingUtil.setContentView(this,layoutId)
-            }catch (e:ClassNotFoundException){
-                e.printStackTrace()
-            }
+            }catch (ignore:ClassNotFoundException){}
             viewData?.lifecycleOwner=this
             viewModel=ViewModelProviders.of(this).get(viewModel())
+            viewModel?.registerLifecycleOwner(this)
             lifecycle.addObserver(viewModel!!)
             viewData?.setVariable(initVariableId(),viewModel)
         }
