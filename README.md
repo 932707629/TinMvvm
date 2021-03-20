@@ -12,24 +12,24 @@ TinMvvm是以谷歌DataBinding+LiveData+ViewModel框架为基础，整合Rxjava2
 
 ### 功能列表 ###
 
-1. 解决屏幕适配问题，适配全面屏/刘海屏(AndroidAutoSize是代替AndroidAutoLayout的屏幕适配框架，原理是基于今日头条的适配方案)
-2. 代码解耦，提供ActivityLifecycleCallbacksImpl、FragmentLifecycleCallbacksImpl给baseActivity/baseFragment减压
-3. 使用堆栈对Activity进行统一管理，AppManager封装了各种常用方法
-4. Activity标题栏统一设置，支持标题栏和状态栏统一设置背景color/shape/drawable
-5. 支持fragment设置状态栏沉浸式，多fragment无缝切换
-6. 提供fragmentUtils工具类，解决fragment重叠的bug，fragment任务栈统一管理
-7. 提供懒加载onLazyInitView()/fragment可见性onInvisible()/onVisible()方法回调
-8. brvh3.0+，使用viewbinding！！！
-9. 使用RxHttp网络框架链式调用，与Rxjava2相结合，线程智能控制（用户可选retrofit替换 个人比较喜欢rxhttp独特的设计）
-10. 解决Toast禁用通知权限不能弹出的bug，不分主次线程，可自定义Toast样式
-11. 全局使用Kotlin，可与Java无缝转换
-12. 支持新手指引，编程中使用不规范的地方，会引导你正确使用
-13. 使用插件一键生成Activity/Fragment
-14. 依赖RxPermission，权限申请更简单
-15. 使用LiveEventBus，自动销毁，事件传递更加清晰
-16. 异常捕获机制，将捕获到的异常信息反馈给开发者（Rxjava2异常以及运行时异常）
-17. 已废弃kotlin-android-extensions插件，完全支持databinding和viewbinding混合使用
-18. 新增BaseService，扩展了对Service的支持，使用Rxjava以及协程会更方便一些
+- 解决屏幕适配问题，适配全面屏/刘海屏(AndroidAutoSize是代替AndroidAutoLayout的屏幕适配框架，原理是基于今日头条的适配方案)
+- 代码解耦，提供ActivityLifecycleCallbacksImpl、FragmentLifecycleCallbacksImpl给baseActivity/baseFragment减压
+- 使用堆栈对Activity进行统一管理，AppManager封装了各种常用方法
+- Activity标题栏统一设置，支持标题栏和状态栏统一设置背景color/shape/drawable
+- 支持fragment设置状态栏沉浸式，多fragment无缝切换
+- 提供fragmentUtils工具类，解决fragment重叠的bug，fragment任务栈统一管理
+- 提供懒加载onLazyInitView()/fragment可见性onInvisible()/onVisible()方法回调
+- brvh3.0+，使用viewbinding！！！
+- 使用RxHttp网络框架链式调用，与Rxjava2相结合，线程智能控制（用户可选retrofit替换 个人比较喜欢rxhttp独特的设计）
+- 解决Toast禁用通知权限不能弹出的bug，不分主次线程，可自定义Toast样式
+- 全局使用Kotlin，可与Java无缝转换
+- 支持新手指引，编程中使用不规范的地方，会引导你正确使用
+- 使用插件一键生成Activity/Fragment
+- 依赖RxPermission，权限申请更简单
+- 使用LiveEventBus，自动销毁，事件传递更加清晰
+- 异常捕获机制，将捕获到的异常信息反馈给开发者（Rxjava2异常以及运行时异常）
+- 已废弃kotlin-android-extensions插件，完全支持databinding和viewbinding混合使用
+- 新增BaseService，扩展了对Service的支持，使用Rxjava以及协程会更方便一些
 
 ### 开发准备 ###
 
@@ -68,15 +68,15 @@ TinMvvmTemplate这个文件里放着TinMvv的一键生成工具
 
 ### 注意: ###
 
-1. 设置标题栏和状态栏是在ActivityLifeCycleCallBackIml类里实现的，还进行了其他初始化与销毁业务，实现了对BaseActivity的解耦，另外，设置标题栏时要在activity对应的layout里include标题栏布局
+- 设置标题栏和状态栏是在ActivityLifeCycleCallBackIml类里实现的，还进行了其他初始化与销毁业务，实现了对BaseActivity的解耦，另外，设置标题栏时要在activity对应的layout里include标题栏布局
 
-2. 如果要在fragment里设置状态栏沉浸，可以让该fragment实现SimpleImmersionOwner接口，或者实现ImmersionOwner接口，具体实现可以参考ImmersionBar的demo使用
+- 如果要在fragment里设置状态栏沉浸，可以让该fragment实现SimpleImmersionOwner接口，或者实现ImmersionOwner接口，具体实现可以参考ImmersionBar的demo使用
 
-3. 三方库的初始化是在AppLifecycleImpl里进行的，建议能在子线程初始化的在子线程初始化.
+- 三方库的初始化是在AppLifecycleImpl里进行的，建议能在子线程初始化的在子线程初始化.
 
-4. 本框架默认使用kotlin构建，如果您使用的是java，请自行依赖butterknife等第三方组件.
+- 本框架默认使用kotlin构建，如果您使用的是java，请自行依赖butterknife等第三方组件.
 
-5. 项目的基本用法演示都会放在Demo文件夹中供大家随时查阅.
+- 项目的基本用法演示都会放在Demo文件夹中供大家随时查阅.
 
 ### 已发现问题待修复: ###
 
