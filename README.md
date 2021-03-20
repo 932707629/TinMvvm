@@ -74,7 +74,7 @@ TinMvvmTemplate这个文件里放着TinMvv的一键生成工具
 
 3. 三方库的初始化是在AppLifecycleImpl里进行的，建议能在子线程初始化的在子线程初始化.
 
-4.本框架默认使用kotlin构建，如果您使用的是java，请自行依赖butterknife等第三方组件.
+4. 本框架默认使用kotlin构建，如果您使用的是java，请自行依赖butterknife等第三方组件.
 
 5. 项目的基本用法演示都会放在Demo文件夹中供大家随时查阅.
 
