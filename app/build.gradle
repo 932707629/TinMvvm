@@ -95,7 +95,7 @@ dependencies {
     implementation(deps.recyclerview)
     implementation(deps.core_ktx)
     implementation project(':tinmvvm')
-//    implementation("com.github.932707629:tinmvvm:1.1.0")
+//    implementation('com.github.932707629:TinMvvm:1.2.3')
     implementation(deps.work_runtime)
     implementation(deps.autosize)
     implementation(deps.fastjson)
