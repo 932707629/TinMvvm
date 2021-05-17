@@ -5,7 +5,6 @@ import android.content.Intent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.hjq.toast.ToastUtils
-import com.soushin.tinmvvm.R
 import me.soushin.tinmvvm.base.BaseFragment
 
 /**

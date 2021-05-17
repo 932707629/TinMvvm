@@ -2,7 +2,6 @@ package me.soushin.tinmvvm.config
 
 import androidx.lifecycle.LifecycleOwner
 import com.rxjava.rxlife.RxLife
-import com.rxjava.rxlife.Scope
 import io.reactivex.disposables.Disposable
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber
 import me.soushin.tinmvvm.utils.AppManager

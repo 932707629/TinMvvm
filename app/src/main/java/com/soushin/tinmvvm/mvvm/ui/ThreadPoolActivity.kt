@@ -2,7 +2,6 @@ package com.soushin.tinmvvm.mvvm.ui
 
 import android.os.Bundle
 import com.soushin.tinmvvm.BR
-import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.databinding.ActivityThreadPoolBinding
 import com.soushin.tinmvvm.mvvm.viewmodel.ThreadPoolViewModel
 import me.soushin.tinmvvm.base.BaseActivity

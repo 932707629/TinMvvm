@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
-import com.blankj.ALog
 import java.lang.reflect.ParameterizedType
 
 @JvmName("inflateWithGeneric")

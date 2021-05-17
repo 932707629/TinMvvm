@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.Observer
 import com.blankj.ALog
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.soushin.tinmvvm.BR
@@ -63,7 +62,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 R.id.btn_permission->{
                     val rxPermissions=RxPermissions(this)
                     val pms= arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-
+                    
                     PermissionUtil.requestPermission(
                         permissions = pms,
                         lifecycle = this,

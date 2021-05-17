@@ -1,10 +1,7 @@
 package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
-import android.text.TextUtils
 import android.view.View
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.blankj.ALog
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.mvvm.model.CoroutineModel

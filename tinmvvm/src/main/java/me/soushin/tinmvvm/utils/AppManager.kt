@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Process
 import com.blankj.ALog
-import java.util.*
 import kotlin.system.exitProcess
 
 /**

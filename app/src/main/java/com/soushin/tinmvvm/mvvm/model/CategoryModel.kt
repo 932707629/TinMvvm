@@ -1,8 +1,5 @@
 package com.soushin.tinmvvm.mvvm.model
 
-import com.rxjava.rxlife.ObservableLife
-import com.rxjava.rxlife.RxLife
-import com.rxjava.rxlife.life
 import com.soushin.tinmvvm.mvvm.model.entity.CategoryEntity
 import io.reactivex.Observable
 import me.soushin.tinmvvm.base.BaseModel

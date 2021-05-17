@@ -1,7 +1,6 @@
 package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
-import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.alibaba.fastjson.JSONObject
 import com.blankj.ALog

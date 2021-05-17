@@ -1,7 +1,5 @@
 package com.soushin.tinmvvm.network;
 
-import com.soushin.tinmvvm.databinding.ActivityCoroutineBinding;
-
 import rxhttp.wrapper.annotation.DefaultDomain;
 
 /**

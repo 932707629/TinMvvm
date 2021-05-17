@@ -3,7 +3,6 @@ package com.soushin.tinmvvm.mvvm.ui
 import android.os.Bundle
 import com.chad.library.adapter.base.BaseBinderAdapter
 import com.soushin.tinmvvm.BR
-import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.databinding.ActivityRecyclerBinding
 import com.soushin.tinmvvm.mvvm.adapter.itembinder.ImageItemBinder
 import com.soushin.tinmvvm.mvvm.adapter.itembinder.TextItemBinder
