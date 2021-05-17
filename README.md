@@ -1,17 +1,19 @@
 # TinMvvm #
 
-## Surprise！！！
-`
+[![Surprise](https://jitpack.io/v/932707629/TinMvvm.svg)](https://jitpack.io/#932707629/TinMvvm)
+```
+   //添加jitpack地址到项目根目录的build.gradle
     allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
 	}
+    //添加依赖到mudule目录的build.gradle
 	dependencies {
-    	implementation 'com.github.932707629:TinMvvm:1.2.0'
+    	implementation 'com.github.932707629:TinMvvm:1.2.3'
     }
-`
+```
 
 ### 说在前面 ###
 虽然已经在项目中添加了比较详细的代码注释，但是肯定还有很多需要注意的地方没有解释清楚，希望大家在使用的过程中如果发现了什么问题，及时提出来，大家共同解决.
@@ -90,9 +92,8 @@ TinMvvmTemplate这个文件里放着TinMvv的一键生成工具
 
 ### 已发现问题待修复: ###
 
-修复fragment+tablayout使用时会重复创建的问题
-
-jitpack发布新版本
+- 修复fragment+tablayout使用时会重复创建的问题
+- jitpack发布新版本
 
 
 
