@@ -21,11 +21,11 @@ import me.soushin.tinmvvm.mvvm.viewmodel.TinErrorViewModel
 class TinErrorActivity : BaseActivity<ActivityTinErrorBinding, TinErrorViewModel>() {
 
 
-    override fun initView(savedInstanceState: Bundle?): Int {
+    /*override fun initView(savedInstanceState: Bundle?): Int {
         return 0 //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
-    }
+    }*/
 
-    override fun initData(savedInstanceState: Bundle?) {
+    override fun initView(savedInstanceState: Bundle?) {
         ImmersionBar.with(this).init()
         //配置信息
 //        val config= CustomActivityOnCrash.getConfigFromIntent(intent)

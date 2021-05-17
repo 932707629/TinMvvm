@@ -17,12 +17,11 @@ import me.soushin.tinmvvm.base.BaseActivity
 
 class ThreadPoolActivity : BaseActivity<ActivityThreadPoolBinding, ThreadPoolViewModel>() {
 
-
-    override fun initView(savedInstanceState: Bundle?): Int {
+    /*override fun initView(savedInstanceState: Bundle?): Int {
         return R.layout.activity_thread_pool //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
-    }
+    }*/
 
-    override fun initData(savedInstanceState: Bundle?) {
+    override fun initView(savedInstanceState: Bundle?) {
 
     }
 

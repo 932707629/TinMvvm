@@ -80,10 +80,9 @@ TinMvvmTemplate这个文件里放着TinMvv的一键生成工具
 
 ### 已发现问题待修复: ###
 
-- AppManager.get().currentActivity会为空 已修复
-- 需要对service封装,针对rxjava更友好一些 已修复
+修复fragment+tablayout使用时会重复创建的问题
 
-
+jetpack发布新版本
 
 
 

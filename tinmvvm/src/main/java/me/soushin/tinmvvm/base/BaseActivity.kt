@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
+import me.soushin.tinmvvm.utils.inflateBindingWithGeneric
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -22,22 +22,24 @@ abstract class BaseActivity<VD : ViewDataBinding,VM: BaseViewModel<*>> :AppCompa
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val layoutId= initView(savedInstanceState)
-        dataViewBinding(layoutId)
-        initData(savedInstanceState)
+        try { dataViewBinding() } catch (ignore:Exception){}
+        initView(savedInstanceState)
     }
 
-    private fun dataViewBinding(layoutId:Int) {
-        if (layoutId!=0){
-            try {
-                viewData= DataBindingUtil.setContentView(this,layoutId)
-            }catch (ignore:ClassNotFoundException){}
-            viewData?.lifecycleOwner=this
-            viewModel=ViewModelProviders.of(this).get(viewModel())
-            viewModel?.registerLifecycleOwner(this)
-            lifecycle.addObserver(viewModel!!)
-            viewData?.setVariable(initVariableId(),viewModel)
-        }
+    /**
+     * DataBindingUtil.bind和DataBindingUtil.setContentView两种方法有毫秒级的差距 bind+setContentView更快
+     * 用DataBindingUtil.bind可以用反射 用DataBindingUtil.setContentView还需要上层指定一个layoutId
+     * 总结:还是bind方法更简单一些
+     */
+    private fun dataViewBinding() {
+        val viewBinding=inflateBindingWithGeneric<VD>(layoutInflater)
+        viewData= DataBindingUtil.bind(viewBinding.root)
+        setContentView(viewBinding.root)
+        viewData?.lifecycleOwner=this
+        viewModel=ViewModelProviders.of(this).get(viewModel())
+        viewModel?.registerLifecycleOwner(this)
+        lifecycle.addObserver(viewModel!!)
+        viewData?.setVariable(initVariableId(),viewModel)
     }
 
     @SuppressWarnings("unchecked")
@@ -57,9 +59,9 @@ abstract class BaseActivity<VD : ViewDataBinding,VM: BaseViewModel<*>> :AppCompa
     /**
      * 返回值可以为0 即不设置setContentView
      */
-    abstract fun initView(savedInstanceState: Bundle?):Int
+//    abstract fun initView(savedInstanceState: Bundle?):Int
 
-    abstract fun initData(savedInstanceState: Bundle?)
+    abstract fun initView(savedInstanceState: Bundle?)
 
     abstract fun initVariableId():Int
 

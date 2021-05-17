@@ -11,8 +11,10 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
+import com.blankj.ALog
 import com.gyf.immersionbar.components.ImmersionOwner
 import com.gyf.immersionbar.components.ImmersionProxy
+import me.soushin.tinmvvm.utils.inflateBindingWithGeneric
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -25,13 +27,12 @@ import java.lang.reflect.ParameterizedType
     var mContext: Context? = null
     protected var viewData:VD?=null
     protected var viewModel:VM?=null
-    private val mImmersionProxy=ImmersionProxy(this)
+    private val mImmersionProxy by lazy { ImmersionProxy(this) }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         this.mContext=context
     }
-
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
@@ -39,31 +40,23 @@ import java.lang.reflect.ParameterizedType
         mImmersionProxy.isUserVisibleHint = isVisibleToUser
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mImmersionProxy.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view=initView(inflater,container,savedInstanceState)
-        dataViewBinding(view)
-        return view
-    }
-
-    private fun dataViewBinding(view: View) {
-        viewData= DataBindingUtil.bind(view)
-        viewData?.lifecycleOwner=this
-        viewModel= ViewModelProviders.of(this).get(viewModel())
-        viewModel?.registerLifecycleOwner(this)
-        lifecycle.addObserver(viewModel!!)
-        viewData?.setVariable(initVariableId(),viewModel)
+        if (viewData==null){
+            val viewBinding=inflateBindingWithGeneric<VD>(inflater,container,false)
+            dataViewBinding(viewBinding.root)
+            initView(savedInstanceState)
+        }
+        return viewData!!.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mImmersionProxy.onActivityCreated(savedInstanceState)
-        initData(savedInstanceState)
     }
 
     override fun onResume() {
@@ -96,9 +89,9 @@ import java.lang.reflect.ParameterizedType
         this.mContext=null
     }
 
-    abstract fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?):View
+//    abstract fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?):View
 
-    abstract fun initData( savedInstanceState: Bundle?)
+    abstract fun initView(savedInstanceState: Bundle?)
 
     abstract fun initVariableId():Int
 
@@ -126,9 +119,17 @@ import java.lang.reflect.ParameterizedType
     override fun initImmersionBar() {
         //状态栏设置
     }
+    protected fun dataViewBinding(view: View) {
+        viewData= DataBindingUtil.bind(view)
+        viewData?.lifecycleOwner=this
+        viewModel= ViewModelProviders.of(this).get(viewModel())
+        viewModel?.registerLifecycleOwner(this)
+        lifecycle.addObserver(viewModel!!)
+        viewData?.setVariable(initVariableId(),viewModel)
+    }
 
     @SuppressWarnings("unchecked")
-    private fun viewModel() :Class<VM>{
+    protected fun viewModel() :Class<VM>{
         val type=javaClass.genericSuperclass
         return run {
             if (type is ParameterizedType){

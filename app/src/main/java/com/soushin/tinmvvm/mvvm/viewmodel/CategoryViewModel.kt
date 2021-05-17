@@ -11,6 +11,7 @@ import com.soushin.tinmvvm.mvvm.model.entity.CategoryEntity
 import com.soushin.tinmvvm.utils.RxUtils
 import me.soushin.tinmvvm.base.BaseViewModel
 import me.soushin.tinmvvm.config.HttpHandleCallBack
+import me.soushin.tinmvvm.utils.throttleClick
 
 
 /**
@@ -23,7 +24,7 @@ class CategoryViewModel(application: Application) :
     var btnContent= MutableLiveData<String>()
     var pageSkip=MutableLiveData<Int>()
 
-    fun onClickBtnContent()=View.OnClickListener{
+    fun onClickBtnContent() = throttleClick {
         when(it.id){
             R.id.btn_content->{
                 requestData()
@@ -37,7 +38,7 @@ class CategoryViewModel(application: Application) :
         }
     }
 
-    fun requestData() {
+    private fun requestData() {
         model.requestDatas()
             .compose(RxUtils.applySchedulers())
             .subscribe(object : HttpHandleCallBack<List<CategoryEntity>>(lifecycle!!){

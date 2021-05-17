@@ -79,6 +79,7 @@ dependencies {
         exclude group: "androidx.lifecycle", module: 'lifecycle-livedata'
         exclude group: "androidx.lifecycle", module: 'lifecycle-viewmodel'
     }
+    implementation(deps.constraintlayout)
     implementation(deps.swipeRefresh) {
         exclude group: "androidx.annotation", module: 'annotation'
         exclude group: "androidx.core", module: 'core'

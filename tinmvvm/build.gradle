@@ -50,25 +50,26 @@ android {
 }
 
 // 打包源码jar
-task sourcesJar(type: Jar) {
+/*task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     archiveClassifier = 'sources'
-}
+}*/
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //kt+jetpack+androidx
     compileOnly(deps.kotlinstdlibjdk7)
-    compileOnly(deps.appcompat) {
+    compileOnly(deps.core_ktx)
+    implementation(deps.appcompat) {
         exclude group: "androidx.lifecycle", module: 'lifecycle-runtime'
         exclude group: "androidx.core", module: 'core'
         exclude group: "androidx.lifecycle", module: 'lifecycle-livedata'
         exclude group: "androidx.lifecycle", module: 'lifecycle-viewmodel'
     }
-    compileOnly(deps.core_ktx)
     api(deps.alog)
-    api(deps.customactivityoncrash)
-    api(deps.constraintlayout)
+    api(deps.customactivityoncrash){
+        exclude group: "androidx.appcompat", module: 'appcompat'
+    }
     api(deps.extensions)
     //第三方工具库
     api(deps.rxandroid) {
@@ -76,6 +77,7 @@ dependencies {
     }
     api(deps.rxjava2)
     api(deps.rxlife_rxjava)
+    api(deps.rxerrorhandler)
     api(deps.liveeventbus) {
         exclude group: "androidx.lifecycle", module: 'lifecycle-livedata'
         exclude group: "androidx.lifecycle", module: 'lifecycle-extensions'
@@ -87,6 +89,7 @@ dependencies {
         exclude group: "androidx.fragment", module: 'fragment'
         exclude group: "androidx.vectordrawable", module: 'vectordrawable-animated'
     }
+    kapt(deps.glide_compiler)//配套glide使用
     api(deps.kotlinx_coroutines) {
         exclude group: "org.jetbrains.kotlin", module: 'kotlin-android-extensions-runtime'
     }
@@ -98,8 +101,6 @@ dependencies {
     api(deps.immersionbar_ktx) {
         exclude group: "org.jetbrains.kotlin", module: 'kotlin-android-extensions-runtime'
     }
-    kapt(deps.glide_compiler)//配套glide使用
-    api(deps.rxerrorhandler)
 }
 
-apply from: "../bintrayUpload.gradle"
+//apply from: "../bintrayUpload.gradle"

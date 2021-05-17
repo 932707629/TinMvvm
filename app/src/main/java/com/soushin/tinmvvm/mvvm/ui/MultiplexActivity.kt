@@ -26,11 +26,11 @@ class MultiplexActivity : BaseActivity<ActivityMultiplexBinding, MultiplexViewMo
 
     private val strArray = arrayOf("关注", "推荐", "视频", "直播", "图片", "段子", "精华", "热门")
 
-    override fun initView(savedInstanceState: Bundle?): Int {
+    /*override fun initView(savedInstanceState: Bundle?): Int {
         return R.layout.activity_multiplex //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
-    }
+    }*/
 
-    override fun initData(savedInstanceState: Bundle?) {
+    override fun initView(savedInstanceState: Bundle?) {
         val rvRecycler=findViewById<ParentRecyclerView>(R.id.rvRecycler)
         rvRecycler.initLayoutManager()
         val multiTypeAdapter = MultiplexAdapter()

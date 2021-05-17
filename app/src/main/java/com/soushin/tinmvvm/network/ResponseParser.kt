@@ -5,6 +5,7 @@ import rxhttp.wrapper.annotation.Parser
 import rxhttp.wrapper.entity.ParameterizedTypeImpl
 import rxhttp.wrapper.exception.ParseException
 import rxhttp.wrapper.parse.AbstractParser
+import rxhttp.wrapper.utils.convert
 import java.io.IOException
 import java.lang.reflect.Type
 
@@ -27,7 +28,7 @@ open class ResponseParser<T> : AbstractParser<T> {
     override fun onParse(response: Response): T {
         val type = ParameterizedTypeImpl[BaseResponse::class.java, mType]
 
-        val data: BaseResponse<T> = convert(response,type)
+        val data: BaseResponse<T> = response.convert(type)
         if (data.getData() == null && mType === String::class.java) {
             /*
              * 考虑到有些时候服务端会返回：{"errorCode":0,"errorMsg":"关注成功"}  类似没有data的数据

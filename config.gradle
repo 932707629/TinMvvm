@@ -8,12 +8,12 @@ ext {
     versionCode = 1_000_008
     versionName = '1.0.8'
 
-    tinmvvmVersionCode = 1_001_004
-    tinmvvmVersionName = '1.1.4'
+    tinmvvmVersionCode = 1_02_00
+    tinmvvmVersionName = '1.2.0'
 
     rxjavaName = 'rxjava2'
     rxjavaVersion = '2.2.19'
-    okhttpVersion = '4.7.2'
+    okhttpVersion = '4.9.1'
     rxhttpVersion = '2.4.1'
     rxlifeVersion = '2.0.0'
     appcompatVersion = '1.2.0'
@@ -38,14 +38,14 @@ ext {
             alog                                : "com.github.932707629:alog:1.9.4",
             ToastUtils                          : "com.hjq:toast:8.6",
             gson                                : "com.google.code.gson:gson:2.8.6",
-            liveeventbus                        : "com.jeremyliao:live-event-bus-x:1.7.2",
+            liveeventbus                        : "io.github.jeremyliao:live-event-bus-x:1.8.0",
             autosize                            : "me.jessyan:autosize:1.2.1",
             basepopup                           : "com.github.razerdp:BasePopup:2.2.4.1",
 
             //network
             retrofit2                           : "com.squareup.retrofit2:retrofit:2.6.2",
             retrofit2_gson                      : "com.squareup.retrofit2:converter-gson:2.6.2",
-            glide                               : "com.github.bumptech.glide:glide:4.10.0",
+            glide                               : "com.github.bumptech.glide:glide:4.12.0",
             rxandroid                           : "io.reactivex.rxjava2:rxandroid:2.1.1",
             rxjava2                             : "io.reactivex.rxjava2:rxjava:$rxjavaVersion",
             rxpermissions                       : "com.github.tbruyelle:rxpermissions:0.10.2",

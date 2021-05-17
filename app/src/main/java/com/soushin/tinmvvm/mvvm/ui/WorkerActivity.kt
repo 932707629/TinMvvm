@@ -16,11 +16,11 @@ import me.soushin.tinmvvm.base.BaseActivity
 
 class WorkerActivity : BaseActivity<ActivityWorkerBinding, WorkerViewModel>() {
 
-    override fun initView(savedInstanceState: Bundle?): Int {
+    /*override fun initView(savedInstanceState: Bundle?): Int {
         return R.layout.activity_worker
-    }
+    }*/
 
-    override fun initData(savedInstanceState: Bundle?) {
+    override fun initView(savedInstanceState: Bundle?) {
 
         viewData?.onClick = View.OnClickListener {
             when (it.id) {

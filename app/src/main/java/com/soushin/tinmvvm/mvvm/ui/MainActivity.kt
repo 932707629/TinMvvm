@@ -28,15 +28,14 @@ import me.soushin.tinmvvm.base.BaseActivity
  */
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
-    override fun initView(savedInstanceState: Bundle?) :Int{
+    /*override fun initView(savedInstanceState: Bundle?) :Int{
         return R.layout.activity_main
-    }
+    }*/
 
     private var serviceIntent:Intent?=null
 
     //为了保证每次界面销毁重启后，都可以保存之前的值，我们需要在onCreate()中，给控件赋值为 textViewContent
-    override fun initData(savedInstanceState: Bundle?) {
-        ALog.e("开始初始化数据了");
+    override fun initView(savedInstanceState: Bundle?) {
         viewData?.onClick= View.OnClickListener {
             ALog.e("点击切换数据了")
             when(it.id){
@@ -101,7 +100,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         }
 
         LiveEventBus.get("pageChange",Int::class.java)
-            .observeSticky(this, Observer {
+            .observeSticky(this, {
                 if (it==1){
                     FragmentUtils.addFragment(supportFragmentManager,CategoryFragment(),R.id.fl_container)
                 }

@@ -24,11 +24,11 @@ class RecyclerActivity : BaseActivity<ActivityRecyclerBinding, RecyclerViewModel
 
     val adapter:BaseBinderAdapter= BaseBinderAdapter()
 
-    override fun initView(savedInstanceState: Bundle?): Int {
+    /*override fun initView(savedInstanceState: Bundle?): Int {
         return R.layout.activity_recycler //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
-    }
+    }*/
 
-    override fun initData(savedInstanceState: Bundle?) {
+    override fun initView(savedInstanceState: Bundle?) {
         listener()
         adapter.addItemBinder(ImageEntity::class.java,ImageItemBinder())
             .addItemBinder(String::class.java,TextItemBinder())
