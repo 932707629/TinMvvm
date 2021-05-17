@@ -1,6 +1,6 @@
 # TinMvvm #
 
-[![Surprise](https://jitpack.io/v/932707629/TinMvvm.svg)](https://jitpack.io/#932707629/TinMvvm)
+## Surprise[![](https://jitpack.io/v/932707629/TinMvvm.svg)](https://jitpack.io/#932707629/TinMvvm)
 ```
    //添加jitpack地址到项目根目录的build.gradle
     allprojects {
@@ -51,7 +51,7 @@ TinMvvm是以谷歌DataBinding+LiveData+ViewModel框架为基础，整合Rxjava2
 
 使用的第三方框架:
 
-[RxJava](https://github.com/ReactiveX/RxJava "RxJava")
+[RxJava2](https://github.com/ReactiveX/RxJava "RxJava2")
 
 [ImmersionBar](https://github.com/gyf-dev/ImmersionBar "ImmersionBar")
 
