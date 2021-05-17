@@ -92,7 +92,7 @@ TinMvvmTemplate这个文件里放着TinMvv的一键生成工具
 
 修复fragment+tablayout使用时会重复创建的问题
 
-jetpack发布新版本
+jitpack发布新版本
 
 
 
