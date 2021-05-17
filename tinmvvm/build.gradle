@@ -2,8 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.github.dcendents.android-maven'
-//apply plugin: 'kotlin-android-extensions'
 group = 'com.github.soushin'
+//apply plugin: 'kotlin-android-extensions'
 //版本更新的命令
 //gradlew clean build bintrayUpload -PbintrayUser=soushin -PbintrayKey=41191f3e38ba571be46a639901db861ee8053346 -PdryRun=false
 android {
