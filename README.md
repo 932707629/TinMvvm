@@ -11,7 +11,7 @@
 	}
     //添加依赖到mudule目录的build.gradle
 	dependencies {
-    	implementation 'com.github.932707629:TinMvvm:1.2.3'
+    	implementation 'com.github.932707629:TinMvvm:1.2.4'
     }
 ```
 
