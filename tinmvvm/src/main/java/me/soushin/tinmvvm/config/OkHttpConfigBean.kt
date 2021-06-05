@@ -1,4 +1,4 @@
-package me.soushin.tinmvvm.mvvm.model.bean
+package me.soushin.tinmvvm.config
 
 import me.soushin.tinmvvm.utils.HttpsUtils
 import javax.net.ssl.HostnameVerifier

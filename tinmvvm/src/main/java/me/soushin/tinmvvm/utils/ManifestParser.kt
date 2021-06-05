@@ -11,13 +11,8 @@ import java.util.*
  * @auther SouShin
  * @time 2020/7/15 14:59
  */
-class ManifestParser {
+class ManifestParser(private val ctx: Context) {
     private val MODULE_VALUE = "ConfigModule"
-    private val ctx:Context
-
-    constructor(ctx:Context){
-        this.ctx=ctx
-    }
 
     fun parse(): MutableList<ConfigModule>? {
         val modules: MutableList<ConfigModule> = ArrayList<ConfigModule>()
@@ -38,14 +33,12 @@ class ManifestParser {
     }
 
     private fun parseModule(className: String): ConfigModule {
-        val clazz: Class<*>
-        clazz = try {
+        val clazz: Class<*> = try {
             Class.forName(className)
         } catch (e: ClassNotFoundException) {
             throw IllegalArgumentException("Unable to find ConfigModule implementation", e)
         }
-        val module: Any
-        module = try {
+        val module: Any = try {
             clazz.newInstance()
         } catch (e: InstantiationException) {
             throw RuntimeException("Unable to instantiate ConfigModule implementation for $clazz", e)

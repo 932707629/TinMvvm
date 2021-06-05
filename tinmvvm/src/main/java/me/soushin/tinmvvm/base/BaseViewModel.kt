@@ -21,9 +21,9 @@ open class BaseViewModel<M: BaseModel>(application: Application, val model: M) :
     application
 ), CoroutineScope by MainScope(), LifecycleEventObserver {
 
-    private val mCompositeDisposable get() = CompositeDisposable()
+    private val mCompositeDisposable by lazy { CompositeDisposable() }
 
-    private val job = Job()
+//    private val job by lazy { Job() }
     //生命周期
     protected var lifecycle:LifecycleOwner?=null
 
@@ -45,7 +45,7 @@ open class BaseViewModel<M: BaseModel>(application: Application, val model: M) :
     override fun onCleared() {
         super.onCleared()//会跟随页面生命周期销毁
         model.onCleared()
-        job.cancel()
+//        job.cancel()
     }
 
     override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {

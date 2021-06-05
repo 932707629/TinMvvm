@@ -94,7 +94,7 @@ TinMvvmTemplate这个文件里放着TinMvv的一键生成工具
 
 - 修复fragment+tablayout使用时会重复创建的问题
 - jitpack发布新版本
-
+- 修复HttpHandleCallBack添加生命周期造成的强转异常
 
 
 

@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Process
 import com.blankj.ALog
+import java.util.*
 import kotlin.system.exitProcess
 
 /**
@@ -24,7 +25,7 @@ class AppManager private constructor(){
         }
     }
 
-    private var activitys= mutableListOf<Activity>()
+    private val activitys by lazy { LinkedList<Activity>() }
 
     fun getActivityCount():Int{
         return activitys.size
@@ -52,7 +53,7 @@ class AppManager private constructor(){
             ALog.w("stack == null when getTopActivity()");
             return null
         }
-        return activitys.get(activitys.size-1)
+        return activitys.last
     }
 
     /**

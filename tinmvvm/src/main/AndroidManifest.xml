@@ -4,12 +4,6 @@
 
     <application
         android:supportsRtl="true">
-        <activity
-            android:name=".mvvm.ui.TinErrorActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait"
-            android:theme="@style/OnePxTheme"/>
-
     <!--    <provider
             android:name=".config.InitProvider"
             android:authorities="${applicationId}.tinmvvm-init-provider"
