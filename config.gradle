@@ -14,8 +14,8 @@ ext {
     rxjavaName = 'rxjava2'
     rxjavaVersion = '2.2.19'
     okhttpVersion = '4.9.1'
-    rxhttpVersion = '2.4.1'
-    rxlifeVersion = '2.0.0'
+    rxhttpVersion = '2.6.2'
+    rxlifeVersion = '2.1.0'
     appcompatVersion = '1.2.0'
     immersionbarVersion = '3.0.0'
 
@@ -40,7 +40,7 @@ ext {
             gson                                : "com.google.code.gson:gson:2.8.6",
             liveeventbus                        : "io.github.jeremyliao:live-event-bus-x:1.8.0",
             autosize                            : "me.jessyan:autosize:1.2.1",
-            basepopup                           : "com.github.razerdp:BasePopup:2.2.4.1",
+            basepopup                           : "io.github.razerdp:BasePopup:3.1.0",
 
             //network
             retrofit2                           : "com.squareup.retrofit2:retrofit:2.6.2",
@@ -50,9 +50,9 @@ ext {
             rxjava2                             : "io.reactivex.rxjava2:rxjava:$rxjavaVersion",
             rxpermissions                       : "com.github.tbruyelle:rxpermissions:0.10.2",
             okhttp                              : "com.squareup.okhttp3:okhttp:$okhttpVersion",
-            rxhttp                              : "com.ljx.rxhttp:rxhttp:$rxhttpVersion",
-            rxlife_rxjava                       : "com.ljx.rxlife2:rxlife-rxjava:$rxlifeVersion",
-            rxlife_coroutine                    : "com.ljx.rxlife:rxlife-coroutine:$rxlifeVersion",
+            rxhttp                              : "com.github.liujingxing.rxhttp:rxhttp:$rxhttpVersion",
+            rxlife_rxjava                       : "com.github.liujingxing.rxlife:rxlife-rxjava2:$rxlifeVersion",
+            rxlife_coroutine                    : "com.github.liujingxing.rxlife:rxlife-coroutine:$rxlifeVersion",
             fastjson                            : "com.alibaba:fastjson:1.2.70",
             customactivityoncrash               : "cat.ereza:customactivityoncrash:2.3.0",
             conscrypt                           : "org.conscrypt:conscrypt-android:2.4.0",
@@ -78,7 +78,7 @@ ext {
             //kapt
             lifecycleompiler                    : "android.arch.lifecycle:compiler:1.1.1",
             glide_compiler                      : "com.github.bumptech.glide:compiler:4.10.0",
-            rxhttp_compiler                     : "com.ljx.rxhttp:rxhttp-compiler:$rxhttpVersion",
+            rxhttp_compiler                     : "com.github.liujingxing.rxhttp:rxhttp-compiler:$rxhttpVersion",
             databindingcompiler                 : "com.android.databinding:compiler:3.1.4",
 
     ]

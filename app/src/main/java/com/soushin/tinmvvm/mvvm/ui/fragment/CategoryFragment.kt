@@ -19,7 +19,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryViewModel
         ALog.e("开始初始化了")
         viewModel?.pageSkip?.observe(this, {
             if (it==2){//返回上一页
-                FragmentUtils.removeFragment(this)
+                FragmentUtils.remove(this)
             }else {
                 LiveEventBus.get<Int>("pageChange").post(it)
             }

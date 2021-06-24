@@ -40,8 +40,8 @@ class CategoryViewModel(application: Application) :
     private fun requestData() {
         model.requestDatas()
             .compose(RxUtils.applySchedulers())
-            .subscribe(object : HttpHandleCallBack<List<CategoryEntity>>(lifecycle!!){
-                override fun onNext(result: List<CategoryEntity>) {
+            .subscribe(object : HttpHandleCallBack<MutableList<CategoryEntity>>(lifecycle!!){
+                override fun onNext(result: MutableList<CategoryEntity>) {
                     super.onNext(result)
                     ALog.e("服务器返回结果", JSONObject.toJSONString(result))
                     btnContent.value=JSONObject.toJSONString(result)

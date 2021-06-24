@@ -1,11 +1,9 @@
 package me.soushin.tinmvvm.config
 
-import android.annotation.SuppressLint
 import android.app.Application
 import com.blankj.ALog
 import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import me.soushin.tinmvvm.base.BaseApp
-import me.soushin.tinmvvm.utils.CrashHandler
 
 /**
  * 拥有此类即可调用对应的方法拿到对应实例
@@ -19,7 +17,6 @@ class AppComponent// TODO: 2020/7/15  这里拿到全局配置信息即可实现
         AppComponent.globalConfig = globalConfig
         initALog(BaseApp.instance!!)
         initRxErrorHandler()
-        CrashHandler.init()
     }
 
     private fun initALog(app: Application) {

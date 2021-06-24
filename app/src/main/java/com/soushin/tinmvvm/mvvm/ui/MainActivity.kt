@@ -48,7 +48,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                     go(WorkerActivity::class.java)
                 }
                 R.id.btn_create_fragment->{
-                    FragmentUtils.addFragment(supportFragmentManager,CategoryFragment(),R.id.fl_container)
+                    FragmentUtils.add(supportFragmentManager,CategoryFragment(),R.id.fl_container)
                 }
                 R.id.btn_multiplex->{
                     go(MultiplexActivity::class.java)
@@ -101,7 +101,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         LiveEventBus.get("pageChange",Int::class.java)
             .observeSticky(this, {
                 if (it==1){
-                    FragmentUtils.addFragment(supportFragmentManager,CategoryFragment(),R.id.fl_container)
+                    FragmentUtils.add(supportFragmentManager,CategoryFragment(),R.id.fl_container)
                 }
             })
     }

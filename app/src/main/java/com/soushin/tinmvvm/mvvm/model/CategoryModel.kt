@@ -11,7 +11,7 @@ import rxhttp.wrapper.param.RxHttp
  */
 class CategoryModel : BaseModel() {
 
-    fun requestDatas():Observable<List<CategoryEntity>>{
+    fun requestDatas():Observable<MutableList<CategoryEntity>>{
         return RxHttp.get("/wxarticle/chapters/json")
             .asBaseResponseList(CategoryEntity::class.java)
 

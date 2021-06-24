@@ -1,6 +1,5 @@
-package me.soushin.tinmvvm.utils
+package com.soushin.tinmvvm.utils
 
-import android.content.Context
 import com.blankj.ALog
 import me.soushin.tinmvvm.config.AppComponent
 

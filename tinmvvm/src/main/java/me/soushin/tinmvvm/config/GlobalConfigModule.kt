@@ -34,6 +34,7 @@ class GlobalConfigModule(builder: Builder) {
         var okHttpClient = getDefaultOkHttpClient()//提供默认的可修改的okhttpclient全局共用
         var errorResponseListener: ResponseErrorListener = ResponseErrorListener.EMPTY//rxjava2异常监听回调
 
+
         fun logDir(logDir: String): Builder {
             this.logDir = logDir
             return this

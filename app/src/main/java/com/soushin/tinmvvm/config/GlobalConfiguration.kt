@@ -1,20 +1,20 @@
 package com.soushin.tinmvvm.config
 
-import android.app.Activity
 import android.app.Application
 import android.content.Context
-import com.blankj.ALog
 import com.soushin.tinmvvm.BuildConfig
 import com.soushin.tinmvvm.network.Api
 import me.soushin.tinmvvm.config.GlobalConfigModule
 import me.soushin.tinmvvm.listener.AppLifecycle
 import me.soushin.tinmvvm.listener.ConfigModule
 import okhttp3.OkHttpClient
+import rxhttp.RxHttpPlugins
 import rxhttp.wrapper.cookie.CookieStore
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.ssl.HttpsUtils
 import java.io.File
 import java.util.concurrent.TimeUnit
+
 /**
  * 全局配置
  * @auther SouShin
@@ -47,7 +47,8 @@ class GlobalConfiguration :ConfigModule {
 //            .followRedirects(false)  //禁制OkHttp的重定向操作，我们自己处理重定向
 //            .addInterceptor(new RedirectInterceptor())
 //            .addInterceptor(new TokenInterceptor())
-        RxHttp.init(okHttpClient,BuildConfig.DEBUG)
+        RxHttpPlugins.init(okHttpClient)
+            .setDebug(BuildConfig.DEBUG)
         return okHttpClient
     }
 
