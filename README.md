@@ -19,7 +19,7 @@
 虽然已经在项目中添加了比较详细的代码注释，但是肯定还有很多需要注意的地方没有解释清楚，希望大家在使用的过程中如果发现了什么问题，及时提出来，大家共同解决.
 
 ### 我们的优势 ###
-TinMvvm是以谷歌DataBinding+LiveData+ViewModel框架为基础，整合Rxjava2、Kotlinx_coroutines、okhttp-RxHttp、Liveeventbus等流行模块，加上各种原生控件，
+TinMvvm是以谷歌DataBinding+LiveData+ViewModel框架为基础，整合Rxjava2、ViewBinding、okhttp-RxHttp、Liveeventbus等流行模块，加上各种原生控件，
 让事件与数据源完美绑定的一款容易上瘾的实用性MVVM快速开发框架。从此告别findViewById()，告别set()、get()
 
 ### 功能列表 ###
@@ -67,10 +67,10 @@ TinMvvm是以谷歌DataBinding+LiveData+ViewModel框架为基础，整合Rxjava2
 
 [RxPermissions](https://github.com/tbruyelle/RxPermissions "RxPermissions")
 
-[CustomActivityOnCrash](https://github.com/Ereza/CustomActivityOnCrash "CustomActivityOnCrash")
-
 
 ### 使用插件一键生成Activity/Fragment ###
+
+Android Studio4.0以上不支持自定义模板,可以使用[一键生成TinMvvm组件](https://github.com/932707629/tin-mvvm-template)
 
 TinMvvmTemplate这个文件里放着TinMvv的一键生成工具
 
@@ -87,8 +87,6 @@ TinMvvmTemplate这个文件里放着TinMvv的一键生成工具
 - 三方库的初始化是在AppLifecycleImpl里进行的，建议能在子线程初始化的在子线程初始化.
 
 - 本框架默认使用kotlin构建，如果您使用的是java，请自行依赖butterknife等第三方组件.
-
-- 项目的基本用法演示都会放在Demo文件夹中供大家随时查阅.
 
 ### 已发现问题待修复: ###
 

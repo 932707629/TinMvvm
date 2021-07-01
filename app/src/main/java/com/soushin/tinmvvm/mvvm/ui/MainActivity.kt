@@ -101,6 +101,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         LiveEventBus.get("pageChange",Int::class.java)
             .observeSticky(this, {
                 if (it==1){
+                    mutableListOf<String>().firstOrNull{
+
+                    }
                     FragmentUtils.add(supportFragmentManager,CategoryFragment(),R.id.fl_container)
                 }
             })
