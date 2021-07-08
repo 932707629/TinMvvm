@@ -1,12 +1,15 @@
 package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
+import android.text.TextUtils
 import android.view.View
 import com.blankj.ALog
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.mvvm.model.CoroutineModel
 import kotlinx.coroutines.*
 import me.soushin.tinmvvm.base.BaseViewModel
+import kotlin.time.ExperimentalTime
+import kotlin.time.days
 
 /**
  * ================================================
@@ -19,11 +22,15 @@ import me.soushin.tinmvvm.base.BaseViewModel
 class CoroutineViewModel(application: Application) :
     BaseViewModel<CoroutineModel>(application, CoroutineModel()) {
 
+    operator fun invoke(){
+        ALog.i("调用invoke函数");
+    }
+
     fun onClick(): View.OnClickListener {
         return View.OnClickListener {
             when(it.id){
                 R.id.btn_coroutine_fuc->{
-
+                    //协程的普通用法
                     launch {
                         val task1 = withContext(Dispatchers.IO) {
                             Thread.sleep(2000)
@@ -43,7 +50,6 @@ class CoroutineViewModel(application: Application) :
 
                         ALog.e("所有任务都已执行", Thread.currentThread().name, task2.await(), task3.await());
                     }
-
                     launch {
                         launch(Dispatchers.IO) {
                             kotlinx.coroutines.delay(5000)
@@ -54,12 +60,47 @@ class CoroutineViewModel(application: Application) :
                             }
                         }
                     }
-                    ALog.e("所有协程任务都已开始");
+
+                    ALog.e("所有协程任务都已开始")
                 }
                 R.id.btn_coroutine_crash->{
                     //协程内的异常捕获
                     launch(coroutineExceptionHandler){
                         throw RuntimeException("RuntimeException in nested coroutine")
+                    }
+                }
+                R.id.btn_advanced_grammar->{
+                    launch {
+                        withContext(Dispatchers.IO){
+                            val list = mutableListOf("1","2","3","2","3","2","3","2","3","4","5","6","7","8","9","0")
+
+                            ALog.i("filter输出文本内容",list.filter {str-> return@filter TextUtils.equals(str,"3") })
+
+                            ALog.i("filterIndexed输出文本内容",list.filterIndexed { index, s -> index==3  })
+
+                            ALog.i("reduceRight输出文本内容",list.reduceRight { acc, s ->
+                                ALog.i("reduceRight",acc,s);
+                                return@reduceRight acc
+                            })
+                            ALog.i("输出原始文本内容",list)
+                            ///数据去重
+                            ALog.i("distinct输出文本内容",list.distinct())
+                            //跳过前5位数
+                            ALog.i("drop输出文本内容",list.drop(5))
+                            //顺序打乱
+                            list.shuffle()
+                            ALog.i("shuffle",list);
+                            //排序
+                            list.sort()
+                            ALog.i("sort",list);
+                            //数据填充
+                            list.fill("6")
+                            ALog.i("fill",list);
+                            //Call requires API level 24
+                            /*list.removeIf {
+                                return@removeIf true
+                            }*/
+                        }
                     }
                 }
             }

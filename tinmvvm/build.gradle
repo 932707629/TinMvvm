@@ -57,17 +57,8 @@ dependencies {
     //kt+jetpack+androidx
     compileOnly(deps.kotlinstdlibjdk7)
     compileOnly(deps.core_ktx)
-    implementation(deps.appcompat) {
-        exclude group: "androidx.lifecycle", module: 'lifecycle-runtime'
-        exclude group: "androidx.core", module: 'core'
-        exclude group: "androidx.lifecycle", module: 'lifecycle-livedata'
-        exclude group: "androidx.lifecycle", module: 'lifecycle-viewmodel'
-    }
+    implementation(deps.appcompat)
     api(deps.alog)
-/*    api(deps.customactivityoncrash){
-        exclude group: "androidx.appcompat", module: 'appcompat'
-    }*/
-    api(deps.extensions)
     //第三方工具库
     api(deps.rxandroid) {
         exclude group: "io.reactivex.rxjava2", module: 'rxjava'
@@ -75,10 +66,6 @@ dependencies {
     api(deps.rxjava2)
     api(deps.rxlife_rxjava)
     api(deps.rxerrorhandler)
-    api(deps.liveeventbus) {
-        exclude group: "androidx.lifecycle", module: 'lifecycle-livedata'
-        exclude group: "androidx.lifecycle", module: 'lifecycle-extensions'
-    }
     api(deps.conscrypt)
     api(deps.okhttp)
     api(deps.glide){

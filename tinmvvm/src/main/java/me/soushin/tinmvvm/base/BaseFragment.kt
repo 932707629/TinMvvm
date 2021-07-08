@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.gyf.immersionbar.components.ImmersionOwner
 import com.gyf.immersionbar.components.ImmersionProxy
 import me.soushin.tinmvvm.utils.inflateBindingWithGeneric
@@ -117,10 +117,11 @@ import java.lang.reflect.ParameterizedType
     override fun initImmersionBar() {
         //状态栏设置
     }
+
     protected fun dataViewBinding(view: View) {
         viewData= DataBindingUtil.bind(view)
         viewData?.lifecycleOwner=this
-        viewModel= ViewModelProviders.of(this).get(viewModel())
+        viewModel= ViewModelProvider(this)[viewModel()]
         viewModel?.registerLifecycleOwner(this)
         lifecycle.addObserver(viewModel!!)
         viewData?.setVariable(initVariableId(),viewModel)

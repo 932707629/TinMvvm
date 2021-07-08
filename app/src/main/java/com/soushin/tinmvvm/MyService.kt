@@ -14,7 +14,6 @@ class MyService : BaseService() {
 
     override fun init() {
         ALog.i("自定义service创建",this.javaClass.simpleName)
-
         val disposable=Observable.interval(10,TimeUnit.SECONDS)
             .compose(RxUtils.applyAsync())
             .subscribe({
@@ -36,6 +35,7 @@ class MyService : BaseService() {
                 }
             }
         }
+
         jop.cancel()
     }
 

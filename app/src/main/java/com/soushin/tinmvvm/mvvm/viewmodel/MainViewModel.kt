@@ -15,11 +15,4 @@ import me.soushin.tinmvvm.base.BaseViewModel
  */
 class MainViewModel(application: Application) : BaseViewModel<MainModel>(application, MainModel()) {
 
-    var tvContent=MutableLiveData<String>("Hello World")
-
-
-    fun getDatas(){
-        tvContent.value= model.getDatas()
-    }
-
 }

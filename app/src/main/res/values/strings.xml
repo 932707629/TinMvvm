@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TinMvvm</string>
+    <string name="title_activity_custom_design">CustomDesign</string>
+    <string name="title_activity_test">Demo</string>
 </resources>

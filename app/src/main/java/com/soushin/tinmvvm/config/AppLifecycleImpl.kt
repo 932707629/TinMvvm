@@ -5,7 +5,6 @@ import android.content.Context
 import androidx.multidex.MultiDex
 import com.hjq.toast.ToastUtils
 import com.soushin.tinmvvm.utils.CrashHandler
-import com.soushin.tinmvvm.widget.ToastStyle
 import me.soushin.tinmvvm.listener.AppLifecycle
 
 /**
@@ -20,7 +19,7 @@ class AppLifecycleImpl :AppLifecycle {
     }
 
     override fun onCreate(application: Application) {
-        ToastUtils.init(application, ToastStyle())
+        ToastUtils.init(application)
         //异常监听
         CrashHandler.init()
     }

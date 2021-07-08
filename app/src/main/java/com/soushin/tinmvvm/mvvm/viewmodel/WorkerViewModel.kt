@@ -17,11 +17,10 @@ import java.util.concurrent.TimeUnit
  * @author created by Soushin
  * @time 2020/1/10 15 28
  */
-class WorkerViewModel : BaseViewModel<WorkerModel> {
+class WorkerViewModel(application: Application) :
+    BaseViewModel<WorkerModel>(application, WorkerModel()) {
 
-    constructor(application: Application):super(application,WorkerModel())
-
-    var btnStatus= MutableLiveData<String>("开始任务")
+    var btnStatus= MutableLiveData("开始任务")
     //PeriodicWorkRequest OneTimeWorkRequest
     val request=PeriodicWorkRequest.Builder(BackGroundWorker::class.java,15,TimeUnit.MINUTES)
         .setInputData(Data.Builder().putString("key","value").build())
@@ -39,12 +38,11 @@ class WorkerViewModel : BaseViewModel<WorkerModel> {
         if (btnStatus.value=="开始任务"){
             btnStatus.value="结束任务"
             val state= WorkManager.getInstance().enqueue(request)
-
+            ALog.i("结果分析",state.state,state.result);
             WorkManager.getInstance().getWorkInfoByIdLiveData(request.id).observe(owner,
                 Observer {
                     ALog.e("接收任务返回结果",it.outputData.getString("result"))
                 })
-
         }else{
             btnStatus.value="开始任务"
             WorkManager.getInstance().cancelWorkById(request.id)

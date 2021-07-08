@@ -31,5 +31,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
+        <Button
+            android:id="@+id/btn_advanced_grammar"
+            android:text="高级语法"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/btn_coroutine_crash"
+            android:onClick="@{CoroutineViewModel.onClick()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

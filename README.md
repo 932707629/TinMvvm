@@ -88,7 +88,7 @@ TinMvvmTemplate这个文件里放着TinMvv的一键生成工具
 
 - 本框架默认使用kotlin构建，如果您使用的是java，请自行依赖butterknife等第三方组件.
 
-### 已发现问题待修复: ###
+### 已修复问题: ###
 
 - 修复fragment+tablayout使用时会重复创建的问题
 - jitpack发布新版本

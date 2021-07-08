@@ -11,9 +11,8 @@ import com.blankj.ALog
  * @author created by Soushin
  * @time 2020/1/10 13 14
  */
-class BackGroundWorker :Worker {
-
-    constructor(context: Context,parameters:WorkerParameters):super(context,parameters)
+class BackGroundWorker(context: Context, parameters: WorkerParameters) :
+    Worker(context, parameters) {
 
     override fun doWork(): Result {
         ALog.e("传入数据打印",inputData.getString("key"))

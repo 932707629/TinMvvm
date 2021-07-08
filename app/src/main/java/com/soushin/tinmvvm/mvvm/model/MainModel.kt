@@ -10,10 +10,5 @@ import me.soushin.tinmvvm.base.BaseModel
 class MainModel : BaseModel(){
 
 
-    fun getDatas():String{
-
-        return "1231231312"
-    }
-
 
 }

@@ -28,15 +28,7 @@ class WorkerActivity : BaseActivity<ActivityWorkerBinding, WorkerViewModel>() {
                     //PeriodicWorkRequest 任务循环执行
                     //OneTimeWorkRequest 任务执行一次
                     viewModel?.changeStatus(this)
-//            val request = OneTimeWorkRequest.Builder(BackGroundWorker::class.java)
-//                .setInputData(Data.Builder().putString("key","value").build())
-//                .build()
-//            val state= WorkManager.getInstance().enqueue(request)
 
-//            WorkManager.getInstance().getWorkInfoByIdLiveData(request.id).observe(this,
-//                Observer {
-//                    ALog.e("接收任务返回结果",it.outputData.getString("result"))
-//                })
                 }
             }
         }

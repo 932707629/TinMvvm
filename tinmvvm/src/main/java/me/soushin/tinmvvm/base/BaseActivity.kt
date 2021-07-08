@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import me.soushin.tinmvvm.utils.inflateBindingWithGeneric
 import java.lang.reflect.ParameterizedType
 
@@ -36,7 +36,7 @@ abstract class BaseActivity<VD : ViewDataBinding,VM: BaseViewModel<*>> :AppCompa
         viewData= DataBindingUtil.bind(viewBinding.root)
         setContentView(viewBinding.root)
         viewData?.lifecycleOwner=this
-        viewModel=ViewModelProviders.of(this).get(viewModel())
+        viewModel= ViewModelProvider(this)[viewModel()]
         viewModel?.registerLifecycleOwner(this)
         lifecycle.addObserver(viewModel!!)
         viewData?.setVariable(initVariableId(),viewModel)
