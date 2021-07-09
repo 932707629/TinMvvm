@@ -1,6 +1,7 @@
 package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
+import androidx.navigation.Navigation
 import com.blankj.ALog
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.soushin.tinmvvm.BR
@@ -17,13 +18,6 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryViewModel
 
     override fun initView(savedInstanceState: Bundle?) {
         ALog.e("开始初始化了")
-        viewModel?.pageSkip?.observe(this, {
-            if (it==2){//返回上一页
-                FragmentUtils.remove(this@CategoryFragment)
-            }else {
-                LiveEventBus.get<Int>("pageChange").post(it)
-            }
-        })
     }
 
     override fun initVariableId(): Int {

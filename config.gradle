@@ -63,7 +63,9 @@ ext {
             lifecycle_viewmodel                 : "androidx.lifecycle:lifecycle-viewmodel:$lifecycleVersion",
             lifecycle_livedata                  : "androidx.lifecycle:lifecycle-livedata:$lifecycleVersion",
             lifecycle_runtime                   : "androidx.lifecycle:lifecycle-runtime:$lifecycleVersion",
-            lifecycle_viewmodel_savedstate       : "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycleVersion",
+            lifecycle_viewmodel_savedstate      : "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycleVersion",
+            navigation_fragment_ktx             : "androidx.navigation:navigation-fragment-ktx:2.3.5",
+            navigation_ui_ktx                   : "androidx.navigation:navigation-ui-ktx:2.3.5",
 
             //rx
             rxlifecycle                         : "com.trello.rxlifecycle3:rxlifecycle:3.1.0",

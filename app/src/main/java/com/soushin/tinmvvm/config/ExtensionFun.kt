@@ -21,7 +21,7 @@ fun AppCompatActivity.go(clazz:Class<*>){
     startActivity(Intent(getThis(),clazz))
 }
 
-fun AppCompatActivity.getThis(): Context {
+fun AppCompatActivity.getThis(): AppCompatActivity {
     return this
 }
 

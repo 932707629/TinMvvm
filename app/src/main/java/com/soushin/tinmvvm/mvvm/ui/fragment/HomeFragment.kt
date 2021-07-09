@@ -1,21 +1,25 @@
-package com.soushin.tinmvvm.mvvm.ui
+package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.Manifest
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
-import android.os.Bundle;
+import android.os.Bundle
 import android.os.Environment
 import android.view.View
+import androidx.navigation.*
+import androidx.navigation.ui.NavigationUI
 import com.blankj.ALog
 import com.jeremyliao.liveeventbus.LiveEventBus
-import me.soushin.tinmvvm.base.BaseActivity;
-import com.soushin.tinmvvm.databinding.ActivityTestBinding;
-import com.soushin.tinmvvm.mvvm.viewmodel.TestViewModel;
-import com.soushin.tinmvvm.R;
-import com.soushin.tinmvvm.BR;
+
+import com.soushin.tinmvvm.R
+import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.MyService
 import com.soushin.tinmvvm.config.go
-import com.soushin.tinmvvm.mvvm.ui.fragment.CategoryFragment
+import me.soushin.tinmvvm.base.BaseFragment
+import com.soushin.tinmvvm.databinding.FragmentHomeBinding
+import com.soushin.tinmvvm.mvvm.ui.*
+import com.soushin.tinmvvm.mvvm.viewmodel.HomeViewModel
 import com.soushin.tinmvvm.utils.FragmentUtils
 import com.soushin.tinmvvm.utils.PermissionUtil
 import com.tbruyelle.rxpermissions2.RxPermissions
@@ -23,17 +27,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
-/**
- * 主页
- * https://juejin.im/post/5da90c54f265da5b932e7960  学习的网址
- * @author Soushin
- * @time 2020/1/7 13:39
- */
-class TestActivity : BaseActivity<ActivityTestBinding, TestViewModel>() {
-
-    override fun initVariableId(): Int {
-        return BR.TestViewModel;//这里是为了绑定ViewModel用的 如果不需要请返回0
+class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
+    companion object {
+        fun newInstance(): HomeFragment {
+            return HomeFragment()
+        }
     }
 
     private var serviceIntent: Intent?=null
@@ -53,7 +51,8 @@ class TestActivity : BaseActivity<ActivityTestBinding, TestViewModel>() {
                     go(WorkerActivity::class.java)
                 }
                 R.id.btn_create_fragment->{
-                    FragmentUtils.add(supportFragmentManager, CategoryFragment(),R.id.fl_container)
+//                    FragmentUtils.add(childFragmentManager, CategoryFragment(),R.id.fl_container)
+                    Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_categoryFragment)
                 }
                 R.id.btn_multiplex->{
                     go(MultiplexActivity::class.java)
@@ -93,10 +92,10 @@ class TestActivity : BaseActivity<ActivityTestBinding, TestViewModel>() {
                 R.id.btn_service->{
                     //启动自定义service
                     if (serviceIntent==null){
-                        serviceIntent= Intent(this, MyService::class.java)
-                        startService(serviceIntent)
+                        serviceIntent= Intent(requireContext(), MyService::class.java)
+                        requireActivity().startService(serviceIntent)
                     }else {
-                        stopService(Intent(this, MyService::class.java))
+                        requireActivity().stopService(Intent(requireContext(), MyService::class.java))
                         this.serviceIntent=null
                     }
                 }
@@ -109,36 +108,28 @@ class TestActivity : BaseActivity<ActivityTestBinding, TestViewModel>() {
                             ALog.i("getDataDirectory", Environment.getDataDirectory().absolutePath)
                             ALog.i("getDownloadCacheDirectory", Environment.getDownloadCacheDirectory().absolutePath)
                             ALog.i("getRootDirectory", Environment.getRootDirectory().absolutePath)
-                            ALog.i("DIRECTORY_MUSIC",getExternalFilesDir(Environment.DIRECTORY_MUSIC)?.absolutePath)
-                            ALog.i("DIRECTORY_ALARMS",getExternalFilesDir(Environment.DIRECTORY_ALARMS)?.absolutePath)
-                            ALog.i("DIRECTORY_DCIM",getExternalFilesDir(Environment.DIRECTORY_DCIM)?.absolutePath)
-                            ALog.i("DIRECTORY_DOCUMENTS",getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)?.absolutePath)
-                            ALog.i("DIRECTORY_DOWNLOADS",getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)?.absolutePath)
-                            ALog.i("DIRECTORY_MOVIES",getExternalFilesDir(Environment.DIRECTORY_MOVIES)?.absolutePath)
-                            ALog.i("DIRECTORY_NOTIFICATIONS",getExternalFilesDir(Environment.DIRECTORY_NOTIFICATIONS)?.absolutePath)
-                            ALog.i("DIRECTORY_PICTURES",getExternalFilesDir(Environment.DIRECTORY_PICTURES)?.absolutePath)
-                            ALog.i("DIRECTORY_PODCASTS",getExternalFilesDir(Environment.DIRECTORY_PODCASTS)?.absolutePath)
-                            ALog.i("DIRECTORY_RINGTONES",getExternalFilesDir(Environment.DIRECTORY_RINGTONES)?.absolutePath)
+                            ALog.i("DIRECTORY_MUSIC",requireActivity().getExternalFilesDir(Environment.DIRECTORY_MUSIC)?.absolutePath)
+                            ALog.i("DIRECTORY_ALARMS",requireActivity().getExternalFilesDir(Environment.DIRECTORY_ALARMS)?.absolutePath)
+                            ALog.i("DIRECTORY_DCIM",requireActivity().getExternalFilesDir(Environment.DIRECTORY_DCIM)?.absolutePath)
+                            ALog.i("DIRECTORY_DOCUMENTS",requireActivity().getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)?.absolutePath)
+                            ALog.i("DIRECTORY_DOWNLOADS",requireActivity().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)?.absolutePath)
+                            ALog.i("DIRECTORY_MOVIES",requireActivity().getExternalFilesDir(Environment.DIRECTORY_MOVIES)?.absolutePath)
+                            ALog.i("DIRECTORY_NOTIFICATIONS",requireActivity().getExternalFilesDir(Environment.DIRECTORY_NOTIFICATIONS)?.absolutePath)
+                            ALog.i("DIRECTORY_PICTURES",requireActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES)?.absolutePath)
+                            ALog.i("DIRECTORY_PODCASTS",requireActivity().getExternalFilesDir(Environment.DIRECTORY_PODCASTS)?.absolutePath)
+                            ALog.i("DIRECTORY_RINGTONES",requireActivity().getExternalFilesDir(Environment.DIRECTORY_RINGTONES)?.absolutePath)
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
-                                ALog.i("DIRECTORY_SCREENSHOTS",getExternalFilesDir(Environment.DIRECTORY_SCREENSHOTS)?.absolutePath)
-                                ALog.i("DIRECTORY_AUDIOBOOKS",getExternalFilesDir(Environment.DIRECTORY_AUDIOBOOKS)?.absolutePath)
+                                ALog.i("DIRECTORY_SCREENSHOTS",requireActivity().getExternalFilesDir(Environment.DIRECTORY_SCREENSHOTS)?.absolutePath)
+                                ALog.i("DIRECTORY_AUDIOBOOKS",requireActivity().getExternalFilesDir(Environment.DIRECTORY_AUDIOBOOKS)?.absolutePath)
                             }
                         }
                     }
                 }
             }
         }
-
-        LiveEventBus.get("pageChange",Int::class.java)
-            .observeSticky(this, {
-                if (it==1){
-                    FragmentUtils.add(supportFragmentManager, CategoryFragment(),R.id.fl_container)
-                }
-            })
     }
 
-    override fun useFragment(): Boolean {
-        return true
+    override fun initVariableId(): Int {
+        return BR.HomeViewModel;//这里是为了绑定ViewModel用的 如果不需要请返回0
     }
-
 }

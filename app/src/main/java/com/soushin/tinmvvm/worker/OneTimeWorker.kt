@@ -11,12 +11,11 @@ import com.blankj.ALog
  * @author created by Soushin
  * @time 2020/1/10 13 14
  */
-class BackGroundWorker(context: Context, parameters: WorkerParameters) :
+class OneTimeWorker(context: Context, parameters: WorkerParameters) :
     Worker(context, parameters) {
 
     override fun doWork(): Result {
-        ALog.e("传入数据打印",inputData.getString("key"))
-
+        ALog.e("传入数据",inputData.getString("key"),Thread.currentThread().name)
         return Result.success(Data.Builder().putString("result","success").build())
     }
 

@@ -2,8 +2,10 @@ package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.Navigation
 import com.alibaba.fastjson.JSONObject
 import com.blankj.ALog
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.mvvm.model.CategoryModel
 import com.soushin.tinmvvm.mvvm.model.entity.CategoryEntity
@@ -21,7 +23,6 @@ class CategoryViewModel(application: Application) :
     BaseViewModel<CategoryModel>(application, CategoryModel()) {
 
     var btnContent= MutableLiveData<String>()
-    var pageSkip=MutableLiveData<Int>()
 
     fun onClickBtnContent() = throttleClick {
         when(it.id){
@@ -29,10 +30,11 @@ class CategoryViewModel(application: Application) :
                 requestData()
             }
             R.id.btn_next_page->{
-                pageSkip.postValue(1)
+                ///自己跳转自己 多次重复打开一个页面
+                Navigation.findNavController(it).navigate(R.id.action_categoryFragment_self)
             }
             R.id.btn_last_page->{
-                pageSkip.postValue(2)
+                Navigation.findNavController(it).popBackStack();
             }
         }
     }

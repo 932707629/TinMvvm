@@ -94,6 +94,8 @@ dependencies {
     implementation(deps.core_ktx)
     implementation project(':tinmvvm')
     implementation(deps.work_runtime)
+    implementation(deps.navigation_fragment_ktx)
+    implementation(deps.navigation_ui_ktx)
 //    implementation(deps.autosize)
     implementation(deps.fastjson)
     implementation(deps.brvh)

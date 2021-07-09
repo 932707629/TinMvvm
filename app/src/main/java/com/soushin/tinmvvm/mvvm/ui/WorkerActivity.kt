@@ -27,7 +27,7 @@ class WorkerActivity : BaseActivity<ActivityWorkerBinding, WorkerViewModel>() {
                 R.id.btn_change -> {
                     //PeriodicWorkRequest 任务循环执行
                     //OneTimeWorkRequest 任务执行一次
-                    viewModel?.changeStatus(this)
+                    viewModel?.changeStatus()
 
                 }
             }
