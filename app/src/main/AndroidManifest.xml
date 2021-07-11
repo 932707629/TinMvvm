@@ -23,27 +23,6 @@
             android:exported="true" />
 
         <activity
-            android:name=".mvvm.ui.ThreadPoolActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".mvvm.ui.CoroutineActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".mvvm.ui.RecyclerActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".mvvm.ui.MultiplexActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".mvvm.ui.WorkerActivity"
-            android:launchMode="standard"
-            android:screenOrientation="portrait" />
-
-        <activity
             android:name=".mvvm.ui.MainActivity"
             android:screenOrientation="portrait"
             android:label="@string/app_name">
@@ -54,8 +33,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--
-<meta-data
+        <!--<meta-data
             android:name="design_width_in_dp"
             android:value="375" />
         <meta-data

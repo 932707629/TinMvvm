@@ -15,6 +15,28 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_coroutineFragment"
+            app:destination="@id/coroutineFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/coroutineFragment"
+            app:popUpToInclusive="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_multiplexFragment"
+            app:destination="@id/multiplexFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_recyclerFragment"
+            app:destination="@id/recyclerFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_threadPoolFragment"
+            app:destination="@id/threadPoolFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_workerFragment"
+            app:destination="@id/workerFragment" />
+
     </fragment>
 
     <fragment
@@ -25,6 +47,30 @@
             android:id="@+id/action_categoryFragment_self"
             app:destination="@id/categoryFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/coroutineFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.CoroutineFragment"
+        android:label="CoroutineFragment" />
+    <fragment
+        android:id="@+id/multiplexFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.MultiplexFragment"
+        android:label="MultiplexFragment" >
+        <action
+            android:id="@+id/action_multiplexFragment_to_recyclerFragment"
+            app:destination="@id/recyclerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recyclerFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.RecyclerFragment"
+        android:label="RecyclerFragment" />
+    <fragment
+        android:id="@+id/threadPoolFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.ThreadPoolFragment"
+        android:label="ThreadPoolFragment" />
+    <fragment
+        android:id="@+id/workerFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.WorkerFragment"
+        android:label="WorkerFragment" />
 
 
 </navigation>

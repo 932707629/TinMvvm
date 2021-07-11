@@ -48,20 +48,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                     viewModel?.tvContent?.value="Hello World"
                 }
                 R.id.btn_worker->{
-                    go(WorkerActivity::class.java)
+                    Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_workerFragment)
                 }
                 R.id.btn_create_fragment->{
 //                    FragmentUtils.add(childFragmentManager, CategoryFragment(),R.id.fl_container)
                     Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_categoryFragment)
                 }
                 R.id.btn_multiplex->{
-                    go(MultiplexActivity::class.java)
+                    Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_multiplexFragment)
                 }
                 R.id.btn_recycler->{
-                    go(RecyclerActivity::class.java)
+                    Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_recyclerFragment)
                 }
                 R.id.btn_coroutine->{
-                    go(CoroutineActivity::class.java)
+                    Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_coroutineFragment)
                 }
                 R.id.btn_permission->{
                     val rxPermissions= RxPermissions(this)
@@ -84,7 +84,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                         })
                 }
                 R.id.btn_thread_pool->{
-                    go(ThreadPoolActivity::class.java)
+                    Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_threadPoolFragment)
                 }
                 R.id.btn_crash->{
                     throw RuntimeException("模拟java运行时异常")

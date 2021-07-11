@@ -2,6 +2,7 @@ package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import com.alibaba.fastjson.JSONObject
 import com.blankj.ALog
@@ -9,6 +10,7 @@ import com.jeremyliao.liveeventbus.LiveEventBus
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.mvvm.model.CategoryModel
 import com.soushin.tinmvvm.mvvm.model.entity.CategoryEntity
+import com.soushin.tinmvvm.utils.FragmentUtils
 import com.soushin.tinmvvm.utils.RxUtils
 import me.soushin.tinmvvm.base.BaseViewModel
 import me.soushin.tinmvvm.config.HttpHandleCallBack
@@ -31,6 +33,7 @@ class CategoryViewModel(application: Application) :
             }
             R.id.btn_next_page->{
                 ///自己跳转自己 多次重复打开一个页面
+                //.setLaunchSingleTop(true)会让堆栈中始终保持fragment一个实例
                 Navigation.findNavController(it).navigate(R.id.action_categoryFragment_self)
             }
             R.id.btn_last_page->{

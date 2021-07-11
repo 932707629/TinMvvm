@@ -1,12 +1,13 @@
-package com.soushin.tinmvvm.mvvm.ui
+package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
 import android.view.View
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
-import com.soushin.tinmvvm.databinding.ActivityWorkerBinding
+import com.soushin.tinmvvm.databinding.FragmentWorkerBinding
 import com.soushin.tinmvvm.mvvm.viewmodel.WorkerViewModel
 import me.soushin.tinmvvm.base.BaseActivity
+import me.soushin.tinmvvm.base.BaseFragment
 
 /**
  *
@@ -14,11 +15,8 @@ import me.soushin.tinmvvm.base.BaseActivity
  * @time 2020/1/10 15:40
  */
 
-class WorkerActivity : BaseActivity<ActivityWorkerBinding, WorkerViewModel>() {
+class WorkerFragment : BaseFragment<FragmentWorkerBinding, WorkerViewModel>() {
 
-    /*override fun initView(savedInstanceState: Bundle?): Int {
-        return R.layout.activity_worker
-    }*/
 
     override fun initView(savedInstanceState: Bundle?) {
 

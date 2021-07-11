@@ -13,18 +13,22 @@ import androidx.lifecycle.ViewModelProvider
 import com.gyf.immersionbar.components.ImmersionOwner
 import com.gyf.immersionbar.components.ImmersionProxy
 import me.soushin.tinmvvm.utils.inflateBindingWithGeneric
+import java.lang.ref.WeakReference
 import java.lang.reflect.ParameterizedType
 
 /**
  * fragment基类封装
  * @author created by Soushin
  * @time 2020/1/14 15 25
+ * 如果用navigation会造成fragment重复创建 解决办法@「https://zhuanlan.zhihu.com/p/65200770」@「https://blog.csdn.net/siyemuzi/article/details/106527527」
+ *
  */
  abstract class BaseFragment<VD : ViewDataBinding, VM: BaseViewModel<*>>  : Fragment(),ImmersionOwner {
 
     var mContext: Context? = null
-    protected var viewData:VD?=null
     protected var viewModel:VM?=null
+    protected var viewData:VD?=null
+
     private val mImmersionProxy by lazy { ImmersionProxy(this) }
 
     override fun onAttach(context: Context) {
@@ -45,11 +49,14 @@ import java.lang.reflect.ParameterizedType
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (viewData==null){
-            val viewBinding=inflateBindingWithGeneric<VD>(inflater,container,false)
-            dataViewBinding(viewBinding.root)
-            initView(savedInstanceState)
+            //DataBindingUtil.bind(view)替换为inflateBindingWithGeneric
+            viewData=inflateBindingWithGeneric<VD>(inflater,container,false)
+            viewData?.let{
+                dataViewBinding(it)
+                initView(savedInstanceState)
+            }
         }
-        return viewData!!.root
+        return viewData?.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -77,9 +84,15 @@ import java.lang.reflect.ParameterizedType
         mImmersionProxy.onConfigurationChanged(newConfig)
     }
 
+    override fun onDestroyView() {
+        viewData?.unbind()//解除生命周期绑定
+        viewData=null
+        super.onDestroyView()
+    }
+
     override fun onDestroy() {
-        super.onDestroy()
         mImmersionProxy.onDestroy()
+        super.onDestroy()
     }
 
     override fun onDetach() {
@@ -118,13 +131,12 @@ import java.lang.reflect.ParameterizedType
         //状态栏设置
     }
 
-    protected fun dataViewBinding(view: View) {
-        viewData= DataBindingUtil.bind(view)
-        viewData?.lifecycleOwner=this
+    protected fun dataViewBinding(vd:VD) {
+        vd.lifecycleOwner=this
         viewModel= ViewModelProvider(this)[viewModel()]
         viewModel?.registerLifecycleOwner(this)
         lifecycle.addObserver(viewModel!!)
-        viewData?.setVariable(initVariableId(),viewModel)
+        vd.setVariable(initVariableId(),viewModel)
     }
 
     @SuppressWarnings("unchecked")

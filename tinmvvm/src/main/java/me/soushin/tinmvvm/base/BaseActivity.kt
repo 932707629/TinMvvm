@@ -2,7 +2,6 @@ package me.soushin.tinmvvm.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import me.soushin.tinmvvm.utils.inflateBindingWithGeneric
@@ -17,13 +16,20 @@ import java.lang.reflect.ParameterizedType
  */
 abstract class BaseActivity<VD : ViewDataBinding,VM: BaseViewModel<*>> :AppCompatActivity(){
 
-    protected var viewData:VD?=null
     protected var viewModel:VM?=null
+    protected var viewData:VD? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        try { dataViewBinding() } catch (ignore:Exception){}
+        dataViewBinding()
         initView(savedInstanceState)
+    }
+
+    override fun onDestroy() {
+        viewData?.unbind()//解除生命周期绑定
+//        weakViewData?.clear()
+        super.onDestroy()
     }
 
     /**
@@ -32,15 +38,19 @@ abstract class BaseActivity<VD : ViewDataBinding,VM: BaseViewModel<*>> :AppCompa
      * 总结:还是bind方法更简单一些
      */
     private fun dataViewBinding() {
-        val viewBinding=inflateBindingWithGeneric<VD>(layoutInflater)
-        viewData= DataBindingUtil.bind(viewBinding.root)
-        setContentView(viewBinding.root)
-        viewData?.lifecycleOwner=this
-        viewModel= ViewModelProvider(this)[viewModel()]
-        viewModel?.registerLifecycleOwner(this)
-        lifecycle.addObserver(viewModel!!)
-        viewData?.setVariable(initVariableId(),viewModel)
+//        val viewBinding=inflateBindingWithGeneric<VD>(layoutInflater)
+//        viewData=DataBindingUtil.bind(viewBinding.root)
+        viewData=inflateBindingWithGeneric<VD>(layoutInflater)
+        viewData?.let {
+            setContentView(it.root)
+            viewData?.lifecycleOwner=this
+            viewModel= ViewModelProvider(this)[viewModel()]
+            viewModel?.registerLifecycleOwner(this)
+            lifecycle.addObserver(viewModel!!)
+            it.setVariable(initVariableId(),viewModel)
+        }
     }
+
 
     @SuppressWarnings("unchecked")
     private fun viewModel() :Class<VM>{
@@ -70,7 +80,7 @@ abstract class BaseActivity<VD : ViewDataBinding,VM: BaseViewModel<*>> :AppCompa
      * 可以在这里做一些baseFragment的操作
      */
     open fun useFragment():Boolean{
-        return false
+        return true
     }
 
 

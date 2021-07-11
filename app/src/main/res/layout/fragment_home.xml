@@ -143,13 +143,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-            <!--<FrameLayout
+            <FrameLayout
                 android:id="@+id/fl_container"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_0"
                 app:layout_constraintTop_toBottomOf="@+id/btn_permission"
                 app:layout_constraintBottom_toBottomOf="parent"/>
--->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </HorizontalScrollView>

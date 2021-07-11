@@ -3,32 +3,33 @@ package me.soushin.tinmvvm.utils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.ViewDataBinding
 import androidx.viewbinding.ViewBinding
 import java.lang.reflect.ParameterizedType
 
 @JvmName("inflateWithGeneric")
-fun <VB : ViewBinding> Any.inflateBindingWithGeneric(layoutInflater: LayoutInflater): VB =
+fun <VB : ViewDataBinding> Any.inflateBindingWithGeneric(layoutInflater: LayoutInflater): VB =
     withGenericBindingClass(this) { clazz ->
         clazz.getMethod("inflate", LayoutInflater::class.java).invoke(null, layoutInflater) as VB
     }
 
 @JvmName("inflateWithGeneric")
-fun <VB : ViewBinding> Any.inflateBindingWithGeneric(layoutInflater: LayoutInflater, parent: ViewGroup?, attachToParent: Boolean): VB =
+fun <VB : ViewDataBinding> Any.inflateBindingWithGeneric(layoutInflater: LayoutInflater, parent: ViewGroup?, attachToParent: Boolean): VB =
     withGenericBindingClass(this) { clazz ->
         clazz.getMethod("inflate", LayoutInflater::class.java, ViewGroup::class.java, Boolean::class.java)
             .invoke(null, layoutInflater, parent, attachToParent) as VB
     }
 
 @JvmName("inflateWithGeneric")
-fun <VB : ViewBinding> Any.inflateBindingWithGeneric(parent: ViewGroup): VB =
+fun <VB : ViewDataBinding> Any.inflateBindingWithGeneric(parent: ViewGroup): VB =
     inflateBindingWithGeneric(LayoutInflater.from(parent.context), parent, false)
 
-fun <VB : ViewBinding> Any.bindViewWithGeneric(view: View): VB =
+fun <VB : ViewDataBinding> Any.bindViewWithGeneric(view: View): VB =
     withGenericBindingClass(this) { clazz ->
         clazz.getMethod("bind", LayoutInflater::class.java).invoke(null, view) as VB
     }
 
-private fun <VB : ViewBinding> withGenericBindingClass(any: Any, block: (Class<VB>) -> VB): VB {
+private fun <VB : ViewDataBinding> withGenericBindingClass(any: Any, block: (Class<VB>) -> VB): VB {
     any.allParameterizedType.forEach { parameterizedType ->
         parameterizedType.actualTypeArguments.forEach {
             try {
