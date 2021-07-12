@@ -27,6 +27,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+/**
+ *
+ * @auther SouShin
+ * @time 2021/7/12 14:43
+ */
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     companion object {
         fun newInstance(): HomeFragment {
@@ -56,6 +61,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                 }
                 R.id.btn_multiplex->{
                     Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_multiplexFragment)
+
                 }
                 R.id.btn_recycler->{
                     Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_recyclerFragment)

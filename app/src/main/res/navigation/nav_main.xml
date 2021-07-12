@@ -4,7 +4,7 @@
     android:id="@+id/nav_main"
     app:startDestination="@id/homeFragment">
 
-    <fragment
+    <fixFragment
         android:id="@+id/homeFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.HomeFragment"
         android:label="HomeFragment" >
@@ -37,37 +37,41 @@
             android:id="@+id/action_homeFragment_to_workerFragment"
             app:destination="@id/workerFragment" />
 
-    </fragment>
+    </fixFragment>
 
-    <fragment
+    <fixFragment
         android:id="@+id/categoryFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.CategoryFragment"
         android:label="CategoryFragment" >
         <action
             android:id="@+id/action_categoryFragment_self"
             app:destination="@id/categoryFragment" />
-    </fragment>
-    <fragment
+    </fixFragment>
+    <fixFragment
         android:id="@+id/coroutineFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.CoroutineFragment"
         android:label="CoroutineFragment" />
-    <fragment
+    <fixFragment
         android:id="@+id/multiplexFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.MultiplexFragment"
         android:label="MultiplexFragment" >
         <action
             android:id="@+id/action_multiplexFragment_to_recyclerFragment"
-            app:destination="@id/recyclerFragment" />
-    </fragment>
-    <fragment
+            app:destination="@id/recyclerFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_exit_anim"
+            app:popExitAnim="@animator/nav_default_pop_exit_anim" />
+    </fixFragment>
+    <fixFragment
         android:id="@+id/recyclerFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.RecyclerFragment"
         android:label="RecyclerFragment" />
-    <fragment
+    <fixFragment
         android:id="@+id/threadPoolFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.ThreadPoolFragment"
         android:label="ThreadPoolFragment" />
-    <fragment
+    <fixFragment
         android:id="@+id/workerFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.WorkerFragment"
         android:label="WorkerFragment" />

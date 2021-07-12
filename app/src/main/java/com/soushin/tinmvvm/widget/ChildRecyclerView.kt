@@ -9,8 +9,15 @@ import com.soushin.tinmvvm.utils.UIUtils
 import me.soushin.tinmvvm.base.BaseApp
 import razerdp.util.PopupUiUtils
 
-open class ChildRecyclerView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
-    RecyclerView(context, attrs, defStyleAttr)  {
+open class ChildRecyclerView : RecyclerView  {
+
+    constructor(context: Context) : super(context)
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    )
 
     private val mFlingHelper = FlingHelper(context)
 
@@ -22,6 +29,7 @@ open class ChildRecyclerView @JvmOverloads constructor(context: Context, attrs: 
     var totalDy: Int = 0
 
     var mParentRecyclerView: ParentRecyclerView? = null
+
 
     init {
         mMaxDistance = mFlingHelper.getVelocityByDistance((UIUtils.getRealHeight(BaseApp.instance) * 4).toDouble())

@@ -24,5 +24,10 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryViewModel
         return BR.categoryViewModel
     }
 
+    override fun onVisible() {
+        super.onVisible()
+        ALog.i("页面显示了");
+    }
+
 
 }

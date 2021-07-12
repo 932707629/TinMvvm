@@ -12,8 +12,15 @@ import com.soushin.tinmvvm.utils.FlingHelper
 import com.soushin.tinmvvm.utils.UIUtils
 import me.soushin.tinmvvm.base.BaseApp
 
-class ParentRecyclerView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
-    RecyclerView(context, attrs, defStyleAttr)  {
+class ParentRecyclerView : RecyclerView  {
+
+    constructor(context: Context) : super(context)
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    )
 
     private var mMaxDistance:Int = 0
 
@@ -32,6 +39,7 @@ class ParentRecyclerView @JvmOverloads constructor(context: Context, attrs: Attr
      * 记录当前滑动的y轴加速度
      */
     private var velocityY: Int = 0
+
 
     init {
         mMaxDistance = mFlingHelper.getVelocityByDistance((UIUtils.getRealHeight(BaseApp.instance) * 4).toDouble())

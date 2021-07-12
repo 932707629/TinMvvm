@@ -1,10 +1,12 @@
 package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import com.blankj.ALog
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
+import com.soushin.tinmvvm.config.getThis
 import com.soushin.tinmvvm.databinding.FragmentMultiplexBinding
 import com.soushin.tinmvvm.mvvm.adapter.BaseAdapter
 import com.soushin.tinmvvm.mvvm.adapter.MultiplexAdapter
@@ -20,32 +22,23 @@ import java.util.*
  * Created by TinMvvmTemplate on 01/20/2020 15:26
  * ================================================
  */
-
 class MultiplexFragment : BaseFragment<FragmentMultiplexBinding, MultiplexViewModel>() {
-
-    private val mDataList = ArrayList<AuthorEntity>()
-
-    private val strArray = arrayOf("关注", "推荐", "视频", "直播", "图片", "段子", "精华", "热门")
 
     override fun initView(savedInstanceState: Bundle?) {
         viewData?.apply {
-            ALog.i("开始创建新的",savedInstanceState)
-            rvRecycler.initLayoutManager()
-            val multiTypeAdapter = MultiplexAdapter()
-            for (i in 0..8) {
-                mDataList.add(AuthorEntity(BaseAdapter.ITEM_ONE,2, arrayListOf(),""))
-            }
-            val childDatas= arrayListOf<String>()
-            strArray.forEach {
-                childDatas.add(it)
-            }
-            mDataList.add(AuthorEntity(BaseAdapter.ITEM_TWO,2, childDatas,""))
-            rvRecycler.adapter = multiTypeAdapter
-            multiTypeAdapter.setNewInstance(mDataList)
-            multiTypeAdapter.setOnItemClickListener { adapter, view, position ->
-                Navigation.findNavController(view)
-                    .navigate(R.id.action_multiplexFragment_to_recyclerFragment)
-            }
+            ALog.i("开始创建新的", savedInstanceState)
+            viewModel?.loadData()
+            ///这里生命周期监听 绝不可用requireActivity() 否则会有内存泄露
+            viewModel?.viewEvent?.observe(this@MultiplexFragment,{
+                val multiTypeAdapter = MultiplexAdapter()
+                rvRecycler.initLayoutManager()
+                rvRecycler.adapter = multiTypeAdapter
+                multiTypeAdapter.setList(it)
+                multiTypeAdapter.setOnItemClickListener { adapter, view, position ->
+                    val navController = Navigation.findNavController(view)
+                    navController.navigate(R.id.action_multiplexFragment_to_recyclerFragment)
+                }
+            })
         }
     }
 

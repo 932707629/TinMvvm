@@ -27,8 +27,7 @@ abstract class BaseActivity<VD : ViewDataBinding,VM: BaseViewModel<*>> :AppCompa
     }
 
     override fun onDestroy() {
-        viewData?.unbind()//解除生命周期绑定
-//        weakViewData?.clear()
+        viewData=null
         super.onDestroy()
     }
 

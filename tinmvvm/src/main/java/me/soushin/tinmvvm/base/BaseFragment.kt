@@ -20,7 +20,6 @@ import java.lang.reflect.ParameterizedType
  * fragment基类封装
  * @author created by Soushin
  * @time 2020/1/14 15 25
- * 如果用navigation会造成fragment重复创建 解决办法@「https://zhuanlan.zhihu.com/p/65200770」@「https://blog.csdn.net/siyemuzi/article/details/106527527」
  *
  */
  abstract class BaseFragment<VD : ViewDataBinding, VM: BaseViewModel<*>>  : Fragment(),ImmersionOwner {
@@ -48,9 +47,9 @@ import java.lang.reflect.ParameterizedType
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        if (viewData==null){
+        if (viewData == null){
             //DataBindingUtil.bind(view)替换为inflateBindingWithGeneric
-            viewData=inflateBindingWithGeneric<VD>(inflater,container,false)
+            viewData=inflateBindingWithGeneric(inflater,container,false)
             viewData?.let{
                 dataViewBinding(it)
                 initView(savedInstanceState)
@@ -85,7 +84,6 @@ import java.lang.reflect.ParameterizedType
     }
 
     override fun onDestroyView() {
-        viewData?.unbind()//解除生命周期绑定
         viewData=null
         super.onDestroyView()
     }

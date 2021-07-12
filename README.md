@@ -19,11 +19,15 @@
 虽然已经在项目中添加了比较详细的代码注释，但是肯定还有很多需要注意的地方没有解释清楚，希望大家在使用的过程中如果发现了什么问题，及时提出来，大家共同解决.
 
 ### 我们的优势 ###
-TinMvvm是以谷歌DataBinding+LiveData+ViewModel框架为基础，整合Rxjava2、ViewBinding、okhttp-RxHttp、Liveeventbus等流行模块，加上各种原生控件，
-让事件与数据源完美绑定的一款容易上瘾的实用性MVVM快速开发框架。从此告别findViewById()，告别set()、get()
+TinMvvm是以谷歌DataBinding+LiveData+ViewModel+Navigation框架为基础，整合Rxjava2、ViewBinding、okhttp-RxHttp、Liveeventbus等流行模块，加上各种原生控件，
+让事件与数据源完美绑定的一款容易上瘾的实用性MVVM快速开发框架。从此告别findViewById()，告别set()、get()；有了Navigation的助力，
+支持单Activity多Fragment，当然，您也可以继续试用多Activity模式，Navigation同样支持。
+
+[更多Jetpack组件即将来袭！](https://developer.android.google.cn/jetpack "更多Jetpack组件即将来袭")
 
 ### 功能列表 ###
 
+- 加入navigation组件，支持单Activity多Fragment模式
 - 解决屏幕适配问题，适配全面屏/刘海屏(AndroidAutoSize是代替AndroidAutoLayout的屏幕适配框架，原理是基于今日头条的适配方案)
 - 代码解耦，提供ActivityLifecycleCallbacksImpl、FragmentLifecycleCallbacksImpl给baseActivity/baseFragment减压
 - 使用堆栈对Activity进行统一管理，AppManager封装了各种常用方法
@@ -51,6 +55,10 @@ TinMvvm是以谷歌DataBinding+LiveData+ViewModel框架为基础，整合Rxjava2
 
 使用的第三方框架:
 
+[Jetpack](https://developer.android.google.cn/jetpack "Jetpack")
+
+[Navigation](https://developer.android.google.cn/jetpack/androidx/releases/navigation "Navigation")
+
 [RxJava2](https://github.com/ReactiveX/RxJava "RxJava2")
 
 [ImmersionBar](https://github.com/gyf-dev/ImmersionBar "ImmersionBar")
@@ -67,7 +75,6 @@ TinMvvm是以谷歌DataBinding+LiveData+ViewModel框架为基础，整合Rxjava2
 
 [RxPermissions](https://github.com/tbruyelle/RxPermissions "RxPermissions")
 
-
 ### 使用插件一键生成Activity/Fragment ###
 
 Android Studio4.0以上不支持自定义模板,可以使用[一键生成TinMvvm组件](https://github.com/932707629/tin-mvvm-template)
@@ -80,7 +87,7 @@ TinMvvmTemplate这个文件里放着TinMvv的一键生成工具
 
 ### 注意: ###
 
-- 设置标题栏和状态栏是在ActivityLifeCycleCallBackIml类里实现的，还进行了其他初始化与销毁业务，实现了对BaseActivity的解耦，另外，设置标题栏时要在activity对应的layout里include标题栏布局
+- ActivityLifeCycleCallBackIml可以监听到整个项目所有Activity的生命周期(包括第三方)，所以可以用它执行一些初始化与销毁业务，实现了对BaseActivity的解耦，FragmentLifecycleCallbacksImpl同理
 
 - 如果要在fragment里设置状态栏沉浸，可以让该fragment实现SimpleImmersionOwner接口，或者实现ImmersionOwner接口，具体实现可以参考ImmersionBar的demo使用
 
@@ -88,12 +95,16 @@ TinMvvmTemplate这个文件里放着TinMvv的一键生成工具
 
 - 本框架默认使用kotlin构建，如果您使用的是java，请自行依赖butterknife等第三方组件.
 
+- 实际使用中发现[AndroidAutoSize](https://www.jianshu.com/p/55e0fca23b4f "骚年你的屏幕适配方式该升级了")对于第三方view的支持不是很友好，
+比如穿山甲的广告View，会直接导致View比例显示异常，虽然可以用副单位去解决，但是要把整个页面都换成副单位，个人感觉不太友好，
+所以有这种项目需要的童鞋要谨慎使用哦，可以考虑换用[最小宽度限定符](https://www.jianshu.com/p/2aded8bb6ede "骚年你的屏幕适配方式该升级了")
+
 ### 已修复问题: ###
 
 - 修复fragment+tablayout使用时会重复创建的问题
 - jitpack发布新版本
 - 修复HttpHandleCallBack添加生命周期造成的强转异常
-
+- 修复navigation导致fragment重复创建的问题```FixFragmentNavigator```
 
 
 

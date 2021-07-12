@@ -48,7 +48,7 @@ open class BaseViewModel<M: BaseModel>(application: Application, val model: M) :
     override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
         //Activity/Fragment 生命周期回调
         if (event == Lifecycle.Event.ON_DESTROY) {  //Activity/Fragment 销毁
-//            println("管道中断....")
+            println("管道中断....")
             source.lifecycle.removeObserver(this)
             this.lifecycle=null
             dispose() //中断RxJava管道

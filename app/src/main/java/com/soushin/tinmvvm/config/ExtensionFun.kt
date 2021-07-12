@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.hjq.toast.ToastUtils
 import me.soushin.tinmvvm.base.BaseFragment
 
@@ -23,6 +24,14 @@ fun AppCompatActivity.go(clazz:Class<*>){
 
 fun AppCompatActivity.getThis(): AppCompatActivity {
     return this
+}
+
+fun Fragment.getThis(): Fragment {
+    return this
+}
+
+fun BaseFragment<*, *>.getCtx():Context{
+    return this.mContext!!
 }
 
 fun BaseFragment<*, *>.showToasty(msg:Any?){
