@@ -2,15 +2,12 @@ package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import com.alibaba.fastjson.JSONObject
 import com.blankj.ALog
-import com.jeremyliao.liveeventbus.LiveEventBus
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.mvvm.model.CategoryModel
 import com.soushin.tinmvvm.mvvm.model.entity.CategoryEntity
-import com.soushin.tinmvvm.utils.FragmentUtils
 import com.soushin.tinmvvm.utils.RxUtils
 import me.soushin.tinmvvm.base.BaseViewModel
 import me.soushin.tinmvvm.config.HttpHandleCallBack

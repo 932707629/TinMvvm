@@ -1,16 +1,12 @@
 package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
-import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import com.blankj.ALog
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
-import com.soushin.tinmvvm.config.getThis
 import com.soushin.tinmvvm.databinding.FragmentMultiplexBinding
-import com.soushin.tinmvvm.mvvm.adapter.BaseAdapter
 import com.soushin.tinmvvm.mvvm.adapter.MultiplexAdapter
-import com.soushin.tinmvvm.mvvm.model.entity.AuthorEntity
 import com.soushin.tinmvvm.mvvm.viewmodel.MultiplexViewModel
 import me.soushin.tinmvvm.base.BaseFragment
 import java.util.*

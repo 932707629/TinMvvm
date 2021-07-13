@@ -8,8 +8,6 @@ import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.mvvm.model.CoroutineModel
 import kotlinx.coroutines.*
 import me.soushin.tinmvvm.base.BaseViewModel
-import kotlin.time.ExperimentalTime
-import kotlin.time.days
 
 /**
  * ================================================

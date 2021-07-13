@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.soushin.tinmvvm.utils.FlingHelper
 import com.soushin.tinmvvm.utils.UIUtils
 import me.soushin.tinmvvm.base.BaseApp
-import razerdp.util.PopupUiUtils
 
 open class ChildRecyclerView : RecyclerView  {
 

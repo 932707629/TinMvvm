@@ -6,7 +6,6 @@ import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.databinding.FragmentWorkerBinding
 import com.soushin.tinmvvm.mvvm.viewmodel.WorkerViewModel
-import me.soushin.tinmvvm.base.BaseActivity
 import me.soushin.tinmvvm.base.BaseFragment
 
 /**

@@ -2,7 +2,9 @@ package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import androidx.work.*
+import androidx.work.Data
+import androidx.work.PeriodicWorkRequest
+import androidx.work.WorkManager
 import com.blankj.ALog
 import com.soushin.tinmvvm.mvvm.model.WorkerModel
 import com.soushin.tinmvvm.worker.OneTimeWorker

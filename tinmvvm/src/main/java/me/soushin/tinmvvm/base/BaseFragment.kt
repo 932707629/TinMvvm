@@ -6,14 +6,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.gyf.immersionbar.components.ImmersionOwner
 import com.gyf.immersionbar.components.ImmersionProxy
 import me.soushin.tinmvvm.utils.inflateBindingWithGeneric
-import java.lang.ref.WeakReference
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -37,7 +35,6 @@ import java.lang.reflect.ParameterizedType
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
-//        childFragmentManager.beginTransaction().setMaxLifecycle()
         mImmersionProxy.isUserVisibleHint = isVisibleToUser
     }
 

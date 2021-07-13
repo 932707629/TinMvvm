@@ -2,7 +2,6 @@ package com.soushin.tinmvvm.widget
 
 import android.app.Dialog
 import android.content.Context
-import android.view.View
 import androidx.fragment.app.Fragment
 import razerdp.basepopup.BasePopupWindow
 

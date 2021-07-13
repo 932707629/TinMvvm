@@ -4,36 +4,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
-import androidx.viewbinding.ViewBinding
 import java.lang.reflect.ParameterizedType
 
 @JvmName("inflateWithGeneric")
-fun <VB : ViewDataBinding> Any.inflateBindingWithGeneric(layoutInflater: LayoutInflater): VB =
+fun <VD : ViewDataBinding> Any.inflateBindingWithGeneric(layoutInflater: LayoutInflater): VD =
     withGenericBindingClass(this) { clazz ->
-        clazz.getMethod("inflate", LayoutInflater::class.java).invoke(null, layoutInflater) as VB
+        clazz.getMethod("inflate", LayoutInflater::class.java).invoke(null, layoutInflater) as VD
     }
 
 @JvmName("inflateWithGeneric")
-fun <VB : ViewDataBinding> Any.inflateBindingWithGeneric(layoutInflater: LayoutInflater, parent: ViewGroup?, attachToParent: Boolean): VB =
+fun <VD : ViewDataBinding> Any.inflateBindingWithGeneric(layoutInflater: LayoutInflater, parent: ViewGroup?, attachToParent: Boolean): VD =
     withGenericBindingClass(this) { clazz ->
         clazz.getMethod("inflate", LayoutInflater::class.java, ViewGroup::class.java, Boolean::class.java)
-            .invoke(null, layoutInflater, parent, attachToParent) as VB
+            .invoke(null, layoutInflater, parent, attachToParent) as VD
     }
 
 @JvmName("inflateWithGeneric")
-fun <VB : ViewDataBinding> Any.inflateBindingWithGeneric(parent: ViewGroup): VB =
+fun <VD : ViewDataBinding> Any.inflateBindingWithGeneric(parent: ViewGroup): VD =
     inflateBindingWithGeneric(LayoutInflater.from(parent.context), parent, false)
 
-fun <VB : ViewDataBinding> Any.bindViewWithGeneric(view: View): VB =
+fun <VD : ViewDataBinding> Any.bindViewWithGeneric(view: View): VD =
     withGenericBindingClass(this) { clazz ->
-        clazz.getMethod("bind", LayoutInflater::class.java).invoke(null, view) as VB
+        clazz.getMethod("bind", LayoutInflater::class.java).invoke(null, view) as VD
     }
 
-private fun <VB : ViewDataBinding> withGenericBindingClass(any: Any, block: (Class<VB>) -> VB): VB {
+private fun <VD : ViewDataBinding> withGenericBindingClass(any: Any, block: (Class<VD>) -> VD): VD {
     any.allParameterizedType.forEach { parameterizedType ->
         parameterizedType.actualTypeArguments.forEach {
             try {
-                return block.invoke(it as Class<VB>)
+                return block.invoke(it as Class<VD>)
             } catch (e: NoSuchMethodException) {
             }
         }

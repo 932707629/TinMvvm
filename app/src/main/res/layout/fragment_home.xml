@@ -28,7 +28,7 @@
                 android:text="切换"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:onClick="@{onClick}"
+                android:onClick="@{HomeViewModel.onClick()}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -37,7 +37,7 @@
                 android:text="还原"
                 app:layout_constraintBaseline_toBaselineOf="@+id/btn_change"
                 app:layout_constraintLeft_toRightOf="@+id/btn_change"
-                android:onClick="@{onClick}"
+                android:onClick="@{HomeViewModel.onClick()}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -46,14 +46,14 @@
                 android:text="后台任务"
                 app:layout_constraintLeft_toRightOf="@+id/btn_return"
                 app:layout_constraintBaseline_toBaselineOf="@+id/btn_return"
-                android:onClick="@{onClick}"
+                android:onClick="@{HomeViewModel.onClick()}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <Button
                 android:id="@+id/btn_create_fragment"
                 android:text="创建fragment"
-                android:onClick="@{onClick}"
+                android:onClick="@{HomeViewModel.onClick()}"
                 android:textAllCaps="false"
                 app:layout_constraintLeft_toRightOf="@+id/btn_worker"
                 app:layout_constraintBaseline_toBaselineOf="@+id/btn_worker"
@@ -73,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="创建复杂布局"
-                android:onClick="@{onClick}"
+                android:onClick="@{HomeViewModel.onClick()}"
                 android:textAllCaps="false"
                 app:layout_constraintBaseline_toBaselineOf="@+id/tvContent"
                 app:layout_constraintLeft_toRightOf="@+id/tvContent"/>
@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="brvh的使用"
-                android:onClick="@{onClick}"
+                android:onClick="@{HomeViewModel.onClick()}"
                 android:textAllCaps="false"
                 app:layout_constraintBaseline_toBaselineOf="@+id/btn_multiplex"
                 app:layout_constraintLeft_toRightOf="@+id/btn_multiplex"/>
@@ -93,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="协程"
-                android:onClick="@{onClick}"
+                android:onClick="@{HomeViewModel.onClick()}"
                 android:textAllCaps="false"
                 app:layout_constraintBaseline_toBaselineOf="@+id/btn_multiplex"
                 app:layout_constraintLeft_toRightOf="@+id/btn_recycler"/>
@@ -101,7 +101,7 @@
             <Button
                 android:id="@+id/btn_permission"
                 android:text="权限"
-                android:onClick="@{onClick}"
+                android:onClick="@{HomeViewModel.onClick()}"
                 app:layout_constraintTop_toBottomOf="@+id/tvContent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="wrap_content"
@@ -110,7 +110,7 @@
             <Button
                 android:id="@+id/btn_thread_pool"
                 android:text="线程池"
-                android:onClick="@{onClick}"
+                android:onClick="@{HomeViewModel.onClick()}"
                 app:layout_constraintBaseline_toBaselineOf="@+id/btn_permission"
                 app:layout_constraintLeft_toRightOf="@+id/btn_permission"
                 android:layout_width="wrap_content"
@@ -119,7 +119,7 @@
             <Button
                 android:id="@+id/btn_crash"
                 android:text="崩溃测试"
-                android:onClick="@{onClick}"
+                android:onClick="@{HomeViewModel.onClick()}"
                 app:layout_constraintBaseline_toBaselineOf="@+id/btn_permission"
                 app:layout_constraintLeft_toRightOf="@+id/btn_thread_pool"
                 android:layout_width="wrap_content"
@@ -128,7 +128,7 @@
             <Button
                 android:id="@+id/btn_service"
                 android:text="后台服务"
-                android:onClick="@{onClick}"
+                android:onClick="@{HomeViewModel.onClick()}"
                 app:layout_constraintBaseline_toBaselineOf="@+id/btn_permission"
                 app:layout_constraintLeft_toRightOf="@+id/btn_crash"
                 android:layout_width="wrap_content"
@@ -137,7 +137,7 @@
             <Button
                 android:id="@+id/btn_file_write"
                 android:text="文件读写"
-                android:onClick="@{onClick}"
+                android:onClick="@{HomeViewModel.onClick()}"
                 app:layout_constraintBaseline_toBaselineOf="@+id/btn_permission"
                 app:layout_constraintLeft_toRightOf="@+id/btn_service"
                 android:layout_width="wrap_content"

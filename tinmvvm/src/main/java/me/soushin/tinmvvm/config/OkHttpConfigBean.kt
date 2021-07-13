@@ -1,12 +1,13 @@
 package me.soushin.tinmvvm.config
 
 import me.soushin.tinmvvm.utils.HttpsUtils
+import okhttp3.OkHttpClient
 import javax.net.ssl.HostnameVerifier
 import javax.net.ssl.SSLSocketFactory
 import javax.net.ssl.X509TrustManager
 
 /**
- * okhttpclient配置类
+ * [OkHttpClient]配置类
  * @auther SouShin
  * @time 2020/10/4 11:56
  */

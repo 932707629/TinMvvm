@@ -1,7 +1,6 @@
 package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.MutableLiveData
 import com.soushin.tinmvvm.mvvm.model.MainModel
 import me.soushin.tinmvvm.base.BaseViewModel
 

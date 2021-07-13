@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -18,6 +17,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_60"
+            android:visibility="gone"
             android:background="@color/colorPrimary"
             app:layout_constraintTop_toTopOf="parent"
             android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
@@ -29,11 +29,22 @@
             android:layout_height="@dimen/dp_0"
             android:name="androidx.navigation.fragment.NavHostFragment"
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/bnv_navigation"
             app:defaultNavHost="true" />
-
-        <!---->
         <!--app:navGraph="@navigation/nav_main"-->
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bnv_navigation"
+            app:layout_constraintTop_toBottomOf="@+id/navHost"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/main_bottom_navigation"
+            app:itemHorizontalTranslationEnabled="true"
+            android:background="@color/white"
+            app:itemIconTint="@drawable/bottom_navigation_item_selector"
+            app:itemTextColor="@drawable/bottom_navigation_item_selector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -2,9 +2,7 @@ package com.soushin.tinmvvm.utils;
 
 import android.app.Activity;
 import android.content.Context;
-import android.database.Cursor;
 import android.os.Build;
-import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;

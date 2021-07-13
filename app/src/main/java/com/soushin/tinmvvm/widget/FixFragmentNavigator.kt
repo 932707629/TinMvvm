@@ -14,9 +14,10 @@ import com.blankj.ALog
 /**
  * 用以解决navigation会导致fragment重复创建的问题
  * 如果用navigation会造成fragment重复创建 解决办法
- * @「https://zhuanlan.zhihu.com/p/65200770」
- * @「https://blog.csdn.net/siyemuzi/article/details/106527527」
+ * {@see https://zhuanlan.zhihu.com/p/65200770}
+ * {@see https://blog.csdn.net/siyemuzi/article/details/106527527}
  * 缺点:回退不会走onResume生命周期 因为tinmvvm有用户可见监听 所以并不会有太大的问题
+ * 参见[androidx.navigation.fragment.FragmentNavigator]
  */
 @Navigator.Name("fixFragment") //这是新的Navigator得名称,千万别忘了加
 class FixFragmentNavigator(val context: Context, val fragmentManager: FragmentManager, val containerId: Int) :

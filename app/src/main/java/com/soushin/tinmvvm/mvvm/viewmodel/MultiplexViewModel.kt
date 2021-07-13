@@ -9,7 +9,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.soushin.tinmvvm.base.BaseViewModel
-import java.util.ArrayList
 
 /**
  * ================================================

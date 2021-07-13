@@ -2,11 +2,8 @@ package com.soushin.tinmvvm.network
 
 import okhttp3.Response
 import rxhttp.wrapper.annotation.Parser
-import rxhttp.wrapper.entity.ParameterizedTypeImpl
 import rxhttp.wrapper.exception.ParseException
-import rxhttp.wrapper.parse.AbstractParser
 import rxhttp.wrapper.parse.TypeParser
-import rxhttp.wrapper.utils.convert
 import rxhttp.wrapper.utils.convertTo
 import java.io.IOException
 import java.lang.reflect.Type

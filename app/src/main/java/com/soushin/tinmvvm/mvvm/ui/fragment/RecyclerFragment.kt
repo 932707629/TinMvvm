@@ -9,7 +9,6 @@ import com.soushin.tinmvvm.mvvm.adapter.itembinder.TextItemBinder
 import com.soushin.tinmvvm.mvvm.model.entity.ImageEntity
 import com.soushin.tinmvvm.mvvm.viewmodel.RecyclerViewModel
 import com.soushin.tinmvvm.utils.DataUtils
-import me.soushin.tinmvvm.base.BaseActivity
 import me.soushin.tinmvvm.base.BaseFragment
 
 /**

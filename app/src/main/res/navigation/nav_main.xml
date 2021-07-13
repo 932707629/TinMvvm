@@ -7,7 +7,7 @@
     <fixFragment
         android:id="@+id/homeFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.HomeFragment"
-        android:label="HomeFragment" >
+        android:label="HomeFragment">
         <action
             android:id="@+id/action_homeFragment_to_categoryFragment"
             app:destination="@id/categoryFragment"
@@ -20,10 +20,10 @@
             app:destination="@id/coroutineFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
-            app:popUpTo="@id/coroutineFragment"
-            app:popUpToInclusive="true"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/coroutineFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_homeFragment_to_multiplexFragment"
             app:destination="@id/multiplexFragment" />
@@ -42,7 +42,7 @@
     <fixFragment
         android:id="@+id/categoryFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.CategoryFragment"
-        android:label="CategoryFragment" >
+        android:label="CategoryFragment">
         <action
             android:id="@+id/action_categoryFragment_self"
             app:destination="@id/categoryFragment" />
@@ -54,14 +54,17 @@
     <fixFragment
         android:id="@+id/multiplexFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.MultiplexFragment"
-        android:label="MultiplexFragment" >
+        android:label="MultiplexFragment">
         <action
             android:id="@+id/action_multiplexFragment_to_recyclerFragment"
             app:destination="@id/recyclerFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_exit_anim"
-            app:popExitAnim="@animator/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_multiplexFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fixFragment>
     <fixFragment
         android:id="@+id/recyclerFragment"

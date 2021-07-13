@@ -10,7 +10,6 @@ import me.soushin.tinmvvm.listener.ConfigModule
 import okhttp3.OkHttpClient
 import rxhttp.RxHttpPlugins
 import rxhttp.wrapper.cookie.CookieStore
-import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.ssl.HttpsUtils
 import java.io.File
 import java.util.concurrent.TimeUnit
