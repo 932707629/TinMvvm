@@ -30,5 +30,10 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryViewModel
         ALog.i("页面显示了");
     }
 
+    companion object {
+        fun newInstance(): CategoryFragment {
+            return CategoryFragment()
+        }
+    }
 
 }

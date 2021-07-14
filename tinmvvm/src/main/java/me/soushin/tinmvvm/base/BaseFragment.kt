@@ -44,13 +44,11 @@ import java.lang.reflect.ParameterizedType
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        if (viewData == null){
-            //DataBindingUtil.bind(view)替换为inflateBindingWithGeneric
-            viewData=inflateBindingWithGeneric(inflater,container,false)
-            viewData?.let{
-                dataViewBinding(it)
-                initView(savedInstanceState)
-            }
+        //DataBindingUtil.bind(view)替换为inflateBindingWithGeneric
+        viewData=inflateBindingWithGeneric(inflater,container,false)
+        viewData?.let{
+            dataViewBinding(it)
+            initView(savedInstanceState)
         }
         return viewData?.root
     }

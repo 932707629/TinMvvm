@@ -43,5 +43,10 @@ class RecyclerFragment : BaseFragment<FragmentRecyclerBinding, RecyclerViewModel
         return BR.RecyclerViewModel;//这里是为了绑定ViewModel用的 如果不需要请返回0
     }
 
+    companion object {
+        fun newInstance(): MultiplexFragment {
+            return MultiplexFragment()
+        }
+    }
 
 }

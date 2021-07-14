@@ -10,8 +10,6 @@ import com.soushin.tinmvvm.mvvm.adapter.MultiTypeAdapter
 import com.soushin.tinmvvm.mvvm.adapter.MultiplexAdapter
 import com.soushin.tinmvvm.utils.FlingHelper
 import com.soushin.tinmvvm.utils.UIUtils
-import me.soushin.tinmvvm.base.BaseApp
-
 class ParentRecyclerView : RecyclerView  {
 
     constructor(context: Context) : super(context)
@@ -42,7 +40,7 @@ class ParentRecyclerView : RecyclerView  {
 
 
     init {
-        mMaxDistance = mFlingHelper.getVelocityByDistance((UIUtils.getRealHeight(BaseApp.instance) * 4).toDouble())
+        mMaxDistance = mFlingHelper.getVelocityByDistance((UIUtils.getRealHeight(context) * 4).toDouble())
 
         addOnScrollListener(object :OnScrollListener(){
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {

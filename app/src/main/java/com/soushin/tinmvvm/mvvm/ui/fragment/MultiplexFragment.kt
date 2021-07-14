@@ -19,7 +19,11 @@ import java.util.*
  * ================================================
  */
 class MultiplexFragment : BaseFragment<FragmentMultiplexBinding, MultiplexViewModel>() {
-
+    companion object {
+        fun newInstance(): MultiplexFragment {
+            return MultiplexFragment()
+        }
+    }
     override fun initView(savedInstanceState: Bundle?) {
         viewData?.apply {
             ALog.i("开始创建新的", savedInstanceState)
@@ -32,7 +36,9 @@ class MultiplexFragment : BaseFragment<FragmentMultiplexBinding, MultiplexViewMo
                 multiTypeAdapter.setList(it)
                 multiTypeAdapter.setOnItemClickListener { adapter, view, position ->
                     val navController = Navigation.findNavController(view)
-                    navController.navigate(R.id.action_multiplexFragment_to_recyclerFragment)
+                    if (navController.currentDestination?.id == R.id.multiplexFragment){
+                        navController.navigate(R.id.action_multiplexFragment_to_recyclerFragment)
+                    }
                 }
             })
         }

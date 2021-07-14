@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs"
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -94,8 +95,12 @@ dependencies {
     implementation(deps.core_ktx)
     implementation project(':tinmvvm')
     implementation(deps.work_runtime)
-    implementation(deps.navigation_fragment_ktx)
+    implementation(deps.navigation_fragment_ktx) {
+        exclude group: 'androidx.navigation', module: "navigation-fragment"
+    }
     implementation(deps.navigation_ui_ktx)
+    //替换了jetpack官方的navigation-fragment库
+    implementation 'com.kunminx.arch:smooth-navigation:3.9.0-beta1'
 //    implementation(deps.autosize)
     implementation(deps.fastjson)
     implementation(deps.brvh)

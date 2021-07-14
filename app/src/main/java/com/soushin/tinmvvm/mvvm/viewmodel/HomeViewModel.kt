@@ -56,6 +56,10 @@ class HomeViewModel(application: Application) :
                 R.id.btn_coroutine->{
                     Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_coroutineFragment)
                 }
+                R.id.btn_tab_viewpager->{
+                    Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_tablayoutViewpager2Fragment)
+//                    Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_bottomNavigationFragment)
+                }
                 R.id.btn_permission->{
                     viewEvent.value = 1
                 }

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
     app:startDestination="@id/homeFragment">
 
-    <fixFragment
+    <fragment
         android:id="@+id/homeFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.HomeFragment"
-        android:label="HomeFragment">
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_categoryFragment"
             app:destination="@id/categoryFragment"
@@ -36,25 +38,34 @@
         <action
             android:id="@+id/action_homeFragment_to_workerFragment"
             app:destination="@id/workerFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_bottomNavigationFragment"
+            app:destination="@id/bottomNavigationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_tablayoutViewpager2Fragment"
+            app:destination="@id/tablayoutViewpager2Fragment" />
 
-    </fixFragment>
+    </fragment>
 
-    <fixFragment
+    <fragment
         android:id="@+id/categoryFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.CategoryFragment"
-        android:label="CategoryFragment">
+        android:label="CategoryFragment"
+        tools:layout="@layout/fragment_category">
         <action
             android:id="@+id/action_categoryFragment_self"
             app:destination="@id/categoryFragment" />
-    </fixFragment>
-    <fixFragment
+    </fragment>
+    <fragment
         android:id="@+id/coroutineFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.CoroutineFragment"
-        android:label="CoroutineFragment" />
-    <fixFragment
+        android:label="CoroutineFragment"
+        tools:layout="@layout/fragment_coroutine" />
+    <fragment
         android:id="@+id/multiplexFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.MultiplexFragment"
-        android:label="MultiplexFragment">
+        android:label="MultiplexFragment"
+        tools:layout="@layout/fragment_multiplex">
         <action
             android:id="@+id/action_multiplexFragment_to_recyclerFragment"
             app:destination="@id/recyclerFragment"
@@ -65,19 +76,39 @@
         <action
             android:id="@+id/action_multiplexFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
-    </fixFragment>
-    <fixFragment
+    </fragment>
+    <fragment
         android:id="@+id/recyclerFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.RecyclerFragment"
-        android:label="RecyclerFragment" />
-    <fixFragment
+        android:label="RecyclerFragment"
+        tools:layout="@layout/fragment_recycler" />
+    <fragment
         android:id="@+id/threadPoolFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.ThreadPoolFragment"
-        android:label="ThreadPoolFragment" />
-    <fixFragment
+        android:label="ThreadPoolFragment"
+        tools:layout="@layout/fragment_thread_pool" />
+    <fragment
         android:id="@+id/workerFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.WorkerFragment"
-        android:label="WorkerFragment" />
+        android:label="WorkerFragment"
+        tools:layout="@layout/fragment_worker" />
+    <fragment
+        android:id="@+id/bottomNavigationFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.BottomNavigationFragment"
+        tools:layout="@layout/fragment_bottom_navigation"
+        android:label="BottomNavigationFragment" >
+        <action
+            android:id="@+id/action_bottomNavigationFragment_to_recyclerFragment"
+            app:destination="@id/recyclerFragment" />
+        <action
+            android:id="@+id/action_bottomNavigationFragment_to_multiplexFragment"
+            app:destination="@id/multiplexFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tablayoutViewpager2Fragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.TablayoutViewpager2Fragment"
+        tools:layout="@layout/fragment_tablayout_viewpager2"
+        android:label="TablayoutViewpager2Fragment" />
 
 
 </navigation>

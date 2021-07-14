@@ -3,6 +3,7 @@ package com.soushin.tinmvvm.mvvm.ui.fragment
 import android.Manifest
 import android.content.Intent
 import android.os.Bundle
+import androidx.navigation.fragment.findNavController
 import com.blankj.ALog
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.MyService
@@ -55,7 +56,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     private fun requestPermission(){
         val rxPermissions= RxPermissions(getThis())
         val pms= arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-
         PermissionUtil.requestPermission(
             permissions = pms,
             lifecycle = this,

@@ -99,6 +99,10 @@ TinMvvmTemplate这个文件里放着TinMvv的一键生成工具
 比如穿山甲的广告View，会直接导致View比例显示异常，虽然可以用副单位去解决，但是要把整个页面都换成副单位，个人感觉不太友好，
 所以有这种项目需要的童鞋要谨慎使用哦，可以考虑换用[最小宽度限定符](https://www.jianshu.com/p/2aded8bb6ede "骚年你的屏幕适配方式该升级了")
 
+- 结合BottomNavigationView使用有异常，fragment之间相互重叠，而且每次切换还会重新初始化fragment
+  答：Navigation 的适用场景是，不同层级之间 fragment 的跳转和管理，
+  同级 fragment 之间请不要使用 Navigation 切换。可以考虑 viewPager 等方式管理。
+  
 ### 已修复问题: ###
 
 - 修复fragment+tablayout使用时会重复创建的问题

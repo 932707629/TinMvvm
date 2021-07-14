@@ -1,7 +1,7 @@
 package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
-import com.soushin.tinmvvm.mvvm.model.MainModel
+import com.soushin.tinmvvm.mvvm.model.DemoModel
 import me.soushin.tinmvvm.base.BaseViewModel
 
 /**
@@ -12,6 +12,7 @@ import me.soushin.tinmvvm.base.BaseViewModel
  * @author created by Soushin
  * @time 2020/1/7 13 46
  */
-class MainViewModel(application: Application) : BaseViewModel<MainModel>(application, MainModel()) {
+class DemoViewModel(application: Application) : BaseViewModel<DemoModel>(application, DemoModel()) {
+
 
 }

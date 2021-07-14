@@ -21,7 +21,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            tools:context=".mvvm.ui.MainActivity">
+            tools:context=".mvvm.ui.DemoActivity">
 
             <Button
                 android:id="@+id/btn_change"
@@ -97,6 +97,16 @@
                 android:textAllCaps="false"
                 app:layout_constraintBaseline_toBaselineOf="@+id/btn_multiplex"
                 app:layout_constraintLeft_toRightOf="@+id/btn_recycler"/>
+
+            <Button
+                android:id="@+id/btn_tab_viewpager"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TabLayout、ViewPager2"
+                android:onClick="@{HomeViewModel.onClick()}"
+                android:textAllCaps="false"
+                app:layout_constraintBaseline_toBaselineOf="@+id/btn_multiplex"
+                app:layout_constraintLeft_toRightOf="@+id/btn_coroutine"/>
 
             <Button
                 android:id="@+id/btn_permission"
