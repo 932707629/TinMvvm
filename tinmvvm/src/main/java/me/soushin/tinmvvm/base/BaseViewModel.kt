@@ -16,13 +16,12 @@ import me.soushin.tinmvvm.config.AppComponent
  * @author created by Soushin
  * @time 2020/1/7 16 38
  */
-open class BaseViewModel<M: BaseModel>(application: Application, val model: M) : AndroidViewModel(
+open class BaseViewModel<R: BaseRepository>(application: Application,val mRepository: R) : AndroidViewModel(
     application
 ), CoroutineScope by MainScope(), LifecycleEventObserver {
 
     private val mCompositeDisposable by lazy { CompositeDisposable() }
 
-//    private val job by lazy { Job() }
     //生命周期
     protected var lifecycle:LifecycleOwner?=null
 
@@ -37,28 +36,27 @@ open class BaseViewModel<M: BaseModel>(application: Application, val model: M) :
         this.lifecycle= lifecycleOwner
     }
 
-    fun addSubcribe(dis: Disposable){
-        mCompositeDisposable.add(dis)
+    protected open fun addDispose(disposable: Disposable) {
+        mCompositeDisposable.add(disposable) //将所有 Disposable 放入容器集中处理
+    }
+
+    protected open fun removeDispose(disposable: Disposable){
+        mCompositeDisposable.remove(disposable)
     }
 
     override fun onCleared() {
         super.onCleared()//会跟随页面生命周期销毁
-        model.onCleared()
-//        job.cancel()
+        mRepository.onCleared()
     }
 
     override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
         //Activity/Fragment 生命周期回调
         if (event == Lifecycle.Event.ON_DESTROY) {  //Activity/Fragment 销毁
-            println("管道中断....")
+//            println("管道中断....")
             source.lifecycle.removeObserver(this)
             this.lifecycle=null
-            dispose() //中断RxJava管道
+            this.mCompositeDisposable.dispose()//中断RxJava管道
         }
-    }
-
-    open fun dispose() {
-        this.mCompositeDisposable.dispose()
     }
 
 }

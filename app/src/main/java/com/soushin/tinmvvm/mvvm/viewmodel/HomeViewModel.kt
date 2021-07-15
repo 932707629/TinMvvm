@@ -8,23 +8,23 @@ import androidx.lifecycle.MutableLiveData
 import androidx.navigation.Navigation
 import com.blankj.ALog
 import com.soushin.tinmvvm.R
-import com.soushin.tinmvvm.config.throttleClick
-import com.soushin.tinmvvm.mvvm.model.HomeModel
+import com.soushin.tinmvvm.mvvm.repository.HomeRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.soushin.tinmvvm.base.BaseApp
 import me.soushin.tinmvvm.base.BaseViewModel
+import me.soushin.tinmvvm.utils.throttleClick
 
 class HomeViewModel(application: Application) :
-    BaseViewModel<HomeModel>(application, HomeModel()) {
+    BaseViewModel<HomeRepository>(application, HomeRepository()) {
     var tvContent= MutableLiveData("Hello World")
     val viewEvent = MutableLiveData<Int>()
 
     fun getData(){
         launch {
             withContext(Dispatchers.IO){
-                tvContent.postValue(model.getData())
+                tvContent.postValue(mRepository.getData())
             }
         }
     }

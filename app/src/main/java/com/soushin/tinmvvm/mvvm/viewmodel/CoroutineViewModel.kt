@@ -5,7 +5,7 @@ import android.text.TextUtils
 import android.view.View
 import com.blankj.ALog
 import com.soushin.tinmvvm.R
-import com.soushin.tinmvvm.mvvm.model.CoroutineModel
+import com.soushin.tinmvvm.mvvm.repository.CoroutineRepository
 import kotlinx.coroutines.*
 import me.soushin.tinmvvm.base.BaseViewModel
 
@@ -18,7 +18,7 @@ import me.soushin.tinmvvm.base.BaseViewModel
  */
 
 class CoroutineViewModel(application: Application) :
-    BaseViewModel<CoroutineModel>(application, CoroutineModel()) {
+    BaseViewModel<CoroutineRepository>(application, CoroutineRepository()) {
 
     operator fun invoke(){
         ALog.i("调用invoke函数");

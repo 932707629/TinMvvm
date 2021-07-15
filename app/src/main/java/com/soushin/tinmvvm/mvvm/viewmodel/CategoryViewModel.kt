@@ -6,9 +6,9 @@ import androidx.navigation.Navigation
 import com.alibaba.fastjson.JSONObject
 import com.blankj.ALog
 import com.soushin.tinmvvm.R
-import com.soushin.tinmvvm.mvvm.model.CategoryModel
-import com.soushin.tinmvvm.mvvm.model.entity.CategoryEntity
-import com.soushin.tinmvvm.utils.RxUtils
+import com.soushin.tinmvvm.mvvm.repository.CategoryRepository
+import com.soushin.tinmvvm.mvvm.repository.entity.CategoryEntity
+import com.soushin.tinmvvm.app.utils.RxUtils
 import me.soushin.tinmvvm.base.BaseViewModel
 import me.soushin.tinmvvm.config.HttpHandleCallBack
 import me.soushin.tinmvvm.utils.throttleClick
@@ -19,7 +19,7 @@ import me.soushin.tinmvvm.utils.throttleClick
  * @time 2020/1/14 18 05
  */
 class CategoryViewModel(application: Application) :
-    BaseViewModel<CategoryModel>(application, CategoryModel()) {
+    BaseViewModel<CategoryRepository>(application, CategoryRepository()) {
 
     var btnContent= MutableLiveData<String>()
 
@@ -40,7 +40,7 @@ class CategoryViewModel(application: Application) :
     }
 
     private fun requestData() {
-        model.requestDatas()
+        mRepository.requestData()
             .compose(RxUtils.applySchedulers())
             .subscribe(object : HttpHandleCallBack<MutableList<CategoryEntity>>(lifecycle!!){
                 override fun onNext(result: MutableList<CategoryEntity>) {

@@ -11,7 +11,7 @@
     </data>
 
 
-    <com.soushin.tinmvvm.widget.ParentRecyclerView
+    <com.soushin.tinmvvm.app.widget.ParentRecyclerView
         android:id="@+id/rvRecycler"
         android:overScrollMode="never"
         tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

@@ -25,11 +25,11 @@ class MultiplexFragment : BaseFragment<FragmentMultiplexBinding, MultiplexViewMo
         }
     }
     override fun initView(savedInstanceState: Bundle?) {
-        viewData?.apply {
+        mViewData?.apply {
             ALog.i("开始创建新的", savedInstanceState)
-            viewModel?.loadData()
+            mViewModel?.loadData()
             ///这里生命周期监听 绝不可用requireActivity() 否则会有内存泄露
-            viewModel?.viewEvent?.observe(this@MultiplexFragment,{
+            mViewModel?.viewEvent?.observe(this@MultiplexFragment,{
                 val multiTypeAdapter = MultiplexAdapter()
                 rvRecycler.initLayoutManager()
                 rvRecycler.adapter = multiTypeAdapter

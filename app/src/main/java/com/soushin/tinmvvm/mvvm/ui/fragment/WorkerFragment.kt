@@ -16,16 +16,14 @@ import me.soushin.tinmvvm.base.BaseFragment
 
 class WorkerFragment : BaseFragment<FragmentWorkerBinding, WorkerViewModel>() {
 
-
     override fun initView(savedInstanceState: Bundle?) {
 
-        viewData?.onClick = View.OnClickListener {
+        mViewData?.onClick = View.OnClickListener {
             when (it.id) {
                 R.id.btn_change -> {
                     //PeriodicWorkRequest 任务循环执行
                     //OneTimeWorkRequest 任务执行一次
-                    viewModel?.changeStatus()
-
+                    mViewModel?.changeStatus()
                 }
             }
         }

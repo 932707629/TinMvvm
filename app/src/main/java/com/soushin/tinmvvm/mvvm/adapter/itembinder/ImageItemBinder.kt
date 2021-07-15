@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.chad.library.adapter.base.binder.QuickViewBindingItemBinder
 import com.soushin.tinmvvm.databinding.ItemImageBinding
-import com.soushin.tinmvvm.mvvm.model.entity.ImageEntity
+import com.soushin.tinmvvm.mvvm.repository.entity.ImageEntity
 
 /**
  *

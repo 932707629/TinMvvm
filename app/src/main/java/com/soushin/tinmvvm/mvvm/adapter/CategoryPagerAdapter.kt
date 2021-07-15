@@ -3,7 +3,7 @@ package com.soushin.tinmvvm.mvvm.adapter
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
-import com.soushin.tinmvvm.widget.ChildRecyclerView
+import com.soushin.tinmvvm.app.widget.ChildRecyclerView
 
 class CategoryPagerAdapter(
     private val viewList: ArrayList<ChildRecyclerView>,

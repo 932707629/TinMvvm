@@ -23,7 +23,7 @@ class DemoActivity : BaseActivity<ActivityDemoBinding, DemoViewModel>() {
     private val appBarConfiguration by lazy { AppBarConfiguration.Builder(R.id.homeFragment).build() }//配置homeFragment为顶部页面
 
     override fun initView(savedInstanceState: Bundle?) {
-        viewData?.apply {
+        mViewData?.apply {
             setSupportActionBar(toolbar)
             NavigationUI.setupWithNavController(toolbar,navController)
             /*navController.navigatorProvider.addNavigator(FixFragmentNavigator(getThis(),

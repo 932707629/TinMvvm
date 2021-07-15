@@ -7,9 +7,9 @@ import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.mvvm.adapter.CategoryPagerAdapter
-import com.soushin.tinmvvm.mvvm.model.entity.CategoryBean
-import com.soushin.tinmvvm.widget.CategoryView
-import com.soushin.tinmvvm.widget.ChildRecyclerView
+import com.soushin.tinmvvm.mvvm.repository.entity.CategoryBean
+import com.soushin.tinmvvm.app.widget.CategoryView
+import com.soushin.tinmvvm.app.widget.ChildRecyclerView
 
 class SimpleCategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -18,7 +18,7 @@ class SimpleCategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVie
 
     val viewList = ArrayList<ChildRecyclerView>()
 
-    private var mCurrentRecyclerView :ChildRecyclerView? = null
+    private var mCurrentRecyclerView : ChildRecyclerView? = null
 
     init {
 

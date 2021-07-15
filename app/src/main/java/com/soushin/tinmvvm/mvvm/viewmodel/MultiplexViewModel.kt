@@ -3,8 +3,8 @@ package com.soushin.tinmvvm.mvvm.viewmodel
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.soushin.tinmvvm.mvvm.adapter.BaseAdapter
-import com.soushin.tinmvvm.mvvm.model.MultiplexModel
-import com.soushin.tinmvvm.mvvm.model.entity.AuthorEntity
+import com.soushin.tinmvvm.mvvm.repository.MultiplexRepository
+import com.soushin.tinmvvm.mvvm.repository.entity.AuthorEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -19,7 +19,7 @@ import me.soushin.tinmvvm.base.BaseViewModel
  */
 
 class MultiplexViewModel(application: Application) :
-    BaseViewModel<MultiplexModel>(application, MultiplexModel()) {
+    BaseViewModel<MultiplexRepository>(application, MultiplexRepository()) {
 
     var viewEvent = MutableLiveData<MutableList<AuthorEntity>>()
     private val strArray = arrayOf("关注", "推荐", "视频", "直播", "图片", "段子", "精华", "热门")

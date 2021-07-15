@@ -3,14 +3,13 @@ package com.soushin.tinmvvm.mvvm.ui.fragment
 import android.Manifest
 import android.content.Intent
 import android.os.Bundle
-import androidx.navigation.fragment.findNavController
 import com.blankj.ALog
 import com.soushin.tinmvvm.BR
-import com.soushin.tinmvvm.MyService
-import com.soushin.tinmvvm.config.getThis
+import com.soushin.tinmvvm.app.getThis
+import com.soushin.tinmvvm.app.service.MyService
 import com.soushin.tinmvvm.databinding.FragmentHomeBinding
 import com.soushin.tinmvvm.mvvm.viewmodel.HomeViewModel
-import com.soushin.tinmvvm.utils.PermissionUtil
+import com.soushin.tinmvvm.app.utils.PermissionUtil
 import com.tbruyelle.rxpermissions2.RxPermissions
 import me.soushin.tinmvvm.base.BaseFragment
 
@@ -29,7 +28,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     //为了保证每次界面销毁重启后，都可以保存之前的值，我们需要在onCreate()中，给控件赋值为 textViewContent
     override fun initView(savedInstanceState: Bundle?) {
-        viewModel?.viewEvent?.observe(this,{
+        mViewModel?.viewEvent?.observe(this,{
             when(it){
                 1->{
                    requestPermission()

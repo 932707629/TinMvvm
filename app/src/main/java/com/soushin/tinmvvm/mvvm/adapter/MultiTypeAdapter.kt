@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.mvvm.holder.SimpleCategoryViewHolder
 import com.soushin.tinmvvm.mvvm.holder.SimpleTextViewHolder
-import com.soushin.tinmvvm.widget.ChildRecyclerView
+import com.soushin.tinmvvm.app.widget.ChildRecyclerView
 
 class MultiTypeAdapter(private val dataSet:ArrayList<Any>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

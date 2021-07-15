@@ -7,7 +7,7 @@
 
         <variable
             name="TablayoutViewpager2ViewModel"
-            type="com.soushin.tinmvvm.mvvm.viewmodel.TablayoutViewpager2ViewModel" />
+            type="com.soushin.tinmvvm.mvvm.viewmodel.TabLayoutViewpager2ViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

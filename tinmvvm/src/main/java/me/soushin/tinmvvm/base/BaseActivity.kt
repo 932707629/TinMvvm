@@ -16,9 +16,8 @@ import java.lang.reflect.ParameterizedType
  */
 abstract class BaseActivity<VD : ViewDataBinding,VM: BaseViewModel<*>> :AppCompatActivity(){
 
-    protected var viewModel:VM?=null
-    protected var viewData:VD? = null
-
+    protected var mViewModel:VM?=null
+    protected var mViewData:VD? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +26,7 @@ abstract class BaseActivity<VD : ViewDataBinding,VM: BaseViewModel<*>> :AppCompa
     }
 
     override fun onDestroy() {
-        viewData=null
+        mViewData=null
         super.onDestroy()
     }
 
@@ -39,14 +38,14 @@ abstract class BaseActivity<VD : ViewDataBinding,VM: BaseViewModel<*>> :AppCompa
     private fun dataViewBinding() {
 //        val viewBinding=inflateBindingWithGeneric<VD>(layoutInflater)
 //        viewData=DataBindingUtil.bind(viewBinding.root)
-        viewData=inflateBindingWithGeneric<VD>(layoutInflater)
-        viewData?.let {
+        mViewData=inflateBindingWithGeneric<VD>(layoutInflater)
+        mViewData?.let {
             setContentView(it.root)
-            viewData?.lifecycleOwner=this
-            viewModel= ViewModelProvider(this)[viewModel()]
-            viewModel?.registerLifecycleOwner(this)
-            lifecycle.addObserver(viewModel!!)
-            it.setVariable(initVariableId(),viewModel)
+            it.lifecycleOwner=this
+            mViewModel= ViewModelProvider(this)[viewModel()]
+            mViewModel?.registerLifecycleOwner(this)
+            lifecycle.addObserver(mViewModel!!)
+            it.setVariable(initVariableId(),mViewModel)
         }
     }
 

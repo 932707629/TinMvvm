@@ -5,7 +5,7 @@ import android.os.Build
 import android.view.View
 import com.blankj.ALog
 import com.soushin.tinmvvm.R
-import com.soushin.tinmvvm.mvvm.model.ThreadPoolModel
+import com.soushin.tinmvvm.mvvm.repository.ThreadPoolRepository
 import me.soushin.tinmvvm.base.BaseViewModel
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit
  */
 
 class ThreadPoolViewModel :
-    BaseViewModel<ThreadPoolModel> {
+    BaseViewModel<ThreadPoolRepository> {
 
     private var newCachedThreadPool:ExecutorService?=null
     private var newFixedThreadPool:ExecutorService?=null
@@ -30,7 +30,7 @@ class ThreadPoolViewModel :
     private var newSingleThreadPool:ExecutorService?=null
     private var newWorkStealingPool:ExecutorService?=null
 
-    constructor(application: Application) : super(application, ThreadPoolModel()) {
+    constructor(application: Application) : super(application, ThreadPoolRepository()) {
 
     }
 

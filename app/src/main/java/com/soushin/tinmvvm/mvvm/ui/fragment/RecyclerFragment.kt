@@ -1,14 +1,17 @@
 package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
+import android.view.MotionEvent
+import androidx.core.view.MotionEventCompat
+import androidx.core.view.MotionEventCompat.getSource
 import com.chad.library.adapter.base.BaseBinderAdapter
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.databinding.FragmentRecyclerBinding
 import com.soushin.tinmvvm.mvvm.adapter.itembinder.ImageItemBinder
 import com.soushin.tinmvvm.mvvm.adapter.itembinder.TextItemBinder
-import com.soushin.tinmvvm.mvvm.model.entity.ImageEntity
+import com.soushin.tinmvvm.mvvm.repository.entity.ImageEntity
 import com.soushin.tinmvvm.mvvm.viewmodel.RecyclerViewModel
-import com.soushin.tinmvvm.utils.DataUtils
+import com.soushin.tinmvvm.app.utils.DataUtils
 import me.soushin.tinmvvm.base.BaseFragment
 
 /**
@@ -24,7 +27,7 @@ class RecyclerFragment : BaseFragment<FragmentRecyclerBinding, RecyclerViewModel
     val adapter:BaseBinderAdapter= BaseBinderAdapter()
 
     override fun initView(savedInstanceState: Bundle?) {
-        viewData?.apply {
+        mViewData?.apply {
             srlRefresh.setOnRefreshListener {
                 adapter.setList(DataUtils.getRecyclerData())
                 srlRefresh.isRefreshing=false
@@ -36,6 +39,7 @@ class RecyclerFragment : BaseFragment<FragmentRecyclerBinding, RecyclerViewModel
             rvRecycler.adapter=adapter
 
             adapter.setList(DataUtils.getRecyclerData())
+            
         }
     }
 
@@ -44,8 +48,8 @@ class RecyclerFragment : BaseFragment<FragmentRecyclerBinding, RecyclerViewModel
     }
 
     companion object {
-        fun newInstance(): MultiplexFragment {
-            return MultiplexFragment()
+        fun newInstance(): RecyclerFragment {
+            return RecyclerFragment()
         }
     }
 

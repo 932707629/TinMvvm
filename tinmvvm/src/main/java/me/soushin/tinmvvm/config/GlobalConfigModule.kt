@@ -13,14 +13,14 @@ import java.util.concurrent.TimeUnit
  */
 class GlobalConfigModule(builder: Builder) {
     var logDir: String? = null//log日志输出路径 这个值如果不为空默认开启日志缓存到文件功能 默认关闭
-    var logEnable: Boolean = true//是否开启log日志输出到控制台 默认开启
+    var debug: Boolean = true//是否开启log日志输出到控制台 默认开启
     //    var logOutputCallback:ALoger?=null//log日志输出回调
-    var okHttpClient = OkHttpClient.Builder().build()//提供个默认的可修改的okhttpclient全局共用
+    var okHttpClient:OkHttpClient ?= null//提供个默认的可修改的okhttpclient全局共用
     var errorResponseListener: ResponseErrorListener? = null//rxjava2异常监听回调
 
     init {
         this.logDir = builder.logDir
-        this.logEnable = builder.logEnable
+        this.debug = builder.debug
         this.okHttpClient = builder.okHttpClient
         this.errorResponseListener = builder.errorResponseListener
     }
@@ -28,7 +28,7 @@ class GlobalConfigModule(builder: Builder) {
     class Builder {
 
         var logDir: String? = null//log日志输出路径 这个值如果不为空默认开启日志缓存到文件功能 默认关闭
-        var logEnable: Boolean = true//是否开启log日志输出到控制台 默认开启
+        var debug: Boolean = true//是否开启log日志输出到控制台 默认开启
         //        var logOutputCallback:ALoger?=null//log日志输出回调
         var defaultOkHttpConfig= OkHttpConfigBean()//默认okhttp配置类,如果setOkHttpClient了只配置将不会生效
         var okHttpClient = getDefaultOkHttpClient()//提供默认的可修改的okhttpclient全局共用
@@ -40,8 +40,8 @@ class GlobalConfigModule(builder: Builder) {
             return this
         }
 
-        fun logEnable(logEnable: Boolean): Builder {
-            this.logEnable = logEnable
+        fun setDebug(debug: Boolean): Builder {
+            this.debug = debug
             return this
         }
 

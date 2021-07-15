@@ -21,8 +21,8 @@ class AppComponent// TODO: 2020/7/15  这里拿到全局配置信息即可实现
 
     private fun initALog(app: Application) {
         ALog.init(app)
-            .setLogSwitch(globalConfig?.logEnable!!) // 设置log总开关，包括输出到控制台和文件，默认开
-            .setConsoleSwitch(globalConfig?.logEnable!!) // 设置是否输出到控制台开关，默认开
+            .setLogSwitch(globalConfig?.debug?:false) // 设置log总开关，包括输出到控制台和文件，默认开
+            .setConsoleSwitch(globalConfig?.debug?:false) // 设置是否输出到控制台开关，默认开
             .setGlobalTag(null) // 设置log全局标签，默认为空
             // 当全局标签不为空时，我们输出的log全部为该tag，
             // 为空时，如果传入的tag为空那就显示类名，否则显示tag

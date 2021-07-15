@@ -23,8 +23,8 @@ import java.lang.reflect.ParameterizedType
  abstract class BaseFragment<VD : ViewDataBinding, VM: BaseViewModel<*>>  : Fragment(),ImmersionOwner {
 
     var mContext: Context? = null
-    protected var viewModel:VM?=null
-    protected var viewData:VD?=null
+    protected var mViewModel:VM?=null
+    protected var mViewData:VD?=null
 
     private val mImmersionProxy by lazy { ImmersionProxy(this) }
 
@@ -45,12 +45,12 @@ import java.lang.reflect.ParameterizedType
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //DataBindingUtil.bind(view)替换为inflateBindingWithGeneric
-        viewData=inflateBindingWithGeneric(inflater,container,false)
-        viewData?.let{
+        mViewData=inflateBindingWithGeneric(inflater,container,false)
+        mViewData?.let{
             dataViewBinding(it)
             initView(savedInstanceState)
         }
-        return viewData?.root
+        return mViewData?.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -79,7 +79,7 @@ import java.lang.reflect.ParameterizedType
     }
 
     override fun onDestroyView() {
-        viewData=null
+        mViewData=null
         super.onDestroyView()
     }
 
@@ -126,10 +126,10 @@ import java.lang.reflect.ParameterizedType
 
     protected fun dataViewBinding(vd:VD) {
         vd.lifecycleOwner=this
-        viewModel= ViewModelProvider(this)[viewModel()]
-        viewModel?.registerLifecycleOwner(this)
-        lifecycle.addObserver(viewModel!!)
-        vd.setVariable(initVariableId(),viewModel)
+        mViewModel= ViewModelProvider(this)[viewModel()]
+        mViewModel?.registerLifecycleOwner(this)
+        lifecycle.addObserver(mViewModel!!)
+        vd.setVariable(initVariableId(),mViewModel)
     }
 
     @SuppressWarnings("unchecked")

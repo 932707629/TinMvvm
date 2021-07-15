@@ -5,9 +5,9 @@ import com.blankj.ALog
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.google.android.material.tabs.TabLayout
 import com.soushin.tinmvvm.R
-import com.soushin.tinmvvm.mvvm.model.entity.AuthorEntity
-import com.soushin.tinmvvm.widget.CategoryView
-import com.soushin.tinmvvm.widget.ChildRecyclerView
+import com.soushin.tinmvvm.mvvm.repository.entity.AuthorEntity
+import com.soushin.tinmvvm.app.widget.CategoryView
+import com.soushin.tinmvvm.app.widget.ChildRecyclerView
 
 /**
  * @author created by Soushin
@@ -15,7 +15,7 @@ import com.soushin.tinmvvm.widget.ChildRecyclerView
  */
 class MultiplexAdapter : BaseAdapter<AuthorEntity, BaseViewHolder>() {
 
-    private var childRecyclerView:ChildRecyclerView?=null
+    private var childRecyclerView: ChildRecyclerView?=null
     val viewList = ArrayList<ChildRecyclerView>()
     init {
         addItemType(ITEM_ONE, R.layout.layout_item_text)

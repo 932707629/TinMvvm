@@ -13,36 +13,53 @@
         <action
             android:id="@+id/action_homeFragment_to_categoryFragment"
             app:destination="@id/categoryFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:enterAnim="@anim/alpha_in"
+            app:exitAnim="@anim/alpha_out"
+            app:popEnterAnim="@anim/alpha_in"
+            app:popExitAnim="@anim/alpha_out" />
         <action
             android:id="@+id/action_homeFragment_to_coroutineFragment"
             app:destination="@id/coroutineFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpTo="@id/coroutineFragment"
-            app:popUpToInclusive="true" />
+            app:enterAnim="@anim/window_top_in"
+            app:exitAnim="@anim/window_top_out"
+            app:popEnterAnim="@anim/window_top_in"
+            app:popExitAnim="@anim/window_top_out"
+            app:popUpTo="@id/coroutineFragment"/>
         <action
             android:id="@+id/action_homeFragment_to_multiplexFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/multiplexFragment" />
         <action
             android:id="@+id/action_homeFragment_to_recyclerFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_in_right"
             app:destination="@id/recyclerFragment" />
         <action
             android:id="@+id/action_homeFragment_to_threadPoolFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/threadPoolFragment" />
         <action
             android:id="@+id/action_homeFragment_to_workerFragment"
+            app:enterAnim="@anim/window_ios_in"
+            app:exitAnim="@anim/window_ios_out"
+            app:popEnterAnim="@anim/window_ios_in"
+            app:popExitAnim="@anim/window_ios_out"
             app:destination="@id/workerFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_bottomNavigationFragment"
-            app:destination="@id/bottomNavigationFragment" />
+
         <action
             android:id="@+id/action_homeFragment_to_tablayoutViewpager2Fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/tablayoutViewpager2Fragment" />
 
     </fragment>
@@ -54,6 +71,10 @@
         tools:layout="@layout/fragment_category">
         <action
             android:id="@+id/action_categoryFragment_self"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/categoryFragment" />
     </fragment>
     <fragment
@@ -69,12 +90,16 @@
         <action
             android:id="@+id/action_multiplexFragment_to_recyclerFragment"
             app:destination="@id/recyclerFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_exit_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_multiplexFragment_to_homeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
@@ -92,21 +117,10 @@
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.WorkerFragment"
         android:label="WorkerFragment"
         tools:layout="@layout/fragment_worker" />
-    <fragment
-        android:id="@+id/bottomNavigationFragment"
-        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.BottomNavigationFragment"
-        tools:layout="@layout/fragment_bottom_navigation"
-        android:label="BottomNavigationFragment" >
-        <action
-            android:id="@+id/action_bottomNavigationFragment_to_recyclerFragment"
-            app:destination="@id/recyclerFragment" />
-        <action
-            android:id="@+id/action_bottomNavigationFragment_to_multiplexFragment"
-            app:destination="@id/multiplexFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/tablayoutViewpager2Fragment"
-        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.TablayoutViewpager2Fragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.TabLayoutViewpager2Fragment"
         tools:layout="@layout/fragment_tablayout_viewpager2"
         android:label="TablayoutViewpager2Fragment" />
 

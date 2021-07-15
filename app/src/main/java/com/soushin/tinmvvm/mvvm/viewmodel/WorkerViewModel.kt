@@ -6,9 +6,9 @@ import androidx.work.Data
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import com.blankj.ALog
-import com.soushin.tinmvvm.mvvm.model.WorkerModel
-import com.soushin.tinmvvm.worker.OneTimeWorker
-import com.soushin.tinmvvm.worker.PeriodicWorker
+import com.soushin.tinmvvm.mvvm.repository.WorkerRepository
+import com.soushin.tinmvvm.app.service.OneTimeWorker
+import com.soushin.tinmvvm.app.service.PeriodicWorker
 import me.soushin.tinmvvm.base.BaseViewModel
 import java.util.concurrent.TimeUnit
 
@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit
  * @time 2020/1/10 15 28
  */
 class WorkerViewModel(application: Application) :
-    BaseViewModel<WorkerModel>(application, WorkerModel()) {
+    BaseViewModel<WorkerRepository>(application, WorkerRepository()) {
 
     val workManager = WorkManager.getInstance(getApplication())
     var btnStatus = MutableLiveData("开始任务")
