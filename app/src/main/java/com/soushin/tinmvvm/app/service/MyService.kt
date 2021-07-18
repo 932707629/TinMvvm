@@ -2,7 +2,7 @@ package com.soushin.tinmvvm.app.service
 
 import com.blankj.ALog
 import com.soushin.tinmvvm.app.utils.RxUtils
-import io.reactivex.Observable
+import io.reactivex.rxjava3.core.Observable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -14,7 +14,7 @@ class MyService : BaseService() {
 
     override fun init() {
         ALog.i("自定义service创建",this.javaClass.simpleName)
-        val disposable=Observable.interval(10,TimeUnit.SECONDS)
+        val disposable= Observable.interval(10,TimeUnit.SECONDS)
             .compose(RxUtils.applyAsync())
             .subscribe({
                 ALog.i("轮训任务执行",it);

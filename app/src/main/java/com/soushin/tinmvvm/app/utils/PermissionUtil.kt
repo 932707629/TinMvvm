@@ -3,9 +3,10 @@ package com.soushin.tinmvvm.app.utils
 import android.Manifest
 import androidx.lifecycle.LifecycleOwner
 import com.blankj.ALog
-import com.tbruyelle.rxpermissions2.Permission
-import com.tbruyelle.rxpermissions2.RxPermissions
-import me.soushin.tinmvvm.config.HttpHandleCallBack
+import com.tbruyelle.rxpermissions3.RxPermissions
+import com.tbruyelle.rxpermissions3.Permission
+import me.soushin.tinmvvm.config.AppComponent
+import me.soushin.tinmvvm.rxerror.handler.ErrorHandleSubscriber
 import java.util.*
 
 /**
@@ -60,7 +61,7 @@ object PermissionUtil {
             rxPermissions
                 .requestEach(*needRequest.toTypedArray())
                 .buffer(permissions.size)
-                .subscribe(object : HttpHandleCallBack<List<Permission?>>(lifecycle) {
+                .subscribe(object : ErrorHandleSubscriber<List<Permission?>>(lifecycle,AppComponent.rxErrorHandler) {
                     fun onNext(permissions: List<Permission>) {
                         val failurePermissions: MutableList<String> =
                             ArrayList()

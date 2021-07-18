@@ -1,7 +1,7 @@
 package me.soushin.tinmvvm.config
 
 import com.blankj.ALog
-import me.jessyan.rxerrorhandler.handler.listener.ResponseErrorListener
+import me.soushin.tinmvvm.listener.ResponseErrorListener
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
@@ -33,7 +33,6 @@ class GlobalConfigModule(builder: Builder) {
         var defaultOkHttpConfig= OkHttpConfigBean()//默认okhttp配置类,如果setOkHttpClient了只配置将不会生效
         var okHttpClient = getDefaultOkHttpClient()//提供默认的可修改的okhttpclient全局共用
         var errorResponseListener: ResponseErrorListener = ResponseErrorListener.EMPTY//rxjava2异常监听回调
-
 
         fun logDir(logDir: String): Builder {
             this.logDir = logDir

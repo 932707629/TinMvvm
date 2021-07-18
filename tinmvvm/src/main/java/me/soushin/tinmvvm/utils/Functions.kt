@@ -56,7 +56,7 @@ private val Any.allParameterizedType: List<ParameterizedType>
     }
 
 
-fun throttleClick(wait: Long = 200, block: ((View) -> Unit)): View.OnClickListener {
+fun throttleClick(wait: Long = 1000, block: ((View) -> Unit)): View.OnClickListener {
     return View.OnClickListener { v ->
         val current = System.currentTimeMillis()
         val lastClickTime = (v.getTag(v.id) as? Long) ?: 0

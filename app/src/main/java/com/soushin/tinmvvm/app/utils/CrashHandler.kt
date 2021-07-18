@@ -12,7 +12,7 @@ object CrashHandler {
     fun init(){
         Thread.setDefaultUncaughtExceptionHandler { thread, e ->
 //            ALog.e("crash！！！",thread,e)
-            AppComponent.rxErrorHandler?.handlerFactory?.handleError(e)
+            AppComponent.rxErrorHandler?.mHandlerFactory?.handleError(e)
         }
     }
 

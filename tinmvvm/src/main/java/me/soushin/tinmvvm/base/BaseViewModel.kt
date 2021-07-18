@@ -5,20 +5,20 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import me.soushin.tinmvvm.config.AppComponent
+import me.soushin.tinmvvm.rxerror.RxErrorHandler
 
 /**
  * @author created by Soushin
  * @time 2020/1/7 16 38
  */
-open class BaseViewModel<R: BaseRepository>(application: Application,val mRepository: R) : AndroidViewModel(
-    application
-), CoroutineScope by MainScope(), LifecycleEventObserver {
+open class BaseViewModel<R: BaseRepository>(application: Application,val mRepository: R) :
+    AndroidViewModel(application), CoroutineScope by MainScope(), LifecycleEventObserver {
 
     private val mCompositeDisposable by lazy { CompositeDisposable() }
 
@@ -28,7 +28,11 @@ open class BaseViewModel<R: BaseRepository>(application: Application,val mReposi
     //子类可以自行override实现自定义异常处理
     open val coroutineExceptionHandler get() = CoroutineExceptionHandler { coroutineContext, exception ->
 //        println("Handle $exception in CoroutineExceptionHandler")
-        AppComponent.rxErrorHandler?.handlerFactory?.handleError(exception)
+        getErrorHandler()?.mHandlerFactory?.handleError(exception)
+    }
+
+    protected fun getErrorHandler(): RxErrorHandler?{
+        return AppComponent.rxErrorHandler
     }
 
     //注册生命周期 需要在网络请求的时候用到它

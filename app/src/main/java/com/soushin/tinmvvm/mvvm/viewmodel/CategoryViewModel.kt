@@ -10,7 +10,7 @@ import com.soushin.tinmvvm.mvvm.repository.CategoryRepository
 import com.soushin.tinmvvm.mvvm.repository.entity.CategoryEntity
 import com.soushin.tinmvvm.app.utils.RxUtils
 import me.soushin.tinmvvm.base.BaseViewModel
-import me.soushin.tinmvvm.config.HttpHandleCallBack
+import me.soushin.tinmvvm.rxerror.handler.ErrorHandleSubscriber
 import me.soushin.tinmvvm.utils.throttleClick
 
 
@@ -42,7 +42,7 @@ class CategoryViewModel(application: Application) :
     private fun requestData() {
         mRepository.requestData()
             .compose(RxUtils.applySchedulers())
-            .subscribe(object : HttpHandleCallBack<MutableList<CategoryEntity>>(lifecycle!!){
+            .subscribe(object : ErrorHandleSubscriber<MutableList<CategoryEntity>>(lifecycle!!,getErrorHandler()){
                 override fun onNext(result: MutableList<CategoryEntity>) {
                     super.onNext(result)
                     ALog.e("服务器返回结果", JSONObject.toJSONString(result))

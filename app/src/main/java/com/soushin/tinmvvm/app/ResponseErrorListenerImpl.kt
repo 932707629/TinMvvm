@@ -7,7 +7,7 @@ import com.blankj.ALog
 import com.google.gson.JsonIOException
 import com.google.gson.JsonParseException
 import com.hjq.toast.ToastUtils
-import me.jessyan.rxerrorhandler.handler.listener.ResponseErrorListener
+import me.soushin.tinmvvm.listener.ResponseErrorListener
 import org.json.JSONException
 import rxhttp.wrapper.exception.HttpStatusCodeException
 import java.net.SocketTimeoutException
@@ -18,7 +18,7 @@ import java.net.UnknownHostException
  * @auther SouShin
  * @time 2020/7/22 10:15
  */
-class ResponseErrorListenerImpl :ResponseErrorListener {
+class ResponseErrorListenerImpl : ResponseErrorListener {
     override fun handleResponseError(context: Context?, t: Throwable?) {
         ALog.i("Catch-Error",t?.message);
         //这里不光只能打印错误, 还可以根据不同的错误做出不同的逻辑处理

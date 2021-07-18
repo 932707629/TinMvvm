@@ -7,11 +7,7 @@ package com.soushin.tinmvvm.app
  */
 object LiveDataTag {
 
-    /**
-     * 全局配置信息
-     */
-    val tag_globalConfig="globalConfig"
-
+    const val tag_main_delegate_graph="main_delegate_graph"
 
 
 }

@@ -1,10 +1,15 @@
 package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import com.soushin.tinmvvm.BR
+import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.databinding.FragmentCoroutineBinding
+import com.soushin.tinmvvm.mvvm.viewmodel.CategoryViewModel
 import com.soushin.tinmvvm.mvvm.viewmodel.CoroutineViewModel
-import me.soushin.tinmvvm.base.BaseFragment
+import me.soushin.tinmvvm.base.DataBindingFragment
+import me.soushin.tinmvvm.config.DataBindingConfig
 
 /**
  * 协程本身可以理解为一个对线程的封装库，跟我们用的线程池异曲同工
@@ -13,14 +18,17 @@ import me.soushin.tinmvvm.base.BaseFragment
  * @auther SouShin
  * @time 2020/6/24 10:29
  */
-class CoroutineFragment : BaseFragment<FragmentCoroutineBinding, CoroutineViewModel>() {
+class CoroutineFragment : DataBindingFragment<FragmentCoroutineBinding, CoroutineViewModel>() {
 
-    override fun initView(savedInstanceState: Bundle?) {
+    override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
 
     }
 
-    override fun initVariableId(): Int {
-        return BR.CoroutineViewModel;//这里是为了绑定ViewModel用的 如果不需要请返回0
+    //配置当前页面的内容 各项参数都可为空
+    //BR.xxxxViewModel是kotlin-kapt插件默认生成的 对应xml文件里的xxxxViewModel
+    override fun getDataBindingConfig(): DataBindingConfig? {
+        return DataBindingConfig(layoutId = R.layout.fragment_coroutine,variableId = BR.CoroutineViewModel,
+            vmClass = CoroutineViewModel::class.java)
     }
 
 }

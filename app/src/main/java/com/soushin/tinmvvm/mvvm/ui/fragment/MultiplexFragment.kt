@@ -1,14 +1,18 @@
 package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.blankj.ALog
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.databinding.FragmentMultiplexBinding
 import com.soushin.tinmvvm.mvvm.adapter.MultiplexAdapter
+import com.soushin.tinmvvm.mvvm.viewmodel.HomeViewModel
 import com.soushin.tinmvvm.mvvm.viewmodel.MultiplexViewModel
-import me.soushin.tinmvvm.base.BaseFragment
+import me.soushin.tinmvvm.base.DataBindingFragment
+import me.soushin.tinmvvm.config.DataBindingConfig
 import java.util.*
 
 /**
@@ -18,13 +22,13 @@ import java.util.*
  * Created by TinMvvmTemplate on 01/20/2020 15:26
  * ================================================
  */
-class MultiplexFragment : BaseFragment<FragmentMultiplexBinding, MultiplexViewModel>() {
+class MultiplexFragment : DataBindingFragment<FragmentMultiplexBinding, MultiplexViewModel>() {
     companion object {
         fun newInstance(): MultiplexFragment {
             return MultiplexFragment()
         }
     }
-    override fun initView(savedInstanceState: Bundle?) {
+    override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
         mViewData?.apply {
             ALog.i("开始创建新的", savedInstanceState)
             mViewModel?.loadData()
@@ -44,9 +48,11 @@ class MultiplexFragment : BaseFragment<FragmentMultiplexBinding, MultiplexViewMo
         }
     }
 
-    override fun initVariableId(): Int {
-        return BR.MultiplexViewModel
+    //配置当前页面的内容 各项参数都可为空
+    //BR.xxxxViewModel是kotlin-kapt插件默认生成的 对应xml文件里的xxxxViewModel
+    override fun getDataBindingConfig(): DataBindingConfig? {
+        return DataBindingConfig(layoutId = R.layout.fragment_multiplex,variableId = BR.MultiplexViewModel,
+            vmClass = MultiplexViewModel::class.java)
     }
-
 
 }

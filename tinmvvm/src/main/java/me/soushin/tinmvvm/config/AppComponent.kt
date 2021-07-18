@@ -2,8 +2,8 @@ package me.soushin.tinmvvm.config
 
 import android.app.Application
 import com.blankj.ALog
-import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import me.soushin.tinmvvm.base.BaseApp
+import me.soushin.tinmvvm.rxerror.RxErrorHandler
 
 /**
  * 拥有此类即可调用对应的方法拿到对应实例
@@ -36,12 +36,12 @@ class AppComponent// TODO: 2020/7/15  这里拿到全局配置信息即可实现
     }
 
     companion object {
-        var rxErrorHandler:RxErrorHandler?=null
+        var rxErrorHandler: RxErrorHandler?=null
         var globalConfig: GlobalConfigModule?=null
     }
 
     private fun initRxErrorHandler() {
-        rxErrorHandler=RxErrorHandler.builder()
+        rxErrorHandler= RxErrorHandler.builder()
             .with(BaseApp.instance)
             .responseErrorListener(globalConfig?.errorResponseListener)
             .build()

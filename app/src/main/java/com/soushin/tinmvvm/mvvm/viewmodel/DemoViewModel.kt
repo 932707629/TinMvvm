@@ -15,4 +15,9 @@ import me.soushin.tinmvvm.base.BaseViewModel
 class DemoViewModel(application: Application) : BaseViewModel<DemoRepository>(application, DemoRepository()) {
 
 
+    fun find(){
+
+    }
+
+
 }

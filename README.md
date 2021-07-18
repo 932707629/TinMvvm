@@ -36,7 +36,7 @@ TinMvvm是以谷歌DataBinding+LiveData+ViewModel+Navigation框架为基础，�
 - 提供fragmentUtils工具类，解决fragment重叠的bug，fragment任务栈统一管理
 - 提供懒加载onLazyInitView()/fragment可见性onInvisible()/onVisible()方法回调
 - brvh3.0+，使用viewbinding！！！
-- 使用RxHttp网络框架链式调用，与Rxjava2相结合，线程智能控制（用户可选retrofit替换 个人比较喜欢rxhttp独特的设计）
+- 使用RxHttp网络框架链式调用，与Rxjava3相结合，线程智能控制（开发者可选retrofit替换 个人比较喜欢rxhttp独特的设计）
 - 解决Toast禁用通知权限不能弹出的bug，不分主次线程，可自定义Toast样式
 - 全局使用Kotlin，可与Java无缝转换
 - 支持新手指引，编程中使用不规范的地方，会引导你正确使用
@@ -55,11 +55,11 @@ TinMvvm是以谷歌DataBinding+LiveData+ViewModel+Navigation框架为基础，�
 
 使用的第三方框架:
 
-[Jetpack](https://developer.android.google.cn/jetpack "Jetpack")
+[Jetpack组件库](https://developer.android.google.cn/jetpack "Jetpack组件库")
 
 [Navigation](https://developer.android.google.cn/jetpack/androidx/releases/navigation "Navigation")
 
-[RxJava2](https://github.com/ReactiveX/RxJava "RxJava2")
+[RxJava3](https://github.com/ReactiveX/RxJava "RxJava3")
 
 [ImmersionBar](https://github.com/gyf-dev/ImmersionBar "ImmersionBar")
 
@@ -79,7 +79,7 @@ TinMvvm是以谷歌DataBinding+LiveData+ViewModel+Navigation框架为基础，�
 
 Android Studio4.0以上不支持自定义模板,可以使用[一键生成TinMvvm组件](https://github.com/932707629/tin-mvvm-template)
 
-TinMvvmTemplate这个文件里放着TinMvv的一键生成工具
+Android Studio4.0一下使用TinMvvmTemplate这个文件里放着TinMvv的一键生成工具
 
 可将TinMvvmTemplate放到AS安装目录\plugins\android\lib\templates\activities里
 
@@ -103,13 +103,19 @@ TinMvvmTemplate这个文件里放着TinMvv的一键生成工具
   答：Navigation 的适用场景是，不同层级之间 fragment 的跳转和管理，
   同级 fragment 之间请不要使用 Navigation 切换。可以考虑 viewPager 等方式管理。
   
-### 已修复问题: ###
+### 新版功能预览: ###
 
 - 修复fragment+tablayout使用时会重复创建的问题
 - jitpack发布新版本
 - 修复HttpHandleCallBack添加生命周期造成的强转异常
 - 修复navigation导致fragment重复创建的问题```FixFragmentNavigator```
+- 升级到Rxjava3，相应的RxPermissions版本升级到0.12，取消RxErrorHandle(不支持RxJava3)依赖
 
+### 我的主页 ###
+
+ - 简书:[敲代码的鱼](https://www.jianshu.com/u/db6ff36dac08 "敲代码的鱼")
+ - 掘金:[敲代码的鱼](https://juejin.cn/user/1865248698012616 "敲代码的鱼")
+ - CSDN:[敲代码的鱼哇](https://blog.csdn.net/qq_35195386?spm=1001.2101.3001.5343 "敲代码的鱼哇")
 
 
 

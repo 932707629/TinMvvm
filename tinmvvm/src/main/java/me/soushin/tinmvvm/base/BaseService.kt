@@ -5,8 +5,8 @@ import android.content.Intent
 import android.os.IBinder
 import android.util.Log
 import com.blankj.ALog
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 

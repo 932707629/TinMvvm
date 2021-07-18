@@ -60,31 +60,24 @@ dependencies {
     implementation(deps.appcompat)
     api(deps.alog)
     //第三方工具库
-    api(deps.rxandroid) {
+    api(deps.rxandroid3)
+    /*api(deps.rxandroid2) {
         exclude group: "io.reactivex.rxjava2", module: 'rxjava'
-    }
-    api(deps.rxjava2)
-    api(deps.rxlife_rxjava)
-    api(deps.rxerrorhandler)
+    }*/
+//    api(deps.rxjava2)
+    api(deps.rxjava3)
+//    api(deps.rxlife_rxjava2)
+    api(deps.rxlife_rxjava3)
+//    api(deps.rxerrorhandler)
     api(deps.conscrypt)
     api(deps.okhttp)
-    api(deps.glide){
-        exclude group: "androidx.annotation", module: 'annotation'
-        exclude group: "androidx.fragment", module: 'fragment'
-        exclude group: "androidx.vectordrawable", module: 'vectordrawable-animated'
-    }
+    api(deps.glide)
     kapt(deps.glide_compiler)//配套glide使用
-    api(deps.kotlinx_coroutines) {
-        exclude group: "org.jetbrains.kotlin", module: 'kotlin-android-extensions-runtime'
-    }
-    api(deps.kotlinx_coroutines_android) {
-        exclude group: "org.jetbrains.kotlin", module: 'kotlin-android-extensions-runtime'
-    }
+    api(deps.kotlinx_coroutines)
+    api(deps.kotlinx_coroutines_android)
     api(deps.immersionbar)
     api(deps.immersionbar_components)
-    api(deps.immersionbar_ktx) {
-        exclude group: "org.jetbrains.kotlin", module: 'kotlin-android-extensions-runtime'
-    }
+    api(deps.immersionbar_ktx)
 }
 
 //apply from: "../bintrayUpload.gradle"

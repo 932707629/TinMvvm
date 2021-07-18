@@ -1,18 +1,20 @@
 package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
-import android.view.MotionEvent
-import androidx.core.view.MotionEventCompat
-import androidx.core.view.MotionEventCompat.getSource
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import com.chad.library.adapter.base.BaseBinderAdapter
 import com.soushin.tinmvvm.BR
+import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.databinding.FragmentRecyclerBinding
 import com.soushin.tinmvvm.mvvm.adapter.itembinder.ImageItemBinder
 import com.soushin.tinmvvm.mvvm.adapter.itembinder.TextItemBinder
 import com.soushin.tinmvvm.mvvm.repository.entity.ImageEntity
 import com.soushin.tinmvvm.mvvm.viewmodel.RecyclerViewModel
 import com.soushin.tinmvvm.app.utils.DataUtils
-import me.soushin.tinmvvm.base.BaseFragment
+import com.soushin.tinmvvm.mvvm.viewmodel.MultiplexViewModel
+import me.soushin.tinmvvm.base.DataBindingFragment
+import me.soushin.tinmvvm.config.DataBindingConfig
 
 /**
  * ================================================
@@ -22,11 +24,11 @@ import me.soushin.tinmvvm.base.BaseFragment
  * ================================================
  */
 
-class RecyclerFragment : BaseFragment<FragmentRecyclerBinding, RecyclerViewModel>() {
+class RecyclerFragment : DataBindingFragment<FragmentRecyclerBinding, RecyclerViewModel>() {
 
     val adapter:BaseBinderAdapter= BaseBinderAdapter()
 
-    override fun initView(savedInstanceState: Bundle?) {
+    override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
         mViewData?.apply {
             srlRefresh.setOnRefreshListener {
                 adapter.setList(DataUtils.getRecyclerData())
@@ -43,8 +45,11 @@ class RecyclerFragment : BaseFragment<FragmentRecyclerBinding, RecyclerViewModel
         }
     }
 
-    override fun initVariableId(): Int {
-        return BR.RecyclerViewModel;//这里是为了绑定ViewModel用的 如果不需要请返回0
+    //配置当前页面的内容 各项参数都可为空
+    //BR.xxxxViewModel是kotlin-kapt插件默认生成的 对应xml文件里的xxxxViewModel
+    override fun getDataBindingConfig(): DataBindingConfig? {
+        return DataBindingConfig(layoutId = R.layout.fragment_recycler,variableId = BR.RecyclerViewModel,
+            vmClass = RecyclerViewModel::class.java)
     }
 
     companion object {

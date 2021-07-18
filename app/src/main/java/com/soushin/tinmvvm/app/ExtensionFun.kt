@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.hjq.toast.ToastUtils
-import me.soushin.tinmvvm.base.BaseFragment
+import me.soushin.tinmvvm.base.DataBindingFragment
 
 /**
  * 扩展方法
@@ -30,15 +30,15 @@ fun Fragment.getThis(): Fragment {
     return this
 }
 
-fun BaseFragment<*, *>.getCtx():Context{
+fun DataBindingFragment<*, *>.getCtx():Context{
     return this.mContext!!
 }
 
-fun BaseFragment<*, *>.showToasty(msg:Any?){
+fun DataBindingFragment<*, *>.showToasty(msg:Any?){
     ToastUtils.show(msg)
 }
 
-fun BaseFragment<*, *>.go(clazz:Class<*>){
+fun DataBindingFragment<*, *>.go(clazz:Class<*>){
     startActivity(Intent(mContext,clazz))
 }
 

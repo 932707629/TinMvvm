@@ -4,7 +4,7 @@ import android.app.Activity
 import android.app.Application
 import android.os.Bundle
 import com.blankj.ALog
-import me.soushin.tinmvvm.base.BaseActivity
+import me.soushin.tinmvvm.base.DataBindingActivity
 
 /**
  * 对每个activity实现监听
@@ -18,7 +18,7 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
         ALog.i("onActivityCreated",activity.localClassName)
-        if (activity is BaseActivity<*, *> &&activity.useFragment()){//注册fragment回调监听
+        if (activity is DataBindingActivity<*, *> &&activity.useFragment()){//注册fragment回调监听
             val fragmentLifecycleCallbacksImpl=
                 FragmentLifecycleCallbacksImpl()
             fragmentLifecycleMap[activity.localClassName] = fragmentLifecycleCallbacksImpl
@@ -48,7 +48,7 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
 
     override fun onActivityDestroyed(activity: Activity) {
 //        ALog.i("onActivityDestroyed",activity.localClassName)
-        if (activity is BaseActivity<*, *> &&activity.useFragment()){//注册fragment回调监听
+        if (activity is DataBindingActivity<*, *> &&activity.useFragment()){//注册fragment回调监听
             fragmentLifecycleMap[activity.localClassName]?.let {
                 activity.supportFragmentManager.unregisterFragmentLifecycleCallbacks(it)
                 fragmentLifecycleMap.remove(activity.localClassName)

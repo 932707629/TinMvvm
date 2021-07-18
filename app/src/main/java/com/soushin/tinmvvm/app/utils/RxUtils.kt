@@ -1,8 +1,8 @@
 package com.soushin.tinmvvm.app.utils
 
-import io.reactivex.ObservableTransformer
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.ObservableTransformer
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 /**
  *
@@ -11,7 +11,7 @@ import io.reactivex.schedulers.Schedulers
  */
 object RxUtils {
 
-    fun <T> applySchedulers() : ObservableTransformer<T,T> {
+    fun <T> applySchedulers() : ObservableTransformer<T, T> {
         return ObservableTransformer<T,T>{
             return@ObservableTransformer it.subscribeOn(Schedulers.io())
                 .doOnSubscribe{
