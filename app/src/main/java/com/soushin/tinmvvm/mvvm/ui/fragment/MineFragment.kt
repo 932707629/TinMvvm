@@ -27,10 +27,7 @@ class MineFragment : DataBindingFragment<FragmentMineBinding, MineViewModel>() {
     }
 
     override fun initView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ) {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
 
     }
 

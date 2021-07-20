@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
-            name="HomeViewModel"
-            type="com.soushin.tinmvvm.mvvm.viewmodel.HomeViewModel" />
-
-        <variable
-            name="onClick"
-            type="android.view.View.OnClickListener"/>
-
-        <!--<variable
-            name="viewClick"
-            type="com.soushin.tinmvvm.mvvm.ui.fragment.HomeFragment.ClickProxy"/>-->
+            name="PagingViewModel"
+            type="com.soushin.tinmvvm.mvvm.viewmodel.PagingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,11 +15,11 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_home"
-            tools:listitem="@layout/item_tab_component"
+            android:id="@+id/rv_paging"
+            tools:listitem="@layout/item_category"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

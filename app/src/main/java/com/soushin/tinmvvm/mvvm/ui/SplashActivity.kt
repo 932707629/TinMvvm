@@ -1,12 +1,14 @@
 package com.soushin.tinmvvm.mvvm.ui
 
-import android.os.Bundle;
-import com.soushin.tinmvvm.BR;
-import com.soushin.tinmvvm.R;
-import com.soushin.tinmvvm.databinding.ActivitySplashBinding;
-import com.soushin.tinmvvm.mvvm.viewmodel.SplashViewModel;
-import me.soushin.tinmvvm.base.DataBindingActivity;
-import me.soushin.tinmvvm.config.DataBindingConfig;
+import android.os.Bundle
+import com.bumptech.glide.Glide
+import com.soushin.tinmvvm.BR
+import com.soushin.tinmvvm.R
+import com.soushin.tinmvvm.app.getThis
+import com.soushin.tinmvvm.databinding.ActivitySplashBinding
+import com.soushin.tinmvvm.mvvm.viewmodel.SplashViewModel
+import me.soushin.tinmvvm.base.DataBindingActivity
+import me.soushin.tinmvvm.config.DataBindingConfig
 
 class SplashActivity : DataBindingActivity<ActivitySplashBinding, SplashViewModel>() {
 
@@ -16,11 +18,15 @@ class SplashActivity : DataBindingActivity<ActivitySplashBinding, SplashViewMode
         return DataBindingConfig(
             layoutId = R.layout.activity_splash, variableId = BR.SplashViewModel,
             vmClass = SplashViewModel::class.java
-        );
+        )
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-
+        mViewData?.ivSplash?.let {iv->
+            Glide.with(getThis())
+                .load("https://wx2.sinaimg.cn/mw690/002Po4pSly1gsdxnl2grvj60u0190qvg02.jpg")
+                .into(iv)
+        }
     }
 
 }

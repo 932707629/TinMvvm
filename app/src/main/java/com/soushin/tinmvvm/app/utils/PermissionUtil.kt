@@ -3,8 +3,8 @@ package com.soushin.tinmvvm.app.utils
 import android.Manifest
 import androidx.lifecycle.LifecycleOwner
 import com.blankj.ALog
-import com.tbruyelle.rxpermissions3.RxPermissions
 import com.tbruyelle.rxpermissions3.Permission
+import com.tbruyelle.rxpermissions3.RxPermissions
 import me.soushin.tinmvvm.config.AppComponent
 import me.soushin.tinmvvm.rxerror.handler.ErrorHandleSubscriber
 import java.util.*

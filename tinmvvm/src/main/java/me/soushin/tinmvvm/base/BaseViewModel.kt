@@ -18,7 +18,7 @@ import me.soushin.tinmvvm.rxerror.RxErrorHandler
  * @time 2020/1/7 16 38
  */
 open class BaseViewModel<R: BaseRepository>(application: Application,val mRepository: R) :
-    AndroidViewModel(application), CoroutineScope by MainScope(), LifecycleEventObserver {
+    AndroidViewModel(application), LifecycleEventObserver {
 
     private val mCompositeDisposable by lazy { CompositeDisposable() }
 

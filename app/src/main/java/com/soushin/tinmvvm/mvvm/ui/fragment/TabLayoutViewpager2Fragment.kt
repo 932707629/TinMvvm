@@ -4,21 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.blankj.ALog
 import com.google.android.material.tabs.TabLayoutMediator
-
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.app.getThis
-import me.soushin.tinmvvm.base.DataBindingFragment
 import com.soushin.tinmvvm.databinding.FragmentTablayoutViewpager2Binding
 import com.soushin.tinmvvm.mvvm.adapter.ViewPager2StateAdapter
-import com.soushin.tinmvvm.mvvm.viewmodel.RecyclerViewModel
 import com.soushin.tinmvvm.mvvm.viewmodel.TabLayoutViewpager2ViewModel
+import me.soushin.tinmvvm.base.DataBindingFragment
 import me.soushin.tinmvvm.config.DataBindingConfig
 
 /**
@@ -35,7 +28,8 @@ class TabLayoutViewpager2Fragment :
     }
     override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
         mViewData?.apply {
-            val fragments = mutableListOf<Fragment>(MultiplexFragment.newInstance(),RecyclerFragment.newInstance(),RecyclerFragment.newInstance())
+            val fragments = mutableListOf<Fragment>(RecyclerFragment.newInstance(),
+                RecyclerFragment.newInstance(),RecyclerFragment.newInstance())
             viewPager2.adapter=ViewPager2StateAdapter(getThis(),fragments)
             TabLayoutMediator(tabLayout,viewPager2){tab,position->
                 tab.text = "OBJECT ${(position + 1)}"

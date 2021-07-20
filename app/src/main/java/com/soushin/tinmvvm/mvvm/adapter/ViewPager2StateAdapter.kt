@@ -4,7 +4,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.adapter.FragmentViewHolder
 import com.blankj.ALog
 
 class ViewPager2StateAdapter:FragmentStateAdapter {
@@ -26,9 +28,17 @@ class ViewPager2StateAdapter:FragmentStateAdapter {
 
 
     override fun createFragment(position: Int): Fragment {
-        ALog.i("当前位置打印了",position);
+        ALog.i("createFragment",position);
         return fragments!![position]
     }
 
+    override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
+        super.onDetachedFromRecyclerView(recyclerView)
+        ALog.i("onDetachedFromRecyclerView");
+    }
 
+    override fun onViewDetachedFromWindow(holder: FragmentViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+        ALog.i("onViewDetachedFromWindow",holder.layoutPosition);
+    }
 }

@@ -74,8 +74,9 @@ dependencies {
     implementation(deps.material)
     implementation(deps.recyclerview)
     implementation(deps.core_ktx)
+    implementation(deps.flextbox)//流式布局
     implementation project(':tinmvvm')
-    implementation(deps.work_runtime)
+    implementation(deps.work_runtime)//workmanager
     implementation 'com.kunminx.arch:smooth-navigation:3.9.0-beta1'
     ///过滤掉navigation-fragment否则会和smooth-navigation冲突
     implementation(deps.navigation_fragment_ktx){
@@ -90,10 +91,12 @@ dependencies {
     implementation(deps.autosize)
     implementation(deps.fastjson)
     implementation(deps.brvh)
+//    implementation(deps.qmui)
+    implementation(deps.mmkv_static)
 //    implementation(deps.rxpermissions)
     implementation(deps.rxpermissions3)
     implementation(deps.ToastUtils)
-    implementation(deps.basepopup)
+//    implementation(deps.basepopup)
     implementation(deps.rxhttp)
     implementation(deps.liveeventbus)
     //rxhttp插件

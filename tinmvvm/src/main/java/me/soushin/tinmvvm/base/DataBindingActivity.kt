@@ -2,13 +2,11 @@ package me.soushin.tinmvvm.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
-import me.soushin.tinmvvm.R
 import me.soushin.tinmvvm.config.DataBindingConfig
-import me.soushin.tinmvvm.utils.inflateBindingWithGeneric
-import java.lang.reflect.ParameterizedType
 
 /**
  * activity基类
@@ -21,6 +19,7 @@ abstract class DataBindingActivity<VD : ViewDataBinding,VM : BaseViewModel<out B
 
     protected var mViewModel:VM? = null
     protected var mViewData:VD? = null
+    protected val mViewModelProvider by lazy { ViewModelProvider(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,14 +40,18 @@ abstract class DataBindingActivity<VD : ViewDataBinding,VM : BaseViewModel<out B
         getDataBindingConfig()?.apply {
             //如果当前页面的layoutId为空就不会去调用setContentView()实例化mViewData
             layoutId?.let {
-                mViewData = DataBindingUtil.setContentView(this@DataBindingActivity, it)
+                mViewData = if (dataBindingComponent!=null && dataBindingComponent is DataBindingComponent){
+                    DataBindingUtil.setContentView(this@DataBindingActivity, it,dataBindingComponent as DataBindingComponent)
+                }else {
+                    DataBindingUtil.setContentView(this@DataBindingActivity, it)
+                }
                 bindingParams.forEach {entry->
                     mViewData!!.setVariable(entry.key,entry.value)
                 }
             }
             //如果当前页面的vmClass为空就不会去实例化mViewModel
             vmClass?.let {
-                mViewModel = ViewModelProvider(this@DataBindingActivity)[it as Class<VM>]
+                mViewModel = mViewModelProvider[it as Class<VM>]
                 lifecycle.addObserver(mViewModel!!)
                 //如果当前页面设置的variableId为空就不会去绑定ViewModel
                 variableId?.let {vid->

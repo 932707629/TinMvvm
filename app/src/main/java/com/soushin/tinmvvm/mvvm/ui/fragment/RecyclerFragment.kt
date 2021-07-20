@@ -6,13 +6,11 @@ import android.view.ViewGroup
 import com.chad.library.adapter.base.BaseBinderAdapter
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
+import com.soushin.tinmvvm.app.utils.DataUtils
 import com.soushin.tinmvvm.databinding.FragmentRecyclerBinding
 import com.soushin.tinmvvm.mvvm.adapter.itembinder.ImageItemBinder
 import com.soushin.tinmvvm.mvvm.adapter.itembinder.TextItemBinder
-import com.soushin.tinmvvm.mvvm.repository.entity.ImageEntity
 import com.soushin.tinmvvm.mvvm.viewmodel.RecyclerViewModel
-import com.soushin.tinmvvm.app.utils.DataUtils
-import com.soushin.tinmvvm.mvvm.viewmodel.MultiplexViewModel
 import me.soushin.tinmvvm.base.DataBindingFragment
 import me.soushin.tinmvvm.config.DataBindingConfig
 
@@ -26,22 +24,15 @@ import me.soushin.tinmvvm.config.DataBindingConfig
 
 class RecyclerFragment : DataBindingFragment<FragmentRecyclerBinding, RecyclerViewModel>() {
 
-    val adapter:BaseBinderAdapter= BaseBinderAdapter()
-
     override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
         mViewData?.apply {
-            srlRefresh.setOnRefreshListener {
-                adapter.setList(DataUtils.getRecyclerData())
-                srlRefresh.isRefreshing=false
+            val adapter = BaseBinderAdapter().apply {
+                addItemBinder(ImageItemBinder())
+                addItemBinder(TextItemBinder())
             }
-            adapter.addItemBinder(ImageEntity::class.java,ImageItemBinder())
-                .addItemBinder(String::class.java,TextItemBinder())
-
             //LinearLayoutManager已经在布局文件里设置了 所以这里只要设置adapter就可以了
             rvRecycler.adapter=adapter
-
             adapter.setList(DataUtils.getRecyclerData())
-            
         }
     }
 

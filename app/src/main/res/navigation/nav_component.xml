@@ -9,5 +9,46 @@
         android:id="@+id/componentFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.ComponentFragment"
         tools:layout="@layout/fragment_component"
-        android:label="ComponentFragment" />
+        android:label="ComponentFragment" >
+        <action
+            android:id="@+id/action_componentFragment_to_tabLayoutViewpager2Fragment"
+            app:destination="@id/tabLayoutViewpager2Fragment" />
+        <action
+            android:id="@+id/action_componentFragment_to_coroutineFragment"
+            app:destination="@id/coroutineFragment" />
+        <action
+            android:id="@+id/action_componentFragment_to_workerFragment"
+            app:destination="@id/workerFragment" />
+        <action
+            android:id="@+id/action_componentFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_componentFragment_to_pagingFragment"
+            app:destination="@id/pagingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/coroutineFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.CoroutineFragment"
+        tools:layout="@layout/fragment_coroutine"
+        android:label="CoroutineFragment" />
+    <fragment
+        android:id="@+id/tabLayoutViewpager2Fragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.TabLayoutViewpager2Fragment"
+        tools:layout="@layout/fragment_tablayout_viewpager2"
+        android:label="TabLayoutViewpager2Fragment" />
+    <fragment
+        android:id="@+id/workerFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.WorkerFragment"
+        tools:layout="@layout/fragment_worker"
+        android:label="WorkerFragment" />
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.CategoryFragment"
+        tools:layout="@layout/fragment_category"
+        android:label="CategoryFragment" />
+    <fragment
+        android:id="@+id/pagingFragment"
+        tools:layout="@layout/fragment_paging"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.PagingFragment"
+        android:label="PagingFragment" />
 </navigation>

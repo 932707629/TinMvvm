@@ -2,6 +2,7 @@ package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.lifecycleScope
 import com.soushin.tinmvvm.mvvm.adapter.BaseAdapter
 import com.soushin.tinmvvm.mvvm.repository.MultiplexRepository
 import com.soushin.tinmvvm.mvvm.repository.entity.AuthorEntity
@@ -25,7 +26,7 @@ class MultiplexViewModel(application: Application) :
     private val strArray = arrayOf("关注", "推荐", "视频", "直播", "图片", "段子", "精华", "热门")
 
     fun loadData(){
-        launch {
+        lifecycle?.lifecycleScope?.launch {
             withContext(Dispatchers.IO){
                 val mDataList = mutableListOf<AuthorEntity>()
                 for (i in 0..8) {

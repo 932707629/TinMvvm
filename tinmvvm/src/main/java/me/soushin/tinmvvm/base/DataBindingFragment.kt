@@ -6,16 +6,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.blankj.ALog
 import com.gyf.immersionbar.components.ImmersionOwner
 import com.gyf.immersionbar.components.ImmersionProxy
 import me.soushin.tinmvvm.config.DataBindingConfig
-import me.soushin.tinmvvm.utils.inflateBindingWithGeneric
-import java.lang.reflect.ParameterizedType
 
 /**
  * fragment基类封装
@@ -27,6 +25,7 @@ import java.lang.reflect.ParameterizedType
 
     protected var mViewModel:VM?=null
     protected var mViewData:VD?=null
+    protected val mViewModelProvider by lazy { ViewModelProvider(this) }
     var mContext: Context? = null
 
     private val mImmersionProxy by lazy { ImmersionProxy(this) }
@@ -97,7 +96,11 @@ import java.lang.reflect.ParameterizedType
         getDataBindingConfig()?.apply {
             //如果当前页面的layoutId为空就不会去调用setContentView()实例化mViewData
             layoutId?.let {
-                vd = DataBindingUtil.inflate<VD>(inflater,it,container,false)
+                vd = if (dataBindingComponent!=null && dataBindingComponent is DataBindingComponent){
+                    DataBindingUtil.inflate<VD>(inflater,it,container,false,dataBindingComponent as DataBindingComponent)
+                }else {
+                    DataBindingUtil.inflate<VD>(inflater,it,container,false)
+                }
                 vd!!.lifecycleOwner = this@DataBindingFragment
                 bindingParams.forEach {entry->
                     vd!!.setVariable(entry.key,entry.value)
@@ -105,7 +108,7 @@ import java.lang.reflect.ParameterizedType
             }
             //如果当前页面的vmClass为空就不会去实例化mViewModel
             vmClass?.let {
-                mViewModel = ViewModelProvider(this@DataBindingFragment)[it as Class<VM>]
+                mViewModel = mViewModelProvider[it as Class<VM>]
                 mViewModel!!.registerLifecycleOwner(this@DataBindingFragment)
                 lifecycle.addObserver(mViewModel!!)
                 //如果当前页面设置的variableId为空就不会去绑定ViewModel

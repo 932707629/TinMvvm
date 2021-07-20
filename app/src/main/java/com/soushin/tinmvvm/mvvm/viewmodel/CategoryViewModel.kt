@@ -6,9 +6,9 @@ import androidx.navigation.Navigation
 import com.alibaba.fastjson.JSONObject
 import com.blankj.ALog
 import com.soushin.tinmvvm.R
+import com.soushin.tinmvvm.app.utils.RxUtils
 import com.soushin.tinmvvm.mvvm.repository.CategoryRepository
 import com.soushin.tinmvvm.mvvm.repository.entity.CategoryEntity
-import com.soushin.tinmvvm.app.utils.RxUtils
 import me.soushin.tinmvvm.base.BaseViewModel
 import me.soushin.tinmvvm.rxerror.handler.ErrorHandleSubscriber
 import me.soushin.tinmvvm.utils.throttleClick

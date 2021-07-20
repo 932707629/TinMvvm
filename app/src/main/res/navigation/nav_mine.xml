@@ -9,5 +9,21 @@
         android:id="@+id/mineFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.MineFragment"
         tools:layout="@layout/fragment_mine"
-        android:label="MineFragment" />
+        android:label="MineFragment" >
+        <action
+            android:id="@+id/action_mineFragment_to_splashActivity"
+            app:destination="@id/splashActivity" />
+        <action
+            android:id="@+id/action_mineFragment_to_threadPoolFragment2"
+            app:destination="@id/threadPoolFragment2" />
+    </fragment>
+    <activity
+        android:id="@+id/splashActivity"
+        android:name="com.soushin.tinmvvm.mvvm.ui.SplashActivity"
+        tools:layout="@layout/activity_splash"
+        android:label="SplashActivity" />
+    <fragment
+        android:id="@+id/threadPoolFragment2"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.ThreadPoolFragment"
+        android:label="ThreadPoolFragment" />
 </navigation>

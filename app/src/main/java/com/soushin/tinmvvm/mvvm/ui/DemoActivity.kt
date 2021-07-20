@@ -1,23 +1,22 @@
 package com.soushin.tinmvvm.mvvm.ui
 
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
 import androidx.viewpager2.widget.ViewPager2
 import com.blankj.ALog
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
+import com.soushin.tinmvvm.app.LiveDataTag
 import com.soushin.tinmvvm.app.getThis
 import com.soushin.tinmvvm.databinding.ActivityDemoBinding
 import com.soushin.tinmvvm.mvvm.adapter.ViewPager2StateAdapter
+import com.soushin.tinmvvm.mvvm.repository.entity.ViewTaskEvent
 import com.soushin.tinmvvm.mvvm.ui.fragment.*
 import com.soushin.tinmvvm.mvvm.viewmodel.DemoViewModel
 import me.soushin.tinmvvm.base.DataBindingActivity
-import me.soushin.tinmvvm.base.DataBindingFragment
 import me.soushin.tinmvvm.config.DataBindingConfig
 
 /**
@@ -42,18 +41,26 @@ class DemoActivity : DataBindingActivity<ActivityDemoBinding, DemoViewModel>() {
                 MainDelegateFragment.newInstance(R.navigation.nav_component),
                 MainDelegateFragment.newInstance(R.navigation.nav_mine))
             val itemIds= mutableListOf<Int>(R.id.homeFragment,R.id.componentFragment,R.id.mineFragment)
-            vpMainDelegate.adapter= ViewPager2StateAdapter(getThis(),fragments)
+            vpMainDelegate.adapter=ViewPager2StateAdapter(getThis(),fragments)
+//            vpMainDelegate.offscreenPageLimit = fragments.size
             bnvMainDelegate.setOnNavigationItemSelectedListener {
                 vpMainDelegate.currentItem = itemIds.indexOf(it.itemId)
                 return@setOnNavigationItemSelectedListener true
             }
-
             vpMainDelegate.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
                     bnvMainDelegate.selectedItemId = itemIds[position]
                 }
             })
+            LiveEventBus.get<ViewTaskEvent>(LiveDataTag.tag_main_view_event)
+                .observe(getThis(), {
+                    if (it.key == 0 && it.value is Boolean){
+                        val visible = it.value as Boolean
+                        vpMainDelegate.isUserInputEnabled = visible
+                        bnvMainDelegate.visibility = if (visible) View.VISIBLE else View.GONE
+                    }
+                })
         }
     }
 
@@ -69,7 +76,7 @@ class DemoActivity : DataBindingActivity<ActivityDemoBinding, DemoViewModel>() {
     }
 
     override fun onBackPressed() {
-        val navController = Navigation.findNavController(getThis(),R.id.nav_main_delegate)
+        val navController = Navigation.findNavController(getThis(),R.id.fcv_main_delegate)
         if (!navController.navigateUp()){
             ALog.i("popBackStack",false,);
             moveTaskToBack(true)
@@ -80,6 +87,6 @@ class DemoActivity : DataBindingActivity<ActivityDemoBinding, DemoViewModel>() {
 }
 
 
-fun DataBindingFragment<*,*>.nav():NavController{
-    return Navigation.findNavController(requireActivity(),R.id.nav_main_delegate)
-}
+
+
+

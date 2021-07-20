@@ -6,9 +6,9 @@ import androidx.work.Data
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import com.blankj.ALog
-import com.soushin.tinmvvm.mvvm.repository.WorkerRepository
 import com.soushin.tinmvvm.app.service.OneTimeWorker
 import com.soushin.tinmvvm.app.service.PeriodicWorker
+import com.soushin.tinmvvm.mvvm.repository.WorkerRepository
 import me.soushin.tinmvvm.base.BaseViewModel
 import java.util.concurrent.TimeUnit
 

@@ -8,7 +8,6 @@ import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.databinding.FragmentCategoryBinding
 import com.soushin.tinmvvm.mvvm.viewmodel.CategoryViewModel
-import com.soushin.tinmvvm.mvvm.viewmodel.DemoViewModel
 import me.soushin.tinmvvm.base.DataBindingFragment
 import me.soushin.tinmvvm.config.DataBindingConfig
 

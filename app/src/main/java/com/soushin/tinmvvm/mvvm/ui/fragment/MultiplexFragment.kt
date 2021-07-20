@@ -3,21 +3,22 @@ package com.soushin.tinmvvm.mvvm.ui.fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation
+import androidx.fragment.app.Fragment
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.blankj.ALog
+import com.bumptech.glide.Glide
+import com.google.android.material.tabs.TabLayoutMediator
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
+import com.soushin.tinmvvm.app.getThis
 import com.soushin.tinmvvm.databinding.FragmentMultiplexBinding
-import com.soushin.tinmvvm.mvvm.adapter.MultiplexAdapter
-import com.soushin.tinmvvm.mvvm.viewmodel.HomeViewModel
 import com.soushin.tinmvvm.mvvm.viewmodel.MultiplexViewModel
 import me.soushin.tinmvvm.base.DataBindingFragment
 import me.soushin.tinmvvm.config.DataBindingConfig
-import java.util.*
 
 /**
  * ================================================
- * Description:复杂布局
+ * Description:复杂布局(可吸顶)
  * <p>
  * Created by TinMvvmTemplate on 01/20/2020 15:26
  * ================================================
@@ -28,23 +29,27 @@ class MultiplexFragment : DataBindingFragment<FragmentMultiplexBinding, Multiple
             return MultiplexFragment()
         }
     }
+    private val strArray = arrayOf("关注", "推荐", "视频", "直播", "图片", "段子", "精华", "热门")
+
     override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
+
         mViewData?.apply {
-            ALog.i("开始创建新的", savedInstanceState)
-            mViewModel?.loadData()
-            ///这里生命周期监听 绝不可用requireActivity() 否则会有内存泄露
-            mViewModel?.viewEvent?.observe(this@MultiplexFragment,{
-                val multiTypeAdapter = MultiplexAdapter()
-                rvRecycler.initLayoutManager()
-                rvRecycler.adapter = multiTypeAdapter
-                multiTypeAdapter.setList(it)
-                multiTypeAdapter.setOnItemClickListener { adapter, view, position ->
-                    val navController = Navigation.findNavController(view)
-                    if (navController.currentDestination?.id == R.id.multiplexFragment){
-                        navController.navigate(R.id.action_multiplexFragment_to_recyclerFragment)
-                    }
+            Glide.with(getThis())
+                .load("https://wx2.sinaimg.cn/mw690/002Po4pSly1grt79wku06j61jk0rskjl02.jpg").into(ivImage)
+//            这种用法当fragment不会有内存泄露 虽然fragment很多 但是每次都是用的RecyclerFragment.newInstance()
+            ALog.i("有多少个tab呢",strArray.size);
+//            val fragments = mutableListOf<Fragment>()
+//            strArray.forEach { fragments.add(RecyclerFragment.newInstance()) }
+            viewPager2.adapter = object :FragmentStateAdapter(getThis()){
+                override fun getItemCount(): Int = strArray.size
+
+                override fun createFragment(position: Int): Fragment {
+                    return RecyclerFragment.newInstance()
                 }
-            })
+            }
+            TabLayoutMediator(tabLayout,viewPager2){tab,position->
+                tab.text = strArray[position]
+            }.attach()
         }
     }
 
@@ -54,5 +59,4 @@ class MultiplexFragment : DataBindingFragment<FragmentMultiplexBinding, Multiple
         return DataBindingConfig(layoutId = R.layout.fragment_multiplex,variableId = BR.MultiplexViewModel,
             vmClass = MultiplexViewModel::class.java)
     }
-
 }

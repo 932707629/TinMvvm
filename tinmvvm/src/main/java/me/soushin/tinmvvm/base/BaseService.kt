@@ -3,7 +3,6 @@ package me.soushin.tinmvvm.base
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
-import android.util.Log
 import com.blankj.ALog
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable

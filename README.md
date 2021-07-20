@@ -35,7 +35,7 @@ TinMvvm是以谷歌DataBinding+LiveData+ViewModel+Navigation框架为基础，�
 - 支持fragment设置状态栏沉浸式，多fragment无缝切换
 - 提供fragmentUtils工具类，解决fragment重叠的bug，fragment任务栈统一管理
 - 提供懒加载onLazyInitView()/fragment可见性onInvisible()/onVisible()方法回调
-- brvh3.0+，使用viewbinding！！！
+- BaseRecyclerViewAdapter3.0加持，使用ViewBinding，很nice！！！
 - 使用RxHttp网络框架链式调用，与Rxjava3相结合，线程智能控制（开发者可选retrofit替换 个人比较喜欢rxhttp独特的设计）
 - 解决Toast禁用通知权限不能弹出的bug，不分主次线程，可自定义Toast样式
 - 全局使用Kotlin，可与Java无缝转换
@@ -43,13 +43,16 @@ TinMvvm是以谷歌DataBinding+LiveData+ViewModel+Navigation框架为基础，�
 - 使用插件一键生成Activity/Fragment
 - 依赖RxPermission，权限申请更简单
 - 使用LiveEventBus，自动销毁，事件传递更加清晰
-- 异常捕获机制，将捕获到的异常信息反馈给开发者（Rxjava2异常以及运行时异常）
+- 异常捕获机制，将捕获到的异常信息反馈给开发者（Rxjava3异常以及运行时异常）
 - 已废弃kotlin-android-extensions插件，完全支持databinding和viewbinding混合使用
 - 新增BaseService，扩展了对Service的支持，使用Rxjava以及协程会更方便一些
+- MMKV优化键值对存储，是原生SharedPreferences写入速度的数十倍(DataStore目前还不稳定,且性能不如MMKV,以后可能会考虑换用DataStore)
+
+
 
 ### 开发准备 ###
 
-必须的项目配置，框架初始化都已添加，所以直接复制本项目更改报名，即可进行开发使用
+必须的项目配置，框架初始化都已添加，所以直接复制本项目更改包名，即可进行开发使用
 
 ### 开发指南 ###
 
@@ -75,11 +78,13 @@ TinMvvm是以谷歌DataBinding+LiveData+ViewModel+Navigation框架为基础，�
 
 [RxPermissions](https://github.com/tbruyelle/RxPermissions "RxPermissions")
 
+[MMKV](https://github.com/Tencent/MMKV "MMKV")
+
 ### 使用插件一键生成Activity/Fragment ###
 
 Android Studio4.0以上不支持自定义模板,可以使用[一键生成TinMvvm组件](https://github.com/932707629/tin-mvvm-template)
 
-Android Studio4.0一下使用TinMvvmTemplate这个文件里放着TinMvv的一键生成工具
+Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键生成工具
 
 可将TinMvvmTemplate放到AS安装目录\plugins\android\lib\templates\activities里
 
@@ -103,13 +108,18 @@ Android Studio4.0一下使用TinMvvmTemplate这个文件里放着TinMvv的一键
   答：Navigation 的适用场景是，不同层级之间 fragment 的跳转和管理，
   同级 fragment 之间请不要使用 Navigation 切换。可以考虑 viewPager 等方式管理。
   
-### 新版功能预览: ###
+### 新版功能预览:
 
 - 修复fragment+tablayout使用时会重复创建的问题
 - jitpack发布新版本
 - 修复HttpHandleCallBack添加生命周期造成的强转异常
-- 修复navigation导致fragment重复创建的问题```FixFragmentNavigator```
-- 升级到Rxjava3，相应的RxPermissions版本升级到0.12，取消RxErrorHandle(不支持RxJava3)依赖
+- 修复navigation导致fragment重复创建的问题```smooth-navigation```
+- 升级到Rxjava3，相应的RxPermissions版本升级到0.12，取消依赖RxErrorHandle(不支持RxJava3)依赖
+
+### 遇到的问题
+- 当DemoActivity用到ViewPager2的时候去设置了setOffscreenPageLimit() 此时fragment转场到下一个fragment时可能会显示空白?
+比如在此项目示例中设置了setOffscreenPageLimit()后点击HomeFragment的MultiplexFragment/RecyclerFragment/TabLayoutViewpager2Fragment三个页面可能会空白
+这三个页面都跟RecyclerFragment的页面有关系 
 
 ### 我的主页 ###
 

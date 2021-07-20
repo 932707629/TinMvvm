@@ -12,56 +12,16 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_categoryFragment"
-            app:destination="@id/categoryFragment"
-            app:enterAnim="@anim/alpha_in"
-            app:exitAnim="@anim/alpha_out"
-            app:popEnterAnim="@anim/alpha_in"
-            app:popExitAnim="@anim/alpha_out" />
-        <action
-            android:id="@+id/action_homeFragment_to_coroutineFragment"
-            app:destination="@id/coroutineFragment"
-            app:enterAnim="@anim/window_top_in"
-            app:exitAnim="@anim/window_top_out"
-            app:popEnterAnim="@anim/window_top_in"
-            app:popExitAnim="@anim/window_top_out"
-            app:popUpTo="@id/coroutineFragment"/>
+            app:destination="@id/categoryFragment" />
         <action
             android:id="@+id/action_homeFragment_to_multiplexFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/multiplexFragment" />
         <action
             android:id="@+id/action_homeFragment_to_recyclerFragment"
-            app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_in_right"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_in_right"
             app:destination="@id/recyclerFragment" />
         <action
             android:id="@+id/action_homeFragment_to_threadPoolFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/threadPoolFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_workerFragment"
-            app:enterAnim="@anim/window_ios_in"
-            app:exitAnim="@anim/window_ios_out"
-            app:popEnterAnim="@anim/window_ios_in"
-            app:popExitAnim="@anim/window_ios_out"
-            app:destination="@id/workerFragment" />
-
-        <action
-            android:id="@+id/action_homeFragment_to_tablayoutViewpager2Fragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:destination="@id/tablayoutViewpager2Fragment" />
-
     </fragment>
 
     <fragment
@@ -71,37 +31,13 @@
         tools:layout="@layout/fragment_category">
         <action
             android:id="@+id/action_categoryFragment_self"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/categoryFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/coroutineFragment"
-        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.CoroutineFragment"
-        android:label="CoroutineFragment"
-        tools:layout="@layout/fragment_coroutine" />
     <fragment
         android:id="@+id/multiplexFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.MultiplexFragment"
         android:label="MultiplexFragment"
-        tools:layout="@layout/fragment_multiplex">
-        <action
-            android:id="@+id/action_multiplexFragment_to_recyclerFragment"
-            app:destination="@id/recyclerFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-        <action
-            android:id="@+id/action_multiplexFragment_to_homeFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_multiplex"/>
     <fragment
         android:id="@+id/recyclerFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.RecyclerFragment"
@@ -112,17 +48,6 @@
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.ThreadPoolFragment"
         android:label="ThreadPoolFragment"
         tools:layout="@layout/fragment_thread_pool" />
-    <fragment
-        android:id="@+id/workerFragment"
-        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.WorkerFragment"
-        android:label="WorkerFragment"
-        tools:layout="@layout/fragment_worker" />
-
-    <fragment
-        android:id="@+id/tablayoutViewpager2Fragment"
-        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.TabLayoutViewpager2Fragment"
-        tools:layout="@layout/fragment_tablayout_viewpager2"
-        android:label="TablayoutViewpager2Fragment" />
 
 
 </navigation>

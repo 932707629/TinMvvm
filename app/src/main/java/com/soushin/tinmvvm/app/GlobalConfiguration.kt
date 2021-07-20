@@ -8,7 +8,6 @@ import me.soushin.tinmvvm.config.GlobalConfigModule
 import me.soushin.tinmvvm.listener.AppLifecycle
 import me.soushin.tinmvvm.listener.ConfigModule
 import okhttp3.OkHttpClient
-import rxhttp.RxHttpPlugins
 import rxhttp.wrapper.cookie.CookieStore
 import rxhttp.wrapper.ssl.HttpsUtils
 import java.io.File

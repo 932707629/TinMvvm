@@ -26,6 +26,7 @@ ext {
             material                            : "com.google.android.material:material:$appcompatVersion",
             swipeRefresh                        : "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0",
             recyclerview                        : "androidx.recyclerview:recyclerview:1.2.1",
+            flextbox                            : "com.google.android:flexbox:2.0.1",
             kotlinstdlibjdk7                    : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
             kotlinx_coroutines                  : "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0",
             kotlinx_coroutines_android          : "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0",
@@ -43,6 +44,9 @@ ext {
             liveeventbus                        : "io.github.jeremyliao:live-event-bus-x:1.8.0",
             autosize                            : "me.jessyan:autosize:1.2.1",
             basepopup                           : "io.github.razerdp:BasePopup:3.1.0",
+            mmkv_static                         : "com.tencent:mmkv-static:1.2.10",
+            qmui                                : "com.qmuiteam:qmui:2.0.0-alpha11",
+
 
             //network
             retrofit2                           : "com.squareup.retrofit2:retrofit:2.9.0",

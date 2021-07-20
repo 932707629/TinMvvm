@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.databinding.FragmentWorkerBinding
-import com.soushin.tinmvvm.mvvm.viewmodel.ThreadPoolViewModel
 import com.soushin.tinmvvm.mvvm.viewmodel.WorkerViewModel
 import me.soushin.tinmvvm.base.DataBindingFragment
 import me.soushin.tinmvvm.config.DataBindingConfig

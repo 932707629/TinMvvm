@@ -31,4 +31,10 @@ class ThreadPoolFragment : DataBindingFragment<FragmentThreadPoolBinding, Thread
             vmClass = ThreadPoolViewModel::class.java)
     }
 
+    companion object {
+        fun newInstance(): ThreadPoolFragment {
+            return ThreadPoolFragment()
+        }
+    }
+
 }
