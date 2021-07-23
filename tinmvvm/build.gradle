@@ -58,6 +58,8 @@ dependencies {
     compileOnly(deps.kotlinstdlibjdk7)
     compileOnly(deps.core_ktx)
     implementation(deps.appcompat)
+    api(deps.lifecycle_viewmodel_ktx)
+    api(deps.lifecycle_runtime_ktx)
     api(deps.alog)
     //第三方工具库
     api(deps.rxandroid3)

@@ -2,12 +2,16 @@ package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.coroutineScope
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
+import androidx.paging.LoadStateAdapter
 import com.blankj.ALog
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
+import com.soushin.tinmvvm.app.getThis
 import com.soushin.tinmvvm.app.showToasty
 import com.soushin.tinmvvm.databinding.FragmentPagingBinding
 import com.soushin.tinmvvm.mvvm.adapter.PagingSimpleAdapter
@@ -35,10 +39,11 @@ class PagingFragment : DataBindingFragment<FragmentPagingBinding, PagingViewMode
         )
     }
 
-    override fun initView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
+    override fun initView(view: View, savedInstanceState: Bundle?) {
         val adapter = PagingSimpleAdapter()
+
         adapter.addLoadStateListener { //加载状态监听
+            ALog.i("加载状态监听",it.mediator,it.prepend,it.refresh,it.source);
             when (it.refresh) {
                 is LoadState.NotLoading -> {
                     showToasty("NotLoading")
@@ -51,14 +56,20 @@ class PagingFragment : DataBindingFragment<FragmentPagingBinding, PagingViewMode
                 }
             }
         }
-        mViewData?.rvPaging?.adapter = adapter
-        lifecycleScope.launch {
-            withContext(Dispatchers.IO){
-                mViewModel?.getData()?.collectLatest {
-                    adapter.submitData(it)
-                }
-            }
+        mViewData?.apply {
+            rvPaging.adapter = adapter
         }
+
+        mViewModel?.getData()?.observe(this,{
+            adapter.submitData(getThis().lifecycle,it)
+        })
+       /*lifecycleScope.launch {
+           mViewModel?.getData()?.collectLatest {
+               adapter.submitData(it)
+           }
+       }*/
+
+
     }
 
 }

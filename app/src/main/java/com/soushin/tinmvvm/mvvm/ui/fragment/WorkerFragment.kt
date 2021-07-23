@@ -19,7 +19,7 @@ import me.soushin.tinmvvm.config.DataBindingConfig
 
 class WorkerFragment : DataBindingFragment<FragmentWorkerBinding, WorkerViewModel>() {
 
-    override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
+    override fun initView(view:View, savedInstanceState: Bundle?) {
         mViewData?.onClick = View.OnClickListener {
             when (it.id) {
                 R.id.btn_change -> {

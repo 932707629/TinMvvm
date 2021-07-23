@@ -42,7 +42,7 @@ class CategoryViewModel(application: Application) :
     private fun requestData() {
         mRepository.requestData()
             .compose(RxUtils.applySchedulers())
-            .subscribe(object : ErrorHandleSubscriber<MutableList<CategoryEntity>>(lifecycle!!,getErrorHandler()){
+            .subscribe(object : ErrorHandleSubscriber<MutableList<CategoryEntity>>(getLifecycleOwner(),getErrorHandler()){
                 override fun onNext(result: MutableList<CategoryEntity>) {
                     super.onNext(result)
                     ALog.e("服务器返回结果", JSONObject.toJSONString(result))

@@ -1,8 +1,7 @@
 package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
+import android.view.View
 import com.blankj.ALog
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
@@ -17,7 +16,7 @@ import me.soushin.tinmvvm.config.DataBindingConfig
  */
 class CategoryFragment : DataBindingFragment<FragmentCategoryBinding, CategoryViewModel>() {
 
-    override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
+    override fun initView(view: View, savedInstanceState: Bundle?) {
         ALog.e("开始初始化了")
     }
 

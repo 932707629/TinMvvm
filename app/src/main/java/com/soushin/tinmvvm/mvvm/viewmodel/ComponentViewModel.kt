@@ -21,7 +21,7 @@ class ComponentViewModel(application: Application) :
     var viewEvent= MutableLiveData<MutableList<String>>()
 
     fun loadData(){
-        lifecycle?.lifecycleScope?.launch {
+        getLifecycleScope().launch {
             withContext(Dispatchers.IO){
                 val list = mutableListOf<String>("WorkManager","Navigation", "Coroutine","TabLayout、ViewPager2","Paging")
                 viewEvent.postValue(list)

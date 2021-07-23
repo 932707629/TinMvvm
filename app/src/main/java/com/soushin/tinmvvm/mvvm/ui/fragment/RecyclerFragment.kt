@@ -2,6 +2,7 @@ package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.chad.library.adapter.base.BaseBinderAdapter
 import com.soushin.tinmvvm.BR
@@ -24,7 +25,7 @@ import me.soushin.tinmvvm.config.DataBindingConfig
 
 class RecyclerFragment : DataBindingFragment<FragmentRecyclerBinding, RecyclerViewModel>() {
 
-    override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
+    override fun initView(view: View, savedInstanceState: Bundle?) {
         mViewData?.apply {
             val adapter = BaseBinderAdapter().apply {
                 addItemBinder(ImageItemBinder())

@@ -47,8 +47,12 @@ import me.soushin.tinmvvm.config.DataBindingConfig
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mViewData = dataViewBinding(inflater,container)
-        initView(inflater,container,savedInstanceState)
         return mViewData?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView(view,savedInstanceState)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -91,7 +95,7 @@ import me.soushin.tinmvvm.config.DataBindingConfig
         this.mContext=null
     }
 
-    protected fun dataViewBinding(inflater: LayoutInflater, container: ViewGroup?):VD? {
+    open fun dataViewBinding(inflater: LayoutInflater, container: ViewGroup?):VD? {
         var vd:VD?=null
         getDataBindingConfig()?.apply {
             //如果当前页面的layoutId为空就不会去调用setContentView()实例化mViewData
@@ -120,7 +124,7 @@ import me.soushin.tinmvvm.config.DataBindingConfig
         return vd
     }
 
-    abstract fun initView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?)
+    abstract fun initView(view:View,savedInstanceState: Bundle?)
 
     abstract fun getDataBindingConfig(): DataBindingConfig?
 

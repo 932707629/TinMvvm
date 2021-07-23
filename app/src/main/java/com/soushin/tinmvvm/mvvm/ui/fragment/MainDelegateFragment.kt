@@ -46,9 +46,7 @@ class MainDelegateFragment :
     private val navController by lazy { navHostFragment.navController }
 
     //    private val appBarConfiguration by lazy { AppBarConfiguration.Builder(R.id.homeFragment).build() }//配置homeFragment为顶部页面
-    override fun initView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ) {
+    override fun initView(view:View, savedInstanceState: Bundle?) {
         mViewData?.apply {
             toolbar.inflateMenu(R.menu.menu_main_global)
             toolbar.setOnMenuItemClickListener {

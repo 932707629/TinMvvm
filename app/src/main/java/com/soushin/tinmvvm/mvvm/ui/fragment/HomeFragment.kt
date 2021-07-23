@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.blankj.ALog
 import com.chad.library.adapter.base.BaseBinderAdapter
@@ -34,7 +35,7 @@ class HomeFragment : DataBindingFragment<FragmentHomeBinding, HomeViewModel>() {
     private var serviceIntent: Intent?=null
 
     //为了保证每次界面销毁重启后，都可以保存之前的值，我们需要在onCreate()中，给控件赋值为 textViewContent
-    override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
+    override fun initView(view: View, savedInstanceState: Bundle?) {
         mViewData?.apply {
             val layoutManager = FlexboxLayoutManager(requireContext())
             //主轴为水平方向，起点在左端

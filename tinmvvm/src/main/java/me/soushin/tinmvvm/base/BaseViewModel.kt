@@ -1,29 +1,27 @@
 package me.soushin.tinmvvm.base
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleEventObserver
-import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.*
+import com.rxjava.rxlife.LifecycleScope
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.MainScope
 import me.soushin.tinmvvm.config.AppComponent
 import me.soushin.tinmvvm.rxerror.RxErrorHandler
 
 /**
  * @author created by Soushin
  * @time 2020/1/7 16 38
+ * 在viewModel中使用协程有已知有两种方法:
+ * 1:使用LifecycleOwner提供的[lifecycleScope.lifecycleScope]
+ * 2:使用lifecycle-viewmodel-ktx组件提供的[viewModelScope]
  */
 open class BaseViewModel<R: BaseRepository>(application: Application,val mRepository: R) :
     AndroidViewModel(application), LifecycleEventObserver {
 
     private val mCompositeDisposable by lazy { CompositeDisposable() }
-
     //生命周期
-    protected var lifecycle:LifecycleOwner?=null
+    private var lifecycle:LifecycleOwner?=null
 
     //子类可以自行override实现自定义异常处理
     open val coroutineExceptionHandler get() = CoroutineExceptionHandler { coroutineContext, exception ->
@@ -35,17 +33,29 @@ open class BaseViewModel<R: BaseRepository>(application: Application,val mReposi
         return AppComponent.rxErrorHandler
     }
 
-    //注册生命周期 需要在网络请求的时候用到它
-    fun registerLifecycleOwner(lifecycleOwner: LifecycleOwner){
+    //注册生命周期 可以在网络请求的时候用到它
+    open fun registerLifecycleOwner(lifecycleOwner: LifecycleOwner){
         this.lifecycle= lifecycleOwner
     }
 
-    protected open fun addDispose(disposable: Disposable) {
+    open fun addDispose(disposable: Disposable) {
         mCompositeDisposable.add(disposable) //将所有 Disposable 放入容器集中处理
     }
 
-    protected open fun removeDispose(disposable: Disposable){
+    open fun removeDispose(disposable: Disposable){
         mCompositeDisposable.remove(disposable)
+    }
+
+    open fun getApp():Application{
+        return getApplication()
+    }
+
+    open fun getLifecycleOwner():LifecycleOwner{
+        return lifecycle!!
+    }
+
+    open fun getLifecycleScope():LifecycleCoroutineScope{
+        return getLifecycleOwner().lifecycleScope
     }
 
     override fun onCleared() {

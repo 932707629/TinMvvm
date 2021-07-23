@@ -2,6 +2,7 @@ package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.chad.library.adapter.base.BaseBinderAdapter
 import com.google.android.flexbox.*
@@ -30,8 +31,7 @@ class ComponentFragment : DataBindingFragment<FragmentComponentBinding, Componen
         )
     }
 
-    override fun initView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
+    override fun initView(view: View, savedInstanceState: Bundle?) {
         mViewData?.apply {
             val layoutManager = FlexboxLayoutManager(requireContext())
             //主轴为水平方向，起点在左端

@@ -2,29 +2,42 @@ package com.soushin.tinmvvm.mvvm.repository.datasource
 
 import androidx.paging.PagingState
 import androidx.paging.rxjava3.RxPagingSource
+import com.blankj.ALog
+import com.soushin.tinmvvm.app.utils.RxUtils
+import com.soushin.tinmvvm.app.utils.toJson
 import com.soushin.tinmvvm.mvvm.repository.PagingRepository
 import com.soushin.tinmvvm.mvvm.repository.entity.CategoryEntity
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class SimpleDataSource(private val repository: PagingRepository) : RxPagingSource<Int,CategoryEntity>() {
+class PagingDataSource(private val repository: PagingRepository) : RxPagingSource<Int,CategoryEntity>() {
 
     override fun getRefreshKey(state: PagingState<Int, CategoryEntity>): Int? {
-        return null
+        ALog.i("getRefreshKey",state.anchorPosition,state.config.toJson(),state.pages.toJson());
+        return state.anchorPosition?.let { anchorPosition ->
+            val anchorPage = state.closestPageToPosition(anchorPosition)
+            anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
+        }
     }
 
     override fun loadSingle(params: LoadParams<Int>): Single<LoadResult<Int, CategoryEntity>> {
         //页码未定义置为1
         val currentPage = params.key ?: 1
-        return repository.requestData(currentPage)
-            .subscribeOn(Schedulers.io())
-            .map {
-                return@map LoadResult.Page(it,null,
-                    currentPage.plus(1),LoadResult.Page.COUNT_UNDEFINED,
-                    LoadResult.Page.COUNT_UNDEFINED) as LoadResult<Int, CategoryEntity>
-            }.onErrorReturn { return@onErrorReturn LoadResult.Error(it) }
-    }
+        val nextPage = if (currentPage == 20) null else currentPage + 1
 
+        ALog.i("current page",params.toJson(),currentPage,nextPage);
+        return repository.requestData(currentPage)
+            .map {
+                ALog.i("current thread ${Thread.currentThread().name}");
+                return@map LoadResult.Page(
+                    data = it,
+                    prevKey = null,///向前翻页设置此参数
+                    nextKey = nextPage) as LoadResult<Int, CategoryEntity>
+            }.onErrorReturn {
+                ALog.i("current thread ${Thread.currentThread().name}");
+                return@onErrorReturn LoadResult.Error(it)
+            }.compose(RxUtils.applySingleAsync())
+    }
 
     /*override fun getRefreshKey(state: PagingState<Int, CategoryEntity>): Int? {
         return null

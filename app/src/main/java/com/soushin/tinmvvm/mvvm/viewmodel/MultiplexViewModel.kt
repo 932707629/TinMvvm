@@ -26,7 +26,7 @@ class MultiplexViewModel(application: Application) :
     private val strArray = arrayOf("关注", "推荐", "视频", "直播", "图片", "段子", "精华", "热门")
 
     fun loadData(){
-        lifecycle?.lifecycleScope?.launch {
+        getLifecycleScope().launch {
             withContext(Dispatchers.IO){
                 val mDataList = mutableListOf<AuthorEntity>()
                 for (i in 0..8) {

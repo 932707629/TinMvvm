@@ -4,6 +4,7 @@ import android.app.Application
 import android.text.TextUtils
 import android.view.View
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import com.blankj.ALog
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.mvvm.repository.CoroutineRepository
@@ -23,6 +24,10 @@ class CoroutineViewModel(application: Application) :
 
     operator fun invoke(){
         ALog.i("调用invoke函数");
+        //除此之外 使用 Lifecycle lifecycle-viewmodel-ktx 工件提供的 viewModelScope
+        viewModelScope.launch {
+
+        }
     }
 
     fun onClick(): View.OnClickListener {
@@ -30,7 +35,7 @@ class CoroutineViewModel(application: Application) :
             when(it.id){
                 R.id.btn_coroutine_fuc->{
                     //协程的普通用法
-                    lifecycle?.lifecycleScope?.launch {
+                    getLifecycleScope().launch {
                         val task1 = withContext(Dispatchers.IO) {
                             Thread.sleep(2000)
                             ALog.e("task1执行完毕", Thread.currentThread().name);
@@ -49,7 +54,7 @@ class CoroutineViewModel(application: Application) :
 
                         ALog.e("所有任务都已执行", Thread.currentThread().name, task2.await(), task3.await());
                     }
-                    lifecycle?.lifecycleScope?.launch {
+                    getLifecycleScope().launch {
                         launch(Dispatchers.IO) {
                             kotlinx.coroutines.delay(5000)
                             ALog.e("协程delay执行结束", Thread.currentThread().name);
@@ -64,12 +69,12 @@ class CoroutineViewModel(application: Application) :
                 }
                 R.id.btn_coroutine_crash->{
                     //协程内的异常捕获
-                    lifecycle?.lifecycleScope?.launch(coroutineExceptionHandler){
+                    getLifecycleScope().launch(coroutineExceptionHandler){
                         throw RuntimeException("RuntimeException in nested coroutine")
                     }
                 }
                 R.id.btn_advanced_grammar->{
-                    lifecycle?.lifecycleScope?.launch {
+                    getLifecycleOwner().lifecycleScope.launch {
                         withContext(Dispatchers.IO){
                             val list = mutableListOf("1","2","3","2","3","2","3","2","3","4","5","6","7","8","9","0")
 

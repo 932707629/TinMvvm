@@ -10,7 +10,7 @@ class PagingRepository : BaseRepository() {
     fun requestData(page:Int):Single<List<CategoryEntity>>{
         return Single.just(page).map {
             val list = mutableListOf<CategoryEntity>()
-            for (i in 0..20){
+            for (i in 1..20){
                 list.add(CategoryEntity())
             }
             return@map list

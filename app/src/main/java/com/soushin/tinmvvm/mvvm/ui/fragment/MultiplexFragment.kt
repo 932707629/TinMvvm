@@ -2,6 +2,7 @@ package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -31,8 +32,7 @@ class MultiplexFragment : DataBindingFragment<FragmentMultiplexBinding, Multiple
     }
     private val strArray = arrayOf("关注", "推荐", "视频", "直播", "图片", "段子", "精华", "热门")
 
-    override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
-
+    override fun initView(view: View, savedInstanceState: Bundle?) {
         mViewData?.apply {
             Glide.with(getThis())
                 .load("https://wx2.sinaimg.cn/mw690/002Po4pSly1grt79wku06j61jk0rskjl02.jpg").into(ivImage)

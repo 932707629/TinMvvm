@@ -36,7 +36,7 @@ abstract class DataBindingActivity<VD : ViewDataBinding,VM : BaseViewModel<out B
      * DataBindingUtil.bind和DataBindingUtil.setContentView两种方法有毫秒级的差距 bind+setContentView更快
      * 用DataBindingUtil.bind需要用反射 用DataBindingUtil.setContentView需要上层指定一个layoutId
      */
-    private fun dataViewBinding() {
+    open fun dataViewBinding() {
         getDataBindingConfig()?.apply {
             //如果当前页面的layoutId为空就不会去调用setContentView()实例化mViewData
             layoutId?.let {
