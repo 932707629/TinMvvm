@@ -77,11 +77,11 @@ dependencies {
     implementation(deps.flextbox)//流式布局
     implementation project(':tinmvvm')
     implementation(deps.work_runtime)//workmanager
-    implementation 'com.kunminx.arch:smooth-navigation:3.9.0-beta1'
+//    implementation 'com.kunminx.arch:smooth-navigation:3.9.0-beta1'
     ///过滤掉navigation-fragment否则会和smooth-navigation冲突
-    implementation(deps.navigation_fragment_ktx){
+    implementation(deps.navigation_fragment_ktx)/*{
         exclude group: 'androidx.navigation', module: "navigation-fragment"
-    }
+    }*/
     implementation(deps.navigation_ui_ktx)
     //替换了jetpack官方的navigation-fragment库
     implementation(deps.paging_runtime)

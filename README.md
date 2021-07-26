@@ -104,10 +104,10 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
 比如穿山甲的广告View，会直接导致View比例显示异常，虽然可以用副单位去解决，但是要把整个页面都换成副单位，个人感觉不太友好，
 所以有这种项目需要的童鞋要谨慎使用哦，可以考虑换用[最小宽度限定符](https://www.jianshu.com/p/2aded8bb6ede "骚年你的屏幕适配方式该升级了")
 
-- 结合BottomNavigationView使用有异常，fragment之间相互重叠，而且每次切换还会重新初始化fragment
-  答：Navigation 的适用场景是，不同层级之间 fragment 的跳转和管理，
-  同级 fragment 之间请不要使用 Navigation 切换。可以考虑 viewPager 等方式管理。
-  
+- 结合NavigationUI和BottomNavigationView使用有异常，fragment之间相互重叠，而且每次切换还会重新初始化fragment
+  答：Navigation 的官方使用方式是每次显示一个Fragment都会重新去创建页面去显示(跳转一个新页面或者回退到上一页面)，
+  例如返回页面的状态恢复，Jetpack提供了一系列的状态保存方案（Navigation2.4.0-alpha版本对BottomNavigationView状态保存也提供了支持）。
+
 ### 新版功能预览:
 
 - 修复fragment+tablayout使用时会重复创建的问题
@@ -117,7 +117,7 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
 - 升级到Rxjava3，相应的RxPermissions版本升级到0.12，取消依赖RxErrorHandle(不支持RxJava3)依赖
 
 ### 遇到的问题
-- 当DemoActivity用到ViewPager2的时候去设置了setOffscreenPageLimit() 此时fragment转场到下一个fragment时可能会显示空白?
+- 当DemoActivity用到ViewPager2的时候去设置setOffscreenPageLimit() 此时fragment转场到下一个fragment时可能会显示空白?
 比如在此项目示例中设置了setOffscreenPageLimit()后点击HomeFragment的MultiplexFragment/RecyclerFragment/TabLayoutViewpager2Fragment三个页面可能会空白
 这三个页面都跟RecyclerFragment的页面有关系 
 

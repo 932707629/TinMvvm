@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.NavHostFragment
 import com.blankj.ALog
 import com.chad.library.adapter.base.BaseBinderAdapter
 import com.google.android.flexbox.*
@@ -32,7 +33,22 @@ class HomeFragment : DataBindingFragment<FragmentHomeBinding, HomeViewModel>() {
             return HomeFragment()
         }
     }
+
+    //配置当前页面的内容 各项参数都可为空
+    //BR.xxxxViewModel是kotlin-kapt插件默认生成的 对应xml文件里的xxxxViewModel
+    override fun getDataBindingConfig(): DataBindingConfig? {
+        //演示addBindingParam()的用法
+        return DataBindingConfig(layoutId = R.layout.fragment_home,
+            variableId = BR.HomeViewModel,vmClass = HomeViewModel::class.java)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        this.adapter=null
+    }
+
     private var serviceIntent: Intent?=null
+    private var adapter:BaseBinderAdapter? = null
 
     //为了保证每次界面销毁重启后，都可以保存之前的值，我们需要在onCreate()中，给控件赋值为 textViewContent
     override fun initView(view: View, savedInstanceState: Bundle?) {
@@ -47,21 +63,21 @@ class HomeFragment : DataBindingFragment<FragmentHomeBinding, HomeViewModel>() {
             //多个轴对齐方式
             layoutManager.justifyContent = JustifyContent.FLEX_START;
             rvHome.layoutManager = layoutManager
-            val adapter = BaseBinderAdapter()
-            adapter.addItemBinder(TabComponentItemBinder())
-            adapter.setOnItemClickListener { ada, view, position ->
-                mViewModel?.onItemClick(ada.getItem(position) as String,view,position)
+            adapter = BaseBinderAdapter()
+            adapter!!.addItemBinder(TabComponentItemBinder())
+//            val fragment = requireActivity().supportFragmentManager.findFragmentByTag(NavHostFragment::class.java.simpleName) as NavHostFragment
+            adapter!!.setOnItemClickListener { ada, view, position ->
+                mViewModel?.onItemClick(ada.getItem(position) as String,view,position)//,fragment.navController
             }
             rvHome.adapter=adapter
             mViewModel?.loadData()
             mViewModel?.viewEvent?.observe(getThis(),{
                 when{
                     it.key==0 && (it.value is MutableList<*>)->{
-                        adapter.setList(it.value as MutableList<String>)
+                        adapter?.setList(it.value as MutableList<String>)
                     }
                     it.key==1 ->{
-
-//                        requestPermission()
+                        requestPermission()
                     }
                     it.key==2 ->{
                         //启动自定义service
@@ -76,15 +92,6 @@ class HomeFragment : DataBindingFragment<FragmentHomeBinding, HomeViewModel>() {
                 }
             })
         }
-
-    }
-
-    //配置当前页面的内容 各项参数都可为空
-    //BR.xxxxViewModel是kotlin-kapt插件默认生成的 对应xml文件里的xxxxViewModel
-    override fun getDataBindingConfig(): DataBindingConfig? {
-        //演示addBindingParam()的用法
-        return DataBindingConfig(layoutId = R.layout.fragment_home,
-            variableId = BR.HomeViewModel,vmClass = HomeViewModel::class.java)
     }
 
     private fun requestPermission(){

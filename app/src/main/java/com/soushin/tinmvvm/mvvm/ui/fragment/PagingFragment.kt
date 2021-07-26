@@ -8,6 +8,7 @@ import androidx.lifecycle.coroutineScope
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.blankj.ALog
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
@@ -39,11 +40,19 @@ class PagingFragment : DataBindingFragment<FragmentPagingBinding, PagingViewMode
         )
     }
 
+    override fun onDestroyView() {
+        //不置空会出现adapter内存泄露 详情[https://blog.csdn.net/guizhou_tiger_chen/article/details/108336508]
+        mViewData?.rvPaging?.adapter = null
+        super.onDestroyView()
+    }
+
     override fun initView(view: View, savedInstanceState: Bundle?) {
         val adapter = PagingSimpleAdapter()
-
         adapter.addLoadStateListener { //加载状态监听
-            ALog.i("加载状态监听",it.mediator,it.prepend,it.refresh,it.source);
+            ALog.i("加载状态监听",it.mediator,it.prepend,it.refresh,it.source,Thread.currentThread().name);
+            if (mViewData?.srlRefresh?.isRefreshing == true){
+                mViewData?.srlRefresh?.isRefreshing=false
+            }
             when (it.refresh) {
                 is LoadState.NotLoading -> {
                     showToasty("NotLoading")
@@ -57,11 +66,12 @@ class PagingFragment : DataBindingFragment<FragmentPagingBinding, PagingViewMode
             }
         }
         mViewData?.apply {
+            srlRefresh.setOnRefreshListener { adapter.refresh() }
             rvPaging.adapter = adapter
         }
 
-        mViewModel?.getData()?.observe(this,{
-            adapter.submitData(getThis().lifecycle,it)
+        mViewModel?.getData()?.observe(getThis(),{
+            adapter.submitData(lifecycle,it)
         })
        /*lifecycleScope.launch {
            mViewModel?.getData()?.collectLatest {

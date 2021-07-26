@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="demoViewModel"
             type="com.soushin.tinmvvm.mvvm.viewmodel.DemoViewModel" />
@@ -13,24 +14,43 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/vp_main_delegate"
-            android:orientation="horizontal"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
+            android:background="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+            app:popupTheme="@style/Theme.MaterialComponents.Light"/>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fcv_container"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_0"
-            app:layout_constraintTop_toTopOf="parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
             app:layout_constraintBottom_toTopOf="@+id/bnv_main_delegate"/>
+
+
+        <!--<androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_main_delegate"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/bnv_main_delegate"
+            app:layout_constraintTop_toTopOf="parent" />-->
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bnv_main_delegate"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_60"
-            app:menu="@menu/main_bottom_navigation"
             android:background="@color/white"
-            app:itemTextColor="@drawable/bottom_navigation_item_selector"
             app:itemIconTint="@drawable/bottom_navigation_item_selector"
-            app:layout_constraintTop_toBottomOf="@+id/vp_main_delegate"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:itemTextColor="@drawable/bottom_navigation_item_selector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/main_bottom_navigation" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

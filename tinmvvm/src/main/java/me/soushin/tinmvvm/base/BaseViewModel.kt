@@ -2,6 +2,7 @@ package me.soushin.tinmvvm.base
 
 import android.app.Application
 import androidx.lifecycle.*
+import com.blankj.ALog
 import com.rxjava.rxlife.LifecycleScope
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
@@ -21,7 +22,7 @@ open class BaseViewModel<R: BaseRepository>(application: Application,val mReposi
 
     private val mCompositeDisposable by lazy { CompositeDisposable() }
     //生命周期
-    private var lifecycle:LifecycleOwner?=null
+    protected var lifecycle:LifecycleOwner?=null
 
     //子类可以自行override实现自定义异常处理
     open val coroutineExceptionHandler get() = CoroutineExceptionHandler { coroutineContext, exception ->
@@ -31,11 +32,6 @@ open class BaseViewModel<R: BaseRepository>(application: Application,val mReposi
 
     protected fun getErrorHandler(): RxErrorHandler?{
         return AppComponent.rxErrorHandler
-    }
-
-    //注册生命周期 可以在网络请求的时候用到它
-    open fun registerLifecycleOwner(lifecycleOwner: LifecycleOwner){
-        this.lifecycle= lifecycleOwner
     }
 
     open fun addDispose(disposable: Disposable) {
@@ -50,12 +46,9 @@ open class BaseViewModel<R: BaseRepository>(application: Application,val mReposi
         return getApplication()
     }
 
-    open fun getLifecycleOwner():LifecycleOwner{
-        return lifecycle!!
-    }
 
-    open fun getLifecycleScope():LifecycleCoroutineScope{
-        return getLifecycleOwner().lifecycleScope
+    open fun getLifecycleScope():LifecycleCoroutineScope?{
+        return lifecycle?.lifecycleScope
     }
 
     override fun onCleared() {
@@ -65,6 +58,8 @@ open class BaseViewModel<R: BaseRepository>(application: Application,val mReposi
 
     override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
         //Activity/Fragment 生命周期回调
+        ALog.i("onStateChanged",source.javaClass.simpleName,event);
+        this.lifecycle = source
         if (event == Lifecycle.Event.ON_DESTROY) {  //Activity/Fragment 销毁
 //            println("管道中断....")
             source.lifecycle.removeObserver(this)

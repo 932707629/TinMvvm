@@ -23,6 +23,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_home"
+            tools:itemCount="20"
             tools:listitem="@layout/item_tab_component"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

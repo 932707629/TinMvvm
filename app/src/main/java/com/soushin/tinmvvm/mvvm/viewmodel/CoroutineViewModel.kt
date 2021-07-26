@@ -35,7 +35,7 @@ class CoroutineViewModel(application: Application) :
             when(it.id){
                 R.id.btn_coroutine_fuc->{
                     //协程的普通用法
-                    getLifecycleScope().launch {
+                    getLifecycleScope()?.launch {
                         val task1 = withContext(Dispatchers.IO) {
                             Thread.sleep(2000)
                             ALog.e("task1执行完毕", Thread.currentThread().name);
@@ -54,7 +54,7 @@ class CoroutineViewModel(application: Application) :
 
                         ALog.e("所有任务都已执行", Thread.currentThread().name, task2.await(), task3.await());
                     }
-                    getLifecycleScope().launch {
+                    getLifecycleScope()?.launch {
                         launch(Dispatchers.IO) {
                             kotlinx.coroutines.delay(5000)
                             ALog.e("协程delay执行结束", Thread.currentThread().name);
@@ -69,12 +69,12 @@ class CoroutineViewModel(application: Application) :
                 }
                 R.id.btn_coroutine_crash->{
                     //协程内的异常捕获
-                    getLifecycleScope().launch(coroutineExceptionHandler){
+                    getLifecycleScope()?.launch(coroutineExceptionHandler){
                         throw RuntimeException("RuntimeException in nested coroutine")
                     }
                 }
                 R.id.btn_advanced_grammar->{
-                    getLifecycleOwner().lifecycleScope.launch {
+                    getLifecycleScope()?.launch {
                         withContext(Dispatchers.IO){
                             val list = mutableListOf("1","2","3","2","3","2","3","2","3","4","5","6","7","8","9","0")
 

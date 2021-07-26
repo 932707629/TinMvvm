@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="data"
-            type="com.soushin.tinmvvm.mvvm.repository.entity.MultiTwoEntity" />
+
     </data>
 
     <RelativeLayout
@@ -15,8 +13,7 @@
 
         <TextView
             android:id="@+id/textView"
-            tools:text="text"
-            android:text="@{data.m}"
+            tools:text="@string/app_name"
             android:layout_centerInParent="true"
             android:layout_gravity="center|center_vertical"
             android:layout_width="wrap_content"

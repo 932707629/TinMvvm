@@ -9,13 +9,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.databinding.ItemCategoryBinding
+import com.soushin.tinmvvm.mvvm.repository.entity.Article
 import com.soushin.tinmvvm.mvvm.repository.entity.CategoryEntity
 
-class PagingSimpleAdapter : PagingDataAdapter<CategoryEntity,RecyclerView.ViewHolder>(DIFF_CALLBACK){
+class PagingSimpleAdapter : PagingDataAdapter<Article,RecyclerView.ViewHolder>(DIFF_CALLBACK){
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-//        var dataBean = getItem(position)
-        (holder as DataViewHolder).binding.tvChapterName.text = "Item position $position"
+        /**不调用getItem(position)方法会造成无法继续加载数据**/
+        val dataBean = getItem(position)
+        (holder as DataViewHolder).binding.tvChapterName.text = "$position ${dataBean?.title}"
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -29,12 +31,12 @@ class PagingSimpleAdapter : PagingDataAdapter<CategoryEntity,RecyclerView.ViewHo
     }
 
     companion object{
-        private val DIFF_CALLBACK=object : DiffUtil.ItemCallback<CategoryEntity>() {
+        private val DIFF_CALLBACK=object : DiffUtil.ItemCallback<Article>() {
 
-            override fun areItemsTheSame(oldItem: CategoryEntity, newItem: CategoryEntity):
+            override fun areItemsTheSame(oldItem: Article, newItem: Article):
                     Boolean = oldItem.id == newItem.id
 
-            override fun areContentsTheSame(oldItem: CategoryEntity, newItem: CategoryEntity):
+            override fun areContentsTheSame(oldItem: Article, newItem: Article):
                     Boolean = oldItem == newItem
         }
     }

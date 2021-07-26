@@ -18,10 +18,15 @@ import me.soushin.tinmvvm.base.BaseViewModel
 class ComponentViewModel(application: Application) :
     BaseViewModel<ComponentRepository>(application, ComponentRepository()) {
 
-    var viewEvent= MutableLiveData<MutableList<String>>()
+    var viewEvent = MutableLiveData<MutableList<String>>()
+
+    override fun onCleared() {
+        super.onCleared()
+        lifecycle?.let { viewEvent.removeObservers(it) }
+    }
 
     fun loadData(){
-        getLifecycleScope().launch {
+        getLifecycleScope()?.launch {
             withContext(Dispatchers.IO){
                 val list = mutableListOf<String>("WorkManager","Navigation", "Coroutine","TabLayout、ViewPager2","Paging")
                 viewEvent.postValue(list)
@@ -38,23 +43,27 @@ class ComponentViewModel(application: Application) :
             0->{
                 navController.navigate(
                     ComponentFragmentDirections.actionComponentFragmentToWorkerFragment(),
-                    AppData.get().queryNavOptions())
+                    AppData.get().queryNavOptions()
+                )
             }
             1->{
 //              FragmentUtils.add(childFragmentManager, CategoryFragment(),R.id.fl_container)
                 navController.navigate(
-                    ComponentFragmentDirections.actionComponentFragmentToCategoryFragment(),
-                    AppData.get().queryNavOptions())
+                    ComponentFragmentDirections.actionComponentFragmentToCategoryFragment(99),
+                    AppData.get().queryNavOptions()
+                )
             }
             2->{
                 navController.navigate(
                     ComponentFragmentDirections.actionComponentFragmentToCoroutineFragment(),
-                    AppData.get().queryNavOptions())
+                    AppData.get().queryNavOptions()
+                )
             }
             3->{
                 navController.navigate(
-                    ComponentFragmentDirections.actionComponentFragmentToTabLayoutViewpager2Fragment(),
-                    AppData.get().queryNavOptions())
+                    ComponentFragmentDirections.actionComponentFragmentToTabLayoutViewpagerFragment(),
+                    AppData.get().queryNavOptions()
+                )
             }
             4->{
                 navController.navigate(

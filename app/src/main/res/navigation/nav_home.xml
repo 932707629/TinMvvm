@@ -13,6 +13,7 @@
         <action
             android:id="@+id/action_homeFragment_to_categoryFragment"
             app:destination="@id/categoryFragment" />
+
         <action
             android:id="@+id/action_homeFragment_to_multiplexFragment"
             app:destination="@id/multiplexFragment" />
@@ -33,6 +34,8 @@
             android:id="@+id/action_categoryFragment_self"
             app:destination="@id/categoryFragment" />
     </fragment>
+
+
     <fragment
         android:id="@+id/multiplexFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.MultiplexFragment"

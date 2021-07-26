@@ -5,8 +5,7 @@ import android.os.Build
 import android.os.Environment
 import android.view.View
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation
+import androidx.navigation.*
 import com.blankj.ALog
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.app.AppData
@@ -21,11 +20,19 @@ import me.soushin.tinmvvm.base.BaseViewModel
 
 class HomeViewModel(application: Application) :
     BaseViewModel<HomeRepository>(application, HomeRepository()) {
-    var tvContent= MutableLiveData("Hello World")
-    val viewEvent = MutableLiveData<ViewTaskEvent>()
+    var tvContent = MutableLiveData("Hello World")
+    var viewEvent = MutableLiveData<ViewTaskEvent>()
+
+    override fun onCleared() {
+        super.onCleared()
+        lifecycle?.let {
+            tvContent.removeObservers(it)
+            viewEvent.removeObservers(it)
+        }
+    }
 
     fun loadData(){
-        getLifecycleScope().launch {
+        getLifecycleScope()?.launch {
             withContext(Dispatchers.IO){//"WorkManager","Create Fragment","Coroutine","TabLayout、ViewPager2",
                 val list = mutableListOf<String>("Multiplex Layout",
                     "BaseRecyclerViewAdapter","RxPermissions","Thread Pool",
@@ -36,7 +43,7 @@ class HomeViewModel(application: Application) :
     }
 
 
-    fun onItemClick(item:String,v:View,position: Int){
+    fun onItemClick(item:String,v:View,position: Int){//,navController: NavController
         ///防止连续点击 当快速点击的时候Navigation会可能会出
         //java.lang.IllegalArgumentException: Navigation action/destination com.soushin.tinmvvm:id/action_homeFragment_to_recyclerFragment cannot be found from the current destination Destination(com.soushin.tinmvvm:id/categoryFragment) label=CategoryFragment class=com.soushin.tinmvvm.mvvm.ui.fragment.CategoryFragment
         //这是因为当前的destination已经不是HomeFragment 而是已经换成了categoryFragment 所以这时候再去action_homeFragment_to_recyclerFragment必然会抛异常
@@ -66,7 +73,7 @@ class HomeViewModel(application: Application) :
                 viewEvent.value = ViewTaskEvent(key = 2)
             }
             6->{
-                getLifecycleScope().launch {
+                getLifecycleScope()?.launch {
                     withContext(Dispatchers.IO){
                         ALog.i("getExternalStorageDirectory", Environment.getExternalStorageDirectory().absolutePath)
                         ALog.i("getExternalStoragePublicDirectory",

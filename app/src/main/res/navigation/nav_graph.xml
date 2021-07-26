@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        tools:layout="@layout/fragment_home"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_componentFragment"
+            app:destination="@id/componentFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mineFragment"
+            app:destination="@id/mineFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_multiplexFragment"
+            app:destination="@id/multiplexFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_recyclerFragment"
+            app:destination="@id/recyclerFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_threadPoolFragment"
+            app:destination="@id/threadPoolFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/componentFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.ComponentFragment"
+        android:label="ComponentFragment" >
+        <action
+            android:id="@+id/action_componentFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_componentFragment_to_mineFragment"
+            app:destination="@id/mineFragment" />
+        <action
+            android:id="@+id/action_componentFragment_to_coroutineFragment"
+            app:destination="@id/coroutineFragment" />
+        <action
+            android:id="@+id/action_componentFragment_to_pagingFragment"
+            app:destination="@id/pagingFragment" />
+        <action
+            android:id="@+id/action_componentFragment_to_tabLayoutViewpagerFragment"
+            app:destination="@id/tabLayoutViewpagerFragment" />
+        <action
+            android:id="@+id/action_componentFragment_to_workerFragment"
+            app:destination="@id/workerFragment" />
+        <action
+            android:id="@+id/action_componentFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mineFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.MineFragment"
+        android:label="MineFragment" >
+        <action
+            android:id="@+id/action_mineFragment_to_componentFragment"
+            app:destination="@id/componentFragment" />
+        <action
+            android:id="@+id/action_mineFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_mineFragment_to_splashActivity"
+            app:destination="@id/splashActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.CategoryFragment"
+        android:label="CategoryFragment" >
+        <argument
+            android:name="pageType"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_categoryFragment_self"
+            app:destination="@id/categoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/coroutineFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.CoroutineFragment"
+        android:label="CoroutineFragment" />
+    <fragment
+        android:id="@+id/multiplexFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.MultiplexFragment"
+        android:label="MultiplexFragment" />
+    <fragment
+        android:id="@+id/pagingFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.PagingFragment"
+        android:label="PagingFragment" />
+    <fragment
+        android:id="@+id/recyclerFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.RecyclerFragment"
+        android:label="RecyclerFragment" />
+    <fragment
+        android:id="@+id/tabLayoutViewpagerFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.TabLayoutViewpager2Fragment"
+        android:label="TabLayoutViewpagerFragment" />
+    <fragment
+        android:id="@+id/threadPoolFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.ThreadPoolFragment"
+        android:label="ThreadPoolFragment" />
+    <fragment
+        android:id="@+id/workerFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.WorkerFragment"
+        android:label="WorkerFragment" />
+    <activity
+        android:id="@+id/splashActivity"
+        android:name="com.soushin.tinmvvm.mvvm.ui.SplashActivity"
+        android:label="SplashActivity" />
+
+</navigation>

@@ -25,8 +25,7 @@
             android:label="@string/title_activity_splash" />
         <activity
             android:name=".mvvm.ui.DemoActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />

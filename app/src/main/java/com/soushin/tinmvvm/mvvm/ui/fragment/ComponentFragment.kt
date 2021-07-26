@@ -31,6 +31,13 @@ class ComponentFragment : DataBindingFragment<FragmentComponentBinding, Componen
         )
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        adapter = null
+    }
+
+    private var adapter:BaseBinderAdapter? = null
+
     override fun initView(view: View, savedInstanceState: Bundle?) {
         mViewData?.apply {
             val layoutManager = FlexboxLayoutManager(requireContext())
@@ -43,17 +50,18 @@ class ComponentFragment : DataBindingFragment<FragmentComponentBinding, Componen
             //多个轴对齐方式
             layoutManager.justifyContent = JustifyContent.FLEX_START;
             rvComponent.layoutManager = layoutManager
-            val adapter = BaseBinderAdapter()
-            adapter.addItemBinder(TabComponentItemBinder())
-            adapter.setOnItemClickListener { ada, view, position ->
+            adapter = BaseBinderAdapter()
+            adapter!!.addItemBinder(TabComponentItemBinder())
+            adapter!!.setOnItemClickListener { ada, view, position ->
                 mViewModel?.onItemClick(ada.getItem(position) as String,view,position)
             }
             rvComponent.adapter=adapter
             mViewModel?.loadData()
             mViewModel?.viewEvent?.observe(getThis(),{
-                adapter.setList(it)
+                adapter?.setList(it)
             })
         }
     }
+
 
 }

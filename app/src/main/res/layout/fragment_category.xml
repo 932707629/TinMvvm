@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -13,37 +14,36 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btn_content"
-            android:text="访问接口"
-            android:onClick="@{categoryViewModel.onClickBtnContent()}"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/btn_next_page"
-            android:text="访问下一页"
-            android:onClick="@{categoryViewModel.onClickBtnContent()}"
-            app:layout_constraintBaseline_toBaselineOf="@+id/btn_content"
-            app:layout_constraintLeft_toRightOf="@+id/btn_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/btn_last_page"
-            android:text="返回上一页"
-            android:onClick="@{categoryViewModel.onClickBtnContent()}"
-            app:layout_constraintBaseline_toBaselineOf="@+id/btn_content"
-            app:layout_constraintLeft_toRightOf="@+id/btn_next_page"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:text="@{categoryViewModel.btnContent}"
-            app:layout_constraintTop_toBottomOf="@+id/btn_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_category"
+            tools:listitem="@layout/item_category"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_last"
+            android:src="@drawable/ic_white_arrow_left_24"
+            android:contentDescription="上一页"
+            android:onClick="@{categoryViewModel.onViewClick()}"
+            app:backgroundTint="@color/colorAccent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/fab_next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/dp_50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_next"
+            android:src="@drawable/ic_white_arrow_right_24"
+            android:contentDescription="下一页"
+            android:onClick="@{categoryViewModel.onViewClick()}"
+            app:backgroundTint="@color/colorAccent"
+            app:layout_constraintTop_toTopOf="@+id/fab_last"
+            app:layout_constraintLeft_toRightOf="@+id/fab_last"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
