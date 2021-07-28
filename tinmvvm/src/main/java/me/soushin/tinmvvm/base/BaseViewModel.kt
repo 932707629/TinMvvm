@@ -7,6 +7,7 @@ import com.rxjava.rxlife.LifecycleScope
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
 import me.soushin.tinmvvm.config.AppComponent
 import me.soushin.tinmvvm.rxerror.RxErrorHandler
 
@@ -46,9 +47,8 @@ open class BaseViewModel<R: BaseRepository>(application: Application,val mReposi
         return getApplication()
     }
 
-
-    open fun getLifecycleScope():LifecycleCoroutineScope?{
-        return lifecycle?.lifecycleScope
+    open fun getCoroutineScope(): CoroutineScope {
+        return viewModelScope
     }
 
     override fun onCleared() {
@@ -60,11 +60,10 @@ open class BaseViewModel<R: BaseRepository>(application: Application,val mReposi
         //Activity/Fragment 生命周期回调
         ALog.i("onStateChanged",source.javaClass.simpleName,event);
         this.lifecycle = source
-        if (event == Lifecycle.Event.ON_DESTROY) {  //Activity/Fragment 销毁
-//            println("管道中断....")
+        if (event == Lifecycle.Event.ON_DESTROY) {//Activity/Fragment 销毁
+            this.mCompositeDisposable.dispose()//中断RxJava管道
             source.lifecycle.removeObserver(this)
             this.lifecycle=null
-            this.mCompositeDisposable.dispose()//中断RxJava管道
         }
     }
 

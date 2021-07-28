@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.blankj.ALog
 import com.chad.library.adapter.base.BaseBinderAdapter
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
+import com.soushin.tinmvvm.app.getThis
 import com.soushin.tinmvvm.app.utils.DataUtils
 import com.soushin.tinmvvm.databinding.FragmentRecyclerBinding
 import com.soushin.tinmvvm.mvvm.adapter.itembinder.ImageItemBinder
@@ -27,13 +30,31 @@ class RecyclerFragment : DataBindingFragment<FragmentRecyclerBinding, RecyclerVi
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
         mViewData?.apply {
+            ALog.i("RecyclerFragment",savedInstanceState);
             val adapter = BaseBinderAdapter().apply {
                 addItemBinder(ImageItemBinder())
                 addItemBinder(TextItemBinder())
             }
+            adapter.setGridSpanSizeLookup { gridLayoutManager, viewType, position ->
+//                ALog.i("打印数据类型",viewType,position);
+                return@setGridSpanSizeLookup if (viewType == 1) 1 else 4
+            }
+            adapter.setOnItemClickListener { adapter, view, position ->
+                if (findNavController().currentDestination?.id == R.id.recyclerFragment){
+                    findNavController().navigate(RecyclerFragmentDirections.actionRecyclerFragmentToThreadPoolFragment())
+                }
+            }
             //LinearLayoutManager已经在布局文件里设置了 所以这里只要设置adapter就可以了
             rvRecycler.adapter=adapter
-            adapter.setList(DataUtils.getRecyclerData())
+//            adapter.setList(DataUtils.getRecyclerData())
+            mViewModel?.apply {
+                loadData()
+                viewEvent.observe(getThis(),{
+                    if (it.value is MutableList<*>){
+                        adapter.setList(it.value as MutableList<Any>)
+                    }
+                })
+            }
         }
     }
 

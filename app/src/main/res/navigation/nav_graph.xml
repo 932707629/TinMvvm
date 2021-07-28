@@ -92,7 +92,11 @@
     <fragment
         android:id="@+id/recyclerFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.RecyclerFragment"
-        android:label="RecyclerFragment" />
+        android:label="RecyclerFragment" >
+        <action
+            android:id="@+id/action_recyclerFragment_to_threadPoolFragment"
+            app:destination="@id/threadPoolFragment" />
+    </fragment>
     <fragment
         android:id="@+id/tabLayoutViewpagerFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.TabLayoutViewpager2Fragment"

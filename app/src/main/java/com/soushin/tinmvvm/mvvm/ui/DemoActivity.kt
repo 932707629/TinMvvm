@@ -50,6 +50,7 @@ class DemoActivity : DataBindingActivity<ActivityDemoBinding, DemoViewModel>() {
             NavigationUI.setupWithNavController(bnvMainDelegate,navController)
             //监听页面转场 设置Toolbar以及BottomNavigationView的一些操作
             toolbar.setNavigationOnClickListener { onBackPressed() }
+
             navController.addOnDestinationChangedListener { controller, destination, arguments ->
                 ALog.i("监听堆栈跳转", destination.toString(), arguments);
                 mViewData?.apply {

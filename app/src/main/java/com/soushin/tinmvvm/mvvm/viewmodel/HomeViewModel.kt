@@ -32,7 +32,7 @@ class HomeViewModel(application: Application) :
     }
 
     fun loadData(){
-        getLifecycleScope()?.launch {
+        getCoroutineScope().launch {
             withContext(Dispatchers.IO){//"WorkManager","Create Fragment","Coroutine","TabLayout、ViewPager2",
                 val list = mutableListOf<String>("Multiplex Layout",
                     "BaseRecyclerViewAdapter","RxPermissions","Thread Pool",
@@ -73,7 +73,7 @@ class HomeViewModel(application: Application) :
                 viewEvent.value = ViewTaskEvent(key = 2)
             }
             6->{
-                getLifecycleScope()?.launch {
+                getCoroutineScope().launch {
                     withContext(Dispatchers.IO){
                         ALog.i("getExternalStorageDirectory", Environment.getExternalStorageDirectory().absolutePath)
                         ALog.i("getExternalStoragePublicDirectory",
