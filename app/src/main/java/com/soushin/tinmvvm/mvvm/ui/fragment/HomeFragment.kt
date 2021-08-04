@@ -3,15 +3,13 @@ package com.soushin.tinmvvm.mvvm.ui.fragment
 import android.Manifest
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.navigation.fragment.NavHostFragment
 import com.blankj.ALog
 import com.chad.library.adapter.base.BaseBinderAdapter
 import com.google.android.flexbox.*
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
+import com.soushin.tinmvvm.app.AppData
 import com.soushin.tinmvvm.app.getThis
 import com.soushin.tinmvvm.app.service.MyService
 import com.soushin.tinmvvm.app.utils.PermissionUtil
@@ -39,7 +37,7 @@ class HomeFragment : DataBindingFragment<FragmentHomeBinding, HomeViewModel>() {
     override fun getDataBindingConfig(): DataBindingConfig? {
         //演示addBindingParam()的用法
         return DataBindingConfig(layoutId = R.layout.fragment_home,
-            variableId = BR.HomeViewModel,vmClass = HomeViewModel::class.java)
+            variableId = BR.HomeViewModel,vmClass = HomeViewModel::class.java,dataBindingComponent = AppData.get().queryComponent())
     }
 
     override fun onDestroyView() {
@@ -65,7 +63,6 @@ class HomeFragment : DataBindingFragment<FragmentHomeBinding, HomeViewModel>() {
             rvHome.layoutManager = layoutManager
             adapter = BaseBinderAdapter()
             adapter!!.addItemBinder(TabComponentItemBinder())
-//            val fragment = requireActivity().supportFragmentManager.findFragmentByTag(NavHostFragment::class.java.simpleName) as NavHostFragment
             adapter!!.setOnItemClickListener { ada, view, position ->
                 mViewModel?.onItemClick(ada.getItem(position) as String,view,position)//,fragment.navController
             }

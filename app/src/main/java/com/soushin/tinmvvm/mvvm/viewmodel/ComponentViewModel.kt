@@ -28,7 +28,8 @@ class ComponentViewModel(application: Application) :
     fun loadData(){
         getCoroutineScope().launch {
             withContext(Dispatchers.IO){
-                val list = mutableListOf<String>("WorkManager","Navigation", "Coroutine","TabLayout、ViewPager2","Paging")
+                val list = mutableListOf<String>("WorkManager","Navigation", "Coroutine",
+                    "TabLayout、ViewPager2","Paging","DataBinding")
                 viewEvent.postValue(list)
             }
         }
@@ -68,6 +69,12 @@ class ComponentViewModel(application: Application) :
             4->{
                 navController.navigate(
                     ComponentFragmentDirections.actionComponentFragmentToPagingFragment(),
+                    AppData.get().queryNavOptions()
+                )
+            }
+            5->{
+                navController.navigate(
+                    ComponentFragmentDirections.actionComponentFragmentToDataBindingLayoutFragment(),
                     AppData.get().queryNavOptions()
                 )
             }

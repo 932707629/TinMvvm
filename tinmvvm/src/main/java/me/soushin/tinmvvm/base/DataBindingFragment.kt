@@ -22,7 +22,8 @@ import me.soushin.tinmvvm.config.DataBindingConfig
  * @time 2020/1/14 15 25
  *
  */
- abstract class DataBindingFragment<VD : ViewDataBinding, VM: BaseViewModel<out BaseRepository>>  : Fragment(),ImmersionOwner {
+ abstract class DataBindingFragment<VD : ViewDataBinding,
+        VM: BaseViewModel<out BaseRepository>>  : Fragment(),ImmersionOwner {
 
     protected var mViewModel:VM?=null
     protected var mViewData:VD?=null

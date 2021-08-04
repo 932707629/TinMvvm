@@ -51,6 +51,9 @@
         <action
             android:id="@+id/action_componentFragment_to_categoryFragment"
             app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_componentFragment_to_dataBindingLayoutFragment"
+            app:destination="@id/dataBindingLayoutFragment" />
     </fragment>
     <fragment
         android:id="@+id/mineFragment"
@@ -113,5 +116,9 @@
         android:id="@+id/splashActivity"
         android:name="com.soushin.tinmvvm.mvvm.ui.SplashActivity"
         android:label="SplashActivity" />
+    <fragment
+        android:id="@+id/dataBindingLayoutFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.DataBindingLayoutFragment"
+        android:label="DataBindingLayoutFragment" />
 
 </navigation>

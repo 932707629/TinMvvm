@@ -22,6 +22,7 @@ class AppData private constructor(){
     private val mmkv by lazy { MMKV.defaultMMKV()!! }
 
     private var defaultTransitionsAnim:Int?=null
+    private var defaultTheme:Int?=null
 
     fun queryAnim():Int?{
         defaultTransitionsAnim = mmkv.decodeInt(LiveDataTag.tag_transitions_anim,0)
@@ -71,5 +72,21 @@ class AppData private constructor(){
     private fun buildNavOptions(enter:Int,exit:Int):NavOptions{
         return NavOptions.Builder().setEnterAnim(enter).setExitAnim(exit).setPopEnterAnim(enter).setPopExitAnim(exit).build()
     }
+
+    fun queryComponent():Any?{
+        if (defaultTheme == null){
+            defaultTheme = mmkv.decodeInt(LiveDataTag.tag_component_theme,0)
+        }
+        return null
+    }
+
+    fun saveComponentTheme(theme:Int){
+        if (mmkv.encode(LiveDataTag.tag_component_theme,theme)){
+            defaultTheme=theme
+        }
+    }
+
+
+
 
 }

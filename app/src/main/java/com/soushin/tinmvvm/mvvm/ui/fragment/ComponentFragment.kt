@@ -8,6 +8,7 @@ import com.chad.library.adapter.base.BaseBinderAdapter
 import com.google.android.flexbox.*
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
+import com.soushin.tinmvvm.app.AppData
 import com.soushin.tinmvvm.app.getThis
 import com.soushin.tinmvvm.databinding.FragmentComponentBinding
 import com.soushin.tinmvvm.mvvm.adapter.itembinder.TabComponentItemBinder
@@ -27,7 +28,7 @@ class ComponentFragment : DataBindingFragment<FragmentComponentBinding, Componen
     override fun getDataBindingConfig(): DataBindingConfig? {
         return DataBindingConfig(
             layoutId = R.layout.fragment_component, variableId = BR.ComponentViewModel,
-            vmClass = ComponentViewModel::class.java
+            vmClass = ComponentViewModel::class.java,dataBindingComponent = AppData.get().queryComponent()
         )
     }
 

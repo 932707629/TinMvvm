@@ -69,7 +69,8 @@ class DemoActivity : DataBindingActivity<ActivityDemoBinding, DemoViewModel>() {
     //配置当前页面的内容 各项参数都可为空
     //BR.xxxxViewModel是kotlin-kapt插件默认生成的 对应xml文件里的xxxxViewModel
     override fun getDataBindingConfig(): DataBindingConfig? {
-        return DataBindingConfig(layoutId = R.layout.activity_demo,variableId = BR.demoViewModel,vmClass = DemoViewModel::class.java)
+        return DataBindingConfig(layoutId = R.layout.activity_demo,
+            variableId = BR.demoViewModel,vmClass = DemoViewModel::class.java)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

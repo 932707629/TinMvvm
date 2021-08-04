@@ -9,7 +9,6 @@ class TabComponentItemBinder : QuickViewBindingItemBinder<String, ItemTabCompone
 
     override fun convert(holder: BinderVBHolder<ItemTabComponentBinding>, data: String) {
         holder.viewBinding.tvComponentTitle.text = data
-
     }
 
     override fun onCreateViewBinding(

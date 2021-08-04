@@ -8,9 +8,12 @@ import com.hjq.toast.ToastUtils
 import com.soushin.tinmvvm.BuildConfig
 import com.soushin.tinmvvm.app.utils.CrashHandler
 import com.tencent.mmkv.MMKV
+import leakcanary.AppWatcher
+import leakcanary.LeakCanary
 import me.soushin.tinmvvm.config.AppComponent
 import me.soushin.tinmvvm.listener.AppLifecycle
 import rxhttp.RxHttpPlugins
+import java.util.concurrent.TimeUnit
 
 /**
  * 功能相当于application
@@ -31,12 +34,28 @@ class AppLifecycleImpl :AppLifecycle {
         //初始化RxHttp
         RxHttpPlugins.init(AppComponent.globalConfig?.okHttpClient)
             .setDebug(BuildConfig.DEBUG)
+        initLeakCanary(BuildConfig.DEBUG)
     }
 
     private fun initMMkv(application: Application) {
         val rootDir = MMKV.initialize(application)
         ALog.i("mmkv缓存路径: $rootDir");
 //        AppData.get().init()//初始化缓存数据
+    }
+
+    /***
+     * 初始化内存泄露检测工具
+     * @param enable 是否可用
+     */
+    private fun initLeakCanary(enable:Boolean) {
+        AppWatcher.config = AppWatcher.config.copy(
+            watchActivities = enable,
+            watchFragments = enable,
+            watchFragmentViews = enable,
+            watchViewModels = enable,
+            watchDurationMillis = TimeUnit.SECONDS.toMillis(5),
+            enabled = enable,
+        )
     }
 
     override fun onTerminate(application: Application) {

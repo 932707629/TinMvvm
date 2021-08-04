@@ -15,7 +15,8 @@ import me.soushin.tinmvvm.config.DataBindingConfig
  * @author created by Soushin
  * @time 2020/1/7 13 29
  */
-abstract class DataBindingActivity<VD : ViewDataBinding,VM : BaseViewModel<out BaseRepository>> :AppCompatActivity(){
+abstract class DataBindingActivity<VD : ViewDataBinding,
+        VM : BaseViewModel<out BaseRepository>> :AppCompatActivity(){
 
     protected var mViewModel:VM? = null
     protected var mViewData:VD? = null

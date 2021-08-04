@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="androidx.databinding.ObservableMap"/>
+        <import type="com.soushin.tinmvvm.mvvm.ui.fragment.Fields"/>
+        <import type="androidx.databinding.ObservableList"/>
+
+        <variable
+            name="DataBindingLayoutViewModel"
+            type="com.soushin.tinmvvm.mvvm.viewmodel.DataBindingLayoutViewModel" />
+
+        <variable
+            name="userMap"
+            type="ObservableMap&lt;String, Object>"/>
+
+        <variable
+            name="userList"
+            type="ObservableList&lt;Object>" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv1"
+            tools:text="@string/app_name"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="@{String.valueOf(DataBindingLayoutViewModel.arrayMap.lastName)}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv2"
+            tools:text="@string/app_name"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="@{String.valueOf(1 + (Integer)DataBindingLayoutViewModel.arrayMap.age)}"
+            app:layout_constraintLeft_toRightOf="@+id/tv1"
+            app:layout_constraintTop_toTopOf="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv3"
+            tools:text="@string/app_name"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:text="@{DataBindingLayoutViewModel.arrayList[Fields.LAST_NAME]}"
+            android:layout_marginTop="@dimen/dp_10"
+            app:layout_constraintTop_toBottomOf="@+id/tv1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv4"
+            tools:text="@string/app_name"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="@{String.valueOf(1 + (Integer)DataBindingLayoutViewModel.arrayList[Fields.AGE])}"
+            app:layout_constraintLeft_toRightOf="@+id/tv3"
+            app:layout_constraintTop_toTopOf="@+id/tv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv5"
+            tools:text="@string/app_name"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:text="@{DataBindingLayoutViewModel.user.lastName}"
+            android:layout_marginTop="@dimen/dp_10"
+            app:layout_constraintTop_toBottomOf="@+id/tv3"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv6"
+            tools:text="@string/app_name"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="@{String.valueOf(1 + (Integer)DataBindingLayoutViewModel.user.age)}"
+            app:layout_constraintLeft_toRightOf="@+id/tv5"
+            app:layout_constraintTop_toTopOf="@+id/tv5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv1"
+            android:src="@mipmap/ic_launcher"
+            app:error="@mipmap/ic_launcher"
+            app:imageUrl="https://wx1.sinaimg.cn/mw690/002Po4pSly1gswgs812stj60u01hcndz02.jpg"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_change"
+            android:onClick="@{DataBindingLayoutViewModel.onViewClick()}"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
