@@ -20,6 +20,7 @@ import me.soushin.tinmvvm.config.DataBindingConfig
  */
 class DataBindingLayoutFragment :
     DataBindingFragment<FragmentDataBindingLayoutBinding, DataBindingLayoutViewModel>() {
+
     companion object {
         fun newInstance(): DataBindingLayoutFragment {
             return DataBindingLayoutFragment()

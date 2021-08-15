@@ -5,4 +5,5 @@
     <string name="title_activity_bottom_navigation">BottomNavigation</string>
     <string name="title_activity_splash">Splash</string>
     <string name="title_activity_exist">Exist</string>
+    <string name="format_chapter_name">%s. %s</string>
 </resources>

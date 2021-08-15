@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable name="acticle"
+            type="com.soushin.tinmvvm.mvvm.repository.entity.Article"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,15 +13,25 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_100">
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_position"
+            android:text="@string/app_name"
+            android:textColor="@color/color_e6e"
+            android:textSize="@dimen/sp_38"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
         <TextView
             android:id="@+id/tv_chapter_name"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginLeft="20dp"
-            tools:text="@string/app_name"
-            android:textSize="@dimen/sp_16"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="match_parent"
+            android:layout_marginHorizontal="@dimen/dp_15"
+            android:text="@{@string/format_chapter_name(acticle.id,acticle.title)}"
+            android:textSize="@dimen/sp_16"
+            android:layout_width="@dimen/dp_0"
             android:layout_height="wrap_content" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

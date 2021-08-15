@@ -40,6 +40,12 @@ class DemoActivity : DataBindingActivity<ActivityDemoBinding, DemoViewModel>() {
     private val navController by lazy { navHostFragment.navController }
 //    private val appBarConfiguration by lazy { AppBarConfiguration.Builder(R.id.homeFragment).build() }//配置homeFragment为顶部页面
 
+    //主页点回退 将app任务移动到后台
+    override fun onBackPressed() {
+//        super.onBackPressed()
+        moveTaskToBack(true)
+    }
+
     override fun initView(savedInstanceState: Bundle?) {
         mViewData?.apply {
             setSupportActionBar(toolbar)

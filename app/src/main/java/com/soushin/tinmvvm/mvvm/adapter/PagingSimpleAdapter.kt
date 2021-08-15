@@ -17,7 +17,9 @@ class PagingSimpleAdapter : PagingDataAdapter<Article,RecyclerView.ViewHolder>(D
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         /**不调用getItem(position)方法会造成无法继续加载数据**/
         val dataBean = getItem(position)
-        (holder as DataViewHolder).binding.tvChapterName.text = "$position ${dataBean?.title}"
+        val viewHolder=holder as DataViewHolder
+        viewHolder.binding.tvPosition.text = "$position"
+        viewHolder.binding.acticle=dataBean//.tvChapterName.text = "$position ${dataBean?.title}"
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

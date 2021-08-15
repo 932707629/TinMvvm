@@ -1,6 +1,7 @@
 package com.soushin.tinmvvm.app.utils
 
 import com.soushin.tinmvvm.R
+import com.soushin.tinmvvm.mvvm.repository.entity.CategoryEntity
 import com.soushin.tinmvvm.mvvm.repository.entity.ImageEntity
 
 /**
@@ -16,7 +17,7 @@ object DataUtils {
             data.add(ImageEntity(R.mipmap.ic_launcher))
         }
         for (i in 1..20){
-            data.add("这里是一个简单的字符串$i")
+            data.add(CategoryEntity(id = i,title = "这里是一个简单的字符串$i"))
         }
         return data
     }
