@@ -24,7 +24,7 @@
 ### 我们的优势 ###
 TinMvvm是以谷歌DataBinding+LiveData+ViewModel+Navigation框架为基础，整合Rxjava2、ViewBinding、okhttp-RxHttp、Liveeventbus等流行模块，加上各种原生控件，
 让事件与数据源完美绑定的一款容易上瘾的实用性MVVM快速开发框架。从此告别findViewById()，告别set()、get()；有了Navigation的助力，
-支持单Activity多Fragment，当然，您也可以继续试用多Activity模式，Navigation同样支持。
+支持单Activity多Fragment，当然，您也可以继续使用多Activity模式。
 
 [更多Jetpack组件即将来袭！](https://developer.android.google.cn/jetpack "更多Jetpack组件即将来袭")
 
