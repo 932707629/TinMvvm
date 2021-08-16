@@ -3,19 +3,17 @@
 ## Surprise[![](https://jitpack.io/v/932707629/TinMvvm.svg)](https://jitpack.io/#932707629/TinMvvm)
 
 ```
-
-   //添加jitpack地址到项目根目录的build.gradle
-    allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
-    //添加依赖到mudule目录的build.gradle
-	dependencies {
-    	implementation 'com.github.932707629:TinMvvm:1.2.4'
-    }
-    
+//添加jitpack地址到项目根目录的build.gradle
+allprojects {
+    repositories {
+    ...
+    maven { url 'https://jitpack.io' }
+  }
+}
+  //添加依赖到mudule目录的build.gradle
+  dependencies {
+    implementation 'com.github.932707629:TinMvvm:1.2.4'
+  }
 ```
 
 ### 说在前面 ###
