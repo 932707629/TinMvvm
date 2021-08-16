@@ -1,26 +1,15 @@
 package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.lifecycle.coroutineScope
-import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
-import androidx.paging.LoadStateAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.blankj.ALog
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
-import com.soushin.tinmvvm.app.getThis
 import com.soushin.tinmvvm.app.showToasty
 import com.soushin.tinmvvm.databinding.FragmentPagingBinding
 import com.soushin.tinmvvm.mvvm.adapter.PagingSimpleAdapter
 import com.soushin.tinmvvm.mvvm.viewmodel.PagingViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import me.soushin.tinmvvm.base.DataBindingFragment
 import me.soushin.tinmvvm.config.DataBindingConfig
 
@@ -70,7 +59,7 @@ class PagingFragment : DataBindingFragment<FragmentPagingBinding, PagingViewMode
             rvPaging.adapter = adapter
         }
 
-        mViewModel?.getData()?.observe(getThis(),{
+        mViewModel?.getData()?.observe(viewLifecycleOwner,{
             adapter.submitData(lifecycle,it)
         })
        /*lifecycleScope.launch {

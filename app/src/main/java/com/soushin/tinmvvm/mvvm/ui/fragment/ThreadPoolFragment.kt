@@ -1,9 +1,7 @@
 package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.databinding.FragmentThreadPoolBinding

@@ -1,26 +1,19 @@
 package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.Navigation
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.liveData
-import com.alibaba.fastjson.JSONObject
-import com.blankj.ALog
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.app.AppData
-import com.soushin.tinmvvm.app.utils.RxUtils
 import com.soushin.tinmvvm.mvvm.repository.CategoryRepository
 import com.soushin.tinmvvm.mvvm.repository.PagingRepository
 import com.soushin.tinmvvm.mvvm.repository.datasource.PagingDataSource
-import com.soushin.tinmvvm.mvvm.repository.entity.CategoryEntity
 import com.soushin.tinmvvm.mvvm.repository.entity.ViewTaskEvent
 import com.soushin.tinmvvm.mvvm.ui.fragment.CategoryFragmentDirections
 import me.soushin.tinmvvm.base.BaseViewModel
-import me.soushin.tinmvvm.rxerror.handler.ErrorHandleSubscriber
 import me.soushin.tinmvvm.utils.throttleClick
 
 
@@ -32,13 +25,6 @@ class CategoryViewModel(application: Application) :
     BaseViewModel<CategoryRepository>(application, CategoryRepository()) {
 
     var viewEvent= MutableLiveData<ViewTaskEvent>()
-
-    override fun onCleared() {
-        super.onCleared()
-        lifecycle?.let {
-            viewEvent.removeObservers(it)
-        }
-    }
 
     fun onViewClick() = throttleClick {
         when(it.id){

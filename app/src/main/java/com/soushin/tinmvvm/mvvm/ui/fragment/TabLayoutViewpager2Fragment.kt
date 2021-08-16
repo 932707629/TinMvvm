@@ -1,9 +1,7 @@
 package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.soushin.tinmvvm.BR

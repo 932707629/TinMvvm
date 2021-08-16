@@ -1,15 +1,12 @@
 package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.chad.library.adapter.base.BaseBinderAdapter
 import com.google.android.flexbox.*
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.app.AppData
-import com.soushin.tinmvvm.app.getThis
 import com.soushin.tinmvvm.databinding.FragmentComponentBinding
 import com.soushin.tinmvvm.mvvm.adapter.itembinder.TabComponentItemBinder
 import com.soushin.tinmvvm.mvvm.viewmodel.ComponentViewModel
@@ -32,13 +29,6 @@ class ComponentFragment : DataBindingFragment<FragmentComponentBinding, Componen
         )
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        adapter = null
-    }
-
-    private var adapter:BaseBinderAdapter? = null
-
     override fun initView(view: View, savedInstanceState: Bundle?) {
         mViewData?.apply {
             val layoutManager = FlexboxLayoutManager(requireContext())
@@ -51,15 +41,15 @@ class ComponentFragment : DataBindingFragment<FragmentComponentBinding, Componen
             //多个轴对齐方式
             layoutManager.justifyContent = JustifyContent.FLEX_START;
             rvComponent.layoutManager = layoutManager
-            adapter = BaseBinderAdapter()
-            adapter!!.addItemBinder(TabComponentItemBinder())
-            adapter!!.setOnItemClickListener { ada, view, position ->
+            val adapter = BaseBinderAdapter()
+            adapter.addItemBinder(TabComponentItemBinder())
+            adapter.setOnItemClickListener { ada, view, position ->
                 mViewModel?.onItemClick(ada.getItem(position) as String,view,position)
             }
             rvComponent.adapter=adapter
             mViewModel?.loadData()
-            mViewModel?.viewEvent?.observe(getThis(),{
-                adapter?.setList(it)
+            mViewModel?.viewEvent?.observe(viewLifecycleOwner,{
+                adapter.setList(it)
             })
         }
     }

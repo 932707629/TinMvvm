@@ -3,7 +3,6 @@ package com.soushin.tinmvvm.mvvm.viewmodel
 import android.app.Application
 import android.text.TextUtils
 import android.view.View
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import com.blankj.ALog
 import com.soushin.tinmvvm.R

@@ -2,16 +2,13 @@ package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
 import android.view.View
-import androidx.databinding.ObservableArrayMap
-import androidx.databinding.ObservableField
-import androidx.databinding.ObservableInt
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.databinding.FragmentDataBindingLayoutBinding
 import com.soushin.tinmvvm.mvvm.viewmodel.DataBindingLayoutViewModel
-import com.soushin.tinmvvm.mvvm.viewmodel.User
 import me.soushin.tinmvvm.base.DataBindingFragment
 import me.soushin.tinmvvm.config.DataBindingConfig
+
 /**
  * 演示databinding的功能
  *

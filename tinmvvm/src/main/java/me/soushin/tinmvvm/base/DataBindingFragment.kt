@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.ViewModelProvider
 import com.gyf.immersionbar.components.ImmersionOwner
 import com.gyf.immersionbar.components.ImmersionProxy

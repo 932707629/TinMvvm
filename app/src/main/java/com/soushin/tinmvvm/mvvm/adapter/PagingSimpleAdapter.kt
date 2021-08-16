@@ -3,14 +3,12 @@ package com.soushin.tinmvvm.mvvm.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.paging.PagedListAdapter
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.databinding.ItemCategoryBinding
 import com.soushin.tinmvvm.mvvm.repository.entity.Article
-import com.soushin.tinmvvm.mvvm.repository.entity.CategoryEntity
 
 class PagingSimpleAdapter : PagingDataAdapter<Article,RecyclerView.ViewHolder>(DIFF_CALLBACK){
 

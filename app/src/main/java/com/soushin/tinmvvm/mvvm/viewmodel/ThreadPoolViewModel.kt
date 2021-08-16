@@ -21,18 +21,14 @@ import java.util.concurrent.TimeUnit
  * ================================================
  */
 
-class ThreadPoolViewModel :
-    BaseViewModel<ThreadPoolRepository> {
+class ThreadPoolViewModel(application: Application) :
+    BaseViewModel<ThreadPoolRepository>(application, ThreadPoolRepository()) {
 
     private var newCachedThreadPool:ExecutorService?=null
     private var newFixedThreadPool:ExecutorService?=null
     private var newScheduledThreadPool: ScheduledExecutorService?=null
     private var newSingleThreadPool:ExecutorService?=null
     private var newWorkStealingPool:ExecutorService?=null
-
-    constructor(application: Application) : super(application, ThreadPoolRepository()) {
-
-    }
 
     fun onClicker()=View.OnClickListener {
         when(it.id){
@@ -89,7 +85,7 @@ class ThreadPoolViewModel :
     }
 
     //中断线程池
-    fun shutdown(){
+    private fun shutdown(){
         //强制关闭线程池
         try {
             newCachedThreadPool?.shutdownNow()
@@ -120,11 +116,7 @@ class ThreadPoolViewModel :
         }
     }
 
-    class ThreadForPools : Runnable{
-        var index :Long=0
-        constructor(index:Long){
-            this.index=index
-        }
+    class ThreadForPools(var index: Long) : Runnable{
 
         override fun run() {
             try {

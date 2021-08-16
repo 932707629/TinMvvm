@@ -3,7 +3,6 @@ package com.soushin.tinmvvm.mvvm.viewmodel
 import android.app.Application
 import android.view.View
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.blankj.ALog
 import com.soushin.tinmvvm.R
@@ -20,15 +19,10 @@ class ComponentViewModel(application: Application) :
 
     var viewEvent = MutableLiveData<MutableList<String>>()
 
-    override fun onCleared() {
-        super.onCleared()
-        lifecycle?.let { viewEvent.removeObservers(it) }
-    }
-
     fun loadData(){
         getCoroutineScope().launch {
             withContext(Dispatchers.IO){
-                val list = mutableListOf<String>("WorkManager","Navigation", "Coroutine",
+                val list = mutableListOf("WorkManager","Navigation", "Coroutine",
                     "TabLayout、ViewPager2","Paging","DataBinding")
                 viewEvent.postValue(list)
             }

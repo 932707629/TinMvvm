@@ -1,16 +1,13 @@
 package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.blankj.ALog
 import com.chad.library.adapter.base.BaseBinderAdapter
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.app.getThis
-import com.soushin.tinmvvm.app.utils.DataUtils
 import com.soushin.tinmvvm.databinding.FragmentRecyclerBinding
 import com.soushin.tinmvvm.mvvm.adapter.itembinder.ImageItemBinder
 import com.soushin.tinmvvm.mvvm.adapter.itembinder.TextItemBinder

@@ -4,9 +4,9 @@ import android.app.Application
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.liveData
-import me.soushin.tinmvvm.base.BaseViewModel
 import com.soushin.tinmvvm.mvvm.repository.PagingRepository
 import com.soushin.tinmvvm.mvvm.repository.datasource.PagingDataSource
+import me.soushin.tinmvvm.base.BaseViewModel
 
 class PagingViewModel(application: Application) :
     BaseViewModel<PagingRepository>(application, PagingRepository()) {

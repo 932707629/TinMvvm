@@ -5,7 +5,7 @@ import android.os.Build
 import android.os.Environment
 import android.view.View
 import androidx.lifecycle.MutableLiveData
-import androidx.navigation.*
+import androidx.navigation.Navigation
 import com.blankj.ALog
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.app.AppData
@@ -22,14 +22,6 @@ class HomeViewModel(application: Application) :
     BaseViewModel<HomeRepository>(application, HomeRepository()) {
     var tvContent = MutableLiveData("Hello World")
     var viewEvent = MutableLiveData<ViewTaskEvent>()
-
-    override fun onCleared() {
-        super.onCleared()
-        lifecycle?.let {
-            tvContent.removeObservers(it)
-            viewEvent.removeObservers(it)
-        }
-    }
 
     fun loadData(){
         getCoroutineScope().launch {

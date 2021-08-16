@@ -12,7 +12,8 @@ import me.soushin.tinmvvm.base.BaseViewModel
  * @author created by Soushin
  * @time 2020/1/7 13 46
  */
-class DemoViewModel(application: Application) : BaseViewModel<DemoRepository>(application, DemoRepository()) {
+class DemoViewModel(application: Application) :
+    BaseViewModel<DemoRepository>(application, DemoRepository()) {
 
 
 

@@ -1,15 +1,12 @@
 package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
-import android.view.View
-import androidx.databinding.*
+import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.app.throttleClick
-import me.soushin.tinmvvm.base.BaseViewModel
 import com.soushin.tinmvvm.mvvm.repository.DataBindingLayoutRepository
-import me.soushin.tinmvvm.BR
-import java.util.*
+import me.soushin.tinmvvm.base.BaseViewModel
 import kotlin.random.Random
 
 class DataBindingLayoutViewModel(application: Application) :

@@ -3,7 +3,6 @@ package me.soushin.tinmvvm.base
 import android.app.Application
 import androidx.lifecycle.*
 import com.blankj.ALog
-import com.rxjava.rxlife.LifecycleScope
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -15,8 +14,8 @@ import me.soushin.tinmvvm.rxerror.RxErrorHandler
  * @author created by Soushin
  * @time 2020/1/7 16 38
  * 在viewModel中使用协程有已知有两种方法:
- * 1:使用LifecycleOwner提供的[lifecycleScope.lifecycleScope]
- * 2:使用lifecycle-viewmodel-ktx组件提供的[viewModelScope]
+ * 1:使用lifecycle-viewmodel-ktx组件提供的[viewModelScope]
+ * 2:使用LifecycleOwner提供的[lifecycleScope.lifecycleScope]
  */
 open class BaseViewModel<R: BaseRepository>(application: Application,val mRepository: R) :
     AndroidViewModel(application), LifecycleEventObserver {

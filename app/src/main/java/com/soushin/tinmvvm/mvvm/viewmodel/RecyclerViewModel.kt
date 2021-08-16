@@ -20,11 +20,6 @@ class RecyclerViewModel(application: Application) :
 
     var viewEvent = MutableLiveData<ViewTaskEvent>()
 
-    override fun onCleared() {
-        super.onCleared()
-        lifecycle?.let { viewEvent.removeObservers(it) }
-    }
-
     fun loadData() {
         getCoroutineScope().launch {
             withContext(Dispatchers.IO) {

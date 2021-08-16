@@ -128,6 +128,8 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
  - 掘金:[敲代码的鱼](https://juejin.cn/user/1865248698012616 "敲代码的鱼")
  - CSDN:[敲代码的鱼哇](https://blog.csdn.net/qq_35195386?spm=1001.2101.3001.5343 "敲代码的鱼哇")
 
+### 参考文档
 
+- [Jetpack 易错分享：还在使用 Fragment 作为 LifecycleOwner ？](https://mp.weixin.qq.com/s/_2YSV_JsjDJ7CuHJngMbqQ)
 
 

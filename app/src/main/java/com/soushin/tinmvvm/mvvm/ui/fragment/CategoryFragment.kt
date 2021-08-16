@@ -2,20 +2,13 @@ package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
 import android.view.View
-import android.widget.BaseAdapter
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import androidx.paging.LoadState
 import com.blankj.ALog
-import com.chad.library.adapter.base.BaseBinderAdapter
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
-import com.soushin.tinmvvm.app.getThis
-import com.soushin.tinmvvm.app.showToasty
 import com.soushin.tinmvvm.databinding.FragmentCategoryBinding
 import com.soushin.tinmvvm.mvvm.adapter.PagingSimpleAdapter
 import com.soushin.tinmvvm.mvvm.viewmodel.CategoryViewModel
-import kotlinx.coroutines.launch
 import me.soushin.tinmvvm.base.DataBindingFragment
 import me.soushin.tinmvvm.config.DataBindingConfig
 
@@ -44,7 +37,7 @@ class CategoryFragment : DataBindingFragment<FragmentCategoryBinding, CategoryVi
         super.onDestroyView()
     }
 
-    val args : CategoryFragmentArgs by navArgs<CategoryFragmentArgs>()
+    val args : CategoryFragmentArgs by navArgs()
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
         ALog.e("开始初始化了",args.pageType)
@@ -52,7 +45,8 @@ class CategoryFragment : DataBindingFragment<FragmentCategoryBinding, CategoryVi
         mViewData?.apply {
             rvCategory.adapter = adapter
         }
-        mViewModel?.getData()?.observe(getThis(),{
+
+        mViewModel?.getData()?.observe(viewLifecycleOwner,{
             adapter.submitData(lifecycle,it)
         })
 

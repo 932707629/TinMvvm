@@ -2,11 +2,9 @@ package com.soushin.tinmvvm.component
 
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.BindingAdapter
 import com.blankj.ALog
 import com.bumptech.glide.Glide
-import me.soushin.tinmvvm.config.AppComponent
 import me.soushin.tinmvvm.utils.AppManager
 
 object DemoTheme {

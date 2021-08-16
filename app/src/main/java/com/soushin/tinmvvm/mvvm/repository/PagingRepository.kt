@@ -1,8 +1,6 @@
 package com.soushin.tinmvvm.mvvm.repository
 
 import com.soushin.tinmvvm.mvvm.repository.entity.ArticleListEntity
-import com.soushin.tinmvvm.mvvm.repository.entity.CategoryEntity
-import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import me.soushin.tinmvvm.base.BaseRepository
 import rxhttp.wrapper.param.RxHttp

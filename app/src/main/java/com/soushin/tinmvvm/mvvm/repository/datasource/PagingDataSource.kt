@@ -1,6 +1,5 @@
 package com.soushin.tinmvvm.mvvm.repository.datasource
 
-import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import androidx.paging.rxjava3.RxPagingSource
 import com.blankj.ALog
@@ -8,10 +7,7 @@ import com.soushin.tinmvvm.app.utils.RxUtils
 import com.soushin.tinmvvm.app.utils.toJson
 import com.soushin.tinmvvm.mvvm.repository.PagingRepository
 import com.soushin.tinmvvm.mvvm.repository.entity.Article
-import com.soushin.tinmvvm.mvvm.repository.entity.ArticleListEntity
-import com.soushin.tinmvvm.mvvm.repository.entity.CategoryEntity
 import io.reactivex.rxjava3.core.Single
-import io.reactivex.rxjava3.schedulers.Schedulers
 
 class PagingDataSource(private val repository: PagingRepository) : RxPagingSource<Int,Article>() {
 

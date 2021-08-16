@@ -1,27 +1,17 @@
 package com.soushin.tinmvvm.mvvm.ui
 
 import android.os.Bundle
-import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.core.view.forEach
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import androidx.viewpager2.widget.ViewPager2
 import com.blankj.ALog
-import com.jeremyliao.liveeventbus.LiveEventBus
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.app.AppData
-import com.soushin.tinmvvm.app.LiveDataTag
-import com.soushin.tinmvvm.app.getThis
-import com.soushin.tinmvvm.app.utils.FragmentUtils
 import com.soushin.tinmvvm.databinding.ActivityDemoBinding
-import com.soushin.tinmvvm.mvvm.adapter.ViewPager2StateAdapter
-import com.soushin.tinmvvm.mvvm.repository.entity.ViewTaskEvent
 import com.soushin.tinmvvm.mvvm.ui.fragment.*
 import com.soushin.tinmvvm.mvvm.viewmodel.DemoViewModel
 import me.soushin.tinmvvm.base.DataBindingActivity
@@ -53,7 +43,9 @@ class DemoActivity : DataBindingActivity<ActivityDemoBinding, DemoViewModel>() {
             }
             NavigationUI.setupWithNavController(bnvMainDelegate,navController)
             //监听页面转场 设置Toolbar以及BottomNavigationView的一些操作
-            toolbar.setNavigationOnClickListener { onBackPressed() }
+            toolbar.setNavigationOnClickListener {
+                navController.navigateUp()
+            }
 
             navController.addOnDestinationChangedListener { controller, destination, arguments ->
                 ALog.i("监听堆栈跳转", destination.toString(), arguments);

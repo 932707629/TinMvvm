@@ -42,11 +42,11 @@ class HomeFragment : DataBindingFragment<FragmentHomeBinding, HomeViewModel>() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        this.adapter=null
+//        this.adapter=null
     }
 
     private var serviceIntent: Intent?=null
-    private var adapter:BaseBinderAdapter? = null
+//    private var adapter:BaseBinderAdapter? = null
 
     //为了保证每次界面销毁重启后，都可以保存之前的值，我们需要在onCreate()中，给控件赋值为 textViewContent
     override fun initView(view: View, savedInstanceState: Bundle?) {
@@ -61,17 +61,17 @@ class HomeFragment : DataBindingFragment<FragmentHomeBinding, HomeViewModel>() {
             //多个轴对齐方式
             layoutManager.justifyContent = JustifyContent.FLEX_START;
             rvHome.layoutManager = layoutManager
-            adapter = BaseBinderAdapter()
-            adapter!!.addItemBinder(TabComponentItemBinder())
-            adapter!!.setOnItemClickListener { ada, view, position ->
+            val adapter = BaseBinderAdapter()
+            adapter.addItemBinder(TabComponentItemBinder())
+            adapter.setOnItemClickListener { ada, view, position ->
                 mViewModel?.onItemClick(ada.getItem(position) as String,view,position)//,fragment.navController
             }
             rvHome.adapter=adapter
             mViewModel?.loadData()
-            mViewModel?.viewEvent?.observe(getThis(),{
+            mViewModel?.viewEvent?.observe(viewLifecycleOwner,{
                 when{
                     it.key==0 && (it.value is MutableList<*>)->{
-                        adapter?.setList(it.value as MutableList<String>)
+                        adapter.setList(it.value as MutableList<String>)
                     }
                     it.key==1 ->{
                         requestPermission()
