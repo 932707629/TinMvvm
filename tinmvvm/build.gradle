@@ -1,11 +1,12 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-//apply plugin: 'com.github.dcendents.android-maven'
+//jitpack编译使用
+apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.932707629'
-//apply plugin: 'kotlin-android-extensions'
-//版本更新的命令
-//gradlew clean build bintrayUpload -PbintrayUser=soushin -PbintrayKey=41191f3e38ba571be46a639901db861ee8053346 -PdryRun=false
+
+
+
 android {
     compileSdkVersion rootProject.compileSdkVersion
     buildToolsVersion rootProject.buildToolVersion
@@ -46,12 +47,6 @@ android {
     }
 }
 
-// 打包源码jar
-/*task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    archiveClassifier = 'sources'
-}*/
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //kt+jetpack+androidx
@@ -63,14 +58,8 @@ dependencies {
     api(deps.alog)
     //第三方工具库
     api(deps.rxandroid3)
-    /*api(deps.rxandroid2) {
-        exclude group: "io.reactivex.rxjava2", module: 'rxjava'
-    }*/
-//    api(deps.rxjava2)
     api(deps.rxjava3)
-//    api(deps.rxlife_rxjava2)
     api(deps.rxlife_rxjava3)
-//    api(deps.rxerrorhandler)
     api(deps.conscrypt)
     api(deps.okhttp)
     api(deps.glide)
@@ -82,4 +71,4 @@ dependencies {
     api(deps.immersionbar_ktx)
 }
 
-//apply from: "../bintrayUpload.gradle"
+

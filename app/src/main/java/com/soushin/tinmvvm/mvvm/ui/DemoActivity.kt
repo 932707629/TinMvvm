@@ -6,8 +6,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.core.view.forEach
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration

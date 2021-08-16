@@ -9,7 +9,6 @@ import com.soushin.tinmvvm.BuildConfig
 import com.soushin.tinmvvm.app.utils.CrashHandler
 import com.tencent.mmkv.MMKV
 import leakcanary.AppWatcher
-import leakcanary.LeakCanary
 import me.soushin.tinmvvm.config.AppComponent
 import me.soushin.tinmvvm.listener.AppLifecycle
 import rxhttp.RxHttpPlugins
