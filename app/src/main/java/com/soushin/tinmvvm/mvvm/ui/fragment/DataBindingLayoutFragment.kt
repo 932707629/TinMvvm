@@ -41,12 +41,5 @@ class DataBindingLayoutFragment :
 }
 
 
-object Fields{
-    const val FIRST_NAME=0
-    const val LAST_NAME=1
-    const val AGE=2
-
-}
-
 
 
