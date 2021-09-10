@@ -89,6 +89,7 @@ class DemoActivity : DataBindingActivity<ActivityDemoBinding, DemoViewModel>() {
         }
     }
 
+
 }
 
 

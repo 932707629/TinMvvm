@@ -74,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-            <!--<androidx.appcompat.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv1"
                 android:src="@mipmap/ic_launcher"
                 app:error="@{DataBindingLayoutViewModel.user.error}"
@@ -83,7 +83,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv3"
                 app:layout_constraintLeft_toLeftOf="@+id/tv1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>-->
+                android:layout_height="wrap_content"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
