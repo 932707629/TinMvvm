@@ -50,6 +50,14 @@ open class BaseViewModel<R: BaseRepository>(application: Application,val mReposi
         return viewModelScope
     }
 
+    /**
+     * 在Lifecycle.Event.ON_DESTROY会置空
+     * 注意使用的时机
+     */
+    open fun getLifeCycleOwner():LifecycleOwner{
+        return lifecycle!!
+    }
+
     override fun onCleared() {
         super.onCleared()//会跟随页面生命周期销毁
         mRepository.onCleared()
@@ -60,10 +68,15 @@ open class BaseViewModel<R: BaseRepository>(application: Application,val mReposi
         ALog.i("onStateChanged",source.javaClass.simpleName,event);
         this.lifecycle = source
         if (event == Lifecycle.Event.ON_DESTROY) {//Activity/Fragment 销毁
-            this.mCompositeDisposable.dispose()//中断RxJava管道
+            clearDisposable()
             source.lifecycle.removeObserver(this)
             this.lifecycle=null
         }
+    }
+
+    //中断RxJava管道
+    open fun clearDisposable(){
+        this.mCompositeDisposable.clear()
     }
 
 }

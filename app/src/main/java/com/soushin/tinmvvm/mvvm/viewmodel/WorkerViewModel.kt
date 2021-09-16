@@ -43,7 +43,7 @@ class WorkerViewModel(application: Application) :
         if (btnStatus.value == "开始任务") {
             btnStatus.value = "结束任务"
             workManager.enqueue(request)
-            workManager.getWorkInfoByIdLiveData(request.id).observe(lifecycle!!,{
+            workManager.getWorkInfoByIdLiveData(request.id).observe(getLifeCycleOwner(),{
                 ALog.i("收到返回结果的",it.id,it.outputData.toString(),it.progress.toString(),it.runAttemptCount,it.state,it.tags);
             })
         } else {
