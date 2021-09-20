@@ -46,6 +46,7 @@ open class BaseViewModel<R: BaseRepository>(application: Application,val mReposi
         return getApplication()
     }
 
+    //直接用viewModelScope.launcher{}更舒适
     open fun getCoroutineScope(): CoroutineScope {
         return viewModelScope
     }
@@ -65,7 +66,7 @@ open class BaseViewModel<R: BaseRepository>(application: Application,val mReposi
 
     override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
         //Activity/Fragment 生命周期回调
-        ALog.i("onStateChanged",source.javaClass.simpleName,event);
+//        ALog.i("onStateChanged",source.javaClass.simpleName,event);
         this.lifecycle = source
         if (event == Lifecycle.Event.ON_DESTROY) {//Activity/Fragment 销毁
             clearDisposable()

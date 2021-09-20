@@ -3,6 +3,7 @@ package com.soushin.tinmvvm.app.utils
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.mvvm.repository.entity.CategoryEntity
 import com.soushin.tinmvvm.mvvm.repository.entity.ImageEntity
+import java.util.*
 
 /**
  * @author created by Soushin
@@ -20,6 +21,11 @@ object DataUtils {
             data.add(CategoryEntity(id = i,title = "这里是一个简单的字符串$i"))
         }
         return data
+    }
+
+    ///生成一个随机数字
+    fun buildRandom():String{
+        return "${Random(10000000000000000).nextLong()}"
     }
 
 
