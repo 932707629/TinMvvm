@@ -20,6 +20,7 @@ ext {
     immersionbarVersion = '3.0.0'
     lifecycleVersion = '2.3.1'
     pagingVersion = '3.0.0'
+    navVersion = '2.3.5'
 
     deps = [
             appcompat                           : "androidx.appcompat:appcompat:$appcompatVersion",
