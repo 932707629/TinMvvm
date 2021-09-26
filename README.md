@@ -118,9 +118,9 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
 - 升级到Rxjava3，相应的RxPermissions版本升级到0.12，取消依赖RxErrorHandle(不支持RxJava3)依赖
 
 ### 遇到的问题
-- 当DemoActivity用到ViewPager2的时候去设置setOffscreenPageLimit() 此时fragment转场到下一个fragment时可能会显示空白?
-比如在此项目示例中设置了setOffscreenPageLimit()后点击HomeFragment的MultiplexFragment/RecyclerFragment/TabLayoutViewpager2Fragment三个页面可能会空白
-这三个页面都跟RecyclerFragment的页面有关系 
+
+- 使用Navigation时，当LiveData包含跳转指令，fragment回退的时候会执行这个指令，导致页面返回上级页面之后，又重新回到当前页面
+- 使用协程时如果加载隐藏网络请求进度，自定义回调处理器
 
 ### 我的主页 ###
 
@@ -130,6 +130,6 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
 
 ### 参考文档
 
-- [Jetpack 易错分享：还在使用 Fragment 作为 LifecycleOwner ？](https://mp.weixin.qq.com/s/_2YSV_JsjDJ7CuHJngMbqQ)
-
+- [Jetpack 易错分享：还在使用 Fragment 作为 LifecycleOwner？](https://mp.weixin.qq.com/s/_2YSV_JsjDJ7CuHJngMbqQ)
+- [RxHttp结合协程使用详解](https://juejin.cn/post/6844904100090347528#heading-2)
 
