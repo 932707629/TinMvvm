@@ -21,6 +21,7 @@ import okhttp3.Dispatcher
 /**
  *
  * 协程和LiveData、Flow相关的一些用法
+ * @see(https://www.jianshu.com/p/16aa5eaa60d7)
  * 协程本身可以理解为一个对线程的封装库，跟我们用的线程池异曲同工
  * 启动10w个协程跟启动10w个线程是不能相提并论的  但如果是在线程池里两相比较差别不大
  * 所以说协程和线程池相比性能上没有比较明显的优势

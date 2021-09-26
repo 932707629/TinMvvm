@@ -2,9 +2,9 @@ package com.soushin.tinmvvm.mvvm.repository
 
 import com.soushin.tinmvvm.app.utils.DataUtils
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.*
 import me.soushin.tinmvvm.base.BaseRepository
+import kotlin.time.Duration
 
 /**
  * ================================================
@@ -24,5 +24,6 @@ class CoroutineRepository : BaseRepository() {
             emit(DataUtils.buildRandom())
         }
     }
+
 
 }

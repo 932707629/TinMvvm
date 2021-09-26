@@ -26,7 +26,8 @@ import me.soushin.tinmvvm.config.DataBindingConfig
 
     protected var mViewModel:VM?=null
     protected var mViewData:VD?=null
-    protected val mViewModelProvider by lazy { ViewModelProvider(this) }
+    //通过ViewModelProvider可以获取同一个Activity下共享的ViewModel
+    protected var mViewModelProvider:ViewModelProvider?=null
     var mContext: Context? = null
 
     private val mImmersionProxy by lazy { ImmersionProxy(this) }
@@ -114,7 +115,8 @@ import me.soushin.tinmvvm.config.DataBindingConfig
             }
             //如果当前页面的vmClass为空就不会去实例化mViewModel
             vmClass?.let {
-                mViewModel = mViewModelProvider[it as Class<VM>]
+                mViewModelProvider = ViewModelProvider(requireActivity())
+                mViewModel = mViewModelProvider!![it as Class<VM>]
                 lifecycle.addObserver(mViewModel!!)
                 //如果当前页面设置的variableId为空就不会去绑定ViewModel
                 variableId?.let {vid->

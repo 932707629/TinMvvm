@@ -2,9 +2,11 @@ package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
 import android.view.View
+import com.blankj.ALog
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.databinding.FragmentDataBindingLayoutBinding
+import com.soushin.tinmvvm.mvvm.viewmodel.ComponentViewModel
 import com.soushin.tinmvvm.mvvm.viewmodel.DataBindingLayoutViewModel
 import me.soushin.tinmvvm.base.DataBindingFragment
 import me.soushin.tinmvvm.config.DataBindingConfig
@@ -35,6 +37,9 @@ class DataBindingLayoutFragment :
     }
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
+        val componentVM = mViewModelProvider?.get(ComponentViewModel::class.java)
+        ALog.i("打印取到的上个页面的数据",componentVM?.viewEvent?.value);
+
 
     }
 

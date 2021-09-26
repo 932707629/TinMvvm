@@ -18,7 +18,7 @@ import me.soushin.tinmvvm.base.BaseViewModel
 /**
  * ================================================
  * Description:
- * @see(https://www.jianshu.com/p/16aa5eaa60d7)
+ *
  * <p>
  * Created by TinMvvmTemplate on 03/06/2020 14:42
  * ================================================
