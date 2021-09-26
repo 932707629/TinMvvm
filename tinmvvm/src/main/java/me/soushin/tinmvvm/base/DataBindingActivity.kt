@@ -20,7 +20,8 @@ abstract class DataBindingActivity<VD : ViewDataBinding,
 
     protected var mViewModel:VM? = null
     protected var mViewData:VD? = null
-    protected val mViewModelProvider by lazy { ViewModelProvider(this) }
+    //通过ViewModelProvider可以获取同一个Activity下共享的ViewModel
+    protected var mViewModelProvider:ViewModelProvider?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,13 +40,14 @@ abstract class DataBindingActivity<VD : ViewDataBinding,
      * 用DataBindingUtil.bind需要用反射 用DataBindingUtil.setContentView需要上层指定一个layoutId
      */
     open fun dataViewBinding() {
+        val activity = this
         getDataBindingConfig()?.apply {
             //如果当前页面的layoutId为空就不会去调用setContentView()实例化mViewData
             layoutId?.let {
                 mViewData = if (dataBindingComponent!=null && dataBindingComponent is DataBindingComponent){
-                    DataBindingUtil.setContentView(this@DataBindingActivity, it,dataBindingComponent as DataBindingComponent)
+                    DataBindingUtil.setContentView(activity, it,dataBindingComponent as DataBindingComponent)
                 }else {
-                    DataBindingUtil.setContentView(this@DataBindingActivity, it)
+                    DataBindingUtil.setContentView(activity, it)
                 }
                 bindingParams.forEach {entry->
                     mViewData!!.setVariable(entry.key,entry.value)
@@ -53,7 +55,8 @@ abstract class DataBindingActivity<VD : ViewDataBinding,
             }
             //如果当前页面的vmClass为空就不会去实例化mViewModel
             vmClass?.let {
-                mViewModel = mViewModelProvider[it as Class<VM>]
+                mViewModelProvider = ViewModelProvider(activity)
+                mViewModel = mViewModelProvider!![it as Class<VM>]
                 lifecycle.addObserver(mViewModel!!)
                 //如果当前页面设置的variableId为空就不会去绑定ViewModel
                 variableId?.let {vid->
