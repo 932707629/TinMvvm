@@ -19,10 +19,6 @@ import me.soushin.tinmvvm.config.DataBindingConfig
 
 class ThreadPoolFragment : DataBindingFragment<FragmentThreadPoolBinding, ThreadPoolViewModel>() {
 
-    override fun initView(view: View, savedInstanceState: Bundle?) {
-
-    }
-
     //配置当前页面的内容 各项参数都可为空
     //BR.xxxxViewModel是kotlin-kapt插件默认生成的 对应xml文件里的xxxxViewModel
     override fun getDataBindingConfig(): DataBindingConfig? {
@@ -35,5 +31,10 @@ class ThreadPoolFragment : DataBindingFragment<FragmentThreadPoolBinding, Thread
             return ThreadPoolFragment()
         }
     }
+
+    override fun initView(view: View, savedInstanceState: Bundle?) {
+
+    }
+
 
 }

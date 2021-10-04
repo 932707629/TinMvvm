@@ -16,11 +16,12 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_recycler"
-            app:spanCount="4"
-            tools:listitem="@layout/item_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="4"
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:listitem="@layout/item_image" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

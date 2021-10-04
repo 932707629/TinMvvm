@@ -36,39 +36,35 @@ class PagingFragment : DataBindingFragment<FragmentPagingBinding, PagingViewMode
     }
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
-        val adapter = PagingSimpleAdapter()
-        adapter.addLoadStateListener { //加载状态监听
-            ALog.i("加载状态监听",it.mediator,it.prepend,it.refresh,it.source,Thread.currentThread().name);
-            if (mViewData?.srlRefresh?.isRefreshing == true){
-                mViewData?.srlRefresh?.isRefreshing=false
-            }
-            when (it.refresh) {
-                is LoadState.NotLoading -> {
-                    showToasty("NotLoading")
-                }
-                is LoadState.Loading -> {
-                    showToasty("Loading")
-                }
-                is LoadState.Error -> {
-                    showToasty("Error")
-                }
-            }
-        }
+
         mViewData?.apply {
+            val adapter = PagingSimpleAdapter()
+            adapter.addLoadStateListener { //加载状态监听
+                ALog.i("加载状态监听",it.mediator,it.prepend,it.refresh,it.source,Thread.currentThread().name);
+                if (mViewData?.srlRefresh?.isRefreshing == true){
+                    mViewData?.srlRefresh?.isRefreshing=false
+                }
+                when (it.refresh) {
+                    is LoadState.NotLoading -> {
+                        showToasty("NotLoading")
+                    }
+                    is LoadState.Loading -> {
+                        showToasty("Loading")
+                    }
+                    is LoadState.Error -> {
+                        showToasty("Error")
+                    }
+                }
+            }
             srlRefresh.setOnRefreshListener { adapter.refresh() }
             rvPaging.adapter = adapter
+
+            mViewModel?.apply {
+                getData().observe(viewLifecycleOwner,{
+                    adapter.submitData(lifecycle,it)
+                })
+            }
         }
-
-        mViewModel?.getData()?.observe(viewLifecycleOwner,{
-            adapter.submitData(lifecycle,it)
-        })
-       /*lifecycleScope.launch {
-           mViewModel?.getData()?.collectLatest {
-               adapter.submitData(it)
-           }
-       }*/
-
-
     }
 
 }

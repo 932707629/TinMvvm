@@ -121,6 +121,7 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
 
 - 使用Navigation时，当LiveData包含跳转指令，fragment回退的时候会执行这个指令，导致页面返回上级页面之后，又重新回到当前页面
 - 使用协程时如果加载隐藏网络请求进度，自定义回调处理器
+- LiveData存在数据倒灌问题，跟EventBus黏性事件相似
 
 ### 我的主页 ###
 

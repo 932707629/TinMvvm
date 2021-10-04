@@ -25,6 +25,14 @@ class TabLayoutViewpager2Fragment :
             return TabLayoutViewpager2Fragment()
         }
     }
+
+    //配置当前页面的内容 各项参数都可为空
+    //BR.xxxxViewModel是kotlin-kapt插件默认生成的 对应xml文件里的xxxxViewModel
+    override fun getDataBindingConfig(): DataBindingConfig? {
+        return DataBindingConfig(layoutId = R.layout.fragment_tablayout_viewpager2,variableId = BR.TablayoutViewpager2ViewModel,
+            vmClass = TabLayoutViewpager2ViewModel::class.java)
+    }
+
     override fun initView(view: View, savedInstanceState: Bundle?) {
         mViewData?.apply {
             val fragments = mutableListOf<Fragment>(RecyclerFragment.newInstance(),
@@ -36,12 +44,6 @@ class TabLayoutViewpager2Fragment :
         }
     }
 
-    //配置当前页面的内容 各项参数都可为空
-    //BR.xxxxViewModel是kotlin-kapt插件默认生成的 对应xml文件里的xxxxViewModel
-    override fun getDataBindingConfig(): DataBindingConfig? {
-        return DataBindingConfig(layoutId = R.layout.fragment_tablayout_viewpager2,variableId = BR.TablayoutViewpager2ViewModel,
-            vmClass = TabLayoutViewpager2ViewModel::class.java)
-    }
 }
 
 
