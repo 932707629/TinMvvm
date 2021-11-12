@@ -2,14 +2,11 @@ package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewManager
-import androidx.lifecycle.get
 import androidx.navigation.fragment.findNavController
 import com.blankj.ALog
 import com.chad.library.adapter.base.BaseBinderAdapter
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
-import com.soushin.tinmvvm.app.getThis
 import com.soushin.tinmvvm.databinding.FragmentRecyclerBinding
 import com.soushin.tinmvvm.mvvm.adapter.itembinder.ImageItemBinder
 import com.soushin.tinmvvm.mvvm.adapter.itembinder.TextItemBinder
@@ -26,6 +23,13 @@ import me.soushin.tinmvvm.config.DataBindingConfig
  */
 
 class RecyclerFragment : DataBindingFragment<FragmentRecyclerBinding, RecyclerViewModel>() {
+
+
+    companion object {
+        fun newInstance(): RecyclerFragment {
+            return RecyclerFragment()
+        }
+    }
 
     //配置当前页面的内容 各项参数都可为空
     //BR.xxxxViewModel是kotlin-kapt插件默认生成的 对应xml文件里的xxxxViewModel
@@ -67,12 +71,6 @@ class RecyclerFragment : DataBindingFragment<FragmentRecyclerBinding, RecyclerVi
                     }
                 })
             }
-        }
-    }
-
-    companion object {
-        fun newInstance(): RecyclerFragment {
-            return RecyclerFragment()
         }
     }
 

@@ -3,13 +3,9 @@ package com.soushin.tinmvvm.mvvm.repository
 import com.soushin.tinmvvm.mvvm.repository.entity.CategoryEntity
 import io.reactivex.rxjava3.core.Observable
 import me.soushin.tinmvvm.base.BaseRepository
-import okhttp3.internal.wait
 import rxhttp.awaitResult
-import rxhttp.toList
-import rxhttp.toStr
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.param.toBaseResponse
-import java.lang.IllegalArgumentException
 
 /**
  * @author created by Soushin

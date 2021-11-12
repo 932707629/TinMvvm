@@ -2,7 +2,6 @@ package me.soushin.tinmvvm.base
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.blankj.ALog
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 import kotlinx.coroutines.CoroutineExceptionHandler

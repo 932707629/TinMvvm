@@ -2,6 +2,7 @@ package me.soushin.tinmvvm.config
 
 import android.app.Application
 import android.content.Context
+import androidx.fragment.app.FragmentManager
 import me.soushin.tinmvvm.listener.AppLifecycle
 import me.soushin.tinmvvm.listener.ConfigModule
 import me.soushin.tinmvvm.utils.ManifestParser
@@ -21,13 +22,14 @@ class AppDelegate//用反射, 将 AndroidManifest.xml 中带有 ConfigModule 标
     private var modules:MutableList<ConfigModule>?=null
     private val mAppLifecycles= mutableListOf<AppLifecycle>()
     private val mActivityLifecycle= mutableListOf<Application.ActivityLifecycleCallbacks>()
+    val mFragmentLifecycle = mutableListOf<FragmentManager.FragmentLifecycleCallbacks>()
 
     init {
-
         this.modules=ManifestParser(ctx).parse()
         modules?.forEach {
             it.injectActivityLifecycle(ctx,mActivityLifecycle)
             it.injectAppLifecycle(ctx,mAppLifecycles)
+            it.injectFragmentLifecycle(ctx,mFragmentLifecycle)
         }
     }
 
@@ -44,9 +46,6 @@ class AppDelegate//用反射, 将 AndroidManifest.xml 中带有 ConfigModule 标
         modules?.let {
             val globalConfig=getGlobalConfigModule(application,it)
             AppComponent(globalConfig)//这里不发推送了  发了里面也没啥东西
-            /*//只要有lifecyclerower的地方就可以获取功能组件
-            LiveEventBus.get(LiveDataTag.tag_globalConfig)
-                .post(AppComponent(globalConfig))*/
         }
         //注册框架外部, 开发者扩展的 Activity 生命周期逻辑
         //每个 ConfigModule 的实现类可以声明多个 Activity 的生命周期回调

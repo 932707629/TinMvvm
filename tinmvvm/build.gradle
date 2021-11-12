@@ -60,8 +60,6 @@ dependencies {
     api(deps.rxlife_rxjava3)
     api(deps.conscrypt)
     api(deps.okhttp)
-    api(deps.glide)
-    kapt(deps.glide_compiler)//配套glide使用
     api(deps.kotlinx_coroutines)
     api(deps.kotlinx_coroutines_android)
     api(deps.immersionbar)

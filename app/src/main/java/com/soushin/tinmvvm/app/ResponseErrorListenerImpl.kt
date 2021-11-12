@@ -37,17 +37,17 @@ class ResponseErrorListenerImpl : ResponseErrorListener {
     }
 
     private fun convertStatusCode(httpException: HttpStatusCodeException): String {
-        return  when {
-            TextUtils.equals(httpException.statusCode,"500") -> {
+        return when (httpException.statusCode) {
+            500 -> {
                 "服务器发生错误"
             }
-            TextUtils.equals(httpException.statusCode,"404") -> {
+            404 -> {
                 "请求地址不存在"
             }
-            TextUtils.equals(httpException.statusCode,"403") -> {
+            403 -> {
                 "请求被服务器拒绝"
             }
-            TextUtils.equals(httpException.statusCode,"307") -> {
+            307 -> {
                 "请求被重定向到其他页面"
             }
             else -> {

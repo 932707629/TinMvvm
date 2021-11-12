@@ -1,6 +1,5 @@
 package com.soushin.tinmvvm.mvvm.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -12,8 +11,6 @@ import com.blankj.ALog
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.app.AppData
-import com.soushin.tinmvvm.app.showToasty
-import com.soushin.tinmvvm.app.utils.toJson
 import com.soushin.tinmvvm.databinding.ActivityDemoBinding
 import com.soushin.tinmvvm.mvvm.ui.fragment.*
 import com.soushin.tinmvvm.mvvm.viewmodel.DemoViewModel

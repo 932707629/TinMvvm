@@ -1,4 +1,4 @@
-package me.soushin.tinmvvm.config;
+package com.soushin.tinmvvm.app.glide;
 
 import android.util.Log;
 

@@ -1,4 +1,4 @@
-package me.soushin.tinmvvm.config;
+package com.soushin.tinmvvm.app.glide;
 
 import com.bumptech.glide.load.Options;
 import com.bumptech.glide.load.model.GlideUrl;
@@ -30,7 +30,7 @@ public class OkHttpUrlLoader implements ModelLoader<GlideUrl, InputStream> {
   @Override
   public LoadData<InputStream> buildLoadData(GlideUrl model, int width, int height,
       Options options) {
-    return new LoadData<>(model, new OkHttpStreamFetcher(client, model));
+    return new LoadData(model, new OkHttpStreamFetcher(client, model));
   }
 
   /**

@@ -25,7 +25,7 @@ class AppManager private constructor(){
         }
     }
 
-    private val activitys by lazy { LinkedList<Activity>() }
+    private val activitys by lazy { mutableListOf<Activity>() }
 
     fun getActivityCount():Int{
         return activitys.size
@@ -53,7 +53,7 @@ class AppManager private constructor(){
             ALog.w("stack == null when getTopActivity()");
             return null
         }
-        return activitys.last
+        return activitys.last()
     }
 
     /**

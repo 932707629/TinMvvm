@@ -8,8 +8,6 @@ buildscript {
         maven { url 'https://maven.aliyun.com/repository/public/' }
         maven { url 'https://maven.aliyun.com/repository/google/' }
         maven { url 'https://maven.aliyun.com/repository/jcenter' }
-        google()
-        jcenter()
     }
     dependencies {
         //viewbinding对gradle版本有要求 最低3.6 低于此版本会导致部分功能不可用
@@ -25,12 +23,12 @@ buildscript {
 
 allprojects {
     repositories {
+        google()
         mavenCentral()
-        maven { url "https://www.jitpack.io" }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
         maven { url 'https://maven.aliyun.com/repository/public/' }
         maven { url 'https://maven.aliyun.com/repository/google/' }
-        maven { url 'https://maven.aliyun.com/repository/jcenter' }
-        google()
+        maven { url "https://www.jitpack.io" }
         jcenter()
     }
 }

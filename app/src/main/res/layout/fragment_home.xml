@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -24,6 +25,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_home"
             tools:itemCount="20"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:listitem="@layout/item_tab_component"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

@@ -3,7 +3,6 @@ package com.soushin.tinmvvm.mvvm.ui.fragment
 import android.Manifest
 import android.content.Intent
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.View
 import com.blankj.ALog
 import com.chad.library.adapter.base.BaseBinderAdapter
@@ -17,14 +16,10 @@ import com.soushin.tinmvvm.app.utils.PermissionUtil
 import com.soushin.tinmvvm.databinding.FragmentHomeBinding
 import com.soushin.tinmvvm.mvvm.adapter.itembinder.TabComponentItemBinder
 import com.soushin.tinmvvm.mvvm.viewmodel.HomeViewModel
+import com.soushin.tinmvvm.mvvm.viewmodel.WorkerViewModel
 import com.tbruyelle.rxpermissions3.RxPermissions
-import kotlinx.coroutines.flow.callbackFlow
 import me.soushin.tinmvvm.base.DataBindingFragment
 import me.soushin.tinmvvm.config.DataBindingConfig
-import me.soushin.tinmvvm.utils.AppManager
-import kotlin.contracts.contract
-import androidx.core.app.ActivityCompat.startActivityForResult
-import java.lang.Exception
 
 
 /**

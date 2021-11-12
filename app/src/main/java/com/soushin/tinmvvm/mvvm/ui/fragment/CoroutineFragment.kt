@@ -1,6 +1,5 @@
 package com.soushin.tinmvvm.mvvm.ui.fragment
 
-import android.app.Application
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
@@ -12,11 +11,11 @@ import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.databinding.FragmentCoroutineBinding
 import com.soushin.tinmvvm.mvvm.viewmodel.CoroutineViewModel
-import kotlinx.coroutines.*
-import me.soushin.tinmvvm.base.BaseApp
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import me.soushin.tinmvvm.base.DataBindingFragment
 import me.soushin.tinmvvm.config.DataBindingConfig
-import okhttp3.Dispatcher
 
 /**
  *

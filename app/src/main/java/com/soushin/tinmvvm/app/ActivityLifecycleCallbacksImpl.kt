@@ -14,16 +14,8 @@ import me.soushin.tinmvvm.base.DataBindingActivity
  */
 class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
 
-    private var fragmentLifecycleMap= hashMapOf<String, FragmentLifecycleCallbacksImpl>()
-
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
         ALog.i("onActivityCreated",activity.localClassName)
-        if (activity is DataBindingActivity<*, *> &&activity.useFragment()){//注册fragment回调监听
-            val fragmentLifecycleCallbacksImpl=
-                FragmentLifecycleCallbacksImpl()
-            fragmentLifecycleMap[activity.localClassName] = fragmentLifecycleCallbacksImpl
-            activity.supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentLifecycleCallbacksImpl,true)
-        }
     }
 
     override fun onActivityResumed(activity: Activity) {
@@ -48,12 +40,6 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
 
     override fun onActivityDestroyed(activity: Activity) {
 //        ALog.i("onActivityDestroyed",activity.localClassName)
-        if (activity is DataBindingActivity<*, *> &&activity.useFragment()){//注册fragment回调监听
-            fragmentLifecycleMap[activity.localClassName]?.let {
-                activity.supportFragmentManager.unregisterFragmentLifecycleCallbacks(it)
-                fragmentLifecycleMap.remove(activity.localClassName)
-            }
-        }
     }
 
 }

@@ -35,9 +35,6 @@ class MultiplexFragment : DataBindingFragment<FragmentMultiplexBinding, Multiple
             Glide.with(getThis())
                 .load("https://wx2.sinaimg.cn/mw690/002Po4pSly1grt79wku06j61jk0rskjl02.jpg").into(ivImage)
 //            这种用法当fragment不会有内存泄露 虽然fragment很多 但是每次都是用的RecyclerFragment.newInstance()
-            ALog.i("有多少个tab呢",strArray.size);
-//            val fragments = mutableListOf<Fragment>()
-//            strArray.forEach { fragments.add(RecyclerFragment.newInstance()) }
             viewPager2.adapter = object :FragmentStateAdapter(getThis()){
                 override fun getItemCount(): Int = strArray.size
 

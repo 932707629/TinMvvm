@@ -11,7 +11,7 @@ import me.soushin.tinmvvm.listener.AppLifecycle
  * @time 2020/7/15 12:46
  */
 open class BaseApp : Application() {
-    private var appLifecycle:AppLifecycle?=null
+    var appLifecycle:AppDelegate?=null
 
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)

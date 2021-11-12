@@ -8,11 +8,9 @@ import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.app.getThis
 import com.soushin.tinmvvm.databinding.ActivitySplashBinding
 import com.soushin.tinmvvm.mvvm.viewmodel.ComponentViewModel
-import com.soushin.tinmvvm.mvvm.viewmodel.MineViewModel
 import com.soushin.tinmvvm.mvvm.viewmodel.SplashViewModel
 import me.soushin.tinmvvm.base.DataBindingActivity
 import me.soushin.tinmvvm.config.DataBindingConfig
-import kotlin.math.min
 
 class SplashActivity : DataBindingActivity<ActivitySplashBinding, SplashViewModel>() {
 

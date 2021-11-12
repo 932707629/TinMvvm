@@ -1,7 +1,6 @@
 package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.MutableLiveData
 import com.baiyyy.communitypad.app.widget.SingleLiveEvent
 import com.soushin.tinmvvm.app.utils.DataUtils
 import com.soushin.tinmvvm.mvvm.repository.RecyclerRepository

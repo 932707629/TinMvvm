@@ -17,14 +17,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.soushin.tinmvvm.base.BaseApp
 import me.soushin.tinmvvm.base.BaseViewModel
-import android.provider.MediaStore
-
-import android.content.Intent
-import android.net.Uri
-import androidx.navigation.NavAction
-import androidx.navigation.NavDeepLink
-import androidx.navigation.NavDeepLinkRequest
-import me.soushin.tinmvvm.utils.AppManager
 
 
 class HomeViewModel(application: Application) :

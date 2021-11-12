@@ -2,6 +2,7 @@ package com.soushin.tinmvvm.app
 
 import android.app.Application
 import android.content.Context
+import androidx.fragment.app.FragmentManager
 import com.soushin.tinmvvm.BuildConfig
 import com.soushin.tinmvvm.app.network.Api
 import me.soushin.tinmvvm.config.GlobalConfigModule
@@ -47,11 +48,19 @@ class GlobalConfiguration :ConfigModule {
 //            .addInterceptor(new TokenInterceptor())
     }
 
-    override fun injectAppLifecycle(context: Context, lifecycles: MutableList<AppLifecycle>) {
+    override fun injectAppLifecycle(context: Context,
+                                    lifecycles: MutableList<AppLifecycle>) {
         lifecycles.add(AppLifecycleImpl())
     }
 
-    override fun injectActivityLifecycle(context: Context?, lifecycles: MutableList<Application.ActivityLifecycleCallbacks>) {
+    override fun injectActivityLifecycle(context: Context,
+                                         lifecycles: MutableList<Application.ActivityLifecycleCallbacks>) {
         lifecycles.add(ActivityLifecycleCallbacksImpl())
+    }
+
+    override fun injectFragmentLifecycle(context: Context,
+        lifecycles: MutableList<FragmentManager.FragmentLifecycleCallbacks>
+    ) {
+        lifecycles.add(FragmentLifecycleCallbacksImpl())
     }
 }

@@ -41,7 +41,7 @@ interface ConfigModule {
      * @param lifecycles [Activity] 的生命周期容器, 可向框架中添加多个 [Activity] 的生命周期类
      */
     fun injectActivityLifecycle(
-        context: Context?,
+        context: Context,
         lifecycles: MutableList<ActivityLifecycleCallbacks>
     )
 
@@ -50,11 +50,11 @@ interface ConfigModule {
      *
      * @param context    [Context]
      * @param lifecycles [Fragment] 的生命周期容器, 可向框架中添加多个 [Fragment] 的生命周期类
-
+     */
     fun injectFragmentLifecycle(
         context: Context,
         lifecycles: MutableList<FragmentManager.FragmentLifecycleCallbacks>
-    )*/
+    )
 
 
 }

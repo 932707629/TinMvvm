@@ -98,7 +98,7 @@ fun View.onDebounceClick(wait: Long = 200, block: ((View) -> Unit)) {
 val Throwable.code: Int
     get() {
         val errorCode = when (this) {
-            is HttpStatusCodeException -> this.statusCode //Http状态码异常
+            is HttpStatusCodeException -> "${this.statusCode}" //Http状态码异常
             is ParseException -> this.errorCode     //业务code异常
             else -> "-1"
         }

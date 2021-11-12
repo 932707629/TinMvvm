@@ -111,17 +111,8 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
 
 ### 新版功能预览:
 
-- 修复fragment+tablayout使用时会重复创建的问题
-- jitpack发布新版本
-- 修复HttpHandleCallBack添加生命周期造成的强转异常
-- 修复navigation导致fragment重复创建的问题```smooth-navigation```
 - 升级到Rxjava3，相应的RxPermissions版本升级到0.12，取消依赖RxErrorHandle(不支持RxJava3)依赖
-
-### 遇到的问题
-
-- 使用Navigation时，当LiveData包含跳转指令，fragment回退的时候会执行这个指令，导致页面返回上级页面之后，又重新回到当前页面
-- 使用协程时如果加载隐藏网络请求进度，自定义回调处理器
-- LiveData存在数据倒灌问题，跟EventBus黏性事件相似
+- 移除框架对Glide的依赖,由开发者自行觉得用哪个网络框架
 
 ### 我的主页 ###
 

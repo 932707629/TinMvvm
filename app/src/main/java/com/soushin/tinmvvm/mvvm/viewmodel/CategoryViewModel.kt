@@ -1,7 +1,10 @@
 package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.*
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.Navigation
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -9,15 +12,12 @@ import androidx.paging.liveData
 import com.blankj.ALog
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.app.AppData
-import com.soushin.tinmvvm.app.code
-import com.soushin.tinmvvm.app.msg
 import com.soushin.tinmvvm.mvvm.repository.CategoryRepository
 import com.soushin.tinmvvm.mvvm.repository.PagingRepository
 import com.soushin.tinmvvm.mvvm.repository.datasource.PagingDataSource
 import com.soushin.tinmvvm.mvvm.repository.entity.ViewTaskEvent
 import com.soushin.tinmvvm.mvvm.ui.fragment.CategoryFragmentDirections
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import me.soushin.tinmvvm.base.BaseViewModel
 import me.soushin.tinmvvm.utils.throttleClick
 
