@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Environment
 import android.view.View
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.Navigation
 import com.blankj.ALog
 import com.soushin.tinmvvm.R
@@ -25,7 +26,7 @@ class HomeViewModel(application: Application) :
     var viewEvent = MutableLiveData<ViewTaskEvent>()
 
     fun loadData(){
-        getCoroutineScope().launch {
+        viewModelScope.launch {
             withContext(Dispatchers.IO){//"WorkManager","Create Fragment","Coroutine","TabLayout、ViewPager2",
                 val list = mutableListOf<String>("Multiplex Layout",
                     "BaseRecyclerViewAdapter","RxPermissions","Thread Pool",
@@ -66,7 +67,7 @@ class HomeViewModel(application: Application) :
                 viewEvent.value = ViewTaskEvent(key = 2)
             }
             6->{
-                getCoroutineScope().launch {
+                viewModelScope.launch {
                     withContext(Dispatchers.IO){
                         ALog.i("getExternalStorageDirectory", Environment.getExternalStorageDirectory().absolutePath)
                         ALog.i("getExternalStoragePublicDirectory",

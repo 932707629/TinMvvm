@@ -112,7 +112,9 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
 ### 新版功能预览:
 
 - 升级到Rxjava3，相应的RxPermissions版本升级到0.12，取消依赖RxErrorHandle(不支持RxJava3)依赖
-- 移除框架对Glide的依赖,由开发者自行觉得用哪个网络框架
+- 移除框架对Glide的依赖,由开发者自行决定用哪个图片加载框架
+- ViewModel新增页面生命周期回调
+- Activity/Fragment/ViewModel中的协程事件自动取消(onDestroy)
 
 ### 我的主页 ###
 

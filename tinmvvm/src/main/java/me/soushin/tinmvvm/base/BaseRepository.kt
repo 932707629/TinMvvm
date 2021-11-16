@@ -10,7 +10,7 @@ open class BaseRepository {
     /**
      * 取消 这里可以做一些对象置空
      */
-    open fun onCleared(){
+    open fun onDestroy(){
 
     }
 

@@ -12,6 +12,7 @@ import okhttp3.OkHttpClient
 import rxhttp.wrapper.cookie.CookieStore
 import rxhttp.wrapper.ssl.HttpsUtils
 import java.io.File
+import java.net.Proxy
 import java.util.concurrent.TimeUnit
 
 /**

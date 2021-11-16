@@ -6,6 +6,9 @@ import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import me.soushin.tinmvvm.config.DataBindingConfig
 
 /**
@@ -32,6 +35,7 @@ abstract class DataBindingActivity<VD : ViewDataBinding,
     override fun onDestroy() {
         mViewData?.unbind()
         mViewData=null
+        lifecycleScope.cancel()//取消协程事件
         super.onDestroy()
     }
 
@@ -56,7 +60,7 @@ abstract class DataBindingActivity<VD : ViewDataBinding,
             //如果当前页面的vmClass为空就不会去实例化mViewModel
             vmClass?.let {
                 mViewModelProvider = ViewModelProvider(activity)
-                mViewModel = mViewModelProvider!![it as Class<VM>]
+                mViewModel = mViewModelProvider!![it] as VM
                 lifecycle.addObserver(mViewModel!!)
                 //如果当前页面设置的variableId为空就不会去绑定ViewModel
                 variableId?.let {vid->

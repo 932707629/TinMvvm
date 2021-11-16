@@ -8,7 +8,10 @@ import androidx.fragment.app.Fragment
 import com.google.gson.JsonSyntaxException
 import com.hjq.toast.ToastUtils
 import kotlinx.coroutines.TimeoutCancellationException
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import me.soushin.tinmvvm.base.DataBindingFragment
+import me.soushin.tinmvvm.rxerror.RxErrorHandler
 import rxhttp.wrapper.exception.HttpStatusCodeException
 import rxhttp.wrapper.exception.ParseException
 import java.net.ConnectException
@@ -90,6 +93,26 @@ fun View.onClick(wait: Long = 200, block: ((View) -> Unit)) {
 
 fun View.onDebounceClick(wait: Long = 200, block: ((View) -> Unit)) {
     setOnClickListener(debounceClick(wait, block))
+}
+
+
+/**
+ * 适用于awaitResult
+ */
+fun Result<*>.onFailure(rxErrorHandler: RxErrorHandler?):Result<*>{
+    return this.onFailure {
+        rxErrorHandler?.mHandlerFactory?.handleError(it)
+    }
+}
+
+
+/**
+ * 适用于flow
+ */
+fun Flow<*>.catch(rxErrorHandler: RxErrorHandler?):Flow<*>{
+    return this.catch {
+        rxErrorHandler?.mHandlerFactory?.handleError(it)
+    }
 }
 
 

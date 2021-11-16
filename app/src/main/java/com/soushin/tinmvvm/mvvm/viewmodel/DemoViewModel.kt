@@ -16,5 +16,4 @@ class DemoViewModel(application: Application) :
     BaseViewModel<DemoRepository>(application, DemoRepository()) {
 
 
-
 }

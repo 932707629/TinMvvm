@@ -11,8 +11,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.gyf.immersionbar.components.ImmersionOwner
 import com.gyf.immersionbar.components.ImmersionProxy
+import kotlinx.coroutines.cancel
 import me.soushin.tinmvvm.config.DataBindingConfig
 
 /**
@@ -85,6 +87,7 @@ import me.soushin.tinmvvm.config.DataBindingConfig
     override fun onDestroyView() {
         mViewData?.unbind()
         mViewData=null
+        lifecycleScope.cancel()//取消协程事件
         super.onDestroyView()
     }
 
@@ -116,7 +119,7 @@ import me.soushin.tinmvvm.config.DataBindingConfig
             //如果当前页面的vmClass为空就不会去实例化mViewModel
             vmClass?.let {
                 mViewModelProvider = ViewModelProvider(requireActivity())
-                mViewModel = mViewModelProvider!![it as Class<VM>]
+                mViewModel = mViewModelProvider!![it] as VM
                 lifecycle.addObserver(mViewModel!!)
                 //如果当前页面设置的variableId为空就不会去绑定ViewModel
                 variableId?.let {vid->

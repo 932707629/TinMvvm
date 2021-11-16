@@ -40,11 +40,19 @@ class AppComponent// TODO: 2020/7/15  这里拿到全局配置信息即可实现
         var globalConfig: GlobalConfigModule?=null
     }
 
+    /**
+     * 初始化异常监听器
+     */
     private fun initRxErrorHandler() {
         rxErrorHandler= RxErrorHandler.builder()
             .with(BaseApp.instance)
             .responseErrorListener(globalConfig?.errorResponseListener)
             .build()
+        //定义异常崩溃回调
+        Thread.setDefaultUncaughtExceptionHandler { _, e ->
+//            ALog.e("crash！！！",thread,e)
+            rxErrorHandler!!.mHandlerFactory?.handleError(e)
+        }
     }
 
 }

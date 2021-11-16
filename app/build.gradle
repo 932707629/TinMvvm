@@ -45,9 +45,9 @@ android {
     lintOptions {
         abortOnError false
     }
-    repositories {
-        flatDir {
-            dirs 'libs'
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
         }
     }
     android.applicationVariants.all { variant ->

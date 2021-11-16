@@ -31,7 +31,7 @@ class DataBindingLayoutFragment :
     override fun getDataBindingConfig(): DataBindingConfig? {
         return DataBindingConfig(
             layoutId = R.layout.fragment_data_binding_layout,
-            variableId = BR.DataBindingLayoutViewModel,
+            variableId = BR.dblVM,
             vmClass = DataBindingLayoutViewModel::class.java
         )
     }
@@ -39,7 +39,6 @@ class DataBindingLayoutFragment :
     override fun initView(view: View, savedInstanceState: Bundle?) {
         val componentVM = mViewModelProvider?.get(ComponentViewModel::class.java)
         ALog.i("打印取到的上个页面的数据",componentVM?.viewEvent?.value);
-
 
     }
 

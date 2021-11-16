@@ -6,7 +6,6 @@ import androidx.multidex.MultiDex
 import com.blankj.ALog
 import com.hjq.toast.ToastUtils
 import com.soushin.tinmvvm.BuildConfig
-import com.soushin.tinmvvm.app.utils.CrashHandler
 import com.tencent.mmkv.MMKV
 import leakcanary.AppWatcher
 import me.soushin.tinmvvm.config.AppComponent
@@ -28,8 +27,6 @@ class AppLifecycleImpl :AppLifecycle {
     override fun onCreate(application: Application) {
         ToastUtils.init(application)
         initMMkv(application)
-        //异常监听
-        CrashHandler.init()
         //初始化RxHttp
         RxHttpPlugins.init(AppComponent.globalConfig?.okHttpClient)
             .setDebug(BuildConfig.DEBUG)

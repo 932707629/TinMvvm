@@ -59,8 +59,8 @@ class CoroutineViewModel(application: Application) :
         viewModelScope.launch(Dispatchers.IO) {
 
         }
-
     }
+
 
     fun onClick(): View.OnClickListener {
         return View.OnClickListener {
@@ -100,12 +100,12 @@ class CoroutineViewModel(application: Application) :
                 }
                 R.id.btn_coroutine_crash->{
                     //协程内的异常捕获
-                    getCoroutineScope().launch(coroutineExceptionHandler){
+                    viewModelScope.launch(coroutineExceptionHandler){
                         throw RuntimeException("RuntimeException in nested coroutine")
                     }
                 }
                 R.id.btn_advanced_grammar->{
-                    getCoroutineScope().launch {
+                    viewModelScope.launch {
                         withContext(Dispatchers.IO){
                             val list = mutableListOf("1","2","3","2","3","2","3","2","3","4","5","6","7","8","9","0")
 

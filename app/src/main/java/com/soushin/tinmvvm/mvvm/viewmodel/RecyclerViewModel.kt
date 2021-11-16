@@ -1,11 +1,14 @@
 package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
+import androidx.lifecycle.viewModelScope
 import com.baiyyy.communitypad.app.widget.SingleLiveEvent
 import com.soushin.tinmvvm.app.utils.DataUtils
 import com.soushin.tinmvvm.mvvm.repository.RecyclerRepository
 import com.soushin.tinmvvm.mvvm.repository.entity.ViewTaskEvent
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.soushin.tinmvvm.base.BaseViewModel
@@ -22,7 +25,7 @@ class RecyclerViewModel(application: Application) :
     var viewEvent = SingleLiveEvent<ViewTaskEvent>()
 
     fun loadData() {
-        getCoroutineScope().launch {
+        viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 viewEvent.postValue(ViewTaskEvent(key = 0, value = DataUtils.getRecyclerData()))
             }

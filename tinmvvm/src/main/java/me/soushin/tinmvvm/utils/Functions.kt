@@ -1,60 +1,6 @@
 package me.soushin.tinmvvm.utils
 
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.ViewDataBinding
-import java.lang.reflect.ParameterizedType
-
-@JvmName("inflateWithGeneric")
-fun <VD : ViewDataBinding> Any.inflateBindingWithGeneric(layoutInflater: LayoutInflater): VD =
-    withGenericBindingClass(this) { clazz ->
-        clazz.getMethod("inflate", LayoutInflater::class.java).invoke(null, layoutInflater) as VD
-    }
-
-@JvmName("inflateWithGeneric")
-fun <VD : ViewDataBinding> Any.inflateBindingWithGeneric(layoutInflater: LayoutInflater, parent: ViewGroup?, attachToParent: Boolean): VD =
-    withGenericBindingClass(this) { clazz ->
-        clazz.getMethod("inflate", LayoutInflater::class.java, ViewGroup::class.java, Boolean::class.java)
-            .invoke(null, layoutInflater, parent, attachToParent) as VD
-    }
-
-@JvmName("inflateWithGeneric")
-fun <VD : ViewDataBinding> Any.inflateBindingWithGeneric(parent: ViewGroup): VD =
-    inflateBindingWithGeneric(LayoutInflater.from(parent.context), parent, false)
-
-fun <VD : ViewDataBinding> Any.bindViewWithGeneric(view: View): VD =
-    withGenericBindingClass(this) { clazz ->
-        clazz.getMethod("bind", LayoutInflater::class.java).invoke(null, view) as VD
-    }
-
-private fun <VD : ViewDataBinding> withGenericBindingClass(any: Any, block: (Class<VD>) -> VD): VD {
-    any.allParameterizedType.forEach { parameterizedType ->
-        parameterizedType.actualTypeArguments.forEach {
-            try {
-                return block.invoke(it as Class<VD>)
-            } catch (e: NoSuchMethodException) {
-            }
-        }
-    }
-    throw IllegalArgumentException("There is no generic of ViewBinding.")
-}
-
-private val Any.allParameterizedType: List<ParameterizedType>
-    get() {
-        val genericParameterizedType = mutableListOf<ParameterizedType>()
-        var genericSuperclass = javaClass.genericSuperclass
-        var superclass = javaClass.superclass
-        while (superclass != null) {
-            if (genericSuperclass is ParameterizedType) {
-                genericParameterizedType.add(genericSuperclass)
-            }
-            genericSuperclass = superclass.genericSuperclass
-            superclass = superclass.superclass
-        }
-        return genericParameterizedType
-    }
-
 
 fun throttleClick(wait: Long = 1000, block: ((View) -> Unit)): View.OnClickListener {
     return View.OnClickListener { v ->
