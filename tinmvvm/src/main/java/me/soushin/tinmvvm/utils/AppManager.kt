@@ -70,15 +70,15 @@ class AppManager private constructor(){
      */
     var currentActivity:Activity?=null
 
-
     fun go(clazz: Class<*>,finish:Boolean=false,newTask:Boolean=false){
         val intent=Intent(getTopActivity(),clazz)
         if (newTask){
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         }
-        getTopActivity()?.startActivity(intent)
+        val topActivity = getTopActivity()
+        topActivity?.startActivity(intent)
         if (finish){
-            getTopActivity()?.finish()
+            topActivity?.finish()
         }
     }
 
