@@ -6,5 +6,5 @@
 .externalNativeBuild
 .cxx
 /.gradle/
-/.idea/
 /gradle/
+/.idea/
