@@ -17,7 +17,7 @@ allprojects {
 ```
 
 ### 说在前面 ###
-虽然已经在项目中添加了比较详细的代码注释，但是肯定还有很多需要注意的地方没有解释清楚，希望大家在使用的过程中如果发现了什么问题，及时提出来，大家共同解决.
+虽然已经在项目中添加了比较详细的代码注释，但是肯定还有很多需要注意的地方没有解释清楚，希望大家在使用的过程中如果发现了什么问题，及时提issue，大家共同解决.
 
 ### 我们的优势 ###
 TinMvvm是以谷歌DataBinding+LiveData+ViewModel+Navigation框架为基础，整合Rxjava2、ViewBinding、okhttp-RxHttp、Liveeventbus等流行模块，加上各种原生控件，
@@ -112,7 +112,7 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
 ### 新版功能预览:
 
 - 升级到Rxjava3，相应的RxPermissions版本升级到0.12，取消依赖RxErrorHandle(不支持RxJava3)依赖
-- 移除框架对Glide的依赖,由开发者自行决定用哪个图片加载框架
+- 移除框架对Glide的依赖,由开发者自行决定用哪个图片加载框架(同时Glide与网络请求框架使用Okhttp3同一实例也取消掉了)
 - ViewModel新增页面生命周期回调
 - Activity/Fragment/ViewModel中的协程事件自动取消(onDestroy)
 

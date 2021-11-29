@@ -53,6 +53,7 @@ abstract class DataBindingActivity<VD : ViewDataBinding,
                 }else {
                     DataBindingUtil.setContentView(activity, it)
                 }
+                mViewData!!.lifecycleOwner = this@DataBindingActivity
                 bindingParams.forEach {entry->
                     mViewData!!.setVariable(entry.key,entry.value)
                 }
