@@ -72,6 +72,13 @@ class RecyclerFragment : DataBindingFragment<FragmentRecyclerBinding, RecyclerVi
                 })
             }
         }
+
+        ALog.i("看一下我的viewModel实例",mViewModel);
+
+    }
+
+    override fun sharedViewModel(): Boolean {
+        return true
     }
 
 }
