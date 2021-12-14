@@ -108,13 +108,12 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
 - 结合NavigationUI和BottomNavigationView使用有异常，fragment之间相互重叠，而且每次切换还会重新初始化fragment
   答：Navigation 的官方使用方式是每次显示一个Fragment都会重新去创建页面去显示(跳转一个新页面或者回退到上一页面)，
   例如返回页面的状态恢复，Jetpack提供了一系列的状态保存方案（Navigation2.4.0-alpha版本对BottomNavigationView状态保存也提供了支持）。
+  
 
-### 新版功能预览:
+### 新版功能:
 
-- 升级到Rxjava3，相应的RxPermissions版本升级到0.12，取消依赖RxErrorHandle(不支持RxJava3)依赖
-- 移除框架对Glide的依赖,由开发者自行决定用哪个图片加载框架(同时Glide与网络请求框架使用Okhttp3同一实例也取消掉了)
-- ViewModel新增页面生命周期回调
-- Activity/Fragment/ViewModel中的协程事件自动取消(onDestroy)
+- 解决直接在DataBindingActivity.initView()调用mViewModel.getLifeCycleOwner()出现为空的情况,此时lifecycle还没有被赋值
+- 通过配置Activity/Fragment的sharedViewModel()可以决定该页面的ViewModel是否可被其他页面复用，默认可复用
 
 ### 我的主页 ###
 
@@ -126,4 +125,8 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
 
 - [Jetpack 易错分享：还在使用 Fragment 作为 LifecycleOwner？](https://mp.weixin.qq.com/s/_2YSV_JsjDJ7CuHJngMbqQ)
 - [RxHttp结合协程使用详解](https://juejin.cn/post/6844904100090347528#heading-2)
+
+
+
+
 

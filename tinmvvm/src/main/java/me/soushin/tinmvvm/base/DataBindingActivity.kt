@@ -8,8 +8,9 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
+import me.soushin.tinmvvm.config.AppComponent
 import me.soushin.tinmvvm.config.DataBindingConfig
+import me.soushin.tinmvvm.custom.SharedViewModelStore
 
 /**
  * activity基类
@@ -60,12 +61,16 @@ abstract class DataBindingActivity<VD : ViewDataBinding,
             }
             //如果当前页面的vmClass为空就不会去实例化mViewModel
             vmClass?.let {
-                mViewModelProvider = ViewModelProvider(activity)
+                mViewModelProvider = if (sharedViewModel()) ViewModelProvider(AppComponent.sharedViewModelStore,defaultViewModelProviderFactory) else ViewModelProvider(activity)
                 mViewModel = mViewModelProvider!![it] as VM
                 lifecycle.addObserver(mViewModel!!)
                 //如果当前页面设置的variableId为空就不会去绑定ViewModel
                 variableId?.let {vid->
                     mViewData?.setVariable(vid,mViewModel)
+                }
+                //为防止直接在DataBindingActivity.initView()调用时出现为空的情况
+                if (mViewModel!!.lifecycle == null){
+                    mViewModel!!.lifecycle = this@DataBindingActivity
                 }
             }
         }
@@ -80,6 +85,15 @@ abstract class DataBindingActivity<VD : ViewDataBinding,
      * 可以在这里做一些baseFragment的操作
      */
     open fun useFragment():Boolean{
+        return true
+    }
+
+    /**
+     * 开启ViewModel共享数据
+     * true mViewModel实例将于其他Activity、Fragment共享（包括VM中创建的实例）
+     * false mViewModel实例不会与其他页面共享
+     */
+    open fun sharedViewModel():Boolean{
         return true
     }
 

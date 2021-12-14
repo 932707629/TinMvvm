@@ -109,12 +109,11 @@ fun Result<*>.onFailure(rxErrorHandler: RxErrorHandler?):Result<*>{
 /**
  * 适用于flow
  */
-fun Flow<*>.catch(rxErrorHandler: RxErrorHandler?):Flow<*>{
+fun <T> Flow<T>.catch(rxErrorHandler: RxErrorHandler?): Flow<T> {
     return this.catch {
         rxErrorHandler?.mHandlerFactory?.handleError(it)
     }
 }
-
 
 ///在异常回调中便可拿到code及msg字段，需要注意的是，
 // it.code及it.msg是我为Throwable类扩展的两个属性

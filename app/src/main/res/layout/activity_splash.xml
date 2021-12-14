@@ -4,8 +4,8 @@
     <data>
 
         <variable
-            name="SplashViewModel"
-            type="com.soushin.tinmvvm.mvvm.viewmodel.SplashViewModel" />
+            name="ComponentViewModel"
+            type="com.soushin.tinmvvm.mvvm.viewmodel.ComponentViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

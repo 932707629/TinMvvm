@@ -48,7 +48,7 @@ class CategoryFragment : DataBindingFragment<FragmentCategoryBinding, CategoryVi
 
         mViewModel?.apply {
             getData().observe(viewLifecycleOwner,{
-                adapter.submitData(lifecycle,it)
+                adapter.submitData(viewLifecycleOwner.lifecycle,it)
             })
         }
 

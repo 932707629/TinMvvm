@@ -12,14 +12,14 @@ import com.soushin.tinmvvm.mvvm.viewmodel.SplashViewModel
 import me.soushin.tinmvvm.base.DataBindingActivity
 import me.soushin.tinmvvm.config.DataBindingConfig
 
-class SplashActivity : DataBindingActivity<ActivitySplashBinding, SplashViewModel>() {
+class SplashActivity : DataBindingActivity<ActivitySplashBinding, ComponentViewModel>() {
 
     //配置当前页面的内容 各项参数都可为空
     //BR.xxxxViewModel是kotlin-kapt插件默认生成的 对应xml文件里的xxxxViewModel
     override fun getDataBindingConfig(): DataBindingConfig? {
         return DataBindingConfig(
-            layoutId = R.layout.activity_splash, variableId = BR.SplashViewModel,
-            vmClass = SplashViewModel::class.java
+            layoutId = R.layout.activity_splash, variableId = BR.ComponentViewModel,
+            vmClass = ComponentViewModel::class.java
         )
     }
 
@@ -31,8 +31,7 @@ class SplashActivity : DataBindingActivity<ActivitySplashBinding, SplashViewMode
         }
 
         val componentVM = mViewModelProvider?.get(ComponentViewModel::class.java)
-        ALog.i("打印取到的上个页面的数据",componentVM?.viewEvent?.value);
-
+        ALog.i("打印取到的上个页面的数据",componentVM?.viewEvent?.value,mViewModel?.viewEvent?.value);
     }
 
 }

@@ -1,8 +1,10 @@
 package me.soushin.tinmvvm.config
 
 import android.app.Application
+import androidx.lifecycle.ViewModelStoreOwner
 import com.blankj.ALog
 import me.soushin.tinmvvm.base.BaseApp
+import me.soushin.tinmvvm.custom.SharedViewModelStore
 import me.soushin.tinmvvm.rxerror.RxErrorHandler
 
 /**
@@ -38,6 +40,7 @@ class AppComponent// TODO: 2020/7/15  这里拿到全局配置信息即可实现
     companion object {
         var rxErrorHandler: RxErrorHandler?=null
         var globalConfig: GlobalConfigModule?=null
+        var sharedViewModelStore :ViewModelStoreOwner = SharedViewModelStore()
     }
 
     /**

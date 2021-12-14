@@ -24,7 +24,7 @@ open class BaseViewModel<R: BaseRepository>(application: Application,val mReposi
 
     protected var mCompositeDisposable : CompositeDisposable ?= null
     //生命周期
-    protected var lifecycle:LifecycleOwner?=null
+    var lifecycle:LifecycleOwner?=null
 
     /**
      *协程异常处理
@@ -108,6 +108,8 @@ open class BaseViewModel<R: BaseRepository>(application: Application,val mReposi
     open fun removeDispose(disposable: Disposable){
         mCompositeDisposable?.remove(disposable)
     }
+
+
 
 
 }

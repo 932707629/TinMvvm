@@ -61,7 +61,7 @@ class PagingFragment : DataBindingFragment<FragmentPagingBinding, PagingViewMode
 
             mViewModel?.apply {
                 getData().observe(viewLifecycleOwner,{
-                    adapter.submitData(lifecycle,it)
+                    adapter.submitData(viewLifecycleOwner.lifecycle,it)
                 })
             }
         }

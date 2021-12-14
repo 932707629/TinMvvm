@@ -15,7 +15,9 @@ import androidx.lifecycle.lifecycleScope
 import com.gyf.immersionbar.components.ImmersionOwner
 import com.gyf.immersionbar.components.ImmersionProxy
 import kotlinx.coroutines.cancel
+import me.soushin.tinmvvm.config.AppComponent
 import me.soushin.tinmvvm.config.DataBindingConfig
+import me.soushin.tinmvvm.custom.SharedViewModelStore
 
 /**
  * fragment基类封装
@@ -118,7 +120,7 @@ import me.soushin.tinmvvm.config.DataBindingConfig
             }
             //如果当前页面的vmClass为空就不会去实例化mViewModel
             vmClass?.let {
-                mViewModelProvider = ViewModelProvider(requireActivity())
+                mViewModelProvider = if (sharedViewModel()) ViewModelProvider(AppComponent.sharedViewModelStore, defaultViewModelProviderFactory) else ViewModelProvider(this@DataBindingFragment)
                 mViewModel = mViewModelProvider!![it] as VM
                 lifecycle.addObserver(mViewModel!!)
                 //如果当前页面设置的variableId为空就不会去绑定ViewModel
@@ -149,5 +151,13 @@ import me.soushin.tinmvvm.config.DataBindingConfig
     //状态栏设置
     override fun initImmersionBar() {}
 
+    /**
+     * 开启ViewModel共享数据
+     * true mViewModel实例将于其他Activity、Fragment共享（包括VM中创建的实例）
+     * false mViewModel实例不会与其他页面共享
+     */
+    open fun sharedViewModel():Boolean{
+        return true
+    }
 
 }
