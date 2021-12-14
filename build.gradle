@@ -5,6 +5,7 @@ buildscript {
     ext.navVersion='2.3.5'
     repositories {
         maven { url "https://www.jitpack.io" }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         maven { url 'https://maven.aliyun.com/repository/public/' }
         maven { url 'https://maven.aliyun.com/repository/google/' }
         maven { url 'https://maven.aliyun.com/repository/jcenter' }
@@ -15,20 +16,18 @@ buildscript {
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navVersion"
-        /*classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
-        //kotlin生成javadoc
-        classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.18"*/
     }
 }
 
 allprojects {
     repositories {
+        maven { url "https://www.jitpack.io" }
         google()
         mavenCentral()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         maven { url 'https://maven.aliyun.com/repository/jcenter' }
         maven { url 'https://maven.aliyun.com/repository/public/' }
         maven { url 'https://maven.aliyun.com/repository/google/' }
-        maven { url "https://www.jitpack.io" }
     }
 }
 

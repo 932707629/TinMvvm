@@ -5,9 +5,19 @@
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/StudioProjects/TinMvvm/app/src/main/res/layout/activity_demo.xml" value="0.36614583333333334" />
+        <entry key="..\:/StudioProjects/TinMvvm/app/src/main/res/layout/activity_splash.xml" value="0.36614583333333334" />
+        <entry key="..\:/StudioProjects/TinMvvm/app/src/main/res/layout/fragment_data_binding_layout.xml" value="0.33" />
+        <entry key="..\:/StudioProjects/TinMvvm/app/src/main/res/layout/fragment_worker.xml" value="0.36614583333333334" />
+      </map>
+    </option>
+  </component>
   <component name="JavadocGenerationManager">
-    <option name="OUTPUT_DIRECTORY" value="D:/BaiduYunDownload" />
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../../BaiduYunDownload" />
     <option name="OTHER_OPTIONS" value="-encoding UTF-8 -charset UTF-8" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>
