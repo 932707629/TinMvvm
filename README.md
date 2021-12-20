@@ -112,8 +112,7 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
 
 ### 新版功能:
 
-- 解决直接在DataBindingActivity.initView()调用mViewModel.getLifeCycleOwner()出现为空的情况,此时lifecycle还没有被赋值
-- 通过配置Activity/Fragment的sharedViewModel()可以决定该页面的ViewModel是否可被其他页面复用，默认可复用
+- 解决Fragment复用会造成ViewModel的lifecycle为空的情况
 
 ### 我的主页 ###
 
@@ -127,6 +126,12 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
 - [RxHttp结合协程使用详解](https://juejin.cn/post/6844904100090347528#heading-2)
 
 
+### 历史升级记录
+
+#### 1.3.6
+
+- 解决直接在DataBindingActivity.initView()调用mViewModel.getLifeCycleOwner()出现为空的情况,此时lifecycle还没有被赋值
+- 通过配置Activity/Fragment的sharedViewModel()可以决定该页面的ViewModel是否可被其他页面复用，默认可复用
 
 
 

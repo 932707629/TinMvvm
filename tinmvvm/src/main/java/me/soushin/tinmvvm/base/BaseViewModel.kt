@@ -90,6 +90,7 @@ open class BaseViewModel<R: BaseRepository>(application: Application,val mReposi
      * 注意使用的时机
      * 当ViewModel复用的时候，
      * lifecycle会出现为空的情况(中间会重复onCreate()、onDestroy()导致lifecycle置空)
+     * 目前已经在DataBindingActivity/DataBindingFragment创建ViewModel时做了赋值处理
      */
     open fun getLifeCycleOwner():LifecycleOwner{
         return lifecycle!!
