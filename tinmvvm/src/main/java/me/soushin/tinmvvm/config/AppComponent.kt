@@ -3,6 +3,7 @@ package me.soushin.tinmvvm.config
 import android.app.Application
 import androidx.lifecycle.ViewModelStoreOwner
 import com.blankj.ALog
+import io.reactivex.rxjava3.plugins.RxJavaPlugins
 import me.soushin.tinmvvm.base.BaseApp
 import me.soushin.tinmvvm.custom.SharedViewModelStore
 import me.soushin.tinmvvm.rxerror.RxErrorHandler
@@ -54,7 +55,11 @@ class AppComponent// TODO: 2020/7/15  这里拿到全局配置信息即可实现
         //定义异常崩溃回调
         Thread.setDefaultUncaughtExceptionHandler { _, e ->
 //            ALog.e("crash！！！",thread,e)
-            rxErrorHandler!!.mHandlerFactory?.handleError(e)
+            rxErrorHandler?.mHandlerFactory?.handleError(e)
+        }
+        ///监听RxJava回调处理
+        RxJavaPlugins.setErrorHandler {
+            rxErrorHandler?.mHandlerFactory?.handleError(it)
         }
     }
 

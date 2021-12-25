@@ -8,8 +8,8 @@ ext {
     versionCode = 1_100_000
     versionName = '1.1.0'
 
-    tinmvvmVersionCode = 1_03_06
-    tinmvvmVersionName = '1.3.6'
+    tinmvvmVersionCode = 1_03_07
+    tinmvvmVersionName = '1.3.7'
 
 //    rxjavaName = 'rxjava2'
     rxjavaName = 'rxjava3'

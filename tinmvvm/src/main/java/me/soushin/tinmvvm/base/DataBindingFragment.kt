@@ -127,6 +127,10 @@ import me.soushin.tinmvvm.custom.SharedViewModelStore
                 variableId?.let {vid->
                     vd?.setVariable(vid,mViewModel)
                 }
+                //为防止直接在DataBindingFragment.initView()调用时出现为空的情况
+                if (mViewModel!!.lifecycle == null){
+                    mViewModel!!.lifecycle = this@DataBindingFragment
+                }
             }
         }
         return vd
