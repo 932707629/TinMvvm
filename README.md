@@ -112,8 +112,6 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
 
 ### 新版功能:
 
-- 解决Fragment复用会造成ViewModel的lifecycle为空的情况
-- 优化Rxjava异常回调处理，统一回调到ResponseErrorListener
 
 ### 我的主页 ###
 
@@ -128,6 +126,11 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
 
 
 ### 历史升级记录
+
+#### 1.3.7
+
+- 解决Fragment复用会造成ViewModel的lifecycle为空的情况
+- 优化Rxjava异常回调处理，统一回调到ResponseErrorListener
 
 #### 1.3.6
 
