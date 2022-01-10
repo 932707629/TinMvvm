@@ -30,7 +30,7 @@ class HomeViewModel(application: Application) :
             withContext(Dispatchers.IO){//"WorkManager","Create Fragment","Coroutine","TabLayout、ViewPager2",
                 val list = mutableListOf<String>("Multiplex Layout",
                     "BaseRecyclerViewAdapter","RxPermissions","Thread Pool",
-                    "App Crash","Base Service","File Read Write")
+                    "App Crash","Base Service","File Read Write","Motion Layout")
                 viewEvent.postValue(ViewTaskEvent(key = 0,value = list))
             }
         }
@@ -103,6 +103,9 @@ class HomeViewModel(application: Application) :
                         }
                     }
                 }
+            }
+            7 -> {
+                navController.navigate(HomeFragmentDirections.actionHomeFragmentToMotionLayoutFragment(),AppData.get().queryNavOptions())
             }
         }
     }

@@ -1,0 +1,38 @@
+package com.soushin.tinmvvm.mvvm.ui.fragment
+
+import android.os.Bundle
+import android.view.View
+import com.soushin.tinmvvm.BR
+import com.soushin.tinmvvm.R
+import com.soushin.tinmvvm.databinding.FragmentMotionLayoutBinding
+import com.soushin.tinmvvm.mvvm.viewmodel.MotionLayoutViewModel
+import me.soushin.tinmvvm.base.DataBindingFragment
+import me.soushin.tinmvvm.config.DataBindingConfig
+
+/**
+ * MotionLayout动画
+ * @author SouShin
+ * created at 2022/1/10 11:29
+ */
+class MotionLayoutFragment :
+    DataBindingFragment<FragmentMotionLayoutBinding, MotionLayoutViewModel>() {
+    companion object {
+        fun newInstance(): MotionLayoutFragment {
+            return MotionLayoutFragment()
+        }
+    }
+
+    //配置当前页面的内容 各项参数都可为空
+    //BR.xxxxViewModel是kotlin-kapt插件默认生成的 对应xml文件里的xxxxViewModel
+    override fun getDataBindingConfig(): DataBindingConfig? {
+        return DataBindingConfig(
+            layoutId = R.layout.fragment_motion_layout, variableId = BR.MotionLayoutViewModel,
+            vmClass = MotionLayoutViewModel::class.java
+        )
+    }
+
+    override fun initView(view: View, savedInstanceState: Bundle?) {
+
+    }
+
+}
