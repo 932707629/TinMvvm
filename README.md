@@ -109,6 +109,14 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
   答：Navigation 的官方使用方式是每次显示一个Fragment都会重新去创建页面去显示(跳转一个新页面或者回退到上一页面)，
   例如返回页面的状态恢复，Jetpack提供了一系列的状态保存方案（Navigation2.4.0-alpha版本对BottomNavigationView状态保存也提供了支持）。
   
+- 复制整个项目修改包名去做自己项目的时候可能会出现代码不更新的情况，每次都需要build之后代码才更新，这时候可以把项目的如下文件全部删除然后重启Android Studio
+  
+` 1.所有的build文件夹；
+  2.gradlew和gradlew.bat文件；
+  3.local.properties文件;
+  4..gradle文件夹;
+  5..idea文件夹`
+
 
 ### 新版功能:
 
