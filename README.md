@@ -49,8 +49,6 @@ TinMvvm是以谷歌DataBinding+LiveData+ViewModel+Navigation框架为基础，�
 - 新增BaseService，扩展了对Service的支持，使用Rxjava以及协程会更方便一些
 - MMKV优化键值对存储，是原生SharedPreferences写入速度的数十倍(DataStore目前还不稳定,且性能不如MMKV,以后可能会考虑换用DataStore)
 
-
-
 ### 开发准备 ###
 
 必须的项目配置，框架初始化都已添加，所以直接复制本项目更改包名，即可进行开发使用
@@ -109,11 +107,17 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
   答：Navigation 的官方使用方式是每次显示一个Fragment都会重新去创建页面去显示(跳转一个新页面或者回退到上一页面)，
   例如返回页面的状态恢复，Jetpack提供了一系列的状态保存方案（Navigation2.4.0-alpha版本对BottomNavigationView状态保存也提供了支持）。
   
+- 复制整个项目修改包名去做自己项目的时候可能会出现代码不更新的情况，每次都需要build之后代码才更新，这时候可以把项目的如下文件全部删除然后重启Android Studio
+  
+` 1.所有的build文件夹；
+  2.gradlew和gradlew.bat文件；
+  3.local.properties文件;
+  4..gradle文件夹;
+  5..idea文件夹`
+
 
 ### 新版功能:
 
-- 解决直接在DataBindingActivity.initView()调用mViewModel.getLifeCycleOwner()出现为空的情况,此时lifecycle还没有被赋值
-- 通过配置Activity/Fragment的sharedViewModel()可以决定该页面的ViewModel是否可被其他页面复用，默认可复用
 
 ### 我的主页 ###
 
@@ -127,6 +131,22 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
 - [RxHttp结合协程使用详解](https://juejin.cn/post/6844904100090347528#heading-2)
 
 
+### 历史升级记录
+
+### 1.4.0
+
+- 取消协程在BaseViewModel里的置空问题，使用getScope()方法解决viewModelScope和lifecycle?.lifecycleScope可能被取消的问题
+- 取消依赖ImmersionBar组件，由开发者自由选择
+
+#### 1.3.7
+
+- 解决Fragment复用会造成ViewModel的lifecycle为空的情况
+- 优化Rxjava异常回调处理，统一回调到ResponseErrorListener
+
+#### 1.3.6
+
+- 解决直接在DataBindingActivity.initView()调用mViewModel.getLifeCycleOwner()出现为空的情况,此时lifecycle还没有被赋值
+- 通过配置Activity/Fragment的sharedViewModel()可以决定该页面的ViewModel是否可被其他页面复用，默认可复用
 
 
 

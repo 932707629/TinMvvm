@@ -50,6 +50,7 @@ class CategoryFragment : DataBindingFragment<FragmentCategoryBinding, CategoryVi
             getData().observe(viewLifecycleOwner,{
                 adapter.submitData(viewLifecycleOwner.lifecycle,it)
             })
+
         }
 
     }

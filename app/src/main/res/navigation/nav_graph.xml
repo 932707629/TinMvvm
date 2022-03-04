@@ -25,10 +25,14 @@
         <action
             android:id="@+id/action_homeFragment_to_threadPoolFragment"
             app:destination="@id/threadPoolFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_motionLayoutFragment"
+            app:destination="@id/motionLayoutFragment" />
     </fragment>
     <fragment
         android:id="@+id/componentFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.ComponentFragment"
+        tools:layout="@layout/fragment_component"
         android:label="ComponentFragment" >
         <action
             android:id="@+id/action_componentFragment_to_homeFragment"
@@ -58,6 +62,7 @@
     <fragment
         android:id="@+id/mineFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.MineFragment"
+        tools:layout="@layout/fragment_mine"
         android:label="MineFragment" >
         <action
             android:id="@+id/action_mineFragment_to_componentFragment"
@@ -72,6 +77,7 @@
     <fragment
         android:id="@+id/categoryFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.CategoryFragment"
+        tools:layout="@layout/fragment_category"
         android:label="CategoryFragment" >
         <argument
             android:name="pageType"
@@ -83,18 +89,22 @@
     <fragment
         android:id="@+id/coroutineFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.CoroutineFragment"
+        tools:layout="@layout/fragment_coroutine"
         android:label="CoroutineFragment" />
     <fragment
         android:id="@+id/multiplexFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.MultiplexFragment"
+        tools:layout="@layout/fragment_multiplex"
         android:label="MultiplexFragment" />
     <fragment
         android:id="@+id/pagingFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.PagingFragment"
+        tools:layout="@layout/fragment_paging"
         android:label="PagingFragment" />
     <fragment
         android:id="@+id/recyclerFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.RecyclerFragment"
+        tools:layout="@layout/fragment_recycler"
         android:label="RecyclerFragment" >
         <action
             android:id="@+id/action_recyclerFragment_to_threadPoolFragment"
@@ -103,22 +113,32 @@
     <fragment
         android:id="@+id/tabLayoutViewpagerFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.TabLayoutViewpager2Fragment"
+        tools:layout="@layout/fragment_tablayout_viewpager2"
         android:label="TabLayoutViewpagerFragment" />
     <fragment
         android:id="@+id/threadPoolFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.ThreadPoolFragment"
+        tools:layout="@layout/fragment_thread_pool"
         android:label="ThreadPoolFragment" />
     <fragment
         android:id="@+id/workerFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.WorkerFragment"
+        tools:layout="@layout/fragment_worker"
         android:label="WorkerFragment" />
     <activity
         android:id="@+id/splashActivity"
         android:name="com.soushin.tinmvvm.mvvm.ui.SplashActivity"
+        tools:layout="@layout/activity_splash"
         android:label="SplashActivity" />
     <fragment
         android:id="@+id/dataBindingLayoutFragment"
         android:name="com.soushin.tinmvvm.mvvm.ui.fragment.DataBindingLayoutFragment"
+        tools:layout="@layout/fragment_data_binding_layout"
         android:label="DataBindingLayoutFragment" />
+    <fragment
+        android:id="@+id/motionLayoutFragment"
+        android:name="com.soushin.tinmvvm.mvvm.ui.fragment.MotionLayoutFragment"
+        tools:layout="@layout/fragment_motion_layout"
+        android:label="MotionLayoutFragment" />
 
 </navigation>

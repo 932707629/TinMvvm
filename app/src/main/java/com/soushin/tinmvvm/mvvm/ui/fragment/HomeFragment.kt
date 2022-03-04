@@ -69,27 +69,32 @@ class HomeFragment : DataBindingFragment<FragmentHomeBinding, HomeViewModel>() {
                 mViewModel?.onItemClick(ada.getItem(position) as String,view,position)//,fragment.navController
             }
             rvHome.adapter=adapter
-            mViewModel?.loadData()
-            mViewModel?.viewEvent?.observe(viewLifecycleOwner,{
-                when{
-                    it.key==0 && (it.value is MutableList<*>)->{
-                        adapter.setList(it.value as MutableList<String>)
-                    }
-                    it.key==1 ->{
-                        requestPermission()
-                    }
-                    it.key==2 ->{
-                        //启动自定义service
-                        if (serviceIntent==null){
-                            serviceIntent= Intent(requireContext(), MyService::class.java)
-                            requireActivity().startService(serviceIntent)
-                        }else {
-                            requireActivity().stopService(Intent(requireContext(), MyService::class.java))
-                            serviceIntent=null
+
+            mViewModel?.apply {
+                labels.observe(viewLifecycleOwner,{
+                    adapter.setList(it)
+                })
+                viewEvent.observe(viewLifecycleOwner,{
+                    when{
+                        it.key==0 && (it.value is MutableList<*>)->{
+                        }
+                        it.key==1 ->{
+                            requestPermission()
+                        }
+                        it.key==2 ->{
+                            //启动自定义service
+                            if (serviceIntent==null){
+                                serviceIntent= Intent(requireContext(), MyService::class.java)
+                                requireActivity().startService(serviceIntent)
+                            }else {
+                                requireActivity().stopService(Intent(requireContext(), MyService::class.java))
+                                serviceIntent=null
+                            }
                         }
                     }
-                }
-            })
+                })
+
+            }
         }
     }
 
