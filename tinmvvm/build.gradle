@@ -62,9 +62,9 @@ dependencies {
     api(deps.okhttp)
     api(deps.kotlinx_coroutines)
     api(deps.kotlinx_coroutines_android)
-    api(deps.immersionbar)
-    api(deps.immersionbar_components)
-    api(deps.immersionbar_ktx)
+//    api(deps.immersionbar)
+//    api(deps.immersionbar_components)
+//    api(deps.immersionbar_ktx)
 }
 
 

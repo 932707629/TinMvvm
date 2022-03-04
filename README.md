@@ -49,8 +49,6 @@ TinMvvm是以谷歌DataBinding+LiveData+ViewModel+Navigation框架为基础，�
 - 新增BaseService，扩展了对Service的支持，使用Rxjava以及协程会更方便一些
 - MMKV优化键值对存储，是原生SharedPreferences写入速度的数十倍(DataStore目前还不稳定,且性能不如MMKV,以后可能会考虑换用DataStore)
 
-
-
 ### 开发准备 ###
 
 必须的项目配置，框架初始化都已添加，所以直接复制本项目更改包名，即可进行开发使用
@@ -134,6 +132,11 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
 
 
 ### 历史升级记录
+
+### 1.4.0
+
+- 取消协程在BaseViewModel里的置空问题，使用getScope()方法解决viewModelScope和lifecycle?.lifecycleScope可能被取消的问题
+- 取消依赖ImmersionBar组件，由开发者自由选择
 
 #### 1.3.7
 

@@ -1,7 +1,6 @@
 package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.viewModelScope
 import com.baiyyy.communitypad.app.widget.SingleLiveEvent
 import com.soushin.tinmvvm.app.utils.DataUtils
 import com.soushin.tinmvvm.mvvm.repository.RecyclerRepository
@@ -25,7 +24,7 @@ class RecyclerViewModel(application: Application) :
     var viewEvent = SingleLiveEvent<ViewTaskEvent>()
 
     fun loadData() {
-        viewModelScope.launch {
+        getScope().launch {
             withContext(Dispatchers.IO) {
                 viewEvent.postValue(ViewTaskEvent(key = 0, value = DataUtils.getRecyclerData()))
             }

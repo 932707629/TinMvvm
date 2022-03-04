@@ -34,6 +34,9 @@ class DemoActivity : DataBindingActivity<ActivityDemoBinding, DemoViewModel>() {
         moveTaskToBack(true)
     }
 
+
+
+
     override fun initView(savedInstanceState: Bundle?) {
         mViewData?.apply {
             setSupportActionBar(toolbar)

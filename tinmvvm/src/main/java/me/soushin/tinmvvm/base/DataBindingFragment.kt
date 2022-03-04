@@ -1,7 +1,6 @@
 package me.soushin.tinmvvm.base
 
 import android.content.Context
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,12 +11,9 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.gyf.immersionbar.components.ImmersionOwner
-import com.gyf.immersionbar.components.ImmersionProxy
 import kotlinx.coroutines.cancel
 import me.soushin.tinmvvm.config.AppComponent
 import me.soushin.tinmvvm.config.DataBindingConfig
-import me.soushin.tinmvvm.custom.SharedViewModelStore
 
 /**
  * fragment基类封装
@@ -26,7 +22,7 @@ import me.soushin.tinmvvm.custom.SharedViewModelStore
  *
  */
  abstract class DataBindingFragment<VD : ViewDataBinding,
-        VM: BaseViewModel<out BaseRepository>>  : Fragment(),ImmersionOwner {
+        VM: BaseViewModel<out BaseRepository>>  : Fragment() {
 
     protected var mViewModel:VM?=null
     protected var mViewData:VD?=null
@@ -34,21 +30,9 @@ import me.soushin.tinmvvm.custom.SharedViewModelStore
     protected var mViewModelProvider:ViewModelProvider?=null
     var mContext: Context? = null
 
-    private val mImmersionProxy by lazy { ImmersionProxy(this) }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         this.mContext=context
-    }
-
-    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-        super.setUserVisibleHint(isVisibleToUser)
-        mImmersionProxy.isUserVisibleHint = isVisibleToUser
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        mImmersionProxy.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -61,41 +45,11 @@ import me.soushin.tinmvvm.custom.SharedViewModelStore
         initView(view,savedInstanceState)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        mImmersionProxy.onActivityCreated(savedInstanceState)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mImmersionProxy.onResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        mImmersionProxy.onPause()
-    }
-
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        mImmersionProxy.onHiddenChanged(hidden)
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        mImmersionProxy.onConfigurationChanged(newConfig)
-    }
-
     override fun onDestroyView() {
         mViewData?.unbind()
         mViewData=null
         lifecycleScope.cancel()//取消协程事件
         super.onDestroyView()
-    }
-
-    override fun onDestroy() {
-        mImmersionProxy.onDestroy()
-        super.onDestroy()
     }
 
     override fun onDetach() {
@@ -139,21 +93,6 @@ import me.soushin.tinmvvm.custom.SharedViewModelStore
     abstract fun initView(view:View,savedInstanceState: Bundle?)
 
     abstract fun getDataBindingConfig(): DataBindingConfig?
-
-    /****************提供可重写方法******************/
-
-    //懒加载，在view初始化完成之后执行
-    override fun onLazyAfterView() {}
-    //懒加载，在view初始化完成之前执行
-    override fun onLazyBeforeView() {}
-    //Fragment用户不可见时候调用
-    override fun onInvisible() {}
-    //Fragment用户可见时候调用
-    override fun onVisible() {}
-    //是否可以实现沉浸式，当为true的时候才可以执行initImmersionBar方法
-    override fun immersionBarEnabled(): Boolean { return false }
-    //状态栏设置
-    override fun initImmersionBar() {}
 
     /**
      * 开启ViewModel共享数据
