@@ -5,10 +5,16 @@ buildscript {
     ext.navVersion='2.3.5'
     repositories {
         maven { url "https://www.jitpack.io" }
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url 'https://maven.aliyun.com/repository/public/' }
-        maven { url 'https://maven.aliyun.com/repository/google/' }
-        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        //阿里云仓库总览 https://developer.aliyun.com/mvn/guide
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/spring' }
+        maven { url 'https://maven.aliyun.com/repository/spring-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/grails-core' }
+        maven { url 'https://maven.aliyun.com/repository/apache-snapshots' }
     }
     dependencies {
         //viewbinding对gradle版本有要求 最低3.6 低于此版本会导致部分功能不可用
@@ -24,10 +30,16 @@ allprojects {
         maven { url "https://www.jitpack.io" }
         google()
         mavenCentral()
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url 'https://maven.aliyun.com/repository/jcenter' }
-        maven { url 'https://maven.aliyun.com/repository/public/' }
-        maven { url 'https://maven.aliyun.com/repository/google/' }
+        //阿里云仓库总览 https://developer.aliyun.com/mvn/guide
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/spring' }
+        maven { url 'https://maven.aliyun.com/repository/spring-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/grails-core' }
+        maven { url 'https://maven.aliyun.com/repository/apache-snapshots' }
     }
 }
 

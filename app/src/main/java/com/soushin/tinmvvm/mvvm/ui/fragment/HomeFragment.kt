@@ -16,7 +16,6 @@ import com.soushin.tinmvvm.app.utils.PermissionUtil
 import com.soushin.tinmvvm.databinding.FragmentHomeBinding
 import com.soushin.tinmvvm.mvvm.adapter.itembinder.TabComponentItemBinder
 import com.soushin.tinmvvm.mvvm.viewmodel.HomeViewModel
-import com.soushin.tinmvvm.mvvm.viewmodel.WorkerViewModel
 import com.tbruyelle.rxpermissions3.RxPermissions
 import me.soushin.tinmvvm.base.DataBindingFragment
 import me.soushin.tinmvvm.config.DataBindingConfig
@@ -101,7 +100,7 @@ class HomeFragment : DataBindingFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private fun requestPermission(){
         val rxPermissions= RxPermissions(getThis())
-        val pms= arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        val pms= arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACCESS_FINE_LOCATION)
         PermissionUtil.requestPermission(
             permissions = pms,
             lifecycle = this,

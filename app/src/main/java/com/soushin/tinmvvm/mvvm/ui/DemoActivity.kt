@@ -66,6 +66,7 @@ class DemoActivity : DataBindingActivity<ActivityDemoBinding, DemoViewModel>() {
 
         ALog.i("打印是否初始化了lifecyler",mViewModel?.lifecycle);
 
+
     }
 
     //配置当前页面的内容 各项参数都可为空
