@@ -6,7 +6,6 @@ import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
-import androidx.lifecycle.viewModelScope
 import com.blankj.ALog
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.app.utils.DataUtils
@@ -56,7 +55,7 @@ class CoroutineViewModel(application: Application) :
     operator fun invoke(){
         ALog.i("调用invoke函数");
         //除此之外 使用 Lifecycle lifecycle-viewmodel-ktx 工件提供的 viewModelScope
-        viewModelScope.launch(Dispatchers.IO) {
+        getScope().launch(Dispatchers.IO) {
 
         }
     }
@@ -67,7 +66,7 @@ class CoroutineViewModel(application: Application) :
             when(it.id){
                 R.id.btn_coroutine_fuc->{
                     //协程的普通用法
-                    viewModelScope.launch {
+                    getScope().launch {
                         val task1 = withContext(Dispatchers.IO) {
                             delay(2000)
                             ALog.e("task1执行完毕", Thread.currentThread().name);
@@ -85,7 +84,7 @@ class CoroutineViewModel(application: Application) :
                         }
                         ALog.e("所有任务都已执行", Thread.currentThread().name, task2.await(), task3.await());
                     }
-                    viewModelScope.launch {
+                    getScope().launch {
                         launch(Dispatchers.IO) {
                             delay(5000)
                             ALog.e("协程delay执行结束", Thread.currentThread().name);
@@ -100,12 +99,12 @@ class CoroutineViewModel(application: Application) :
                 }
                 R.id.btn_coroutine_crash->{
                     //协程内的异常捕获
-                    viewModelScope.launch(coroutineExceptionHandler){
+                    getScope().launch(coroutineExceptionHandler){
                         throw RuntimeException("RuntimeException in nested coroutine")
                     }
                 }
                 R.id.btn_advanced_grammar->{
-                    viewModelScope.launch {
+                    getScope().launch {
                         withContext(Dispatchers.IO){
                             val list = mutableListOf("1","2","3","2","3","2","3","2","3","4","5","6","7","8","9","0")
 

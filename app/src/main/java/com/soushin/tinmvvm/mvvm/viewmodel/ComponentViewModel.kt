@@ -3,7 +3,6 @@ package com.soushin.tinmvvm.mvvm.viewmodel
 import android.app.Application
 import android.view.View
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.Navigation
 import com.blankj.ALog
 import com.soushin.tinmvvm.R
@@ -21,7 +20,7 @@ class ComponentViewModel(application: Application) :
     var viewEvent = MutableLiveData<MutableList<String>>()
 
     fun loadData(){
-        viewModelScope.launch {
+        getScope().launch {
             withContext(Dispatchers.IO){
                 val list = mutableListOf("WorkManager","Navigation", "Coroutine",
                     "TabLayout、ViewPager2","Paging","DataBinding")

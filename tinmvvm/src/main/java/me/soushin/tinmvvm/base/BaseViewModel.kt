@@ -5,10 +5,7 @@ import androidx.lifecycle.*
 import com.blankj.ALog
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import me.soushin.tinmvvm.config.AppComponent
 import me.soushin.tinmvvm.rxerror.RxErrorHandler
 
@@ -60,9 +57,9 @@ open class BaseViewModel<R: BaseRepository>(application: Application,val mReposi
     open fun onStop(source: LifecycleOwner){}
     open fun onDestroy(source: LifecycleOwner){
         clearDisposable()//终端rxjava管道
-        viewModelScope.cancel()//取消协程
         source.lifecycle.removeObserver(this)//取消生命周期订阅
-        source.lifecycleScope.cancel()//取消协程
+//        viewModelScope.cancel()//取消协程
+//        source.lifecycleScope.cancel()//取消协程
         mRepository.onDestroy()
         this.lifecycle=null
     }
@@ -79,10 +76,20 @@ open class BaseViewModel<R: BaseRepository>(application: Application,val mReposi
     }
 
     /**
-     * 直接用viewModelScope.launcher{}更舒适
+     * 建议在ViewModel中使用此方法
      */
-    open fun getLifecycleScope(): CoroutineScope? {
-        return lifecycle?.lifecycleScope
+    open fun getScope(): CoroutineScope {
+        return when {
+            viewModelScope.isActive -> {
+                viewModelScope
+            }
+            lifecycle?.lifecycleScope?.isActive == true -> {
+                lifecycle?.lifecycleScope!!
+            }
+            else -> {
+                MainScope()
+            }
+        }
     }
 
     /**

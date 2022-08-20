@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="MotionLayoutViewModel"
+            type="com.soushin.tinmvvm.mvvm.viewmodel.MotionLayoutViewModel" />
+    </data>
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:showPaths="true"
+        app:layoutDescription="@xml/layout_motion_scene">
+
+        <!--注意在MotionLayout布局下每个控件都需要设置一个id，即使我们不会使用到它。-->
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/v_demo"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_80"
+            android:src="@mipmap/ic_launcher_round"/>
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</layout>

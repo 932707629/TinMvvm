@@ -31,10 +31,10 @@ import me.soushin.tinmvvm.utils.throttleClick
 class CategoryViewModel(application: Application) :
     BaseViewModel<CategoryRepository>(application, CategoryRepository()) {
 
-    var viewEvent= MutableLiveData<ViewTaskEvent>()
 
     override fun onCreate(source: LifecycleOwner) {
         super.onCreate(source)
+
         source.lifecycleScope.launch {
             /*mRepository.request()
                 .onSuccess { ALog.i("收到了返回的数据",it); }
