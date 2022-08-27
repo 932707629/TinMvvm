@@ -8,8 +8,8 @@ ext {
     versionCode = 1_00_00
     versionName = '1.0.0'
 
-    tinmvvmVersionCode = 1_04_01
-    tinmvvmVersionName = '1.4.1'
+    tinmvvmVersionCode = 1_04_02
+    tinmvvmVersionName = '1.4.2'
 
 //    rxjavaName = 'rxjava2'
     rxjavaName = 'rxjava3'
@@ -21,7 +21,8 @@ ext {
     immersionbarVersion = '3.0.0'
     lifecycleVersion = '2.3.1'
     pagingVersion = '3.0.0'
-    navVersion = '2.3.5'
+    navVersion = '2.4.1'
+    kotlin_version = '1.6.21'
 
     deps = [
             appcompat                           : "androidx.appcompat:appcompat:$appcompatVersion",

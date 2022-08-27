@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.cancel
 import me.soushin.tinmvvm.config.AppComponent
@@ -67,7 +68,7 @@ import me.soushin.tinmvvm.config.DataBindingConfig
                 }else {
                     DataBindingUtil.inflate<VD>(inflater,it,container,false)
                 }
-                vd!!.lifecycleOwner = this@DataBindingFragment
+                vd!!.lifecycleOwner = vd!!.root.findViewTreeLifecycleOwner()
                 bindingParams.forEach {entry->
                     vd!!.setVariable(entry.key,entry.value)
                 }
@@ -83,7 +84,7 @@ import me.soushin.tinmvvm.config.DataBindingConfig
                     vd?.setVariable(vid,mViewModel)
                 }
                 //为防止直接在DataBindingFragment.initView()调用时出现为空的情况
-                mViewModel?.lifecycle = this@DataBindingFragment
+                mViewModel?.lifecycle = vd?.lifecycleOwner
             }
         }
         return vd

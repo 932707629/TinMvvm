@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.cancel
 import me.soushin.tinmvvm.config.AppComponent
@@ -54,7 +55,7 @@ abstract class DataBindingActivity<VD : ViewDataBinding,
                 }else {
                     DataBindingUtil.setContentView(activity, it)
                 }
-                mViewData!!.lifecycleOwner = this@DataBindingActivity
+                mViewData!!.lifecycleOwner = mViewData!!.root.findViewTreeLifecycleOwner()
                 bindingParams.forEach {entry->
                     mViewData!!.setVariable(entry.key,entry.value)
                 }
@@ -69,7 +70,7 @@ abstract class DataBindingActivity<VD : ViewDataBinding,
                     mViewData?.setVariable(vid,mViewModel)
                 }
                 //为防止直接在DataBindingActivity.initView()调用时出现为空的情况
-                mViewModel?.lifecycle = this@DataBindingActivity
+                mViewModel?.lifecycle = mViewData?.lifecycleOwner
             }
         }
     }
