@@ -2,7 +2,6 @@ package com.soushin.tinmvvm.app
 
 import android.app.Application
 import android.content.Context
-import androidx.multidex.MultiDex
 import com.blankj.ALog
 import com.hjq.toast.ToastUtils
 import com.soushin.tinmvvm.BuildConfig
@@ -21,7 +20,7 @@ import java.util.concurrent.TimeUnit
 class AppLifecycleImpl :AppLifecycle {
 
     override fun attachBaseContext(base: Context) {
-        MultiDex.install(base)
+//        MultiDex.install(base)
     }
 
     override fun onCreate(application: Application) {

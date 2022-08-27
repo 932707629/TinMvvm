@@ -25,6 +25,7 @@ class GlobalConfiguration :ConfigModule {
     override fun applyOptions(context: Context, builder: GlobalConfigModule.Builder) {
         builder.setOkHttpClient(initOkhttp(context))
             .errorResponseListener(ResponseErrorListenerImpl())
+            .sharedViewModel(true)//共享ViewModel
 //            .logDir("")//crash日志输出文件夹
             .setDebug(BuildConfig.DEBUG)
             .build()

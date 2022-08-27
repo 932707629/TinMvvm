@@ -69,9 +69,7 @@ abstract class DataBindingActivity<VD : ViewDataBinding,
                     mViewData?.setVariable(vid,mViewModel)
                 }
                 //为防止直接在DataBindingActivity.initView()调用时出现为空的情况
-                if (mViewModel!!.lifecycle == null){
-                    mViewModel!!.lifecycle = this@DataBindingActivity
-                }
+                mViewModel?.lifecycle = this@DataBindingActivity
             }
         }
     }
@@ -94,7 +92,7 @@ abstract class DataBindingActivity<VD : ViewDataBinding,
      * false mViewModel实例不会与其他页面共享
      */
     open fun sharedViewModel():Boolean{
-        return true
+        return AppComponent.globalConfig?.sharedViewModel ?: false
     }
 
 
