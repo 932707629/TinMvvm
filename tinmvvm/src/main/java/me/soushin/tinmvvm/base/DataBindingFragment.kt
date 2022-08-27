@@ -74,7 +74,8 @@ import me.soushin.tinmvvm.config.DataBindingConfig
             }
             //如果当前页面的vmClass为空就不会去实例化mViewModel
             vmClass?.let {
-                mViewModelProvider = if (sharedViewModel()) ViewModelProvider(AppComponent.sharedViewModelStore, defaultViewModelProviderFactory) else ViewModelProvider(this@DataBindingFragment)
+                mViewModelProvider = if (sharedViewModel()) ViewModelProvider(AppComponent.sharedViewModelStore, defaultViewModelProviderFactory)
+                else ViewModelProvider(this@DataBindingFragment)
                 mViewModel = mViewModelProvider!![it] as VM
                 lifecycle.addObserver(mViewModel!!)
                 //如果当前页面设置的variableId为空就不会去绑定ViewModel
@@ -82,9 +83,7 @@ import me.soushin.tinmvvm.config.DataBindingConfig
                     vd?.setVariable(vid,mViewModel)
                 }
                 //为防止直接在DataBindingFragment.initView()调用时出现为空的情况
-                if (mViewModel!!.lifecycle == null){
-                    mViewModel!!.lifecycle = this@DataBindingFragment
-                }
+                mViewModel?.lifecycle = this@DataBindingFragment
             }
         }
         return vd
@@ -100,7 +99,7 @@ import me.soushin.tinmvvm.config.DataBindingConfig
      * false mViewModel实例不会与其他页面共享
      */
     open fun sharedViewModel():Boolean{
-        return true
+        return AppComponent.globalConfig?.sharedViewModel ?: false
     }
 
 }

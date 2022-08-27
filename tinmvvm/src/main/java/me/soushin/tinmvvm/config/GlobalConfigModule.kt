@@ -17,12 +17,14 @@ class GlobalConfigModule(builder: Builder) {
     //    var logOutputCallback:ALoger?=null//log日志输出回调
     var okHttpClient:OkHttpClient ?= null//提供个默认的可修改的okhttpclient全局共用
     var errorResponseListener: ResponseErrorListener? = null//rxjava2异常监听回调
+    var sharedViewModel : Boolean = false //是否全局共享ViewModel
 
     init {
         this.logDir = builder.logDir
         this.debug = builder.debug
         this.okHttpClient = builder.okHttpClient
         this.errorResponseListener = builder.errorResponseListener
+        this.sharedViewModel = builder.sharedViewModel
     }
 
     class Builder {
@@ -33,6 +35,7 @@ class GlobalConfigModule(builder: Builder) {
         var defaultOkHttpConfig= OkHttpConfigBean()//默认okhttp配置类,如果setOkHttpClient了只配置将不会生效
         var okHttpClient = getDefaultOkHttpClient()//提供默认的可修改的okhttpclient全局共用
         var errorResponseListener: ResponseErrorListener = ResponseErrorListener.EMPTY//rxjava2异常监听回调
+        var sharedViewModel : Boolean = false //是否全局共享ViewModel
 
         fun logDir(logDir: String): Builder {
             this.logDir = logDir
@@ -61,6 +64,11 @@ class GlobalConfigModule(builder: Builder) {
 
         fun setOkHttpClient(okHttpClient: OkHttpClient): Builder {
             this.okHttpClient = okHttpClient
+            return this
+        }
+
+        fun sharedViewModel(share:Boolean) : Builder{
+            this.sharedViewModel = share
             return this
         }
 

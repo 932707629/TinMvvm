@@ -56,12 +56,12 @@ open class BaseViewModel<R: BaseRepository>(application: Application,val mReposi
     open fun onPause(source: LifecycleOwner){}
     open fun onStop(source: LifecycleOwner){}
     open fun onDestroy(source: LifecycleOwner){
-        clearDisposable()//终端rxjava管道
+        clearDisposable()//中断rxjava管道
         source.lifecycle.removeObserver(this)//取消生命周期订阅
 //        viewModelScope.cancel()//取消协程
 //        source.lifecycleScope.cancel()//取消协程
         mRepository.onDestroy()
-        this.lifecycle=null
+//        this.lifecycle=null
     }
 
     open fun addDispose(disposable: Disposable) {

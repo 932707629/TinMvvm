@@ -1,9 +1,11 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 apply from: "config.gradle"
 buildscript {
-    ext.kotlin_version = '1.5.0'
-    ext.navVersion='2.3.5'
+    ext.kotlin_version = '1.6.21'
+    ext.navVersion= '2.4.1'
+
     repositories {
+        mavenCentral()
         maven { url "https://www.jitpack.io" }
         //阿里云仓库总览 https://developer.aliyun.com/mvn/guide
         maven { url 'https://maven.aliyun.com/repository/google' }
@@ -18,8 +20,8 @@ buildscript {
     }
     dependencies {
         //viewbinding对gradle版本有要求 最低3.6 低于此版本会导致部分功能不可用
-        classpath 'com.android.tools.build:gradle:4.2.0'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath 'com.android.tools.build:gradle:7.2.1'
+//        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navVersion"
     }
