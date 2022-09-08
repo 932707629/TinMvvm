@@ -10,7 +10,6 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.cancel
 import me.soushin.tinmvvm.config.AppComponent
 import me.soushin.tinmvvm.config.DataBindingConfig
-import me.soushin.tinmvvm.custom.SharedViewModelStore
 
 /**
  * activity基类

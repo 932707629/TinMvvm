@@ -1,9 +1,16 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
+//apply plugin: 'com.android.library'
+//apply plugin: 'kotlin-android'
+//apply plugin: 'kotlin-kapt'
 //jitpack编译使用
-apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.932707629'
+//apply plugin: 'com.github.dcendents.android-maven'
+//group = 'com.github.soushin'
+
+plugins{
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'maven-publish'
+}
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -53,6 +60,7 @@ dependencies {
     implementation(deps.appcompat)
     api(deps.lifecycle_viewmodel_ktx)
     api(deps.lifecycle_runtime_ktx)
+    api(deps.lifecycle_extensions)
     api(deps.alog)
     //第三方工具库
     api(deps.rxandroid3)
@@ -62,9 +70,19 @@ dependencies {
     api(deps.okhttp)
     api(deps.kotlinx_coroutines)
     api(deps.kotlinx_coroutines_android)
-//    api(deps.immersionbar)
-//    api(deps.immersionbar_components)
-//    api(deps.immersionbar_ktx)
 }
 
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.soushin'
+                artifactId = 'tinmvvm'
+                version = rootProject.tinmvvmVersionName
+            }
+        }
+    }
+}
 

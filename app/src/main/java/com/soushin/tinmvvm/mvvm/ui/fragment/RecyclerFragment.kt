@@ -64,12 +64,12 @@ class RecyclerFragment : DataBindingFragment<FragmentRecyclerBinding, RecyclerVi
                 }else {
                     loadData()
                 }
-                viewEvent.observe(viewLifecycleOwner,{
-                    ALog.i("回调这里了",Thread.currentThread().name);
-                    if (it.value is MutableList<*>){
+                viewEvent.observe(viewLifecycleOwner) {
+                    ALog.i("回调这里了", Thread.currentThread().name);
+                    if (it.value is MutableList<*>) {
                         adapter.setList(it.value as MutableList<Any>)
                     }
-                })
+                }
             }
         }
 
