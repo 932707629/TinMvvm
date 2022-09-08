@@ -8,8 +8,8 @@ ext {
     versionCode = 1_00_00
     versionName = '1.0.0'
 
-    tinmvvmVersionCode = 1_04_01
-    tinmvvmVersionName = '1.04.01'
+    tinmvvmVersionCode = 1_04_02
+    tinmvvmVersionName = '1.4.2'
 
 //    rxjavaName = 'rxjava2'
     rxjavaName = 'rxjava3'
@@ -17,11 +17,11 @@ ext {
     rxhttpVersion = '2.9.3'
     rxlifeVersion = '2.2.2'
     rxjavaVersion = '3.1.5'
-    appcompatVersion = '1.2.0'
+    appcompatVersion = '1.4.0'
     immersionbarVersion = '3.0.0'
     lifecycleVersion = '2.3.1'
     pagingVersion = '3.0.0'
-    navVersion = '2.3.5'
+    navVersion = '2.4.1'
     kotlin_version = '1.6.21'
 
     deps = [
@@ -48,7 +48,7 @@ ext {
             autosize                            : "me.jessyan:autosize:1.2.1",
             basepopup                           : "io.github.razerdp:BasePopup:3.1.0",
             mmkv_static                         : "com.tencent:mmkv-static:1.2.14",
-            qmui                                : "com.qmuiteam:qmui:2.0.1",
+            qmui                                : "com.qmuiteam:qmui:2.0.0-alpha11",
 
 
             //network

@@ -12,14 +12,25 @@ plugins{
     id 'maven-publish'
 }
 
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'me.soushin'
+                artifactId = 'tinmvvm'
+                version = "$tinmvvmVersionName"
+            }
+        }
+    }
+}
+
 android {
     compileSdkVersion rootProject.compileSdkVersion
     buildToolsVersion rootProject.buildToolVersion
     defaultConfig {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
-        versionCode = rootProject.tinmvvmVersionCode
-        versionName = rootProject.tinmvvmVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -72,17 +83,4 @@ dependencies {
     api(deps.kotlinx_coroutines_android)
 }
 
-
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-                groupId = 'com.github.soushin'
-                artifactId = 'tinmvvm'
-                version = rootProject.tinmvvmVersionName
-            }
-        }
-    }
-}
 

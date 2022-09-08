@@ -133,6 +133,15 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
 
 ### 历史升级记录
 
+### 1.4.2
+- 调整生命周期赋值方式
+- 优化内存泄露问题
+
+
+### 1.4.1
+- 升级项目依赖库
+- 调整sharedViewModel共享ViewModel默认为false,可在GlobalConfiguration全局配置
+
 ### 1.4.0
 
 - 取消协程在BaseViewModel里的置空问题，使用getScope()方法解决viewModelScope和lifecycle?.lifecycleScope可能被取消的问题
