@@ -22,10 +22,10 @@ import me.soushin.tinmvvm.config.DataBindingConfig
 abstract class DataBindingActivity<VD : ViewDataBinding,
         VM : BaseViewModel<out BaseRepository>> :AppCompatActivity(){
 
-    protected var mViewModel:VM? = null
-    protected var mViewData:VD? = null
+    var mViewModel:VM? = null
+    var mViewData:VD? = null
     //通过ViewModelProvider可以获取同一个Activity下共享的ViewModel
-    protected var mViewModelProvider:ViewModelProvider?=null
+    var mViewModelProvider:ViewModelProvider?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

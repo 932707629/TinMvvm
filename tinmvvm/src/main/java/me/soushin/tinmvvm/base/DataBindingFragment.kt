@@ -25,10 +25,10 @@ import me.soushin.tinmvvm.config.DataBindingConfig
  abstract class DataBindingFragment<VD : ViewDataBinding,
         VM: BaseViewModel<out BaseRepository>>  : Fragment() {
 
-    protected var mViewModel:VM?=null
-    protected var mViewData:VD?=null
+    var mViewModel:VM?=null
+    var mViewData:VD?=null
     //通过ViewModelProvider可以获取同一个Activity下共享的ViewModel
-    protected var mViewModelProvider:ViewModelProvider?=null
+    var mViewModelProvider:ViewModelProvider?=null
     var mContext: Context? = null
 
     override fun onAttach(context: Context) {
