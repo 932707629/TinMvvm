@@ -36,12 +36,11 @@ class GlobalConfiguration :ConfigModule {
         val file = File(context.externalCacheDir, "OkHttpCookie")
         val sslParams= HttpsUtils.getSslSocketFactory()
         return OkHttpClient.Builder()
-            .cookieJar(CookieStore(File(context.externalCacheDir,"TinmvvmCookie")))
+            .cookieJar(CookieStore(file))
             .callTimeout(Api.TIMEOUT, TimeUnit.SECONDS)
             .connectTimeout(Api.TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(Api.TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(Api.TIMEOUT, TimeUnit.SECONDS)
-            .cookieJar(CookieStore(file))
             .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager) //添加信任证书
             .hostnameVerifier { _, _ -> true }.build()
         //忽略host验证
