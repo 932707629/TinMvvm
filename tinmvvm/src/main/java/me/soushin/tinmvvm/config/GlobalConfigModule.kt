@@ -94,7 +94,8 @@ class GlobalConfigModule(builder: Builder) {
                 .writeTimeout(defaultOkHttpConfig.writeTimeout, TimeUnit.SECONDS)
                 .readTimeout(defaultOkHttpConfig.readTimeout, TimeUnit.SECONDS)
                 .sslSocketFactory(defaultOkHttpConfig.sslSocketFactory!!, defaultOkHttpConfig.trustManager!!) //添加信任证书
-                .hostnameVerifier(defaultOkHttpConfig.hostnameVerifier!!).build()
+                .hostnameVerifier(defaultOkHttpConfig.hostnameVerifier!!)
+                .build()
         }
     }
 

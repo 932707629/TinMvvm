@@ -3,7 +3,6 @@ package me.soushin.tinmvvm.base
 import android.app.Application
 import android.content.Context
 import me.soushin.tinmvvm.config.AppDelegate
-import me.soushin.tinmvvm.listener.AppLifecycle
 
 /**
  *

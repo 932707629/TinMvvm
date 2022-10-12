@@ -36,6 +36,7 @@
 -dontwarn me.soushin.tinmvvm.**
 -keep class java.lang.invoke.* {*;}
 -dontwarn java.lang.invoke.**
+-keep public class * implements me.soushin.tinmvvm.listener.ConfigModule
 
  ################xutils###############
 -keepattributes Signature,*Annotation*

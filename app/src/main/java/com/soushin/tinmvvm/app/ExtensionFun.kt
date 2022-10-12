@@ -87,12 +87,21 @@ class DebounceAction(val view: View, var block: ((View) -> Unit)): Runnable {
     }
 }
 
-fun View.onClick(wait: Long = 200, block: ((View) -> Unit)) {
+fun View.onClick(wait: Long = 1000, block: ((View) -> Unit)) {
     setOnClickListener(throttleClick(wait, block))
 }
 
-fun View.onDebounceClick(wait: Long = 200, block: ((View) -> Unit)) {
+fun View.onDebounceClick(wait: Long = 1000, block: ((View) -> Unit)) {
     setOnClickListener(debounceClick(wait, block))
+}
+
+fun View.setGone(gone:Boolean){
+    this.visibility = if (gone) View.GONE else View.VISIBLE
+}
+
+
+fun View.setInvisible(invisible:Boolean){
+    this.visibility = if (invisible) View.INVISIBLE else View.VISIBLE
 }
 
 

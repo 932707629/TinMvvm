@@ -32,7 +32,7 @@ android {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
+//        consumerProguardFiles 'consumer-rules.pro'
     }
 
     buildTypes {
@@ -41,7 +41,7 @@ android {
 //            shrinkResources true
 //            zipAlignEnabled true
             //子module使用consumerProguardFiles进行混淆配置
-            consumerProguardFiles('proguard-rules.pro')
+//            consumerProguardFiles('proguard-rules.pro')
 //            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {

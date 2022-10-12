@@ -11,6 +11,7 @@ import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.app.AppData
 import com.soushin.tinmvvm.app.catch
 import com.soushin.tinmvvm.app.onFailure
+import com.soushin.tinmvvm.app.throttleClick
 import com.soushin.tinmvvm.mvvm.repository.CategoryRepository
 import com.soushin.tinmvvm.mvvm.repository.PagingRepository
 import com.soushin.tinmvvm.mvvm.repository.datasource.PagingDataSource
@@ -21,7 +22,6 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import me.soushin.tinmvvm.base.BaseViewModel
-import me.soushin.tinmvvm.utils.throttleClick
 
 
 /**

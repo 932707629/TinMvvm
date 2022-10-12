@@ -8,6 +8,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ASworkspace4.0/TinMvvm/app/src/main/res/layout/activity_splash.xml" value="0.3625" />
+        <entry key="..\:/ASworkspace4.0/TinMvvm/app/src/main/res/layout/fragment_category.xml" value="0.18541666666666667" />
         <entry key="..\:/StudioProjects/TinMvvm/app/src/main/res/drawable/selector_mine.xml" value="0.3697916666666667" />
         <entry key="..\:/StudioProjects/TinMvvm/app/src/main/res/layout/activity_demo.xml" value="0.3482051282051282" />
         <entry key="..\:/StudioProjects/TinMvvm/app/src/main/res/layout/fragment_mine.xml" value="0.3536458333333333" />
@@ -21,5 +23,5 @@
     <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../../BaiduYunDownload" />
     <option name="OTHER_OPTIONS" value="-encoding UTF-8 -charset UTF-8" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>
