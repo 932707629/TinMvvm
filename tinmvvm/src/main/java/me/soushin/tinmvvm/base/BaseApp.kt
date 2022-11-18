@@ -15,10 +15,8 @@ open class BaseApp : Application() {
 
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
-        if (appLifecycle==null){
-            appLifecycle=AppDelegate(base)
-        }
-        appLifecycle?.attachBaseContext(base)
+        appLifecycle=AppDelegate(base)
+        appLifecycle!!.attachBaseContext(base)
     }
 
     override fun onCreate() {

@@ -25,13 +25,13 @@ class AppData private constructor(){
     private var defaultTheme:Int?=null
 
     fun queryAnim():Int?{
-        defaultTransitionsAnim = mmkv.decodeInt(LiveDataTag.tag_transitions_anim,0)
+        defaultTransitionsAnim = mmkv.decodeInt(GlobalConstants.tag_transitions_anim,0)
         if (defaultTransitionsAnim == 0) return null
         return defaultTransitionsAnim!!
     }
 
     fun saveNavOptions(transition: Int){
-        if (mmkv.encode(LiveDataTag.tag_transitions_anim,transition)){
+        if (mmkv.encode(GlobalConstants.tag_transitions_anim,transition)){
             defaultTransitionsAnim = transition
         }
     }
@@ -75,13 +75,13 @@ class AppData private constructor(){
 
     fun queryComponent():Any?{
         if (defaultTheme == null){
-            defaultTheme = mmkv.decodeInt(LiveDataTag.tag_component_theme,0)
+            defaultTheme = mmkv.decodeInt(GlobalConstants.tag_component_theme,0)
         }
         return null
     }
 
     fun saveComponentTheme(theme:Int){
-        if (mmkv.encode(LiveDataTag.tag_component_theme,theme)){
+        if (mmkv.encode(GlobalConstants.tag_component_theme,theme)){
             defaultTheme=theme
         }
     }

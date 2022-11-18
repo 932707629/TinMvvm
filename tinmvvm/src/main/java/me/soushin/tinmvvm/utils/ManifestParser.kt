@@ -3,6 +3,8 @@ package me.soushin.tinmvvm.utils
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
+import android.text.TextUtils
+import android.util.Log
 import me.soushin.tinmvvm.listener.ConfigModule
 import java.util.*
 
@@ -21,7 +23,8 @@ class ManifestParser(private val ctx: Context) {
                 ctx.packageName, PackageManager.GET_META_DATA)
             if (appInfo.metaData != null) {
                 for (key in appInfo.metaData.keySet()) {
-                    if (MODULE_VALUE == appInfo.metaData[key]) {
+                    Log.i("ManifestParser: ","${appInfo.metaData[key].toString()},$key")
+                    if (TextUtils.equals(MODULE_VALUE,appInfo.metaData[key].toString())) {
                         modules.add(parseModule(key))
                     }
                 }

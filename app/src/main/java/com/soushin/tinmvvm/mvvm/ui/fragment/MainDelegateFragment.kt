@@ -9,7 +9,7 @@ import com.jeremyliao.liveeventbus.LiveEventBus
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.app.AppData
-import com.soushin.tinmvvm.app.LiveDataTag
+import com.soushin.tinmvvm.app.GlobalConstants
 import com.soushin.tinmvvm.databinding.FragmentMainDelegateBinding
 import com.soushin.tinmvvm.mvvm.repository.entity.ViewTaskEvent
 import com.soushin.tinmvvm.mvvm.viewmodel.MainDelegateViewModel
@@ -27,7 +27,7 @@ class MainDelegateFragment :
         fun newInstance(graphId: Int): MainDelegateFragment {
             return MainDelegateFragment().apply {
                 arguments = Bundle().apply {
-                    putInt(LiveDataTag.tag_main_delegate_graph, graphId)
+                    putInt(GlobalConstants.tag_main_delegate_graph, graphId)
                 }
             }
         }
@@ -55,7 +55,7 @@ class MainDelegateFragment :
             }
             toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
         }
-        val graphId = requireArguments()[LiveDataTag.tag_main_delegate_graph] as Int
+        val graphId = requireArguments()[GlobalConstants.tag_main_delegate_graph] as Int
         navController.setGraph(graphId)
         //监听页面转场 设置Toolbar以及BottomNavigationView的一些操作
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
@@ -65,7 +65,7 @@ class MainDelegateFragment :
                 val visible =
                     destination.id == R.id.homeFragment || destination.id == R.id.componentFragment
                             || destination.id == R.id.mineFragment
-                LiveEventBus.get<ViewTaskEvent>(LiveDataTag.tag_main_view_event)
+                LiveEventBus.get<ViewTaskEvent>(GlobalConstants.tag_main_view_event)
                     .post(ViewTaskEvent(key = 0, value = visible))
                 if (visible) toolbar.navigationIcon =
                     null else toolbar.setNavigationIcon(R.drawable.ic_white_arrow_left_24)

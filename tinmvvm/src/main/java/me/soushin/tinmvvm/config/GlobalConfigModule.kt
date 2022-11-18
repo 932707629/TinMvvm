@@ -87,7 +87,7 @@ class GlobalConfigModule(builder: Builder) {
         }
 
         private fun getDefaultOkHttpClient(): OkHttpClient {
-            ALog.i("打印下okhttp配置${defaultOkHttpConfig}");
+            ALog.i("打印下okhttp配置${defaultOkHttpConfig}")
             return OkHttpClient.Builder()
                 .callTimeout(defaultOkHttpConfig.callTimeout, TimeUnit.SECONDS)
                 .connectTimeout(defaultOkHttpConfig.connectTimeout, TimeUnit.SECONDS)

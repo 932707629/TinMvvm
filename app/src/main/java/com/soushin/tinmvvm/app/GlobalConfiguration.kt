@@ -3,7 +3,6 @@ package com.soushin.tinmvvm.app
 import android.app.Application
 import android.content.Context
 import androidx.fragment.app.FragmentManager
-import com.soushin.tinmvvm.BuildConfig
 import com.soushin.tinmvvm.app.network.Api
 import me.soushin.tinmvvm.config.GlobalConfigModule
 import me.soushin.tinmvvm.listener.AppLifecycle
@@ -12,7 +11,6 @@ import okhttp3.OkHttpClient
 import rxhttp.wrapper.cookie.CookieStore
 import rxhttp.wrapper.ssl.HttpsUtils
 import java.io.File
-import java.net.Proxy
 import java.util.concurrent.TimeUnit
 
 /**
@@ -25,23 +23,21 @@ class GlobalConfiguration :ConfigModule {
     override fun applyOptions(context: Context, builder: GlobalConfigModule.Builder) {
         builder.setOkHttpClient(initOkhttp(context))
             .errorResponseListener(ResponseErrorListenerImpl())
-            .sharedViewModel(true)//共享ViewModel
+            .sharedViewModel(false)//共享ViewModel
 //            .logDir("")//crash日志输出文件夹
-            .setDebug(BuildConfig.DEBUG)
+            .setDebug(GlobalConstants.isDebug())
             .build()
     }
 
     //配置OkHttp
     private fun initOkhttp(context: Context):OkHttpClient{
-        val file = File(context.externalCacheDir, "OkHttpCookie")
         val sslParams= HttpsUtils.getSslSocketFactory()
         return OkHttpClient.Builder()
-            .cookieJar(CookieStore(File(context.externalCacheDir,"TinmvvmCookie")))
+            .cookieJar(CookieStore(File(context.externalCacheDir,"OkCookie")))
             .callTimeout(Api.TIMEOUT, TimeUnit.SECONDS)
             .connectTimeout(Api.TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(Api.TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(Api.TIMEOUT, TimeUnit.SECONDS)
-            .cookieJar(CookieStore(file))
             .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager) //添加信任证书
             .hostnameVerifier { _, _ -> true }.build()
         //忽略host验证

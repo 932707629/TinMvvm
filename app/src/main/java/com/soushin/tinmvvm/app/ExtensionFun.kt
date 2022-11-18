@@ -25,7 +25,7 @@ import java.util.concurrent.TimeoutException
  * @time 2020/1/8 11 12
  */
 
-fun AppCompatActivity.showToasty(msg:Any?){
+fun showToasty(msg:Any?){
     ToastUtils.show(msg)
 }
 
@@ -45,16 +45,12 @@ fun DataBindingFragment<*, *>.getCtx():Context{
     return this.mContext!!
 }
 
-fun DataBindingFragment<*, *>.showToasty(msg:Any?){
-    ToastUtils.show(msg)
-}
-
 fun DataBindingFragment<*, *>.go(clazz:Class<*>){
     startActivity(Intent(mContext,clazz))
 }
 
 
-fun throttleClick(wait: Long = 200, block: ((View) -> Unit)): View.OnClickListener {
+fun throttleClick(wait: Long = 1000, block: ((View) -> Unit)): View.OnClickListener {
     return View.OnClickListener { v ->
         val current = System.currentTimeMillis()
         val lastClickTime = (v.getTag(v.id) as? Long) ?: 0
@@ -65,7 +61,7 @@ fun throttleClick(wait: Long = 200, block: ((View) -> Unit)): View.OnClickListen
     }
 }
 
-fun debounceClick(wait: Long = 200, block: ((View) -> Unit)): View.OnClickListener {
+fun debounceClick(wait: Long = 1000, block: ((View) -> Unit)): View.OnClickListener {
     return View.OnClickListener { v ->
         var action = (v.getTag(v.id) as? DebounceAction)
         if(action == null){
@@ -87,11 +83,11 @@ class DebounceAction(val view: View, var block: ((View) -> Unit)): Runnable {
     }
 }
 
-fun View.onClick(wait: Long = 200, block: ((View) -> Unit)) {
+fun View.onClick(wait: Long = 1000, block: ((View) -> Unit)) {
     setOnClickListener(throttleClick(wait, block))
 }
 
-fun View.onDebounceClick(wait: Long = 200, block: ((View) -> Unit)) {
+fun View.onDebounceClick(wait: Long = 1000, block: ((View) -> Unit)) {
     setOnClickListener(debounceClick(wait, block))
 }
 

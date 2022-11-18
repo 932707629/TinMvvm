@@ -5,7 +5,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 
-object DemoTheme {
+object DataBindingAdapter {
 
     @JvmStatic
     @BindingAdapter("image", "error","placeholder",requireAll = false)//,requireAll = false

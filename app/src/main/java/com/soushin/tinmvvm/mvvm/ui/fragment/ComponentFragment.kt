@@ -48,9 +48,9 @@ class ComponentFragment : DataBindingFragment<FragmentComponentBinding, Componen
             }
             rvComponent.adapter=adapter
             mViewModel?.loadData()
-            mViewModel?.viewEvent?.observe(viewLifecycleOwner,{
+            mViewModel?.viewEvent?.observe(viewLifecycleOwner) {
                 adapter.setList(it)
-            })
+            }
         }
     }
 
