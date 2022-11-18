@@ -3,7 +3,6 @@ package com.soushin.tinmvvm.mvvm.ui.fragment
 import android.os.Bundle
 import android.view.*
 import androidx.core.view.forEach
-import androidx.navigation.fragment.NavHostFragment
 import com.blankj.ALog
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.soushin.tinmvvm.BR
@@ -42,8 +41,8 @@ class MainDelegateFragment :
         )
     }
 
-    private val navHostFragment by lazy { childFragmentManager.findFragmentById(R.id.fcv_main_delegate) as NavHostFragment }
-    private val navController by lazy { navHostFragment.navController }
+//    private val navHostFragment by lazy { childFragmentManager.findFragmentById(R.id.fcv_main_delegate) as NavHostFragment }
+//    private val navController by lazy { navHostFragment.navController }
 
     //    private val appBarConfiguration by lazy { AppBarConfiguration.Builder(R.id.homeFragment).build() }//配置homeFragment为顶部页面
     override fun initView(view:View, savedInstanceState: Bundle?) {
@@ -55,8 +54,8 @@ class MainDelegateFragment :
             }
             toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
         }
-        val graphId = requireArguments()[GlobalConstants.tag_main_delegate_graph] as Int
-        navController.setGraph(graphId)
+//        val graphId = requireArguments()[GlobalConstants.tag_main_delegate_graph] as Int
+/*        navController.setGraph(graphId)
         //监听页面转场 设置Toolbar以及BottomNavigationView的一些操作
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             ALog.i("监听堆栈跳转", destination.toString(), arguments);
@@ -70,7 +69,7 @@ class MainDelegateFragment :
                 if (visible) toolbar.navigationIcon =
                     null else toolbar.setNavigationIcon(R.drawable.ic_white_arrow_left_24)
             }
-        }
+        }*/
     }
 
     private fun onMenuItemClick(it: MenuItem) {

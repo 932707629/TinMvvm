@@ -1,6 +1,5 @@
 package com.soushin.tinmvvm.app
 
-import androidx.navigation.NavOptions
 import com.soushin.tinmvvm.R
 import com.tencent.mmkv.MMKV
 
@@ -36,42 +35,42 @@ class AppData private constructor(){
         }
     }
 
-    fun queryNavOptions():NavOptions?{
+    fun queryNavOptions():IntArray?{
         return when(queryAnim()){
             R.id.single_menu_alpha->{
-                buildNavOptions(R.anim.alpha_in,R.anim.alpha_out)
+                intArrayOf(R.anim.alpha_in,R.anim.alpha_out)
             }
             R.id.single_menu_slide_left->{
-                buildNavOptions(R.anim.slide_in_left,R.anim.slide_out_left)
+                intArrayOf(R.anim.slide_in_left,R.anim.slide_out_left)
             }
             R.id.single_menu_slide_right->{
-                buildNavOptions(R.anim.slide_in_right,R.anim.slide_out_right)
+                intArrayOf(R.anim.slide_in_right,R.anim.slide_out_right)
             }
             R.id.single_menu_window_bottom->{
-                buildNavOptions(R.anim.window_bottom_in,R.anim.window_bottom_out)
+                intArrayOf(R.anim.window_bottom_in,R.anim.window_bottom_out)
             }
             R.id.single_menu_window_ios->{
-                buildNavOptions(R.anim.window_ios_in,R.anim.window_ios_out)
+                intArrayOf(R.anim.window_ios_in,R.anim.window_ios_out)
             }
             R.id.single_menu_window_left->{
-                buildNavOptions(R.anim.window_left_in,R.anim.window_left_out)
+                intArrayOf(R.anim.window_left_in,R.anim.window_left_out)
             }
             R.id.single_menu_window_right->{
-                buildNavOptions(R.anim.window_right_in,R.anim.window_right_out)
+                intArrayOf(R.anim.window_right_in,R.anim.window_right_out)
             }
             R.id.single_menu_window_scale->{
-                buildNavOptions(R.anim.window_scale_in,R.anim.window_scale_out)
+                intArrayOf(R.anim.window_scale_in,R.anim.window_scale_out)
             }
             R.id.single_menu_window_top->{
-                buildNavOptions(R.anim.window_top_in,R.anim.window_top_out)
+                intArrayOf(R.anim.window_top_in,R.anim.window_top_out)
             }
             else ->{ null }
         }
     }
 
-    private fun buildNavOptions(enter:Int,exit:Int):NavOptions{
-        return NavOptions.Builder().setEnterAnim(enter).setExitAnim(exit).setPopEnterAnim(enter).setPopExitAnim(exit).build()
-    }
+//    private fun buildNavOptions(enter:Int,exit:Int):NavOptions{
+//        return NavOptions.Builder().setEnterAnim(enter).setExitAnim(exit).setPopEnterAnim(enter).setPopExitAnim(exit).build()
+//    }
 
     fun queryComponent():Any?{
         if (defaultTheme == null){

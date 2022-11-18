@@ -2,7 +2,6 @@ package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.fragment.findNavController
 import com.blankj.ALog
 import com.chad.library.adapter.base.BaseBinderAdapter
 import com.soushin.tinmvvm.BR
@@ -50,9 +49,10 @@ class RecyclerFragment : DataBindingFragment<FragmentRecyclerBinding, RecyclerVi
                 return@setGridSpanSizeLookup if (viewType == 1) 1 else 4
             }
             adapter.setOnItemClickListener { a, _, _ ->
-                if (findNavController().currentDestination?.id == R.id.recyclerFragment){
-                    findNavController().navigate(RecyclerFragmentDirections.actionRecyclerFragmentToThreadPoolFragment())
-                }
+                // TODO:  RecyclerFragmentDirections
+//                if (findNavController().currentDestination?.id == R.id.recyclerFragment){
+//                    findNavController().navigate(RecyclerFragmentDirections.actionRecyclerFragmentToThreadPoolFragment())
+//                }
             }
             //LinearLayoutManager已经在布局文件里设置了 所以这里只要设置adapter就可以了
             rvRecycler.adapter=adapter

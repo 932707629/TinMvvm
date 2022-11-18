@@ -2,8 +2,6 @@ package com.soushin.tinmvvm.mvvm.ui.fragment
 
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.fragment.navArgs
-import com.blankj.ALog
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.databinding.FragmentCategoryBinding
@@ -37,10 +35,10 @@ class CategoryFragment : DataBindingFragment<FragmentCategoryBinding, CategoryVi
         super.onDestroyView()
     }
 
-    val args : CategoryFragmentArgs by navArgs()
+//    val args : CategoryFragmentArgs by navArgs()
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
-        ALog.e("开始初始化了",args.pageType)
+//        ALog.e("开始初始化了",args.pageType)
         val adapter= PagingSimpleAdapter()
         mViewData?.apply {
             rvCategory.adapter = adapter
