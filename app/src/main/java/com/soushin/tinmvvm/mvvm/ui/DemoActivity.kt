@@ -5,12 +5,11 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.core.view.forEach
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import com.blankj.ALog
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.app.AppData
+import com.soushin.tinmvvm.app.utils.FragmentUtils
 import com.soushin.tinmvvm.databinding.ActivityDemoBinding
 import com.soushin.tinmvvm.mvvm.ui.fragment.*
 import com.soushin.tinmvvm.mvvm.viewmodel.DemoViewModel
@@ -24,18 +23,11 @@ import me.soushin.tinmvvm.config.DataBindingConfig
  */
 class DemoActivity : DataBindingActivity<ActivityDemoBinding, DemoViewModel>() {
 
-    private val navHostFragment by lazy { supportFragmentManager.findFragmentById(R.id.fcv_container) as NavHostFragment }
-    private val navController by lazy { navHostFragment.navController }
-//    private val appBarConfiguration by lazy { AppBarConfiguration.Builder(R.id.homeFragment).build() }//配置homeFragment为顶部页面
-
     //主页点回退 将app任务移动到后台
     override fun onBackPressed() {
 //        super.onBackPressed()
         moveTaskToBack(true)
     }
-
-
-
 
     override fun initView(savedInstanceState: Bundle?) {
         mViewData?.apply {
@@ -44,28 +36,11 @@ class DemoActivity : DataBindingActivity<ActivityDemoBinding, DemoViewModel>() {
                 onMenuItemClick(it)
                 return@setOnMenuItemClickListener true
             }
-            NavigationUI.setupWithNavController(bnvMainDelegate,navController)
             //监听页面转场 设置Toolbar以及BottomNavigationView的一些操作
             toolbar.setNavigationOnClickListener {
-                navController.navigateUp()
-            }
 
-            navController.addOnDestinationChangedListener { controller, destination, arguments ->
-                ALog.i("监听堆栈跳转", destination.toString(), arguments);
-                mViewData?.apply {
-                    toolbar.title = destination.label
-                    val visible =
-                        destination.id == R.id.homeFragment || destination.id == R.id.componentFragment
-                                || destination.id == R.id.mineFragment
-                    bnvMainDelegate.visibility = if (visible) View.VISIBLE else View.GONE
-                    if (visible) toolbar.navigationIcon =
-                        null else toolbar.setNavigationIcon(R.drawable.ic_white_arrow_left_24)
-                }
             }
         }
-
-        ALog.i("打印是否初始化了lifecyler",mViewModel?.lifecycle);
-
 
     }
 

@@ -1,4 +1,4 @@
-package com.baiyyy.communitypad.app.widget
+package com.soushin.tinmvvm.app.widget
 
 import android.util.Log
 import androidx.annotation.MainThread

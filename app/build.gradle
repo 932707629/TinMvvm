@@ -4,7 +4,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'androidx.navigation.safeargs'
+//    id 'androidx.navigation.safeargs'
 }
 android {
     compileSdk rootProject.compileSdkVersion
@@ -83,10 +83,10 @@ dependencies {
     implementation(deps.work_runtime)//workmanager
 //    implementation 'com.kunminx.arch:smooth-navigation:3.9.0-beta1'
     ///过滤掉navigation-fragment否则会和smooth-navigation冲突
-    implementation(deps.navigation_fragment_ktx)/*{
+    /*implementation(deps.navigation_fragment_ktx){
         exclude group: 'androidx.navigation', module: "navigation-fragment"
-    }*/
-    implementation(deps.navigation_ui_ktx)
+    }
+    implementation(deps.navigation_ui_ktx)*/
     //替换了jetpack官方的navigation-fragment库
     implementation(deps.paging_runtime)
     testImplementation(deps.paging_common)

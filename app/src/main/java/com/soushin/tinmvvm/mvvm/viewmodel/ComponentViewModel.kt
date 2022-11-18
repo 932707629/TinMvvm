@@ -3,12 +3,8 @@ package com.soushin.tinmvvm.mvvm.viewmodel
 import android.app.Application
 import android.view.View
 import androidx.lifecycle.MutableLiveData
-import androidx.navigation.Navigation
 import com.blankj.ALog
-import com.soushin.tinmvvm.R
-import com.soushin.tinmvvm.app.AppData
 import com.soushin.tinmvvm.mvvm.repository.ComponentRepository
-import com.soushin.tinmvvm.mvvm.ui.fragment.ComponentFragmentDirections
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -31,46 +27,51 @@ class ComponentViewModel(application: Application) :
 
     fun onItemClick(item:String, v: View, position: Int){
         ALog.e("onItemClick",item,position)
-        val navController = Navigation.findNavController(v)
-        ALog.e("点击切换数据了",navController.currentDestination?.label)
-        if (navController.currentDestination?.id != R.id.componentFragment) return
+//        val navController = Navigation.findNavController(v)
+//        ALog.e("点击切换数据了",navController.currentDestination?.label)
+//        if (navController.currentDestination?.id != R.id.componentFragment) return
         when(position){
             0->{
-                navController.navigate(
-                    ComponentFragmentDirections.actionComponentFragmentToWorkerFragment(),
-                    AppData.get().queryNavOptions()
-                )
+                // TODO:  ComponentFragmentDirections
+//                navController.navigate(
+//                    ComponentFragmentDirections.actionComponentFragmentToWorkerFragment(),
+//                    AppData.get().queryNavOptions()
+//                )
             }
             1->{
-//              FragmentUtils.add(childFragmentManager, CategoryFragment(),R.id.fl_container)
-                navController.navigate(
-                    ComponentFragmentDirections.actionComponentFragmentToCategoryFragment(99),
-                    AppData.get().queryNavOptions()
-                )
+                // TODO:  ComponentFragmentDirections
+//                navController.navigate(
+//                    ComponentFragmentDirections.actionComponentFragmentToCategoryFragment(99),
+//                    AppData.get().queryNavOptions()
+//                )
             }
             2->{
-                navController.navigate(
-                    ComponentFragmentDirections.actionComponentFragmentToCoroutineFragment(),
-                    AppData.get().queryNavOptions()
-                )
+                // TODO:  ComponentFragmentDirections
+//                navController.navigate(
+//                    ComponentFragmentDirections.actionComponentFragmentToCoroutineFragment(),
+//                    AppData.get().queryNavOptions()
+//                )
             }
             3->{
-                navController.navigate(
-                    ComponentFragmentDirections.actionComponentFragmentToTabLayoutViewpagerFragment(),
-                    AppData.get().queryNavOptions()
-                )
+                // TODO:  ComponentFragmentDirections
+//                navController.navigate(
+//                    ComponentFragmentDirections.actionComponentFragmentToTabLayoutViewpagerFragment(),
+//                    AppData.get().queryNavOptions()
+//                )
             }
             4->{
-                navController.navigate(
-                    ComponentFragmentDirections.actionComponentFragmentToPagingFragment(),
-                    AppData.get().queryNavOptions()
-                )
+                // TODO:  ComponentFragmentDirections
+//                navController.navigate(
+//                    ComponentFragmentDirections.actionComponentFragmentToPagingFragment(),
+//                    AppData.get().queryNavOptions()
+//                )
             }
             5->{
-                navController.navigate(
-                    ComponentFragmentDirections.actionComponentFragmentToDataBindingLayoutFragment(),
-                    AppData.get().queryNavOptions()
-                )
+                // TODO:  ComponentFragmentDirections
+//                navController.navigate(
+//                    ComponentFragmentDirections.actionComponentFragmentToDataBindingLayoutFragment(),
+//                    AppData.get().queryNavOptions()
+//                )
             }
         }
     }
