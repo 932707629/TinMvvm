@@ -9,6 +9,7 @@ import com.blankj.ALog
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.app.GlobalConstants
+import com.soushin.tinmvvm.app.throttleClick
 import com.soushin.tinmvvm.mvvm.repository.CategoryRepository
 import com.soushin.tinmvvm.mvvm.repository.PagingRepository
 import com.soushin.tinmvvm.mvvm.repository.datasource.PagingDataSource
@@ -17,7 +18,6 @@ import com.soushin.tinmvvm.mvvm.ui.fragment.CategoryFragment
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.flow
 import me.soushin.tinmvvm.base.BaseViewModel
-import me.soushin.tinmvvm.utils.throttleClick
 
 
 /**
