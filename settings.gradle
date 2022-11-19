@@ -37,3 +37,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "TinMvvm"
 include ':app', ':tinmvvm'
+

@@ -16,7 +16,11 @@ import me.soushin.tinmvvm.config.DataBindingConfig
  */
 
 class WorkerFragment : DataBindingFragment<FragmentWorkerBinding, WorkerViewModel>() {
-
+    companion object {
+        fun newInstance(): WorkerFragment {
+            return WorkerFragment()
+        }
+    }
     override fun initView(view:View, savedInstanceState: Bundle?) {
         mViewData?.onClick = View.OnClickListener {
             when (it.id) {

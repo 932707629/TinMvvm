@@ -1,4 +1,4 @@
-package com.baiyyy.communitypad.app.widget
+package com.soushin.tinmvvm.app.widget
 
 import android.util.Log
 import androidx.annotation.MainThread
@@ -33,11 +33,11 @@ class SingleLiveEvent<T> : MutableLiveData<T> {
         if (hasActiveObservers()) {
             Log.w("SingleLiveEvent", "Multiple observers registered but only one will be notified of changes.")
         }
-        super.observe(owner, { t ->
+        super.observe(owner) { t ->
             if (mPending.compareAndSet(true, false)) {
                 observer.onChanged(t)
             }
-        })
+        }
     }
 
     @MainThread

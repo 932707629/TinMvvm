@@ -16,27 +16,27 @@ open class FragmentLifecycleCallbacksImpl : FragmentManager.FragmentLifecycleCal
 
     override fun onFragmentPreAttached(fm: FragmentManager, f: Fragment, context: Context) {
         super.onFragmentPreAttached(fm, f, context)
-        ALog.i("onFragmentPreAttached",f.javaClass.simpleName)
+//        ALog.i("onFragmentPreAttached",f.javaClass.simpleName)
     }
 
     override fun onFragmentAttached(fm: FragmentManager, f: Fragment, context: Context) {
         super.onFragmentAttached(fm, f, context)
-        ALog.i("onFragmentAttached",f.javaClass.simpleName)
+//        ALog.i("onFragmentAttached",f.javaClass.simpleName)
     }
 
     override fun onFragmentPreCreated(fm: FragmentManager, f: Fragment, savedInstanceState: Bundle?) {
         super.onFragmentPreCreated(fm, f, savedInstanceState)
-        ALog.i("onFragmentPreCreated",f.javaClass.simpleName)
+//        ALog.i("onFragmentPreCreated",f.javaClass.simpleName)
     }
 
     override fun onFragmentCreated(fm: FragmentManager, f: Fragment, savedInstanceState: Bundle?) {
         super.onFragmentCreated(fm, f, savedInstanceState)
-        ALog.i("onFragmentCreated",f.javaClass.simpleName)
+//        ALog.i("onFragmentCreated",f.javaClass.simpleName)
     }
 
     override fun onFragmentViewCreated(fm: FragmentManager, f: Fragment, v: View, savedInstanceState: Bundle?) {
         super.onFragmentViewCreated(fm, f, v, savedInstanceState)
-        ALog.i("onFragmentViewCreated",f.javaClass.simpleName)
+//        ALog.i("onFragmentViewCreated",f.javaClass.simpleName)
     }
 
     override fun onFragmentActivityCreated(fm: FragmentManager, f: Fragment, savedInstanceState: Bundle?) {
@@ -46,37 +46,37 @@ open class FragmentLifecycleCallbacksImpl : FragmentManager.FragmentLifecycleCal
 
     override fun onFragmentStarted(fm: FragmentManager, f: Fragment) {
         super.onFragmentStarted(fm, f)
-        ALog.i("onFragmentStarted",f.javaClass.simpleName)
+//        ALog.i("onFragmentStarted",f.javaClass.simpleName)
     }
 
     override fun onFragmentResumed(fm: FragmentManager, f: Fragment) {
         super.onFragmentResumed(fm, f)
-        ALog.i("onFragmentResumed",f.javaClass.simpleName)
+//        ALog.i("onFragmentResumed",f.javaClass.simpleName)
     }
 
     override fun onFragmentPaused(fm: FragmentManager, f: Fragment) {
         super.onFragmentPaused(fm, f)
-        ALog.i("onFragmentPaused",f.javaClass.simpleName)
+//        ALog.i("onFragmentPaused",f.javaClass.simpleName)
     }
 
     override fun onFragmentStopped(fm: FragmentManager, f: Fragment) {
         super.onFragmentStopped(fm, f)
-        ALog.i("onFragmentStopped",f.javaClass.simpleName)
+//        ALog.i("onFragmentStopped",f.javaClass.simpleName)
     }
 
     override fun onFragmentSaveInstanceState(fm: FragmentManager, f: Fragment, outState: Bundle) {
         super.onFragmentSaveInstanceState(fm, f, outState)
-        ALog.i("onFragmentSaveInstanceState",f.javaClass.simpleName)
+//        ALog.i("onFragmentSaveInstanceState",f.javaClass.simpleName)
     }
 
     override fun onFragmentViewDestroyed(fm: FragmentManager, f: Fragment) {
         super.onFragmentViewDestroyed(fm, f)
-        ALog.i("onFragmentViewDestroyed",f.javaClass.simpleName)
+//        ALog.i("onFragmentViewDestroyed",f.javaClass.simpleName)
     }
 
     override fun onFragmentDestroyed(fm: FragmentManager, f: Fragment) {
         super.onFragmentDestroyed(fm, f)
-        ALog.i("onFragmentDestroyed",f.javaClass.simpleName)
+//        ALog.i("onFragmentDestroyed",f.javaClass.simpleName)
     }
 
     override fun onFragmentDetached(fm: FragmentManager, f: Fragment) {

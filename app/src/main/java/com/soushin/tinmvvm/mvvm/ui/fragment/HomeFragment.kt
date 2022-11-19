@@ -70,28 +70,33 @@ class HomeFragment : DataBindingFragment<FragmentHomeBinding, HomeViewModel>() {
             rvHome.adapter=adapter
 
             mViewModel?.apply {
-                labels.observe(viewLifecycleOwner,{
+                labels.observe(viewLifecycleOwner) {
                     adapter.setList(it)
-                })
-                viewEvent.observe(viewLifecycleOwner,{
-                    when{
-                        it.key==0 && (it.value is MutableList<*>)->{
+                }
+                viewEvent.observe(viewLifecycleOwner) {
+                    when {
+                        it.key == 0 && (it.value is MutableList<*>) -> {
                         }
-                        it.key==1 ->{
+                        it.key == 1 -> {
                             requestPermission()
                         }
-                        it.key==2 ->{
+                        it.key == 2 -> {
                             //启动自定义service
-                            if (serviceIntent==null){
-                                serviceIntent= Intent(requireContext(), MyService::class.java)
+                            if (serviceIntent == null) {
+                                serviceIntent = Intent(requireContext(), MyService::class.java)
                                 requireActivity().startService(serviceIntent)
-                            }else {
-                                requireActivity().stopService(Intent(requireContext(), MyService::class.java))
-                                serviceIntent=null
+                            } else {
+                                requireActivity().stopService(
+                                    Intent(
+                                        requireContext(),
+                                        MyService::class.java
+                                    )
+                                )
+                                serviceIntent = null
                             }
                         }
                     }
-                })
+                }
 
             }
         }

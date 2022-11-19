@@ -3,13 +3,15 @@ package com.soushin.tinmvvm.mvvm.ui.fragment
 import android.os.Bundle
 import android.view.*
 import androidx.core.view.forEach
-import androidx.navigation.fragment.NavHostFragment
+import androidx.fragment.app.Fragment
 import com.blankj.ALog
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.app.AppData
-import com.soushin.tinmvvm.app.LiveDataTag
+import com.soushin.tinmvvm.app.GlobalConstants
+import com.soushin.tinmvvm.app.getThis
+import com.soushin.tinmvvm.app.utils.FragmentUtils
 import com.soushin.tinmvvm.databinding.FragmentMainDelegateBinding
 import com.soushin.tinmvvm.mvvm.repository.entity.ViewTaskEvent
 import com.soushin.tinmvvm.mvvm.viewmodel.MainDelegateViewModel
@@ -24,11 +26,11 @@ import me.soushin.tinmvvm.config.DataBindingConfig
 class MainDelegateFragment :
     DataBindingFragment<FragmentMainDelegateBinding, MainDelegateViewModel>() {
     companion object {
-        fun newInstance(graphId: Int): MainDelegateFragment {
+        fun newInstance(): MainDelegateFragment {
             return MainDelegateFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(LiveDataTag.tag_main_delegate_graph, graphId)
-                }
+//                arguments = Bundle().apply {
+//                    putInt(GlobalConstants.tag_main_delegate_graph, graphId)
+//                }
             }
         }
     }
@@ -42,8 +44,8 @@ class MainDelegateFragment :
         )
     }
 
-    private val navHostFragment by lazy { childFragmentManager.findFragmentById(R.id.fcv_main_delegate) as NavHostFragment }
-    private val navController by lazy { navHostFragment.navController }
+//    private val navHostFragment by lazy { childFragmentManager.findFragmentById(R.id.fcv_main_delegate) as NavHostFragment }
+//    private val navController by lazy { navHostFragment.navController }
 
     //    private val appBarConfiguration by lazy { AppBarConfiguration.Builder(R.id.homeFragment).build() }//配置homeFragment为顶部页面
     override fun initView(view:View, savedInstanceState: Bundle?) {
@@ -54,23 +56,27 @@ class MainDelegateFragment :
                 return@setOnMenuItemClickListener true
             }
             toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
-        }
-        val graphId = requireArguments()[LiveDataTag.tag_main_delegate_graph] as Int
-        navController.setGraph(graphId)
-        //监听页面转场 设置Toolbar以及BottomNavigationView的一些操作
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
-            ALog.i("监听堆栈跳转", destination.toString(), arguments);
-            mViewData?.apply {
-                toolbar.title = destination.label
-                val visible =
-                    destination.id == R.id.homeFragment || destination.id == R.id.componentFragment
-                            || destination.id == R.id.mineFragment
-                LiveEventBus.get<ViewTaskEvent>(LiveDataTag.tag_main_view_event)
-                    .post(ViewTaskEvent(key = 0, value = visible))
-                if (visible) toolbar.navigationIcon =
-                    null else toolbar.setNavigationIcon(R.drawable.ic_white_arrow_left_24)
+
+            val fragments = mutableListOf<Fragment>(HomeFragment.newInstance(),ComponentFragment.newInstance(),MineFragment.newInstance())
+            FragmentUtils.add(childFragmentManager,fragments,R.id.fcv_main_delegate,0)
+
+            bnvMainDelegate.setOnItemSelectedListener {
+                when(it.itemId){
+                    R.id.homeFragment->{
+                        FragmentUtils.showHide(0,fragments)
+                    }
+                    R.id.componentFragment->{
+                        FragmentUtils.showHide(1,fragments)
+                    }
+                    R.id.mineFragment->{
+                        FragmentUtils.showHide(2,fragments)
+                    }
+                }
+                return@setOnItemSelectedListener true
             }
         }
+
+
     }
 
     private fun onMenuItemClick(it: MenuItem) {

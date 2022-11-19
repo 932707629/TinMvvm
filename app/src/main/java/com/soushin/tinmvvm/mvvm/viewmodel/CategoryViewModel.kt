@@ -2,26 +2,22 @@ package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.*
-import androidx.navigation.Navigation
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.liveData
 import com.blankj.ALog
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.soushin.tinmvvm.R
-import com.soushin.tinmvvm.app.AppData
-import com.soushin.tinmvvm.app.catch
-import com.soushin.tinmvvm.app.onFailure
-import com.soushin.tinmvvm.app.throttleClick
+import com.soushin.tinmvvm.app.GlobalConstants
 import com.soushin.tinmvvm.mvvm.repository.CategoryRepository
 import com.soushin.tinmvvm.mvvm.repository.PagingRepository
 import com.soushin.tinmvvm.mvvm.repository.datasource.PagingDataSource
 import com.soushin.tinmvvm.mvvm.repository.entity.ViewTaskEvent
-import com.soushin.tinmvvm.mvvm.ui.fragment.CategoryFragmentDirections
+import com.soushin.tinmvvm.mvvm.ui.fragment.CategoryFragment
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import me.soushin.tinmvvm.base.BaseViewModel
+import me.soushin.tinmvvm.utils.throttleClick
 
 
 /**
@@ -64,14 +60,12 @@ class CategoryViewModel(application: Application) :
         when(it.id){
             R.id.fab_next->{
                 ///自己跳转自己 多次重复打开一个页面
-                //.setLaunchSingleTop(true)会让堆栈中始终保持fragment一个实例
-                Navigation.findNavController(it).navigate(
-                    CategoryFragmentDirections.actionCategoryFragmentSelf(20),
-                    AppData.get().queryNavOptions()
+                LiveEventBus.get<ViewTaskEvent>(GlobalConstants.tag_main_view_event).post(
+                    ViewTaskEvent(GlobalConstants.action_add, CategoryFragment.newInstance())
                 )
             }
             R.id.fab_last->{
-                Navigation.findNavController(it).popBackStack();
+                LiveEventBus.get<ViewTaskEvent>(GlobalConstants.tag_main_view_event).post(ViewTaskEvent(GlobalConstants.action_back))
             }
         }
     }

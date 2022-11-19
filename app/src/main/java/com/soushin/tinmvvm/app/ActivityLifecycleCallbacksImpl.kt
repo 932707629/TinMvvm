@@ -13,6 +13,7 @@ import me.soushin.tinmvvm.base.DataBindingActivity
  * @time 2020/1/7 13 22
  */
 class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
+    private var isInitToolbar = "isInitToolbar"//是否初始化toolbar
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
         ALog.i("onActivityCreated",activity.localClassName)
@@ -23,7 +24,11 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
     }
 
     override fun onActivityStarted(activity: Activity) {
-//        ALog.i("onActivityStarted",activity.localClassName)
+        ALog.i("onActivityStarted",activity.localClassName)
+        if (!activity.intent.getBooleanExtra(isInitToolbar, false)) {
+            activity.intent.putExtra(isInitToolbar, true)
+
+        }
     }
 
     override fun onActivityPaused(activity: Activity) {
@@ -39,7 +44,7 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
     }
 
     override fun onActivityDestroyed(activity: Activity) {
-//        ALog.i("onActivityDestroyed",activity.localClassName)
+        ALog.i("onActivityDestroyed",activity.localClassName)
     }
 
 }

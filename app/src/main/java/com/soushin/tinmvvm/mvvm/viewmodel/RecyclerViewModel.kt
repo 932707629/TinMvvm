@@ -1,13 +1,11 @@
 package com.soushin.tinmvvm.mvvm.viewmodel
 
 import android.app.Application
-import com.baiyyy.communitypad.app.widget.SingleLiveEvent
+import com.soushin.tinmvvm.app.widget.SingleLiveEvent
 import com.soushin.tinmvvm.app.utils.DataUtils
 import com.soushin.tinmvvm.mvvm.repository.RecyclerRepository
 import com.soushin.tinmvvm.mvvm.repository.entity.ViewTaskEvent
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.emptyFlow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.soushin.tinmvvm.base.BaseViewModel
