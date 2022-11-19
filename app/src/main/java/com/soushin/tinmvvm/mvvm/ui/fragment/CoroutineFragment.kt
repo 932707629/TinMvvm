@@ -28,7 +28,11 @@ import me.soushin.tinmvvm.config.DataBindingConfig
  * @time 2020/6/24 10:29
  */
 class CoroutineFragment : DataBindingFragment<FragmentCoroutineBinding, CoroutineViewModel>() {
-
+    companion object {
+        fun newInstance(): CoroutineFragment {
+            return CoroutineFragment()
+        }
+    }
     //配置当前页面的内容 各项参数都可为空
     //BR.xxxxViewModel是kotlin-kapt插件默认生成的 对应xml文件里的xxxxViewModel
     override fun getDataBindingConfig(): DataBindingConfig? {

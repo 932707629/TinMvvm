@@ -14,31 +14,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_60"
-            android:background="@color/colorPrimary"
-            app:layout_constraintTop_toTopOf="parent"
-            android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
-            app:popupTheme="@style/Theme.MaterialComponents.Light"/>
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/toolbar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="@dimen/dp_60"-->
+<!--            android:background="@color/colorPrimary"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"-->
+<!--            app:popupTheme="@style/Theme.MaterialComponents.Light"/>-->
+
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fcv_container"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/dp_0"
             android:layout_height="@dimen/dp_0"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            app:layout_constraintBottom_toTopOf="@+id/bnv_main_delegate"/>
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bnv_main_delegate"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_60"
-            android:background="@color/white"
-            app:itemIconTint="@drawable/bottom_navigation_item_selector"
-            app:itemTextColor="@drawable/bottom_navigation_item_selector"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:menu="@menu/main_bottom_navigation" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

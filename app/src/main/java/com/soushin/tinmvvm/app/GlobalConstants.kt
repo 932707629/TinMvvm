@@ -15,6 +15,10 @@ object GlobalConstants {
     const val tag_component_theme="component_theme"
 
 
+    const val action_add = 0
+    const val action_back = 1
+
+
     fun isDebug() :Boolean {
         return true
     }
