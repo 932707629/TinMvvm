@@ -76,12 +76,12 @@ open class FragmentLifecycleCallbacksImpl : FragmentManager.FragmentLifecycleCal
 
     override fun onFragmentDestroyed(fm: FragmentManager, f: Fragment) {
         super.onFragmentDestroyed(fm, f)
-//        ALog.i("onFragmentDestroyed",f.javaClass.simpleName)
+        ALog.i("onFragmentDestroyed",f.javaClass.simpleName)
     }
 
     override fun onFragmentDetached(fm: FragmentManager, f: Fragment) {
         super.onFragmentDetached(fm, f)
-        ALog.i("onFragmentDetached",f.javaClass.simpleName)
+//        ALog.i("onFragmentDetached",f.javaClass.simpleName)
     }
 
 }

@@ -27,11 +27,7 @@ class MainDelegateFragment :
     DataBindingFragment<FragmentMainDelegateBinding, MainDelegateViewModel>() {
     companion object {
         fun newInstance(): MainDelegateFragment {
-            return MainDelegateFragment().apply {
-//                arguments = Bundle().apply {
-//                    putInt(GlobalConstants.tag_main_delegate_graph, graphId)
-//                }
-            }
+            return MainDelegateFragment()
         }
     }
 
@@ -44,18 +40,8 @@ class MainDelegateFragment :
         )
     }
 
-//    private val navHostFragment by lazy { childFragmentManager.findFragmentById(R.id.fcv_main_delegate) as NavHostFragment }
-//    private val navController by lazy { navHostFragment.navController }
-
-    //    private val appBarConfiguration by lazy { AppBarConfiguration.Builder(R.id.homeFragment).build() }//配置homeFragment为顶部页面
     override fun initView(view:View, savedInstanceState: Bundle?) {
         mViewData?.apply {
-            toolbar.inflateMenu(R.menu.menu_main_global)
-            toolbar.setOnMenuItemClickListener {
-                onMenuItemClick(it)
-                return@setOnMenuItemClickListener true
-            }
-            toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
 
             val fragments = mutableListOf<Fragment>(HomeFragment.newInstance(),ComponentFragment.newInstance(),MineFragment.newInstance())
             FragmentUtils.add(childFragmentManager,fragments,R.id.fcv_main_delegate,0)
@@ -75,24 +61,9 @@ class MainDelegateFragment :
                 return@setOnItemSelectedListener true
             }
         }
-
-
     }
 
-    private fun onMenuItemClick(it: MenuItem) {
-        ALog.i("onMenuItemClick",it.itemId,it.groupId,it.order);
-        if (it.groupId == R.id.group_single){
-            AppData.get().saveNavOptions(it.itemId)
-        } else if (it.itemId == R.id.menu_transitions_check) {
-            it.subMenu.forEach {subItem->
-                val defaultId = AppData.get().queryAnim()?:R.id.single_menu_non
-                ALog.i("设置默认选择状态",subItem.title,subItem.itemId,defaultId);
-                if (subItem.itemId == defaultId){
-                    subItem.isChecked = true
-                }
-            }
-        }
-    }
+
 
 
 

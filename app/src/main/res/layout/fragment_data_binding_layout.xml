@@ -9,83 +9,55 @@
             name="dblVM"
             type="com.soushin.tinmvvm.mvvm.viewmodel.DataBindingLayoutViewModel" />
 
-        <variable name="user"
-            type="com.soushin.tinmvvm.mvvm.viewmodel.User"/>
-
     </data>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/dp_15"
+            android:layout_marginStart="@dimen/dp_15"
+            android:text="@={dblVM.userForm.firstName}"
+            tools:text="@string/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv1"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="@dimen/dp_15"
-                android:layout_marginStart="@dimen/dp_15"
-                android:text="@{dblVM.user.firstName}"
-                tools:text="@string/app_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                tools:text="@string/app_name"
-                android:text="@{dblVM.user.lastName}"
-                android:layout_marginStart="@dimen/dp_15"
-                app:layout_constraintLeft_toRightOf="@+id/tv1"
-                app:layout_constraintBaseline_toBaselineOf="@+id/tv1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            tools:text="@string/app_name"
+            android:text="@={dblVM.userForm.lastName}"
+            android:layout_marginStart="@dimen/dp_15"
+            app:layout_constraintLeft_toRightOf="@+id/tv1"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv3"
-                app:layout_constraintLeft_toLeftOf="@+id/tv1"
-                app:layout_constraintTop_toBottomOf="@+id/tv1"
-                android:layout_marginTop="@dimen/dp_10"
-                android:text="@{dblVM.user.firstName}"
-                tools:text="@string/app_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_change"
+            android:text="更换数据"
+            android:layout_marginRight="@dimen/dp_15"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv1"
+            app:layout_constraintBottom_toBottomOf="@+id/tv3"
+            android:onClick="@{dblVM.onViewClick()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                tools:text="@string/app_name"
-                android:text="@{dblVM.user.lastName}"
-                android:layout_marginStart="@dimen/dp_15"
-                app:layout_constraintLeft_toRightOf="@+id/tv3"
-                app:layout_constraintBaseline_toBaselineOf="@+id/tv3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv1"
+            android:src="@mipmap/ic_launcher"
+            android:layout_marginTop="@dimen/dp_10"
+            app:error="@{dblVM.userForm.error}"
+            app:image="@{dblVM.userForm.imageUrl}"
+            app:layout_constraintTop_toBottomOf="@+id/btn_change"
+            app:layout_constraintLeft_toLeftOf="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_change"
-                android:text="更换数据"
-                android:layout_marginRight="@dimen/dp_15"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv1"
-                app:layout_constraintBottom_toBottomOf="@+id/tv3"
-                android:onClick="@{dblVM.onViewClick()}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv1"
-                android:src="@mipmap/ic_launcher"
-                android:layout_marginTop="@dimen/dp_10"
-                app:error="@{dblVM.user.error}"
-                app:image="@{dblVM.user.imageUrl}"
-                app:layout_constraintTop_toBottomOf="@+id/tv3"
-                app:layout_constraintLeft_toLeftOf="@+id/tv1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.core.widget.NestedScrollView>
 </layout>
