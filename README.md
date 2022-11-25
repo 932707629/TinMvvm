@@ -87,6 +87,8 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
 
 ### 注意: ###
 
+- 此分支适配了安卓4.4，但是此分支不会包含框架最新的功能，只维护版本
+
 - ActivityLifeCycleCallBackIml可以监听到整个项目所有Activity的生命周期(包括第三方)，所以可以用它执行一些初始化与销毁业务，实现了对BaseActivity的解耦，FragmentLifecycleCallbacksImpl同理
 
 - 如果要在fragment里设置状态栏沉浸，可以让该fragment实现SimpleImmersionOwner接口，或者实现ImmersionOwner接口，具体实现可以参考ImmersionBar的demo使用
