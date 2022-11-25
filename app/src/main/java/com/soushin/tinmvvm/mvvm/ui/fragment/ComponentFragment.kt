@@ -25,7 +25,7 @@ class ComponentFragment : DataBindingFragment<FragmentComponentBinding, Componen
     override fun getDataBindingConfig(): DataBindingConfig? {
         return DataBindingConfig(
             layoutId = R.layout.fragment_component, variableId = BR.ComponentViewModel,
-            vmClass = ComponentViewModel::class.java,dataBindingComponent = AppData.get().queryComponent()
+            vmClass = ComponentViewModel::class.java,
         )
     }
 

@@ -20,15 +20,13 @@ allprojects {
 虽然已经在项目中添加了比较详细的代码注释，但是肯定还有很多需要注意的地方没有解释清楚，希望大家在使用的过程中如果发现了什么问题，及时提issue，大家共同解决.
 
 ### 我们的优势 ###
-TinMvvm是以谷歌DataBinding+LiveData+ViewModel+Navigation框架为基础，整合Rxjava2、ViewBinding、okhttp-RxHttp、Liveeventbus等流行模块，加上各种原生控件，
-让事件与数据源完美绑定的一款容易上瘾的实用性MVVM快速开发框架。从此告别findViewById()，告别set()、get()；有了Navigation的助力，
-支持单Activity多Fragment，当然，您也可以继续使用多Activity模式。
+TinMvvm是以谷歌DataBinding+LiveData+ViewModel框架为基础，整合Rxjava2、ViewBinding、okhttp-RxHttp、Liveeventbus等流行模块，加上各种原生控件，
+让事件与数据源完美绑定的一款容易上瘾的实用性MVVM快速开发框架。从此告别findViewById()，告别set()、get()； 支持单Activity多Fragment，当然，您也可以继续使用多Activity模式。
 
 [更多Jetpack组件即将来袭！](https://developer.android.google.cn/jetpack "更多Jetpack组件即将来袭")
 
 ### 功能列表 ###
 
-- 加入navigation组件，支持单Activity多Fragment模式
 - 解决屏幕适配问题，适配全面屏/刘海屏(AndroidAutoSize是代替AndroidAutoLayout的屏幕适配框架，原理是基于今日头条的适配方案)
 - 代码解耦，提供ActivityLifecycleCallbacksImpl、FragmentLifecycleCallbacksImpl给baseActivity/baseFragment减压
 - 使用堆栈对Activity进行统一管理，AppManager封装了各种常用方法
@@ -58,8 +56,6 @@ TinMvvm是以谷歌DataBinding+LiveData+ViewModel+Navigation框架为基础，�
 使用的第三方框架:
 
 [Jetpack组件库](https://developer.android.google.cn/jetpack "Jetpack组件库")
-
-[Navigation](https://developer.android.google.cn/jetpack/androidx/releases/navigation "Navigation")
 
 [RxJava3](https://github.com/ReactiveX/RxJava "RxJava3")
 
@@ -103,10 +99,6 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
 比如穿山甲的广告View，会直接导致View比例显示异常，虽然可以用副单位去解决，但是要把整个页面都换成副单位，个人感觉不太友好，
 所以有这种项目需要的童鞋要谨慎使用哦，可以考虑换用[最小宽度限定符](https://www.jianshu.com/p/2aded8bb6ede "骚年你的屏幕适配方式该升级了")
 
-- 结合NavigationUI和BottomNavigationView使用有异常，fragment之间相互重叠，而且每次切换还会重新初始化fragment
-  答：Navigation 的官方使用方式是每次显示一个Fragment都会重新去创建页面去显示(跳转一个新页面或者回退到上一页面)，
-  例如返回页面的状态恢复，Jetpack提供了一系列的状态保存方案（Navigation2.4.0-alpha版本对BottomNavigationView状态保存也提供了支持）。
-  
 - 复制整个项目修改包名去做自己项目的时候可能会出现代码不更新的情况，每次都需要build之后代码才更新，这时候可以把项目的如下文件全部删除然后重启Android Studio
   
 ` 1.所有的build文件夹；

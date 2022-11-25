@@ -7,13 +7,13 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 
-
 /**
- *
- * @auther SouShin
- * @time 2020/7/13 11:13
+ * UI处理工具类
+ * @author SouShin
+ * created at 2022/11/25 11:40
  */
-object KeyboardUtils {
+object UIUtils {
+
 
 //--------------------------处理EditText显示隐藏输入法-------------------------------
 
@@ -71,4 +71,6 @@ object KeyboardUtils {
     }
 
     //--------------------------处理EditText显示隐藏输入法-------------------------------
+
+
 }

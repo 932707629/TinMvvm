@@ -5,6 +5,7 @@ import android.view.View
 import com.blankj.ALog
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
+import com.soushin.tinmvvm.app.utils.toJson
 import com.soushin.tinmvvm.databinding.FragmentDataBindingLayoutBinding
 import com.soushin.tinmvvm.mvvm.viewmodel.ComponentViewModel
 import com.soushin.tinmvvm.mvvm.viewmodel.DataBindingLayoutViewModel
@@ -37,9 +38,15 @@ class DataBindingLayoutFragment :
     }
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
-        val componentVM = mViewModelProvider?.get(ComponentViewModel::class.java)
-        ALog.i("打印取到的上个页面的数据",componentVM?.viewEvent?.value);
+//        val componentVM = mViewModelProvider?.get(ComponentViewModel::class.java)
+//        ALog.i("打印取到的上个页面的数据",componentVM?.viewEvent?.value);
+        mViewModel?.apply {
+//            user.observe(getLifeCycleOwner()){
+//                ALog.i("顶顶顶顶",it.toJson());
+//            }
 
+
+        }
     }
 
 }

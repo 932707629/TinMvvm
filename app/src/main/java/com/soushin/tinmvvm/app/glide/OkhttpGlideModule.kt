@@ -19,9 +19,10 @@ class OkhttpGlideModule: AppGlideModule() {
 
     override fun registerComponents(context: Context, glide: Glide, registry: Registry) {
 //        println("是否进行了glide替换okhttp设置${this.javaClass.simpleName}")
-        registry.replace(GlideUrl::class.java, InputStream::class.java,
-            OkHttpUrlLoader.Factory(AppComponent.globalConfig!!.okHttpClient)
-        )
+        AppComponent.globalConfig?.okHttpClient?.let {
+            registry.replace(GlideUrl::class.java, InputStream::class.java, OkHttpUrlLoader.Factory(it))
+        }
+
     }
 
 }

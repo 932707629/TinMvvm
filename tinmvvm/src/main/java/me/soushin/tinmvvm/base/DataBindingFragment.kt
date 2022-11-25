@@ -68,7 +68,7 @@ import me.soushin.tinmvvm.config.DataBindingConfig
                 }else {
                     DataBindingUtil.inflate<VD>(inflater,it,container,false)
                 }
-                vd!!.lifecycleOwner = vd!!.root.findViewTreeLifecycleOwner()
+                vd!!.lifecycleOwner = viewLifecycleOwner
                 bindingParams.forEach {entry->
                     vd!!.setVariable(entry.key,entry.value)
                 }
@@ -76,7 +76,7 @@ import me.soushin.tinmvvm.config.DataBindingConfig
             //如果当前页面的vmClass为空就不会去实例化mViewModel
             vmClass?.let {
                 mViewModelProvider = if (sharedViewModel()) ViewModelProvider(AppComponent.sharedViewModelStore, defaultViewModelProviderFactory)
-                else ViewModelProvider(this@DataBindingFragment)
+                else ViewModelProvider(requireActivity())
                 mViewModel = mViewModelProvider!![it] as VM
                 lifecycle.addObserver(mViewModel!!)
                 //如果当前页面设置的variableId为空就不会去绑定ViewModel

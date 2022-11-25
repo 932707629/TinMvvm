@@ -8,13 +8,13 @@ ext {
     versionCode = 1_00_00
     versionName = '1.0.0'
 
-    tinmvvmVersionCode = 1_04_02
-    tinmvvmVersionName = '1.4.2'
+    tinmvvmVersionCode = 1_05_00
+    tinmvvmVersionName = '1.5.0'
 
 //    rxjavaName = 'rxjava2'
     rxjavaName = 'rxjava3'
-//    okhttpVersion = '4.10.0'
-    okhttpVersion = '3.12.2'
+    okhttpVersion = '4.10.0'
+//    okhttpVersion = '3.12.2'
     rxhttpVersion = '2.9.3'
     rxlifeVersion = '2.2.2'
     rxjavaVersion = '3.1.5'

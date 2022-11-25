@@ -38,7 +38,7 @@ class HomeFragment : DataBindingFragment<FragmentHomeBinding, HomeViewModel>() {
     override fun getDataBindingConfig(): DataBindingConfig? {
         //演示addBindingParam()的用法
         return DataBindingConfig(layoutId = R.layout.fragment_home,
-            variableId = BR.HomeViewModel,vmClass = HomeViewModel::class.java,dataBindingComponent = AppData.get().queryComponent())
+            variableId = BR.HomeViewModel,vmClass = HomeViewModel::class.java)
     }
 
     override fun onDestroyView() {
