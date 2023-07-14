@@ -61,13 +61,14 @@ object PermissionUtil {
             rxPermissions
                 .requestEach(*needRequest.toTypedArray())
                 .buffer(permissions.size)
-                .subscribe(object : ErrorHandleSubscriber<List<Permission?>>(lifecycle,AppComponent.rxErrorHandler) {
-                    fun onNext(permissions: List<Permission>) {
+                .subscribe(object : ErrorHandleSubscriber<List<Permission>>(lifecycle,AppComponent.rxErrorHandler) {
+                    override fun onNext(result: List<Permission>) {
+                        super.onNext(result)
                         val failurePermissions: MutableList<String> =
                             ArrayList()
                         val askNeverAgainPermissions: MutableList<String> =
                             ArrayList()
-                        for (p in permissions) {
+                        for (p in result) {
                             if (!p.granted) {
                                 if (p.shouldShowRequestPermissionRationale) {
                                     failurePermissions.add(p.name)
