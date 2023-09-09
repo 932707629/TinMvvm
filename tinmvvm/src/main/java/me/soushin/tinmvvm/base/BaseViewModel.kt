@@ -19,7 +19,7 @@ import me.soushin.tinmvvm.rxerror.RxErrorHandler
 open class BaseViewModel<R: BaseRepository>(application: Application,val mRepository: R) :
     AndroidViewModel(application), LifecycleEventObserver {
 
-    protected var mCompositeDisposable : CompositeDisposable ?= null
+    var mCompositeDisposable : CompositeDisposable ?= null
     //生命周期
     var lifecycle:LifecycleOwner?=null
 
@@ -27,12 +27,12 @@ open class BaseViewModel<R: BaseRepository>(application: Application,val mReposi
      *协程异常处理
      * 子类可以自行override实现自定义异常处理
      */
-    protected var coroutineExceptionHandler = CoroutineExceptionHandler { _, exception ->
+    var coroutineExceptionHandler = CoroutineExceptionHandler { _, exception ->
 //        println("Handle $exception in CoroutineExceptionHandler")
         getErrorHandler()?.mHandlerFactory?.handleError(exception)
     }
 
-    protected fun getErrorHandler(): RxErrorHandler?{
+    open fun getErrorHandler(): RxErrorHandler?{
         return AppComponent.rxErrorHandler
     }
 
@@ -77,18 +77,24 @@ open class BaseViewModel<R: BaseRepository>(application: Application,val mReposi
 
     /**
      * 建议在ViewModel中使用此方法
+     * 不会跟随生命周期销毁
      */
     open fun getScope(): CoroutineScope {
-        return when {
+        return MainScope()
+    }
+
+    /**
+     * 会跟随生命周期销毁
+     */
+    open fun getLifecycleScope():CoroutineScope?{
+        return when{
             viewModelScope.isActive -> {
                 viewModelScope
             }
             lifecycle?.lifecycleScope?.isActive == true -> {
                 lifecycle?.lifecycleScope!!
             }
-            else -> {
-                MainScope()
-            }
+            else -> null
         }
     }
 
