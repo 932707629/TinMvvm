@@ -1,6 +1,7 @@
 package me.soushin.tinmvvm.utils
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Process
 import com.blankj.ALog
@@ -70,17 +71,31 @@ class AppManager private constructor(){
      */
     var currentActivity:Activity?=null
 
-    fun go(clazz: Class<*>,finish:Boolean=false,newTask:Boolean=false){
-        val intent=Intent(getTopActivity(),clazz)
-        if (newTask){
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        }
-        val topActivity = getTopActivity()
-        topActivity?.startActivity(intent)
-        if (finish){
-            topActivity?.finish()
+    fun go(context: Context? = getTopActivity(),clazz: Class<*>?=null,finish:Boolean=false,newTask:Boolean=false){
+        if (clazz != null){
+            val intent=Intent(getTopActivity(),clazz)
+            if (newTask){
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            }
+            context?.startActivity(intent)
+            if (finish && context is Activity){
+                context.finish()
+            }
         }
     }
+
+    fun goIntent(context: Context?=getTopActivity(),intent: Intent?=null,finish:Boolean=false,newTask:Boolean=false){
+        if (intent != null){
+            if (newTask){
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            }
+            context?.startActivity(intent)
+            if (finish && context is Activity){
+                context.finish()
+            }
+        }
+    }
+
 
     fun isAlive(clazz: Class<*>):Boolean{
         activitys.forEach {
