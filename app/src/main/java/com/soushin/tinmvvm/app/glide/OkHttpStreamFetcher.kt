@@ -44,14 +44,14 @@ class OkHttpStreamFetcher(client: Call.Factory, url: GlideUrl) : DataFetcher<Inp
 
             @Throws(IOException::class)
             override fun onResponse(call: Call, response: Response) {
-                responseBody = response.body()
+                responseBody = response.body
                 if (response.isSuccessful) {
                     val contentLength = responseBody!!.contentLength()
                     stream =
                         ContentLengthInputStream.obtain(responseBody!!.byteStream(), contentLength)
                     callback.onDataReady(stream)
                 } else {
-                    callback.onLoadFailed(HttpException(response.message(), response.code()))
+                    callback.onLoadFailed(HttpException(response.message, response.code))
                 }
             }
         })

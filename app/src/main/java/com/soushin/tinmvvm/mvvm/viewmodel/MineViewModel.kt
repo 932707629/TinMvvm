@@ -19,7 +19,7 @@ class MineViewModel(application: Application) :
 
     fun onViewClick():View.OnClickListener{
         return throttleClick {
-            AppManager.get().go(SplashActivity::class.java)
+            AppManager.get().go(clazz = SplashActivity::class.java)
         }
     }
 

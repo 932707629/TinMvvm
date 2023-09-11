@@ -18,7 +18,7 @@
             android:text="协程功能"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:onClick="@{CoroutineViewModel.onClick()}"
+            android:onClick="@{CoroutineViewModel.onViewClick}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -27,7 +27,7 @@
             android:text="异常处理"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/btn_coroutine_fuc"
-            android:onClick="@{CoroutineViewModel.onClick()}"
+            android:onClick="@{CoroutineViewModel.onViewClick}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -36,7 +36,7 @@
             android:text="高级语法"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/btn_coroutine_crash"
-            android:onClick="@{CoroutineViewModel.onClick()}"
+            android:onClick="@{CoroutineViewModel.onViewClick}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -45,7 +45,7 @@
             android:text="@{CoroutineViewModel.result}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/btn_advanced_grammar"
-            android:onClick="@{CoroutineViewModel.onClick()}"
+            android:onClick="@{CoroutineViewModel.onViewClick}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -55,18 +55,28 @@
             android:text="@{CoroutineViewModel.result1}"
             app:layout_constraintTop_toBottomOf="@+id/btn_coroutine_fuc"
             app:layout_constraintLeft_toLeftOf="@+id/btn_coroutine_fuc"
-            android:onClick="@{CoroutineViewModel.onClick()}"
+            android:onClick="@{CoroutineViewModel.onViewClick}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <Button
             android:id="@+id/btn_flow"
             android:text="Flow任务"
-            app:layout_constraintTop_toBottomOf="@+id/btn_coroutine_fuc"
-            app:layout_constraintLeft_toLeftOf="@+id/btn_coroutine_fuc"
-            android:onClick="@{CoroutineViewModel.onClick()}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btn_result1"
+            app:layout_constraintLeft_toRightOf="@+id/btn_result1"
+            android:onClick="@{CoroutineViewModel.onViewClick}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_scope_loop"
+            android:text="循环执行"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btn_result1"
+            app:layout_constraintLeft_toRightOf="@+id/btn_flow"
+            android:onClick="@{CoroutineViewModel.onViewClick}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
