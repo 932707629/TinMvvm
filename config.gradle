@@ -8,13 +8,13 @@ ext {
     versionCode = 1_00_00
     versionName = '1.0.0'
 
-    tinmvvmVersionCode = 1_05_00
-    tinmvvmVersionName = '1.5.0'
+    tinmvvmVersionCode = 1_04_03
+    tinmvvmVersionName = '1.4.3'
 
 //    rxjavaName = 'rxjava2'
     rxjavaName = 'rxjava3'
-    okhttpVersion = '4.10.0'
-//    okhttpVersion = '3.12.2'
+//    okhttpVersion = '4.10.0'
+    okhttpVersion = '3.12.2'
     rxhttpVersion = '2.9.3'
     rxlifeVersion = '2.2.2'
     rxjavaVersion = '3.1.5'
@@ -50,6 +50,8 @@ ext {
             basepopup                           : "io.github.razerdp:BasePopup:3.1.0",
             mmkv_static                         : "com.tencent:mmkv-static:1.2.14",
             qmui                                : "com.qmuiteam:qmui:2.0.0-alpha11",
+            permissionx                         : "com.guolindev.permissionx:permissionx:1.8.1",
+
 
 
             //network
@@ -60,9 +62,8 @@ ext {
             rxandroid3                          : "io.reactivex.rxjava3:rxandroid:3.0.0",
             rxjava2                             : "io.reactivex.rxjava2:rxjava:2.2.19",
             rxjava3                             : "io.reactivex.rxjava3:rxjava:$rxjavaVersion",
-            rxpermissions                       : "com.github.tbruyelle:rxpermissions:0.10.2",
+
             //适配rxjava3
-            rxpermissions3                      : "com.github.tbruyelle:rxpermissions:0.12",
             okhttp                              : "com.squareup.okhttp3:okhttp:$okhttpVersion",
             rxhttp                              : "com.github.liujingxing.rxhttp:rxhttp:$rxhttpVersion",
             rxlife_rxjava2                      : "com.github.liujingxing.rxlife:rxlife-rxjava2:$rxlifeVersion",
