@@ -50,6 +50,8 @@ ext {
             basepopup                           : "io.github.razerdp:BasePopup:3.1.0",
             mmkv_static                         : "com.tencent:mmkv-static:1.2.14",
             qmui                                : "com.qmuiteam:qmui:2.0.0-alpha11",
+            permissionx                         : "com.guolindev.permissionx:permissionx:1.8.1",
+
 
 
             //network
@@ -60,9 +62,8 @@ ext {
             rxandroid3                          : "io.reactivex.rxjava3:rxandroid:3.0.0",
             rxjava2                             : "io.reactivex.rxjava2:rxjava:2.2.19",
             rxjava3                             : "io.reactivex.rxjava3:rxjava:$rxjavaVersion",
-            rxpermissions                       : "com.github.tbruyelle:rxpermissions:0.10.2",
+
             //适配rxjava3
-            rxpermissions3                      : "com.github.tbruyelle:rxpermissions:0.12",
             okhttp                              : "com.squareup.okhttp3:okhttp:$okhttpVersion",
             rxhttp                              : "com.github.liujingxing.rxhttp:rxhttp:$rxhttpVersion",
             rxlife_rxjava2                      : "com.github.liujingxing.rxlife:rxlife-rxjava2:$rxlifeVersion",

@@ -7,19 +7,16 @@ import android.view.View
 import com.blankj.ALog
 import com.chad.library.adapter.base.BaseBinderAdapter
 import com.google.android.flexbox.*
+import com.permissionx.guolindev.PermissionX
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
-import com.soushin.tinmvvm.app.AppData
 import com.soushin.tinmvvm.app.getThis
 import com.soushin.tinmvvm.app.service.MyService
-import com.soushin.tinmvvm.app.utils.PermissionUtil
 import com.soushin.tinmvvm.databinding.FragmentHomeBinding
 import com.soushin.tinmvvm.mvvm.adapter.itembinder.TabComponentItemBinder
 import com.soushin.tinmvvm.mvvm.viewmodel.HomeViewModel
-import com.tbruyelle.rxpermissions3.RxPermissions
 import me.soushin.tinmvvm.base.DataBindingFragment
 import me.soushin.tinmvvm.config.DataBindingConfig
-
 
 /**
  *
@@ -104,23 +101,11 @@ class HomeFragment : DataBindingFragment<FragmentHomeBinding, HomeViewModel>() {
 
 
     private fun requestPermission(){
-        val rxPermissions= RxPermissions(getThis())
         val pms= arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACCESS_FINE_LOCATION)
-        PermissionUtil.requestPermission(
-            permissions = pms,
-            lifecycle = this,
-            rxPermissions = rxPermissions,
-            requestPermission = object : PermissionUtil.RequestPermission{
-                override fun onRequestPermissionSuccess() {
-                    ALog.d("onRequestPermissionSuccess");
-                }
-                override fun onRequestPermissionFailure(permissions: List<String>?) {
-                    ALog.d("onRequestPermissionFailure$permissions");
-                }
-                override fun onRequestPermissionFailureWithAskNeverAgain(permissions: List<String>?) {
-                    ALog.d("onRequestPermissionFailureWithAskNeverAgain$permissions");
-                }
-            })
+        PermissionX.init(getThis()).permissions(pms.toList())
+            .request { allGranted, grantedList, deniedList ->
+            ALog.d("onRequestPermissionSuccess");
+        }
     }
 
 
