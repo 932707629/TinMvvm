@@ -127,6 +127,11 @@ Android Studio4.0以下使用TinMvvmTemplate这个文件里放着TinMvv的一键
 
 ### 历史升级记录
 
+
+### 1.4.3
+- 适配安卓4.4需要自定义application然后调用MultiDex.install(base)方法即可,如果出现反射失败就是这个原因导致的
+
+
 ### 1.4.2
 - 调整生命周期赋值方式
 - 优化内存泄露问题

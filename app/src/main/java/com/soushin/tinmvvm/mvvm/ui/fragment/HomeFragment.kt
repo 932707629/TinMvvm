@@ -7,7 +7,6 @@ import android.view.View
 import com.blankj.ALog
 import com.chad.library.adapter.base.BaseBinderAdapter
 import com.google.android.flexbox.*
-import com.permissionx.guolindev.PermissionX
 import com.soushin.tinmvvm.BR
 import com.soushin.tinmvvm.R
 import com.soushin.tinmvvm.app.getThis
@@ -102,10 +101,10 @@ class HomeFragment : DataBindingFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private fun requestPermission(){
         val pms= arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACCESS_FINE_LOCATION)
-        PermissionX.init(getThis()).permissions(pms.toList())
-            .request { allGranted, grantedList, deniedList ->
-            ALog.d("onRequestPermissionSuccess");
-        }
+//        PermissionX.init(getThis()).permissions(pms.toList())
+//            .request { allGranted, grantedList, deniedList ->
+//            ALog.d("onRequestPermissionSuccess");
+//        }
     }
 
 

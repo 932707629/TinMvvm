@@ -72,7 +72,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     //kt+jetpack+androidx
     implementation(deps.kotlinstdlibjdk7)
-    implementation(deps.appcompat)
+    implementation(deps.appcompat){
+        exclude(group: 'androidx.lifecycle', module: 'lifecycle-viewmodel')
+        exclude(group: 'androidx.lifecycle', module: 'lifecycle-viewmodel-savedstate')
+    }
     implementation(deps.constraintlayout)
     implementation(deps.swipeRefresh)
     implementation(deps.material)
@@ -98,7 +101,7 @@ dependencies {
     implementation(deps.brvh)
 //    implementation(deps.qmui)
     implementation(deps.mmkv_static)
-    implementation(deps.permissionx)
+//    implementation(deps.permissionx)
     implementation(deps.ToastUtils)
 //    implementation(deps.basepopup)
     implementation(deps.rxhttp)
